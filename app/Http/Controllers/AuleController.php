@@ -14,7 +14,8 @@ class AuleController extends Controller
      */
     public function index()
     {
-        //
+        $aule=Aula::latest()->get();
+        return view('aule.index',['aule'=>$aule]);
     }
 
     /**
@@ -24,7 +25,7 @@ class AuleController extends Controller
      */
     public function create()
     {
-        //
+        return view('aule.create');
     }
 
     /**
@@ -44,9 +45,10 @@ class AuleController extends Controller
      * @param  \App\Aula  $aula
      * @return \Illuminate\Http\Response
      */
-    public function show(Aula $aula)
+    public function show($codice)
     {
-        //
+        $aula= Aula::find($codice);
+        return view('aule.show',['aula'=>$aula]);
     }
 
     /**
