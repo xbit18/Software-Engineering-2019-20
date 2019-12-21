@@ -5,6 +5,9 @@
 - <b>Dawid Pado</b>, matricola 251813, dawid.pado@student.univaq.it;
 - <b>Bryant Sarabia</b>, matricola 251826, bryantmichelle.sarabiaortega@student.univaq.it;
 
+## Link Deliverable Google Docs
+https://drive.google.com/file/d/1KrRqcKMYcK2ow6woT8wwg3u8Q1Sc5oqK/view?usp=sharing
+
 ## Progetto 2. Gestionale per l’occupazione delle aule e delle stanze di studio e lavoro
 
 Data una biblioteca, delle stanze studio o lavoro, il software deve permettere a degli utenti (studenti, docenti, o personale vario) di poter conoscerne le disponibilità in tempo reale. L’utente deve poter sapere, in tempo reale, le stanze aperte per lo studio/lavoro e quelle con posti disponibili. 
