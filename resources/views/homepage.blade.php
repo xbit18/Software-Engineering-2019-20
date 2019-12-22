@@ -29,6 +29,7 @@
             <th class="tg-gwxw">Edificio</th>
             <th class="tg-gwxw">Capienza</th>
             <th class="tg-gwxw">Tipo</th>
+            <th class="tg-gwxw">Mappa</th>
         </tr>
         @foreach ($aule as $aula)
         <tr>
@@ -36,6 +37,7 @@
             <td class="tg-p78r"></td>
             <td class="tg-p78r">{{ $aula->capienza }}</td>
             <td class="tg-p78r">{{ $aula->tipo }}</td>
+            <td class="tg-p78r"><button>Mappa</button></td>
         </tr>
         @endforeach
     </table>
