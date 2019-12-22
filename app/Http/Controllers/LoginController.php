@@ -30,7 +30,7 @@ class LoginController extends Controller
         if(! $userdb){
             return back()->withInput();
         } else {
-            return view('homepage');
+            return redirect('/homepage');
         }
     }
 }

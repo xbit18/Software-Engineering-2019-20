@@ -20,4 +20,15 @@
         <a href="#">Contact</a>
     </div>
 
+    <div>
+        <ul class="aule">
+            @foreach ($aule as $aula)
+                <li>
+                    <h3>{{ $aula->codice }}</h3>
+                    <p>Capienza: {{ $aula->capienza }}</p>
+                </li>
+            @endforeach
+        </ul>
+    </div>
+
 @endsection

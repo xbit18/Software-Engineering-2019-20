@@ -3,7 +3,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('/homepage', 'LoginController@check');
+Route::post('/login', 'LoginController@check');
+Route::get('/homepage', function(){
+    return view('homepage', [
+        'aule' =>  \App\Aula::where('disponibilita', 1)->get()
+    ]);
+});
 
 // quasi tutti verbi sono get perche ci sara un form apparte per gestire le richieste
 Route::post('/edifici','EdificiController@store');               //Store salva le modifiche all’edificio
