@@ -2,6 +2,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::post('/homepage', 'LoginController@check');
+
 // quasi tutti verbi sono get perche ci sara un form apparte per gestire le richieste
 Route::post('/edifici','EdificiController@store');               //Store salva le modifiche all’edificio
 Route::get('/edifici','EdificiController@index');                //Index mostra una lista di tutti gli edifici

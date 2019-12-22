@@ -10,6 +10,11 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+
+    public $name = "";
+    public $surname = "";
+    public $email = "";
+    public $passwd = "";
     /**
      * The attributes that are mass assignable.
      *
