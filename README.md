@@ -3,6 +3,7 @@
 
 ## Link Deliverable Google Docs
 https://drive.google.com/file/d/1KrRqcKMYcK2ow6woT8wwg3u8Q1Sc5oqK/view?usp=sharing
+Le abbiamo anche dato l'accesso tramite le sue mail che abbiamo potuto trovare sul sito di univaq, quindi henry.muccini@univaq.it e henry.muccini@gmail.com
 
 <b>Matricole e indirizzi email:</b>
 - <b>Giacomo Sfratato</b>, matricola 247318, giacomo.sfratato@student.univaq.it;
