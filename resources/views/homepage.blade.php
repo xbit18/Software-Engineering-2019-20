@@ -20,15 +20,24 @@
         <a href="#">Contact</a>
     </div>
 
-    <div>
-        <ul class="aule">
-            @foreach ($aule as $aula)
-                <li>
-                    <h3>{{ $aula->codice }}</h3>
-                    <p>Capienza: {{ $aula->capienza }}</p>
-                </li>
-            @endforeach
-        </ul>
+    <div class="title">
+        <h2 style="margin: 0">Visualizza Aule Disponibili</h2>
     </div>
+    <table class="tg">
+        <tr>
+            <th class="tg-p78r"><span style="font-weight:bold">Aula</span></th>
+            <th class="tg-gwxw">Edificio</th>
+            <th class="tg-gwxw">Capienza</th>
+            <th class="tg-gwxw">Tipo</th>
+        </tr>
+        @foreach ($aule as $aula)
+        <tr>
+            <td class="tg-p78r">{{ $aula->codice }}</td>
+            <td class="tg-p78r"></td>
+            <td class="tg-p78r">{{ $aula->capienza }}</td>
+            <td class="tg-p78r">{{ $aula->tipo }}</td>
+        </tr>
+        @endforeach
+    </table>
 
 @endsection

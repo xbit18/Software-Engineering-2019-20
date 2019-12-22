@@ -8,7 +8,7 @@ html, body {
 
 header {
     background-color: #822627;
-    border: 0px;
+    border-bottom: 1px solid black;
     margin: 0px;
     padding-top: 10px;
     padding-bottom: 5px;
@@ -70,6 +70,16 @@ header {
 .button:focus {
     outline: none;
 }
+
+.title {
+    padding: 10px 0px 5px 10px;
+    font-family:Arial, sans-serif;
+    font-size:18px;
+    font-style: italic;
+    color: #822627;
+}
+
+
 
 /* The side navigation menu */
 .sidenav {
