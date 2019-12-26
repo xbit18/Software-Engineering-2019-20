@@ -14,7 +14,8 @@ class EdificiController extends Controller
      */
     public function index()
     {
-        //
+        $edifici=Edificio::latest()->get();
+        return view('edifici.index',['edifici'=>$edifici]);
     }
 
     /**
@@ -24,7 +25,7 @@ class EdificiController extends Controller
      */
     public function create()
     {
-        //
+        return view('edifici.create');
     }
 
     /**
@@ -33,9 +34,17 @@ class EdificiController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+
+        $edificio = new Edificio();
+
+        $edificio->id= request('id');
+        $edificio->numero= request('numero');
+        $edificio->nome= request('nome');
+        $edificio->indirizzo= request('indirizzo');
+        $edificio->save();
+        redirect('/edifici');
     }
 
     /**
@@ -44,9 +53,10 @@ class EdificiController extends Controller
      * @param  \App\Edificio  $edificio
      * @return \Illuminate\Http\Response
      */
-    public function show(Edificio $edificio)
+    public function show($id)
     {
-        //
+        $edificio= Edificio::find($id);
+        return view('$edifici.show',['edificio'=>$edificio]);
     }
 
     /**
@@ -55,9 +65,10 @@ class EdificiController extends Controller
      * @param  \App\Edificio  $edificio
      * @return \Illuminate\Http\Response
      */
-    public function edit(Edificio $edificio)
+    public function edit($id)
     {
-        //
+        $edificio= Edificio::find($id);
+        return view('edifici.edit',compact('edificio'));
     }
 
     /**
@@ -67,9 +78,15 @@ class EdificiController extends Controller
      * @param  \App\Edificio  $edificio
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Edificio $edificio)
+    public function update($id)
     {
-        //
+        $edificio= Edificio::find($id);
+        $edificio->id= request('id');
+        $edificio->numero= request('numero');
+        $edificio->nome= request('nome');
+        $edificio->indirizzo= request('indirizzo');
+        $edificio->save();
+        redirect('/edifici');
     }
 
     /**
@@ -78,8 +95,10 @@ class EdificiController extends Controller
      * @param  \App\Edificio  $edificio
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Edificio $edificio)
+    public function destroy($id)
     {
-        //
+        $edificio= Edificio::findOrFail($id);
+        $edificio->delete();
+        redirect('/edifici');
     }
 }
