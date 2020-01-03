@@ -9,8 +9,12 @@ Route::get('/homepage', function(){
         'aule' =>  \App\Aula::where('disponibilita', 1)->get()
     ]);
 });
-
 // quasi tutti verbi sono get perche ci sara un form apparte per gestire le richieste
+                            // !! DA LEGGERE !!
+//create usa verb get perche richiama un interfaccia per la creazione di un oggetto, per la memorizzazione si usa store che è appunto post
+//un discorso analogo per edit che mostra un interfaccia per la modifica di un oggetto e update salva la modifica
+//l'idea si basa sul concettto di 7RESTful routs
+
 Route::post('/edifici','EdificiController@store');               //Store salva le modifiche all’edificio
 Route::get('/edifici','EdificiController@index');                //Index mostra una lista di tutti gli edifici
 Route::get('/edifici/{edificio}/delete','EdificiController@delete');

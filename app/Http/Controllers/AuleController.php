@@ -34,9 +34,16 @@ class AuleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+        $aula = new Aula();
+
+        $aula->codice= request('codice');
+        $aula->capienza= request('capienza');
+        $aula->tipo= request('tipo');
+        $aula->disponibilita= request('disponibilita');
+        $aula->save();
+        redirect('/aule');
     }
 
     /**
@@ -57,10 +64,12 @@ class AuleController extends Controller
      * @param  \App\Aula  $aula
      * @return \Illuminate\Http\Response
      */
-    public function edit(Aula $aula)
+    public function edit($codice)
     {
-        //
+        $aula= Aula::find($codice);
+        return view('aule.edit',compact('aula'));
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -69,9 +78,15 @@ class AuleController extends Controller
      * @param  \App\Aula  $aula
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Aula $aula)
+    public function update($codice)
     {
-        //
+        $aula= Aula::find($codice);
+        $aula->codice= request('codice');
+        $aula->capienza= request('capienza');
+        $aula->tipo= request('tipo');
+        $aula->disponibilita= request('disponibilita');
+        $aula->save();
+        redirect('/aule');
     }
 
     /**
@@ -80,8 +95,10 @@ class AuleController extends Controller
      * @param  \App\Aula  $aula
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Aula $aula)
+    public function destroy($codice)
     {
-        //
+        $aula= Aula::findOrFail($codice);
+        $aula->delete();
+        redirect('/aule');
     }
 }
