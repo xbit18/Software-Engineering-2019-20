@@ -13,13 +13,6 @@
         </div>
     </header>
 
-    <div id="mySidenav" class="sidenav">
-        <a href="/about">About</a>
-        <a href="#">Services</a>
-        <a href="#">Clients</a>
-        <a href="#">Contact</a>
-    </div>
-
     <div class="title">
         <h2 style="margin: 0">Visualizza Aule Disponibili</h2>
     </div>
