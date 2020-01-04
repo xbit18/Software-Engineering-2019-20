@@ -45,9 +45,12 @@ export default {
         this.show = true;
         bus.$emit("imgSend", { img: this.image, show: this.show });
         
-      } else {
+      } else if(this.image == mappa){
         this.show = false;
         bus.$emit("toogle", this.show );
+      }else{
+       this.image = mappa;
+        bus.$emit("imgSend", { img: this.image, show: this.show });
       }
     }
   }

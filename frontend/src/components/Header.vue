@@ -4,9 +4,9 @@
       <div id="logo-div">
         <img id="logo-univaq" src="../assets/img/logo.png" />
       </div>
-      <div id="form-div">
+      <div id="form-div" v-if="!logged">
         <form>
-          <input class="input" type="text" name="email" id="email" placeholder="email" required />
+          <input class="input" type="text" name="email" id="email" placeholder="email" required v-model="utente.email" />
           <input
             class="input"
             type="password"
@@ -14,8 +14,9 @@
             id="passwd"
             placeholder="password"
             required
+            v-model="utente.password"
           />
-          <button class="button" type="submit">LOGIN</button>
+          <button class="button" type="submit" @click.prevent="login()">LOGIN</button>
         </form>
       </div>
     </div>
@@ -61,10 +62,33 @@
 
 <script>
 import { Slide } from "vue-burger-menu";
+import axios from "axios";
+import Utente from '../models/utente.js';
 export default {
   name: "Header",
   components: {
     Slide
+  },
+  data() {
+    return {
+      utente: new Utente("", ""),
+      logged: false
+    };
+  },
+  methods: {
+    login() {
+      axios
+        .post("https://reqres.in/api/login",this.utente)
+        .then(res => {
+          if(res.status==200){
+          console.log(res.data);
+          this.logged = true;
+          }
+        })
+        .catch(e=>{
+          console.log(e);
+        });
+    }
   }
 };
 </script>
