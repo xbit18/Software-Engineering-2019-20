@@ -22,22 +22,21 @@ header {
     height: 50px;
 }
 
-#logo-hamburger{
-    width: auto;
-    height: 30px;
-    cursor: pointer;
-}
+
 
 #logo-div{
     display: inline-block;
+    width: 49%;
 }
 
 #form-div {
-    z-index: 10000;
+    z-index: 100;
     position: absolute;
-    right: 20px;
+    right: 145px;
     top: 1.2em;
     color: white;
+    width: 35%;
+    float:left;
 }
 
 .input {
@@ -152,20 +151,108 @@ aside{
     display: inline-block;
     width: 30%;
     margin: 0px auto;
-
 }
 
-.title h2{
-    text-decoration: none;
-    font-size: 18px;
-
+aside #img-wrap{
 }
 
 
 #img-wrap img{
-    margin-top: 100px;
     display: block;
     width:250px;
     margin-left: 60px;
     border: 1px solid black;
+    position: fixed;
+
 }
+
+#top{
+    width: 88%;
+    margin:0px;
+    display: inline-block;
+}
+
+nav {
+    float: right;
+    width:10%;
+    height: 59px;
+    margin-right: 10px;
+}
+
+nav div {
+    margin: 0px auto;
+}
+
+/* Sidebar Menu */
+
+.bm-burger-button {
+    position: absolute;
+    width: 43px;
+    height: 30px;
+    left: 36px;
+    top: 21px;
+    cursor: pointer;
+  }
+  .bm-burger-bars {
+    background-color: black;
+  }
+  .line-style {
+    position: absolute;
+    height: 20%;
+    left: 0;
+    right: 0;
+  }
+  .cross-style {
+    position: absolute;
+    top: 12px;
+    right: 2px;
+    cursor: pointer;
+  }
+  .bm-cross {
+    background: #bdc3c7;
+  }
+  .bm-cross-button {
+    height: 24px;
+    width: 24px;
+  }
+  .bm-menu {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Stay on top */
+    top: 0;
+    left: 0;
+    background-color:#373a47; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /*0.5 second transition effect to slide in the sidenav*/
+  }
+
+  .bm-overlay {
+    background: rgba(0, 0, 0, 0.3);
+  }
+  .bm-item-list {
+    color: #b8b7ad;
+    margin-left: 10%;
+    font-size: 20px;
+    width: 250px;
+  }
+  .bm-item-list > * {
+    display: flex;
+    text-decoration: none;
+    padding: 0.7em;
+  }
+  .bm-item-list > * > span {
+    margin-left: 10px;
+    font-weight: 700;
+    color:#fff;
+    text-align: center;
+    transition: 300ms all;
+  }
+
+  .bm-item-list > * > span:hover{
+    color: #822627
+  }
+
+
+  /* END SIDEBAR MENU */

@@ -1,5 +1,5 @@
 <template>
-    <aside v-if="srcImg != null && srcImg != ''">
+    <aside v-if="srcImg != null && srcImg != '' && show">
     <div class="title">
         <h2>Mappa</h2>
     </div>
@@ -16,14 +16,18 @@ export default {
     name: 'Sidebar',
     data(){
         return{
-            srcImg : null
+            srcImg : null,
+            show: false,
         }
     },
     props:['mappa'],
     created(){
         bus.$on('imgSend', (data) => {
-            this.srcImg = data;
-            console.log(this.srcImg);
+            this.srcImg = data.img;
+            this.show = data.show;
+        })
+        bus.$on('toogle',(data)=>{
+            this.show = data;
         })
     }
 }
