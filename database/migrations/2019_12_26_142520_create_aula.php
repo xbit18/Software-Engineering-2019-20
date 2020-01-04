@@ -15,11 +15,11 @@ class Aula extends Migration
     {
         Schema::create('aula', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text('connection');
-            $table->text('queue');
-            $table->longText('payload');
-            $table->longText('exception');
-            $table->timestamp('failed_at')->useCurrent();
+            $table->string('codice');
+            $table->boolean('disponibilita');
+            $table->string('tipo');
+            $table->integer('capienza');
+            $table->enum('stato',['occupata','libera']);
         });
     }
 

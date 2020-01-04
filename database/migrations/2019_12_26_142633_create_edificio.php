@@ -15,9 +15,6 @@ class Edificio extends Migration
     {
         Schema::create('edificio', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nome');
-            $table->string('indirizzo');
-            $table->integer('numero');
         });
     }
 

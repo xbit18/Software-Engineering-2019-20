@@ -15,9 +15,6 @@ class Mappa extends Migration
     {
         Schema::create('mappa', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('piano');
-            $table->string('piantina'); //url
-
         });
     }
 
