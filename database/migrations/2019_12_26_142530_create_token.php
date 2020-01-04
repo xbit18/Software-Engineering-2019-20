@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Mappa extends Migration
+class Token extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,9 @@ class Mappa extends Migration
      */
     public function up()
     {
-        Schema::create('prenotazione', function (Blueprint $table) {
+        Schema::create('token', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text('connection');
-            $table->text('queue');
-            $table->longText('payload');
-            $table->longText('exception');
-            $table->timestamp('failed_at')->useCurrent();
+            $table->string('codice');
         });
     }
 
@@ -30,6 +26,6 @@ class Mappa extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('failed_jobs');
+        Schema::dropIfExists('token');
     }
 }
