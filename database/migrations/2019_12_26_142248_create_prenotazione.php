@@ -13,7 +13,13 @@ class Prenotazione extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('prenotazione', function (Blueprint $table) {
+        $table->bigIncrements('id');
+        $table->enum('stato',['in atesa','accettato','rifiutato']);
+        $table->string('durata');
+        $table->longText('motivazione');
+        $table->timestamp('data')->useCurrent();
+    });
     }
 
     /**
@@ -23,6 +29,6 @@ class Prenotazione extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('prenotazione');
     }
 }

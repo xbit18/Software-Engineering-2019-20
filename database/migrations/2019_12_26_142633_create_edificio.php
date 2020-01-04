@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class GestioneAule extends Migration
+class Edificio extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,9 @@ class GestioneAule extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('edificio', function (Blueprint $table) {
+            $table->bigIncrements('id');
+        });
     }
 
     /**
@@ -23,6 +25,6 @@ class GestioneAule extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('edificio');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Token extends Migration
+class Localizzazione extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,9 @@ class Token extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('prenotazione', function (Blueprint $table) {
+            $table->bigIncrements('id');
+        });
     }
 
     /**
@@ -23,6 +25,6 @@ class Token extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('failed_jobs');
     }
 }
