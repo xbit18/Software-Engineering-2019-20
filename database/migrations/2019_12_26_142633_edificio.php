@@ -13,7 +13,12 @@ class Edificio extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('edificio', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('nome');
+            $table->string('indirizzo');
+            $table->integer('numero');
+        });
     }
 
     /**
@@ -23,6 +28,6 @@ class Edificio extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('edificio');
     }
 }

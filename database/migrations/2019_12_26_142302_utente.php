@@ -13,7 +13,18 @@ class Utente extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('utente', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('email');
+            $table->string('password');
+            $table->string('nome');
+            $table->year('data_di_nascita');
+            $table->enum('tipo',['admin','adetto','docente','studente']);
+            $table->string('cognome');
+            $table->string('corso');
+            $table->integer('matricola');
+            $table->string('numero_documento');
+        });
     }
 
     /**
@@ -23,6 +34,6 @@ class Utente extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('utente');
     }
 }
