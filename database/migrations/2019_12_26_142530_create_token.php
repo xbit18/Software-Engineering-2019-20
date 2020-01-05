@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Token extends Migration
+class CreateToken extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,8 @@ class Token extends Migration
     public function up()
     {
         Schema::create('token', function (Blueprint $table) {
-            $table->bigIncrements('id')->unique();
-            $table->string('codice')->primary();
+            $table->string('codice')->unique();
+            $table->unsignedBigInteger('id',true);
         });
     }
 

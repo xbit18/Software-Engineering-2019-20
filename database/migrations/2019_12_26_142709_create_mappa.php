@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Mappa extends Migration
+class CreateMappa extends Migration
 {
     /**
      * Run the migrations.
@@ -14,9 +14,9 @@ class Mappa extends Migration
     public function up()
     {
         Schema::create('mappa', function (Blueprint $table) {
-            $table->bigIncrements('id')->unique();
+            $table->unsignedBigInteger('id',true);
             $table->string('piantina'); // url
-            $table->smallInteger('piano')->primary();
+            $table->smallInteger('piano');
         });
     }
 

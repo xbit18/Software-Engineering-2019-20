@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Aula extends Migration
+class CreateAula extends Migration
 {
     /**
      * Run the migrations.
@@ -14,12 +14,13 @@ class Aula extends Migration
     public function up()
     {
         Schema::create('aula', function (Blueprint $table) {
-            $table->bigIncrements('id')->unique();
-            $table->string('codice')->primary();
-            $table->boolean('disponibilita')->default('true');
+            $table->unsignedBigInteger('id',true);
+            $table->string('codice');
+            $table->boolean('disponibilita')->default('1');
             $table->string('tipo');
             $table->integer('capienza')->unsigned();
             $table->enum('stato',['occupata','libera'])->default('libera');
+          //  $table->primary('codice');
         });
     }
 

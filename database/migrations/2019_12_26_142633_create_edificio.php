@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Edificio extends Migration
+class CreateEdificio extends Migration
 {
     /**
      * Run the migrations.
@@ -14,10 +14,10 @@ class Edificio extends Migration
     public function up()
     {
         Schema::create('edificio', function (Blueprint $table) {
-            $table->bigIncrements('id')->unique();
+            $table->unsignedBigInteger('id',true);
             $table->integer('numero_aule');
-            $table->string('nome')->primary();
-            $table->text('indirizzo')->primary();
+            $table->string('nome');
+            $table->text('indirizzo');
         });
     }
 

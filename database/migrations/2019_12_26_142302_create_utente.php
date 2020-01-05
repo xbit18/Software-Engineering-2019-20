@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Utente extends Migration
+class CreateUtente extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class Utente extends Migration
     public function up()
     {
         Schema::create('utente', function (Blueprint $table) {
-            $table->bigIncrements('id')->primary();
+            $table->unsignedBigInteger('id',true);
             $table->string('email')->unique();
             $table->string('password');
             $table->string('nome');

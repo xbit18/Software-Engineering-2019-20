@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Posto extends Migration
+class CreatePosto extends Migration
 {
     /**
      * Run the migrations.
@@ -14,9 +14,9 @@ class Posto extends Migration
     public function up()
     {
         Schema::create('posto', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->unsignedBigInteger('id',true);
             $table->integer('numero')->unsigned();
-            $table->boolean('disponibilita')->default('true');
+            $table->boolean('disponibilita')->default('1');
         });
     }
 
