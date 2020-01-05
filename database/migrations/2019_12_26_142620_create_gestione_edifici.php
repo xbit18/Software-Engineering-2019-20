@@ -13,8 +13,9 @@ class GestioneEdifici extends Migration
      */
     public function up()
     {
-        Schema::create('prenotazione', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('gestione_edifici', function (Blueprint $table) {
+            $table->integer('id_utente');
+            $table->integer('id_edificio');
         });
     }
 
@@ -25,6 +26,6 @@ class GestioneEdifici extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('failed_jobs');
+        Schema::dropIfExists('gestione_edifici');
     }
 }

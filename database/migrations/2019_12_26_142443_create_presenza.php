@@ -13,8 +13,11 @@ class Presenza extends Migration
      */
     public function up()
     {
-        Schema::create('prenotazione', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('presenza', function (Blueprint $table) {
+          $table->integer('id_utente');
+          $table->integer('id_aula');
+          $table->string('materia');
+          $table->string('data');
 
         });
     }
@@ -26,6 +29,6 @@ class Presenza extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('failed_jobs');
+        Schema::dropIfExists('presenza');
     }
 }

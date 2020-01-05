@@ -14,7 +14,10 @@ class Edificio extends Migration
     public function up()
     {
         Schema::create('edificio', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('id')->unique();
+            $table->integer('numero_aule');
+            $table->string('nome')->primary();
+            $table->text('indirizzo')->primary();
         });
     }
 

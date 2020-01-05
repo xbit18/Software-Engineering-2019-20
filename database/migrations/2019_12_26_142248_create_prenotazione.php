@@ -15,7 +15,7 @@ class Prenotazione extends Migration
     {
         Schema::create('prenotazione', function (Blueprint $table) {
         $table->bigIncrements('id');
-        $table->enum('stato',['in atesa','accettato','rifiutato']);
+        $table->enum('stato',['in atesa','accettato','rifiutato'])->default('in atesa');
         $table->string('durata');
         $table->longText('motivazione');
         $table->timestamp('data')->useCurrent();

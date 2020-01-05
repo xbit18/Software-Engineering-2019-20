@@ -13,8 +13,9 @@ class Collocazione extends Migration
      */
     public function up()
     {
-        Schema::create('prenotazione', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('collocazione', function (Blueprint $table) {
+            $table->integer('id_posto');
+            $table->integer('id_aula');
 
         });
     }
@@ -26,6 +27,6 @@ class Collocazione extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('failed_jobs');
+        Schema::dropIfExists('collocazione');
     }
 }

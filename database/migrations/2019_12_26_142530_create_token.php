@@ -14,8 +14,8 @@ class Token extends Migration
     public function up()
     {
         Schema::create('token', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('codice');
+            $table->bigIncrements('id')->unique();
+            $table->string('codice')->primary();
         });
     }
 

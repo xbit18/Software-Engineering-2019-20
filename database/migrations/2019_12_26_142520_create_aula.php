@@ -14,12 +14,12 @@ class Aula extends Migration
     public function up()
     {
         Schema::create('aula', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('codice');
-            $table->boolean('disponibilita');
+            $table->bigIncrements('id')->unique();
+            $table->string('codice')->primary();
+            $table->boolean('disponibilita')->default('true');
             $table->string('tipo');
-            $table->integer('capienza');
-            $table->enum('stato',['occupata','libera']);
+            $table->integer('capienza')->unsigned();
+            $table->enum('stato',['occupata','libera'])->default('libera');
         });
     }
 

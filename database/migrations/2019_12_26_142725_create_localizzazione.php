@@ -13,8 +13,9 @@ class Localizzazione extends Migration
      */
     public function up()
     {
-        Schema::create('prenotazione', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('localizzazione', function (Blueprint $table) {
+            $table->integer('id_mappa');
+            $table->integer('id_edificio');
         });
     }
 
@@ -25,6 +26,6 @@ class Localizzazione extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('failed_jobs');
+        Schema::dropIfExists('localizzazione');
     }
 }

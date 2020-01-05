@@ -14,8 +14,9 @@ class Posto extends Migration
     public function up()
     {
         Schema::create('posto', function (Blueprint $table) {
-            $table->integer('numero');
-            $table->boolean('disponibilita');
+            $table->bigIncrements('id');
+            $table->integer('numero')->unsigned();
+            $table->boolean('disponibilita')->default('true');
         });
     }
 

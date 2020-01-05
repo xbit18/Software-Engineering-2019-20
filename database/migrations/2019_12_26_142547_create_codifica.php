@@ -13,9 +13,9 @@ class Codifica extends Migration
      */
     public function up()
     {
-        Schema::create('prenotazione', function (Blueprint $table) {
-            $table->bigIncrements('id');
-
+        Schema::create('codifica', function (Blueprint $table) {
+            $table->integer('id_token');
+            $table->integer('id_aula');
         });
     }
 
@@ -26,6 +26,6 @@ class Codifica extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('failed_jobs');
+        Schema::dropIfExists('codifica');
     }
 }

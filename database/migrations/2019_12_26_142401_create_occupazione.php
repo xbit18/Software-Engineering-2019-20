@@ -13,8 +13,9 @@ class Occupazione extends Migration
      */
     public function up()
     {
-        Schema::create('prenotazione', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('occupazione', function (Blueprint $table) {
+            $table->integer('id_utente');
+            $table->integer('id_posto');
 
         });
     }
@@ -26,6 +27,6 @@ class Occupazione extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('failed_jobs');
+        Schema::dropIfExists('occupazione');
     }
 }
