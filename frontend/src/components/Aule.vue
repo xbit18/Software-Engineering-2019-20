@@ -1,5 +1,6 @@
 <template>
-  <table class="tg">
+<div>
+  <table class="tg" v-if="!waiting">
     <thead>
       <tr>
         <th class="tg th">Aula</th>
@@ -25,6 +26,30 @@
       </tr>
     </tbody>
   </table>
+
+  <table class="tg" v-else>
+    <thead>
+      <tr>
+        <th class="tg th">Aula</th>
+        <th class="tg th">Edificio</th>
+        <th class="tg th">Capienza</th>
+        <th class="tg th">Tipo</th>
+        <th class="tg th">Disponibilità</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="aula in listAule" :key="aula.id">
+        <td class="tg td"><router-link :to="{name:'aula',params:{aula: aula.id}}">{{aula.id}}</router-link></td>
+        <td class="tg td">{{aula.email}}</td>
+        <td class="tg td">{{aula.first_name}}</td>
+        <td class="tg td">{{aula.last_name}}</td>
+        <td class="tg td">
+          <img :src="aula.avatar" />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
 </template>
 
 <script>
@@ -37,7 +62,7 @@ export default {
       show: false
     };
   },
-  props: ["listAule"],
+  props: ["listAule","waiting"],
   methods: {
     showMap(mappa) {
       if (!this.show) {
@@ -47,7 +72,7 @@ export default {
         
       } else if(this.image == mappa){
         this.show = false;
-        bus.$emit("toogle", this.show );
+        bus.$emit("toggle", this.show );
       }else{
        this.image = mappa;
         bus.$emit("imgSend", { img: this.image, show: this.show });

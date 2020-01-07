@@ -20,13 +20,12 @@ export default {
             show: false,
         }
     },
-    props:['mappa'],
     created(){
         bus.$on('imgSend', (data) => {
             this.srcImg = data.img;
             this.show = data.show;
         })
-        bus.$on('toogle',(data)=>{
+        bus.$on('toggle',(data)=>{
             this.show = data;
         })
     }

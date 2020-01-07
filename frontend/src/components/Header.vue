@@ -5,7 +5,7 @@
         <img id="logo-univaq" src="../assets/img/logo.png" />
       </div>
       <div id="form-div" v-if="!logged">
-        <form>
+        <form @submit="login()">
           <input class="input" type="text" name="email" id="email" placeholder="email" required v-model="utente.email" />
           <input
             class="input"
@@ -16,7 +16,7 @@
             required
             v-model="utente.password"
           />
-          <button class="button" type="submit" @click.prevent="login()">LOGIN</button>
+          <button class="button" type="submit">LOGIN</button>
         </form>
       </div>
     </div>
@@ -45,7 +45,7 @@
         <span>Apri/chiudi aule</span>
       </router-link>
 
-      <router-link to="/">
+      <router-link to="/infoAula">
         <span>Visualizza info aule</span>
       </router-link>
 
@@ -71,7 +71,7 @@ export default {
   },
   data() {
     return {
-      utente: new Utente("", ""),
+      utente: new Utente(),
       logged: false
     };
   },
