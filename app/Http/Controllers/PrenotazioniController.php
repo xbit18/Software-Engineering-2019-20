@@ -14,8 +14,9 @@ class PrenotazioniController extends Controller
      */
     public function index()
     {
-        $prenotazione=Prenotazione::latest()->get();
-        return view('prenotazioni.index',['prenotazioni'=>$prenotazione]);
+        $prenotazione=Prenotazione::all();
+        return ['prenotazioni'=>$prenotazione];
+        //return view('prenotazioni.index',['prenotazioni'=>$prenotazione]);
     }
 
     /**
@@ -56,7 +57,8 @@ class PrenotazioniController extends Controller
     {
 
         $prenotazione= Prenotazione::find($id);
-        return view('prenotazioni.show',['prenotazione'=>$prenotazione]);
+        return ['prenotazione'=>$prenotazione];
+        //return view('prenotazioni.show',['prenotazione'=>$prenotazione]);
     }
 
     /**

@@ -14,8 +14,9 @@ class MappeController extends Controller
      */
     public function index()
     {
-        $mappe=Mappa::latest()->get();
-        return view('mappe.index',['mappe'=>$mappe]);
+        $mappe=Mappa::all();
+       return ['mappe'=>$mappe];
+        //return view('mappe.index',['mappe'=>$mappe]);
     }
 
     /**
@@ -55,7 +56,8 @@ class MappeController extends Controller
     public function show($id)
     {
         $mappa= Mappa::find($id);
-        return view('mappe.show',compact('mappa'));
+       return ['mappa'=>$mappa];
+        // return view('mappe.show',compact('mappa'));
     }
 
     /**

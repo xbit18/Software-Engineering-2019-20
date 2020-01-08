@@ -6,8 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Edificio extends Model
 {
-private $id;
-private $numero;
-private $nome;
-private $indirizzo;
+public $id=0;
+public $numero_aule=0;
+public $nome='rand';
+public $indirizzo='rand';
+    protected $table = 'edificio';
 }

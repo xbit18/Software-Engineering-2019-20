@@ -14,8 +14,9 @@ class EdificiController extends Controller
      */
     public function index()
     {
-        $edifici=Edificio::latest()->get();
-        return view('edifici.index',['edifici'=>$edifici]);
+        $edifici=Edificio::all();
+        return ['edifici'=>$edifici];
+        //return view('edifici.index',['edifici'=>$edifici]);
     }
 
     /**
@@ -40,7 +41,7 @@ class EdificiController extends Controller
         $edificio = new Edificio();
 
         $edificio->id= request('id');
-        $edificio->numero= request('numero');
+        $edificio->numero= request('numero_aule');
         $edificio->nome= request('nome');
         $edificio->indirizzo= request('indirizzo');
         $edificio->save();
@@ -56,7 +57,8 @@ class EdificiController extends Controller
     public function show($id)
     {
         $edificio= Edificio::find($id);
-        return view('$edifici.show',['edificio'=>$edificio]);
+        return ['edificio'=>$edificio];
+        //return view('$edifici.show',['edificio'=>$edificio]);
     }
 
     /**
@@ -82,7 +84,7 @@ class EdificiController extends Controller
     {
         $edificio= Edificio::find($id);
         $edificio->id= request('id');
-        $edificio->numero= request('numero');
+        $edificio->numero= request('numero_aule');
         $edificio->nome= request('nome');
         $edificio->indirizzo= request('indirizzo');
         $edificio->save();

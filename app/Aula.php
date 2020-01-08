@@ -6,10 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Aula extends Model
 {
-    private $id;
-    private $codice;
-    private $capienza;
-    private $tipo;
-    private $disponibilita;
-    protected $table = 'aule';
+    public $id;
+    public $codice;
+    public $capienza;
+    public $tipo;
+    public $disponibilita;
+    public $stato;
+    protected $table = 'aula';
 }

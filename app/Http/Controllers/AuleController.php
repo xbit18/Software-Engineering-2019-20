@@ -14,8 +14,9 @@ class AuleController extends Controller
      */
     public function index()
     {
-        $aule=Aula::latest()->get();
-        return view('aule.index',['aule'=>$aule]);
+         $aule=Aula::all();
+        return ['aule'=>$aule];
+        // return view('aule.index',['aule'=>$aule]);
     }
 
     /**
@@ -55,7 +56,8 @@ class AuleController extends Controller
     public function show($codice)
     {
         $aula= Aula::find($codice);
-        return view('aule.show',['aula'=>$aula]);
+        return ['aula'=>$aula];
+        //return view('aule.show',['aula'=>$aula]);
     }
 
     /**
