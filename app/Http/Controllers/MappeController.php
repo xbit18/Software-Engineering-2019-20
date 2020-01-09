@@ -55,7 +55,7 @@ class MappeController extends Controller
      */
     public function show($id)
     {
-        $mappa= Mappa::find($id);
+        $mappa= Mappa::findOrFail($id);
        return ['mappa'=>$mappa];
         // return view('mappe.show',compact('mappa'));
     }
@@ -68,7 +68,7 @@ class MappeController extends Controller
      */
     public function edit($id)
     {
-        $mappa= Mappa::find($id);
+        $mappa= Mappa::findOrFail($id);
         return view('mappe.edit',compact('mappa'));
     }
 
@@ -81,7 +81,7 @@ class MappeController extends Controller
      */
     public function update($id)
     {
-        $mappa= Mappa::find($id);
+        $mappa= Mappa::findOrFail($id);
 
         $mappa->piantina= request('piantina');
         $mappa->piano= request('piano');

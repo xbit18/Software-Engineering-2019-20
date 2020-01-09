@@ -56,7 +56,7 @@ class EdificiController extends Controller
      */
     public function show($id)
     {
-        $edificio= Edificio::find($id);
+        $edificio= Edificio::findOrFail($id);
         return ['edificio'=>$edificio];
         //return view('$edifici.show',['edificio'=>$edificio]);
     }
@@ -69,7 +69,7 @@ class EdificiController extends Controller
      */
     public function edit($id)
     {
-        $edificio= Edificio::find($id);
+        $edificio= Edificio::findOrFail($id);
         return view('edifici.edit',compact('edificio'));
     }
 
@@ -82,7 +82,7 @@ class EdificiController extends Controller
      */
     public function update($id)
     {
-        $edificio= Edificio::find($id);
+        $edificio= Edificio::findOrFail($id);
         $edificio->id= request('id');
         $edificio->numero= request('numero_aule');
         $edificio->nome= request('nome');

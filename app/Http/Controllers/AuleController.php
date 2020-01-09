@@ -55,7 +55,7 @@ class AuleController extends Controller
      */
     public function show($codice)
     {
-        $aula= Aula::find($codice);
+        $aula= Aula::findOrFail($codice);
         return ['aula'=>$aula];
         //return view('aule.show',['aula'=>$aula]);
     }-
@@ -68,7 +68,7 @@ class AuleController extends Controller
      */
     public function edit($codice)
     {
-        $aula= Aula::find($codice);
+        $aula= Aula::findOrFail($codice);
         return view('aule.edit',compact('aula'));
     }
 
@@ -82,7 +82,7 @@ class AuleController extends Controller
      */
     public function update($codice)
     {
-        $aula= Aula::find($codice);
+        $aula= Aula::findOrFail($codice);
         $aula->codice= request('codice');
         $aula->capienza= request('capienza');
         $aula->tipo= request('tipo');

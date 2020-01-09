@@ -56,7 +56,7 @@ class PrenotazioniController extends Controller
     public function show($id)
     {
 
-        $prenotazione= Prenotazione::find($id);
+        $prenotazione= Prenotazione::findOrFail($id);
         return ['prenotazione'=>$prenotazione];
         //return view('prenotazioni.show',['prenotazione'=>$prenotazione]);
     }
@@ -69,7 +69,7 @@ class PrenotazioniController extends Controller
      */
     public function edit($id)
     {
-        $prenotazione= Prenotazione::find($id);
+        $prenotazione= Prenotazione::findOrFail($id);
         return view('prenotazioni.edit',compact('prenotazione'));
     }
 
@@ -82,7 +82,7 @@ class PrenotazioniController extends Controller
      */
     public function update($id)
     {
-        $prenotazioni= Prenotazione::find($id);
+        $prenotazioni= Prenotazione::findOrFail($id);
 
         $prenotazioni->id= request('id');
         $prenotazioni->data= request('data');
