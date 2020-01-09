@@ -2,7 +2,7 @@
   <div>
     <section class="lista">
       <div class="title">
-        <h1>Visualizza Aule Disponibili</h1>
+        <h1>Lista Persone</h1>
       </div>
       <div v-if="listPersone">
         <Persone :listPersone="listPersone"></Persone>
@@ -36,7 +36,7 @@ export default {
   },
   data() {
     return {
-      listPersone: "",
+      listPersone: null,
       searchString: null
     };
   },
@@ -49,7 +49,7 @@ export default {
       });
     },
     goSearch: function() {
-      this.$router.push("/redirect/" + this.searchString);
+      this.$router.push("/redirectPersone/" + this.searchString);
     }
   },
   mounted() {

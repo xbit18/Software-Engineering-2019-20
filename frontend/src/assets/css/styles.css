@@ -29,7 +29,7 @@ header {
 }
 
 h2{
-    color:black;
+    color:#822627;
     font-size:30px;
 }
 
@@ -71,6 +71,7 @@ h2{
     color: white;
     font-weight: bold;
     cursor: pointer;
+    transition: 300ms all;
 }
 
 .button-search{
@@ -79,8 +80,8 @@ h2{
 }
 
 .button:hover {
-    background-color: #5e1b1c;
-    color:black;
+    background-color: #6e2021;
+    color:#eee;
 }
 
 .button:active {
@@ -91,6 +92,26 @@ h2{
 .button:focus {
     outline: none;
 }
+
+
+.button-modifica{
+    background: rgb(209, 209, 8);
+}
+
+.button-modifica:hover{
+    background-color: rgb(182, 182, 19);
+    color:rgb(26, 24, 24);;
+}
+
+.button-elimina {
+    background-color: rgb(216, 21, 21);
+}
+
+.button-elimina:hover{
+    background-color:rgb(189, 20, 20);
+    color:rgb(26, 24, 24);
+}
+
 
 .title {
     margin-top: 20px;
@@ -185,14 +206,22 @@ h2{
 }
 
 .search {
-    margin-top: 124px;
+    margin-top: 31px;
     float:left;
     margin-left: 30px;
+}
+
+#search{
+    margin-top: 124px;
 }
 
 .waitingSearch{
     float: right;
     margin:30px;
+}
+
+.waitingAula{
+    margin-left: 50px;
 }
 
 .sidebar-item{

@@ -1,5 +1,5 @@
 <template>
-  <table class="tg">
+  <table class="tg" v-if="listPersone.length > 0">
     <thead>
       <tr>
         <th class="tg th">ID</th>
@@ -27,6 +27,9 @@
       </tr>
     </tbody>
   </table>
+  <div class="title" v-else>
+    <h2>Aula non esistente...</h2>
+  </div>
 </template>
 
 <script>

@@ -4,10 +4,10 @@
 
 <script>
 export default {
-    name:'Redirect',
+    name:'RedirectAula',
     mounted(){
         var searchString = this.$route.params.aula;
-        this.$router.push('/infoAula/'+searchString);
+        this.$router.push('/aula/'+searchString);
     }
 }
 </script>

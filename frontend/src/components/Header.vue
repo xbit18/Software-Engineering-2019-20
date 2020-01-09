@@ -33,7 +33,7 @@
         <span>Prenota un posto</span>
       </router-link>
 
-      <router-link to="/">
+      <router-link to="/gestisceAule">
         <span>Gestisci aule</span>
       </router-link>
 
@@ -45,7 +45,7 @@
         <span>Apri/chiudi aule</span>
       </router-link>
 
-      <router-link to="/infoAula">
+      <router-link to="/waitingAula">
         <span>Visualizza info aule</span>
       </router-link>
 

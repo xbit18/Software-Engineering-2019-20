@@ -4,12 +4,12 @@
       <div class="title">
         <h1>Lista Aule</h1>
       </div>
-      <Aule waiting="true" :listAule="listAule"></Aule>
+      <Aule gestisce="true" :listAule="listAule"></Aule>  
     </section>
-    <aside class="sidebar search waitingSearch">
+    <aside class="sidebar search waitingAula">
       <div id="search" class="sidebar-item">
         <h3>Cerca</h3>
-        <p>Trova la lista delle persone dentro una certa aula</p>
+        <p>Trova una aula</p>
         <form @submit.prevent="goSearch">
           <input class="input" type="text" name="search" v-model="searchString" />
           <input type="submit" name="submit" value="Cerca" class="button button-search" />
@@ -24,7 +24,7 @@
 import Aule from "./Aule.vue";
 import axios from "axios";
 export default {
-  name: "WaitingAula",
+  name: "gestisceAule",
   data() {
     return {
       searchString: null,
@@ -39,7 +39,7 @@ export default {
   },
   methods: {
     goSearch: function() {
-      this.$router.push("/infoAula/" + this.searchString);
+      this.$router.push("/redirectAula/" + this.searchString);
     },
     getListAule() {
       axios.get("https://reqres.in/api/users?page=1").then(res => {
