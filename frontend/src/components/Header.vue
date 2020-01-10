@@ -41,6 +41,14 @@
         <span>Gestisci edifici</span>
       </router-link>
 
+        <router-link to="/createAula">
+        <span>Crea Aula</span>
+      </router-link>
+
+        <router-link to="/">
+        <span>Crea Edificio</span>
+      </router-link>
+
       <router-link to="/">
         <span>Apri/chiudi aule</span>
       </router-link>

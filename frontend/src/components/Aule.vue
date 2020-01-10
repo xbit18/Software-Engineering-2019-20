@@ -58,7 +58,7 @@
             <button class="button" @click="showMap(aula.avatar)">Mappa</button>
           </td>
           <td class="tg td">
-            <button class="button button-modifica">Modifica</button>
+            <router-link :to="'/editAula/'+aula.id" class="button button-modifica">Modifica</router-link>
           </td>
           <td class="tg td">
             <button class="button button-elimina" @click="elimina(aula.id)">Elimina</button>
@@ -101,8 +101,8 @@
 
 <script>
 import { bus } from "../main.js";
-import swal from 'sweetalert';
-import axios from 'axios';
+import swal from "sweetalert";
+import axios from "axios";
 export default {
   name: "Aule",
   data() {
@@ -126,27 +126,25 @@ export default {
         bus.$emit("imgSend", { img: this.image, show: this.show });
       }
     },
-    elimina(id){
+    elimina(id) {
       swal({
-  title: "Sei sicuro ?",
-  text: "Una volta eliminata non sarà possibile recuperare l'aula!",
-  icon: "warning",
-  buttons: true,
-  dangerMode: true,
-})
-.then((willDelete) => {
-  if (willDelete) {
-    axios.delete('https://reqres.in/api/users/'+ id)
-    .then((res) => {
-      console.log(res);
-       swal("L'aula è stata eliminata!", {
-      icon: "success",
-    });
-    })
-  } else {
-    swal("Quasi!!");
-  }
-});
+        title: "Sei sicuro ?",
+        text: "Una volta eliminata non sarà possibile recuperare l'aula!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true
+      }).then(willDelete => {
+        if (willDelete) {
+          axios.delete("https://reqres.in/api/users/" + id).then(res => {
+            console.log(res);
+            swal("L'aula è stata eliminata!", {
+              icon: "success"
+            });
+          });
+        } else {
+          swal("Quasi!!");
+        }
+      });
     }
   }
 };

@@ -9,6 +9,8 @@ import RedirectListaPersone from './components/RedirectListaPersone.vue'
 import RedirectAula from './components/RedirectAula.vue'
 import Aula from './components/Aula.vue'
 import gestisceAule from './components/gestisceAule.vue'
+import editAula from './components/editAula.vue'
+import createAula from './components/createAula.vue'
 Vue.config.productionTip = false
 
 Vue.use(VueRouter);
@@ -23,7 +25,9 @@ const routes = [
  {path:'/redirectPersone/:aula', component: RedirectListaPersone},
  {path:'/redirectAula/:aula', component: RedirectAula},
  {path:'/aula/:aula', name:'aula', component: Aula},
- {path:'/gestisceAule', component: gestisceAule}
+ {path:'/gestisceAule', component: gestisceAule},
+ {path:'/editAula/:aula?', component: editAula},
+ {path:'/createAula', component: createAula}
 
 ]
 
