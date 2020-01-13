@@ -65,6 +65,15 @@ export default {
       this.file = this.$refs.file.files[0];
       console.log(this.file);
   }
+  /*getAula(id){
+    console.log(this.aula);
+    
+    axios.get('' + id)
+    .then(res => {
+      this.aula = res.data;
+    })
+    }
+    */
   }
 };
 </script>

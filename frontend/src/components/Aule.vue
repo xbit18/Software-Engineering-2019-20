@@ -32,7 +32,7 @@
 
     <!-- GESTISCE AULA-->
 
-    <table class="tg" v-if="gestisce">
+    <table class="tg" v-else-if="gestisce">
       <thead>
         <tr>
           <th class="tg th">Aula</th>
@@ -40,7 +40,6 @@
           <th class="tg th">Capienza</th>
           <th class="tg th">Tipo</th>
           <th class="tg th">Disponibilità</th>
-          <th class="tg th">Mappa</th>
           <th class="tg th">Modifica</th>
           <th class="tg th">Elimina</th>
         </tr>
@@ -53,9 +52,6 @@
           <td class="tg td">{{aula.last_name}}</td>
           <td class="tg td">
             <img :src="aula.avatar" />
-          </td>
-          <td class="tg td">
-            <button class="button" @click="showMap(aula.avatar)">Mappa</button>
           </td>
           <td class="tg td">
             <router-link :to="'/editAula/'+aula.id" class="button button-modifica">Modifica</router-link>

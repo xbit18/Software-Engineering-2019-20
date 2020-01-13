@@ -37,7 +37,7 @@
         <span>Gestisci aule</span>
       </router-link>
 
-      <router-link to="/">
+      <router-link to="/gestisceEdifici">
         <span>Gestisci edifici</span>
       </router-link>
 
@@ -45,7 +45,7 @@
         <span>Crea Aula</span>
       </router-link>
 
-        <router-link to="/">
+        <router-link to="/createEdificio">
         <span>Crea Edificio</span>
       </router-link>
 
@@ -53,7 +53,7 @@
         <span>Apri/chiudi aule</span>
       </router-link>
 
-      <router-link to="/waitingAula">
+      <router-link to="/searchAula">
         <span>Visualizza info aule</span>
       </router-link>
 

@@ -7,7 +7,7 @@ export default {
     name:'RedirectListaPersone',
     mounted(){
         var searchString = this.$route.params.aula;
-        this.$router.push('/infoAula/'+searchString);
+        this.$router.push('/listaPersone/'+searchString);
     }
 }
 </script>

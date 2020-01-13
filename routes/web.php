@@ -1,4 +1,9 @@
 <?php
+Route::options('/{path}', function(){ 
+    return '';
+})->where('path', '.*');
+
+
 Route::get('/', function () {
     return view('welcome');
 });

@@ -1,15 +1,15 @@
 <template>
-  <div v-if="listAule.length > 0">
+  <div>
     <section class="lista">
       <div class="title">
-        <h1>Lista Aule</h1>
+        <h1>Lista Edifici</h1>
       </div>
-      <Aule waiting="true" :listAule="listAule"></Aule>
+      <Edifici :listEdifici="listEdifici"></Edifici>  
     </section>
-    <aside class="sidebar search waitingSearch">
+    <aside class="sidebar search waitingAula">
       <div id="search" class="sidebar-item">
         <h3>Cerca</h3>
-        <p>Trova la lista delle persone dentro una certa aula</p>
+        <p>Trova un edificio</p>
         <form @submit.prevent="goSearch">
           <input class="input" type="text" name="search" v-model="searchString" />
           <input type="submit" name="submit" value="Cerca" class="button button-search" />
@@ -21,29 +21,31 @@
 </template>
 
 <script>
-import Aule from "./Aule.vue";
+import Edifici from "./Edifici.vue";
 import axios from "axios";
 export default {
-  name: "searchAula",
+  name: "gestisceEdifici",
   data() {
     return {
       searchString: null,
-      listAule: ''
+      listEdifici: ''
     };
   },
   components: {
-    Aule
+    Edifici
   },
   mounted() {
-    this.getListAule();
+    this.getEdifici();
   },
   methods: {
     goSearch: function() {
-      this.$router.push("/listaPersone/" + this.searchString);
+      this.$router.push("/redirectEdificio/" + this.searchString);
     },
-    getListAule() {
-      axios.get("https://reqres.in/api/users?page=1").then(res => {
-        this.listAule = res.data.data;
+    getEdifici() {
+      axios.get("http://127.0.0.1:8000/edifici").
+      then(res => {
+        console.log(res);
+        this.listEdifici = res.data.edifici;
       });
     }
   }
