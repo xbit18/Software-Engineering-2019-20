@@ -24,7 +24,7 @@
 import Aule from "./Aule.vue";
 import axios from "axios";
 export default {
-  name: "WaitingAula",
+  name: "searchAula",
   data() {
     return {
       searchString: null,

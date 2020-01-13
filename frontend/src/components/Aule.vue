@@ -84,7 +84,7 @@
       <tbody>
         <tr v-for="aula in listAule" :key="aula.id">
           <td class="tg td">
-            <router-link :to="{name:'infoAula',params:{aula: aula.id}}">{{aula.id}}</router-link>
+            <router-link :to="{name:'listaPersone',params:{aula: aula.id}}">{{aula.id}}</router-link>
           </td>
           <td class="tg td">{{aula.email}}</td>
           <td class="tg td">{{aula.first_name}}</td>

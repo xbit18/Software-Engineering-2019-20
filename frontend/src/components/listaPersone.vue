@@ -30,7 +30,7 @@
 import axios from "axios";
 import Persone from "./Persone.vue";
 export default {
-  name: "InfoAula",
+  name: "listaAula",
   components: {
     Persone
   },

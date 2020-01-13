@@ -3,8 +3,8 @@ import App from './App.vue'
 import VueRouter from 'vue-router'
 import Vuelidate from 'vuelidate'
 import Inizio from "./components/Inizio.vue"
-import InfoAula from './components/InfoAula.vue'
-import WaitingAula from './components/WaitingAula.vue'
+import listaPersone from './components/listPersone.vue'
+import searchAula from './components/searchAula.vue'
 import RedirectListaPersone from './components/RedirectListaPersone.vue'
 import RedirectAula from './components/RedirectAula.vue'
 import Aula from './components/Aula.vue'
@@ -20,8 +20,8 @@ Vue.use(require('vue-moment'));
 
 const routes = [
  {path:'/', component: Inizio},
- {path:'/infoAula/:aula', name:'infoAula',component: InfoAula},
- {path:'/waitingAula', component: WaitingAula},
+ {path:'/listaPersone/:aula', name:'listaPersone',component: listaPersone},
+ {path:'/waitingAula', component: searchAula},
  {path:'/redirectPersone/:aula', component: RedirectListaPersone},
  {path:'/redirectAula/:aula', component: RedirectAula},
  {path:'/aula/:aula', name:'aula', component: Aula},
