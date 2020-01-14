@@ -14,6 +14,7 @@ Route::get('/homepage', function(){
         'aule' =>  \App\Aula::where('disponibilita', 1)->get()
     ]);
 });
+
 // quasi tutti verbi sono get perche ci sara un form apparte per gestire le richieste
                             // !! DA LEGGERE !!
 //create usa verb get perche richiama un interfaccia per la creazione di un oggetto, per la memorizzazione si usa store che è appunto post
@@ -35,7 +36,7 @@ Route::get('/aule/create','AuleController@create');
 //Create crea un form per creare un’aula
 Route::post('/aule','AuleController@store');
 //Salva la nuova aula
-Route::get('/aule/{aula}/delete','AuleController@delete');
+Route::get('/aule/{aula}/delete','AuleController@destroy');
 //Cancella l’aula
 Route::get('/aule','AuleController@index');
 //Restituisce una lista delle aule che appartengono a un edificio

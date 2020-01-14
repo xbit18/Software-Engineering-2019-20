@@ -63,8 +63,7 @@ class EdificiController extends Controller
     public function show($id)
     {
         $edificio= Edificio::findOrFail($id);
-        return ['edificio'=>$edificio];
-        //return view('$edifici.show',['edificio'=>$edificio]);
+        return response()->json(['edificio'=>$edificio], 200);
     }
 
     /**

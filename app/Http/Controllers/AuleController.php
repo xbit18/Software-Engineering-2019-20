@@ -33,7 +33,8 @@ class AuleController extends Controller
         $aula = Aula::create([
             'codice' => $data['codice'],
             'capienza' => $data['capienza'],
-            'tipo' => $data['tipo']
+            'tipo' => $data['tipo'],
+            'edificio' => $data['edificio']
         ]);
 
         $aula -> save();
@@ -93,8 +94,7 @@ class AuleController extends Controller
      */
     public function destroy($codice)
     {
-        $aula= Aula::findOrFail($codice);
+        $aula = Aula::findOrFail($codice);
         $aula->delete();
-        redirect('/aule');
     }
 }
