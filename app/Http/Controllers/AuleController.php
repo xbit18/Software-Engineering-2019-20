@@ -37,15 +37,17 @@ class AuleController extends Controller
      */
     public function store(Request $request)
     {
-        $json = $request->input('json',null);
-        $params = \json_decode($json);
-        $params_array = \json_decode($json,true);
+        $data = $request->json()->all();
         $aula = new Aula();
-        $aula->codice= $params_array['codice'];
-        $aula->capienza= $params_array['capienza'];
-        $aula->tipo= $params_array['tipo'];
-        $aula->disponibilita= $params_array['disponibilita'];
+        $aula->codice= $data['codice'];
+        $aula->capienza= $data['capienza'];
+        $aula->tipo= $data['tipo'];
+        $aula->disponibilita= $data['disponibilita'];
+        $aula->stato= $data['stato'];
         $aula->save();
+        var_dump($aula);
+        die();
+        return response()->json(['aula'=>$aula],201);
        // redirect('/aule');
     }
 
