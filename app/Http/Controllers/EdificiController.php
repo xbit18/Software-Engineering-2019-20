@@ -39,7 +39,8 @@ class EdificiController extends Controller
         **************************************************************/
 
         ////////////////////////////////////////////////////
-            $data = $request->json()->all();
+
+        $data = $request->json()->all();
 
             $edificio = Edificio::create([
                 'numero_aule' => $data['numero_aule'],
@@ -47,7 +48,8 @@ class EdificiController extends Controller
                 'indirizzo' => $data['indirizzo']
             ]);
 
-            $edificio -> save();
+        $edificio -> save();
+
         /////////////////////////////////////////////////////
     }
 
