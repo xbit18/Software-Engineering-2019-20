@@ -35,12 +35,11 @@ class EdificiController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
      
        $edificio = new Edificio();
 
-        $edificio->id= request('id');
         $edificio->numero_aule= request('numero_aule');
         $edificio->nome= request('nome');
         $edificio->indirizzo= request('indirizzo');
