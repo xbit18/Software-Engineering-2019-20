@@ -37,7 +37,7 @@ Route::post('/aule','AuleController@store');
 //Salva la nuova aula
 Route::get('/aule/{aula}/delete','AuleController@delete');
 //Cancella l’aula
-Route::get('/aule/edifici/{edificio}','AuleController@index');
+Route::get('/aule','AuleController@index');
 //Restituisce una lista delle aule che appartengono a un edificio
 Route::get('/aule/{aula}/{stato}','AuleController@stato');
 // apre/chiude aula

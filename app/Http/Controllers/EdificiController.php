@@ -16,7 +16,7 @@ class EdificiController extends Controller
     public function index()
     {
         $edifici=Edificio::all();
-        return ['edifici'=>$edifici];
+        return response()->json(['edifici'=>$edifici], 200);
         //return view('edifici.index',['edifici'=>$edifici]);
     }
 
@@ -42,13 +42,14 @@ class EdificiController extends Controller
 
         $data = $request->json()->all();
 
-            $edificio = Edificio::create([
-                'numero_aule' => $data['numero_aule'],
-                'nome' => $data['nome'],
-                'indirizzo' => $data['indirizzo']
-            ]);
+        $edificio = Edificio::create([
+            'numero_aule' => $data['numero_aule'],
+            'nome' => $data['nome'],
+            'indirizzo' => $data['indirizzo']
+        ]);
 
         $edificio -> save();
+        return response()->json(['edificio'=>$edificio],201);
 
         /////////////////////////////////////////////////////
     }

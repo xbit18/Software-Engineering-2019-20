@@ -19,15 +19,6 @@ class AuleController extends Controller
         // return view('aule.index',['aule'=>$aule]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('aule.create');
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -38,15 +29,14 @@ class AuleController extends Controller
     public function store(Request $request)
     {
         $data = $request->json()->all();
-        $aula = new Aula();
-        $aula->codice= $data['codice'];
-        $aula->capienza= $data['capienza'];
-        $aula->tipo= $data['tipo'];
-        $aula->disponibilita= $data['disponibilita'];
-        $aula->stato= $data['stato'];
-        $aula->save();
-        var_dump($aula);
-        die();
+
+        $aula = Aula::create([
+            'codice' => $data['codice'],
+            'capienza' => $data['capienza'],
+            'tipo' => $data['tipo']
+        ]);
+
+        $aula -> save();
         return response()->json(['aula'=>$aula],201);
        // redirect('/aule');
     }
