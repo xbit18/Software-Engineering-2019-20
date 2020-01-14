@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMappa extends Migration
+class CreateMappasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateMappa extends Migration
      */
     public function up()
     {
-        Schema::create('mappa', function (Blueprint $table) {
-            $table->unsignedBigInteger('id',true);
-            $table->string('piantina'); // url
-            $table->smallInteger('piano');
+        Schema::create('mappas', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->timestamps();
         });
     }
 
@@ -27,6 +26,6 @@ class CreateMappa extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mappa');
+        Schema::dropIfExists('mappas');
     }
 }

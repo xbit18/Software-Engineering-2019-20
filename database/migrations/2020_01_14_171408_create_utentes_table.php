@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGestioneAule extends Migration
+class CreateUtentesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateGestioneAule extends Migration
      */
     public function up()
     {
-        Schema::create('gestione_aule', function (Blueprint $table) {
-            $table->integer('id_utente');
-            $table->integer('id_aula');
+        Schema::create('utentes', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->timestamps();
         });
     }
 
@@ -26,6 +26,6 @@ class CreateGestioneAule extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gestione_aule');
+        Schema::dropIfExists('utentes');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePosto extends Migration
+class CreatePresenzasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreatePosto extends Migration
      */
     public function up()
     {
-        Schema::create('posto', function (Blueprint $table) {
-            $table->unsignedBigInteger('id',true);
-            $table->integer('numero')->unsigned();
-            $table->boolean('disponibilita')->default('1');
+        Schema::create('presenzas', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->timestamps();
         });
     }
 
@@ -27,6 +26,6 @@ class CreatePosto extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posto');
+        Schema::dropIfExists('presenzas');
     }
 }

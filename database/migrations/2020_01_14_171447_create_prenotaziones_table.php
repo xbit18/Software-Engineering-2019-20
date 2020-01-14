@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCodifica extends Migration
+class CreatePrenotazionesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateCodifica extends Migration
      */
     public function up()
     {
-        Schema::create('codifica', function (Blueprint $table) {
-            $table->integer('id_token');
-            $table->integer('id_aula');
+        Schema::create('prenotaziones', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->timestamps();
         });
     }
 
@@ -26,6 +26,6 @@ class CreateCodifica extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('codifica');
+        Schema::dropIfExists('prenotaziones');
     }
 }

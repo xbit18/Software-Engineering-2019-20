@@ -4,7 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Utente extends Model {
+class Utente extends Model
+{
     public $id;
     public $email;
     public $password;

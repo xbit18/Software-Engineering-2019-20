@@ -13,5 +13,4 @@ class Edificio extends Model
     public $indirizzo;
 
     protected $table = 'edificio';
-
 }

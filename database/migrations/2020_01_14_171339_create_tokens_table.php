@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateToken extends Migration
+class CreateTokensTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateToken extends Migration
      */
     public function up()
     {
-        Schema::create('token', function (Blueprint $table) {
-            $table->string('codice')->unique();
-            $table->unsignedBigInteger('id',true);
+        Schema::create('tokens', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->timestamps();
         });
     }
 
@@ -26,6 +26,6 @@ class CreateToken extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('token');
+        Schema::dropIfExists('tokens');
     }
 }

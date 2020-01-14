@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCollocazione extends Migration
+class CreateEdificiosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateCollocazione extends Migration
      */
     public function up()
     {
-        Schema::create('collocazione', function (Blueprint $table) {
-            $table->integer('id_posto');
-            $table->integer('id_aula');
-
+        Schema::create('edificios', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->timestamps();
         });
     }
 
@@ -27,6 +26,6 @@ class CreateCollocazione extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('collocazione');
+        Schema::dropIfExists('edificios');
     }
 }
