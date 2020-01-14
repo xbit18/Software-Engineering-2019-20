@@ -11,7 +11,12 @@ export default {
       isEdit: false,
       aula: new Aula(),
       file: null,
-      edifici: null
+      edifici: null,
+      building:{id: null,
+                numero_aule: null,
+                nome: null,
+                indirizzo: null
+                }
     };
   },
   mounted() {
@@ -20,6 +25,8 @@ export default {
    methods: {
     save() {
       console.log(this.aula);
+      console.log(this.building);
+      this.aula.edificio = this.building.id;
       axios.post(`http://127.0.0.1:8000/aule`,this.aula)
       .then(res =>{
         console.log(res);
@@ -36,7 +43,6 @@ export default {
   getEdifici(){
       axios.get("http://127.0.0.1:8000/edifici")
       .then(res =>{
-        console.log(res);
         this.edifici = res.data.edifici;
       })
     }

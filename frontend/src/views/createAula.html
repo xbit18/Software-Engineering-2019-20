@@ -12,21 +12,20 @@
 
         <label for="tipo">Tipo</label>
         <input type="text" name="tipo" v-model="aula.tipo"/>
-
+     
         <label for="capienza">Capienza</label>
         <input type="text" name="capienza" v-model="aula.capienza"/>
 
         <label for="edificio">Edificio</label>
-        <select v-model="aula.id">
-          <option v-for="edificio in edifici" :key="edificio.id">{{edificio.nome}}</option>
+        <select v-model="building">
+          <option v-bind:value="{id: edificio.id,numero_aule: edificio.numero_aule,nome: edificio.nome,indirizzo: edificio.indirizzo}" v-for="edificio in edifici" :key="edificio.id"> {{edificio.nome}}</option>
         </select>
-
+        
         <label for="image" >Mappa</label>
         <input type="file" id="file" ref="file" name="file0" @change="fileChange()" />
         
         <input v-if="isEdit" type="submit" value ="Modifica" class="button button-success" />
         <input v-else type="submit" value ="Salva" class="button button-success" />
-
       </form>
     </section>
 
