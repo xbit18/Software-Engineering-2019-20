@@ -381,7 +381,8 @@ nav div {
 }
 
 .mid-form input[type="text"],
-.mid-form input[type="file"]{
+.mid-form input[type="file"],
+select{
     display: block;
     padding: 8px;
     width: 100%;

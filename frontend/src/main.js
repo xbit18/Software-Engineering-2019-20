@@ -8,6 +8,8 @@ import searchAula from './components/searchAula.vue'
 import RedirectListaPersone from './components/RedirectListaPersone.vue'
 import RedirectAula from './components/RedirectAula.vue'
 import RedirectEdificio from './components/RedirectEdificio.vue'
+import RedirectDeleteEdificio from './components/RedirectDeleteEdificio.vue'
+import RedirectDeleteAula from './components/RedirectDeleteAula.vue'
 import Aula from './components/Aula.vue'
 import gestisceAule from './components/gestisceAule.vue'
 import editAula from './components/editAula.vue'
@@ -40,7 +42,9 @@ const routes = [
  {path:'/createEdificio', component: createEdificio},
  {path:'/editEdificio/:edificio', component: editEdificio},
  {path:'/edificio/:edificio', name:'edificio', component: Edificio},
- {path:'/check/:aula?', name:'check', component: CheckIn}
+ {path:'/check/:aula?', name:'check', component: CheckIn},
+ {path:'/redirectDeleteEdificio', component: RedirectDeleteEdificio},
+ {path:'/redirectDeleteAule', component: RedirectDeleteAula}
 ]
 
 const router = new VueRouter({

@@ -5,14 +5,10 @@
         <h1 v-else>Crea Aula</h1>
       </div>
       <form class="mid-form" @submit.prevent=save()>
-        <label for="id">ID</label>
-        <input type="text" name="id" v-model="aula.id"/>
 
         <label for="codice">Codice</label>
         <input type="text" name="codice" v-model="aula.codice"/>
 
-        <label for="disponibilita">Disponibilità</label>
-        <input type="text" name="disponibilita" v-model="aula.disponibilita"/>
 
         <label for="tipo">Tipo</label>
         <input type="text" name="tipo" v-model="aula.tipo"/>
@@ -20,11 +16,13 @@
         <label for="capienza">Capienza</label>
         <input type="text" name="capienza" v-model="aula.capienza"/>
 
-        <label for="stato">Stato</label>
-        <input type="text" name="stato" v-model="aula.stato" />
+        <label for="edificio">Edificio</label>
+        <select >
+          <option v-for="edificio in edifici" :key="edificio.id" v-model="aula.edificio">{{edificio.nome}}</option>
+        </select>
 
-          <label for="image">Mappa</label>
-          <input type="file" id="file" ref="file" name="file0" @change="fileChange()" />
+        <label for="image" >Mappa</label>
+        <input type="file" id="file" ref="file" name="file0" @change="fileChange()" />
         
         <input v-if="isEdit" type="submit" value ="Modifica" class="button button-success" />
         <input v-else type="submit" value ="Salva" class="button button-success" />

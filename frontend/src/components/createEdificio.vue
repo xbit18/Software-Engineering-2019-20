@@ -3,37 +3,36 @@
 <script>
 import axios from "axios";
 import Edificio from "../models/edificio.js";
-import swal from 'sweetalert';
+import swal from "sweetalert";
 export default {
   name: "createEdificio",
   data() {
     return {
       isEdit: false,
-      edificio: new Edificio(),
+      edificio: new Edificio()
     };
   },
-   methods: {
+  methods: {
     save() {
       console.log(this.edificio);
-    
-    axios
+
+      axios
         .post("http://127.0.0.1:8000/edifici", this.edificio)
         .then(res => {
-          if(res.status == 201){
-             console.log(res);
+          if (res.status == 201) {
+            console.log(res);
+            swal({
+              text: "L'edificio è stato creato",
+              icon: "success"
+            });
+            setTimeout(() => {
+              this.$router.push("/gestisceEdifici");
+            }, 1000);
           }
         })
-        .catch(e =>{
+        .catch(e => {
           console.log(e);
-        }); 
-      swal({
-        text: "L'edificio è stato creato",
-        icon: "success"
-      });
-      setTimeout(() =>{
-        this.$router.push("/gestisceEdifici");
-      },1000);
-      
+        });
     }
   }
 };
