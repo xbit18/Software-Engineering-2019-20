@@ -6,13 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Aula extends Model
 {
-    public $timestamps = false;
     protected $guarded = [];
     public $id;
     public $codice;
-    public $capienza;
-    public $tipo;
     public $disponibilita;
+    public $tipo;
+    public $capienza;
     public $stato;
+    public $id_edificio;
     protected $table = 'aula';
 }

@@ -9,7 +9,7 @@ class Utente extends Model {
     public $email;
     public $password;
     public $nome;
-    public $data_di_nascita;
+    public $dat_nascita;
     public $tipo;
     public $cognome;
     public $corso;

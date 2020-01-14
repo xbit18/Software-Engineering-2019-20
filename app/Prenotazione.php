@@ -7,10 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Prenotazione extends Model
 {
         public $id;
-        public $codice;
         public $data;
-        public $dutrata;
+        public $durata;
         public $motivazione;
         public $stato;
-    protected $table = 'prenotazione';
+        public $id_aula;
+        public $id_utente;
+
+        protected $table = 'prenotazione';
 }
