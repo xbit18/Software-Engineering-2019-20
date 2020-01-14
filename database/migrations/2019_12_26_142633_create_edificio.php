@@ -18,6 +18,8 @@ class CreateEdificio extends Migration
             $table->integer('numero_aule');
             $table->string('nome');
             $table->text('indirizzo');
+
+
         });
     }
 

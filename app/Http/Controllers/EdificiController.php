@@ -37,24 +37,26 @@ class EdificiController extends Controller
      */
     public function store(Request $request)
     {
-
-            $data = Input::all(); //$data = $request->json()->all(); should also work
+        /*
+            $data = $request->json()->all();
             $edificio = new edificio();
             $edificio->numero_aule = $data['numero_aule'];
             $edificio->nome = $data['nome'];
             $edificio->indirizzo = $data['indirizzo'];
             $edificio->save();
+        */
 
-        /*
         $edificio = new Edificio();
 
-        $edificio->id= request('id');
-        $edificio->numero_aule= request('numero_aule');
-        $edificio->nome= request('nome');
-        $edificio->indirizzo= request('indirizzo');
+        $edificio->numero_aule = request('numero_aule');
+        $edificio->nome = request('nome');
+        $edificio->indirizzo = request('indirizzo');
         $edificio->save();
-        redirect('/edifici');
-        */
+       // redirect('/edifici');
+
+
+        return $edificio;
+
     }
 
     /**
