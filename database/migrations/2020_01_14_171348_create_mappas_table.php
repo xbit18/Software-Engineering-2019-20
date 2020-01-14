@@ -13,8 +13,11 @@ class CreateMappasTable extends Migration
      */
     public function up()
     {
-        Schema::create('mappas', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('mappe', function (Blueprint $table) {
+            $table->bigIncrements('id')->primary();
+            $table->string("piantina",200);
+            $table->integer("piano");
+            $table->integer('id_edificio');
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ class CreateMappasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mappas');
+        Schema::dropIfExists('mappe');
     }
 }

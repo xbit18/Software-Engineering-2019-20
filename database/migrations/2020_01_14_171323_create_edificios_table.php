@@ -13,8 +13,12 @@ class CreateEdificiosTable extends Migration
      */
     public function up()
     {
-        Schema::create('edificios', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('edifici', function (Blueprint $table) {
+            $table->bigIncrements('id')->primary();
+            $table->string("nome",50)->unique();
+            $table->string("indirizzo",150)->nullable();
+            $table->integer("numero_aule")->nullable();
+
             $table->timestamps();
         });
     }
@@ -26,6 +30,6 @@ class CreateEdificiosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('edificios');
+        Schema::dropIfExists('edifici');
     }
 }

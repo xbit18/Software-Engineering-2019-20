@@ -15,7 +15,7 @@ class CreateAulasTable extends Migration
     {
         Schema::create('aule', function (Blueprint $table) {
             $table->bigIncrements('id')->primary();
-            $table->string('codice', 50)->unique();;
+            $table->string('codice', 50)->unique();
             $table->enum('disponibilita',['disponibile','non disponibile']);
             $table->enum('tipo', ['lezione', 'studio', 'lavoro']);
             $table->integer('capienza');
@@ -33,6 +33,6 @@ class CreateAulasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('aulas');
+        Schema::dropIfExists('aule');
     }
 }

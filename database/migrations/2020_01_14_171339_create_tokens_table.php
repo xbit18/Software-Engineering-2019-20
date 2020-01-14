@@ -13,8 +13,10 @@ class CreateTokensTable extends Migration
      */
     public function up()
     {
-        Schema::create('tokens', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('token', function (Blueprint $table) {
+            $table->bigIncrements('id')->primary();
+            $table->string("codice",300)->unique();
+            $table->integer('id_edificio');
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ class CreateTokensTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tokens');
+        Schema::dropIfExists('token');
     }
 }
