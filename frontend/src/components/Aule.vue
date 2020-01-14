@@ -14,10 +14,12 @@
       </thead>
       <tbody>
         <tr v-for="aula in listAule" :key="aula.id">
-          <td class="tg td">{{aula.id}}</td>
-          <td class="tg td">{{aula.email}}</td>
-          <td class="tg td">{{aula.first_name}}</td>
-          <td class="tg td">{{aula.last_name}}</td>
+          <td class="tg td">{{aula.codice}}</td>
+          <td class="tg td">{{aula.codice}}</td>
+          <td class="tg td">{{aula.capienza}}</td>
+          <td class="tg td">{{aula.tipo}}</td>
+          <td class="tg td">{{aula.disponibilita}}</td>
+
           <td class="tg td">
             <img :src="aula.avatar" />
           </td>

@@ -41,8 +41,9 @@ export default {
   },
   methods: {
     getListAule() {
-      axios.get("https://reqres.in/api/users?page=2").then(res => {
-        this.listAule = res.data.data;
+      axios.get("http://127.0.0.1:8000/aule/edifici/1").then(res => {
+        console.log(res);
+        this.listAule = res.data.aule;
       });
     }
   },
