@@ -14,7 +14,9 @@ class MappeController extends Controller
      */
     public function index()
     {
-        //
+        $mappe=Mappa::all();
+       return ['mappe'=>$mappe];
+        //return view('mappe.index',['mappe'=>$mappe]);
     }
 
     /**
@@ -24,7 +26,7 @@ class MappeController extends Controller
      */
     public function create()
     {
-        //
+        return view('mappe.create');
     }
 
     /**
@@ -33,9 +35,16 @@ class MappeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+
+        $mappa = new Mappa();
+
+        $mappa->piantina= request('piantina');
+        $mappa->piano= request('piano');
+        $mappa->id= request('id');
+        $mappa->save();
+        redirect('/mappe');
     }
 
     /**
@@ -44,9 +53,11 @@ class MappeController extends Controller
      * @param  \App\Mappa  $mappa
      * @return \Illuminate\Http\Response
      */
-    public function show(Mappa $mappa)
+    public function show($id)
     {
-        //
+        $mappa= Mappa::findOrFail($id);
+       return ['mappa'=>$mappa];
+        // return view('mappe.show',compact('mappa'));
     }
 
     /**
@@ -55,9 +66,10 @@ class MappeController extends Controller
      * @param  \App\Mappa  $mappa
      * @return \Illuminate\Http\Response
      */
-    public function edit(Mappa $mappa)
+    public function edit($id)
     {
-        //
+        $mappa= Mappa::findOrFail($id);
+        return view('mappe.edit',compact('mappa'));
     }
 
     /**
@@ -67,9 +79,15 @@ class MappeController extends Controller
      * @param  \App\Mappa  $mappa
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Mappa $mappa)
+    public function update($id)
     {
-        //
+        $mappa= Mappa::findOrFail($id);
+
+        $mappa->piantina= request('piantina');
+        $mappa->piano= request('piano');
+        $mappa->id= request('id');
+        $mappa->save();
+        redirect('/mappe');
     }
 
     /**
@@ -78,8 +96,10 @@ class MappeController extends Controller
      * @param  \App\Mappa  $mappa
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Mappa $mappa)
+    public function destroy($id)
     {
-        //
+        $mappa= Mappa::findOrFail($id);
+        $mappa->delete();
+        redirect('/mappe');
     }
 }

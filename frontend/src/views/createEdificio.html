@@ -1,0 +1,30 @@
+<div class="center">
+    <section class="edit">
+        <div class="title">
+            <h1 v-if="isEdit">Modifica Edificio</h1>
+            <h1 v-else>Crea Edificio</h1>
+        </div>
+        <form class="mid-form" @submit.prevent=save()>
+            <label for="id">ID</label>
+            <input type="text" name="id" v-model="edificio.id" />
+
+
+
+            <label for="nome">Nome</label>
+            <input type="text" name="nome" v-model="edificio.nome" />
+
+            <label for="numero_aule">Numero Aule</label>
+            <input type="text" name="numero_aule" v-model="edificio.numero_aule" />
+
+            <label for="tipo">Indirizzo</label>
+            <input type="text" name="tipo" v-model="edificio.indirizzo" />
+
+            <input v-if="isEdit" type="submit" value="Modifica" class="button button-success" />
+            <input v-else type="submit" value="Salva" class="button button-success" />
+
+
+        </form>
+    </section>
+
+    <div class="clearfix"></div>
+</div>

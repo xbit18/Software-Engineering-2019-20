@@ -1,0 +1,28 @@
+.tg  {
+    border-collapse:collapse;
+    border-spacing:0;
+    border-right: 1px solid black;
+    border-top: 1px solid black;
+}
+
+.tg td{
+    font-family:Arial, sans-serif;
+    font-size:16px;
+    padding:10px 17px;
+    overflow:hidden;
+    word-break:normal;
+    border-bottom: 1px solid black;
+    background-color: #f2f2f2;
+}
+
+.tg th{
+    font-family:Arial, sans-serif;
+    font-size:18px;
+    font-weight:bold;
+    color: white;
+    background-color: #822627;
+    padding:10px 17px;
+    overflow:hidden;
+    word-break:normal;
+    border-bottom: 1px solid black;
+}
