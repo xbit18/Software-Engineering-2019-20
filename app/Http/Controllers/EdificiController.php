@@ -41,7 +41,7 @@ class EdificiController extends Controller
         $edificio = new Edificio();
 
         $edificio->id= request('id');
-        $edificio->numero= request('numero_aule');
+        $edificio->numero_aule= request('numero_aule');
         $edificio->nome= request('nome');
         $edificio->indirizzo= request('indirizzo');
         $edificio->save();
