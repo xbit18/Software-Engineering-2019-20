@@ -35,11 +35,11 @@ Route::get('/aule/create','AuleController@create');
 //Create crea un form per creare un’aula
 Route::post('/aule','AuleController@store');
 //Salva la nuova aula
-Route::get('/aule/{aula}/delete','AuleController@delete');
+Route::get('/aule/{aula}/delete','AuleController@destroy');
 //Cancella l’aula
 Route::get('/aule','AuleController@index');
 //Restituisce una lista delle aule che appartengono a un edificio
-Route::get('/aule/{aula}/{stato}','AuleController@stato');
+// Route::get('/aule/{aula}/{stato}','AuleController@stato');
 // apre/chiude aula
 Route::get('/aule/{aula}/edit','AuleController@edit');
 //Crea un form per modificare i dati di un’aula

@@ -46,6 +46,7 @@ export default {
       then(res => {
         console.log(res);
         this.listEdifici = res.data.edifici;
+        this.listEdifici.reverse();
       });
     }
   }

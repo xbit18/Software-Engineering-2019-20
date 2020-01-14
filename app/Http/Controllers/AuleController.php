@@ -95,6 +95,5 @@ class AuleController extends Controller
     {
         $aula= Aula::findOrFail($codice);
         $aula->delete();
-        redirect('/aule');
     }
 }

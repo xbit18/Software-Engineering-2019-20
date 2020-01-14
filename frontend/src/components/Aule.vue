@@ -39,7 +39,6 @@
       <thead>
         <tr>
           <th class="tg th">Aula</th>
-          <th class="tg th">Edificio</th>
           <th class="tg th">Capienza</th>
           <th class="tg th">Tipo</th>
           <th class="tg th">Disponibilità</th>
@@ -49,13 +48,10 @@
       </thead>
       <tbody>
         <tr v-for="aula in listAule" :key="aula.id">
-          <td class="tg td">{{aula.id}}</td>
-          <td class="tg td">{{aula.email}}</td>
-          <td class="tg td">{{aula.first_name}}</td>
-          <td class="tg td">{{aula.last_name}}</td>
-          <td class="tg td">
-            <img :src="aula.avatar" />
-          </td>
+          <td class="tg td">{{aula.codice}}</td>
+          <td class="tg td">{{aula.capienza}}</td>
+          <td class="tg td">{{aula.tipo}}</td>
+          <td class="tg td">{{aula.disponibilita}}</td>
           <td class="tg td">
             <router-link :to="'/editAula/'+aula.id" class="button button-modifica">Modifica</router-link>
           </td>
@@ -85,12 +81,10 @@
           <td class="tg td">
             <router-link :to="{name:'listaPersone',params:{aula: aula.id}}">{{aula.id}}</router-link>
           </td>
-          <td class="tg td">{{aula.email}}</td>
-          <td class="tg td">{{aula.first_name}}</td>
-          <td class="tg td">{{aula.last_name}}</td>
-          <td class="tg td">
-            <img :src="aula.avatar" />
-          </td>
+          <td class="tg td">{{aula.codice}}</td>
+          <td class="tg td">{{aula.capienza}}</td>
+          <td class="tg td">{{aula.tipo}}</td>
+          <td class="tg td">{{aula.disponibilita}}</td>
         </tr>
       </tbody>
     </table>
@@ -134,8 +128,9 @@ export default {
         dangerMode: true
       }).then(willDelete => {
         if (willDelete) {
-          axios.delete("https://reqres.in/api/users/" + id).then(res => {
+          axios.get(`http://127.0.0.1:8000/aule/${id}/delete`).then(res => {
             console.log(res);
+            this.$router.push('/redirectDeleteAule');
             swal("L'aula è stata eliminata!", {
               icon: "success"
             });
