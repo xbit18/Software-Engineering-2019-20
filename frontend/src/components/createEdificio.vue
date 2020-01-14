@@ -17,7 +17,7 @@ export default {
       console.log(this.edificio);
     
     axios
-        .post("https://reqres.in/api/users/", this.edificio)
+        .post("http://127.0.0.1:8000/edifici", this.edificio)
         .then(res => {
           if(res.status == 201){
              console.log(res);
@@ -30,7 +30,10 @@ export default {
         text: "L'edificio è stato creato",
         icon: "success"
       });
-      this.$router.push("/gestisceEdifici");
+      setTimeout(() =>{
+        this.$router.push("/gestisceEdifici");
+      },1000);
+      
     }
   }
 };

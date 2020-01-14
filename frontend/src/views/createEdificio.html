@@ -5,11 +5,7 @@
             <h1 v-else>Crea Edificio</h1>
         </div>
         <form class="mid-form" @submit.prevent=save()>
-            <label for="id">ID</label>
-            <input type="text" name="id" v-model="edificio.id" />
-
-
-
+           
             <label for="nome">Nome</label>
             <input type="text" name="nome" v-model="edificio.nome" />
 
