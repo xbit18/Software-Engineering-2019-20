@@ -13,8 +13,15 @@ class CreateAulasTable extends Migration
      */
     public function up()
     {
-        Schema::create('aulas', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('aule', function (Blueprint $table) {
+            $table->bigIncrements('id')->primary();
+            $table->string('codice', 50)->unique();;
+            $table->enum('disponibilita',['disponibile','non disponibile']);
+            $table->enum('tipo', ['lezione', 'studio', 'lavoro']);
+            $table->integer('capienza');
+            $table->enum('stato',['aperta','chiusa']);
+            $table->integer('id_edificio');
+
             $table->timestamps();
         });
     }
