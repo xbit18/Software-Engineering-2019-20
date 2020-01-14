@@ -35,16 +35,18 @@ class AuleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(Request $request)
     {
+        $json = $request->input('json',null);
+        $params = \json_decode($json);
+        $params_array = \json_decode($json,true);
         $aula = new Aula();
-
-        $aula->codice= request('codice');
-        $aula->capienza= request('capienza');
-        $aula->tipo= request('tipo');
-        $aula->disponibilita= request('disponibilita');
+        $aula->codice= $params_array['codice'];
+        $aula->capienza= $params_array['capienza'];
+        $aula->tipo= $params_array['tipo'];
+        $aula->disponibilita= $params_array['disponibilita'];
         $aula->save();
-        redirect('/aule');
+       // redirect('/aule');
     }
 
     /**

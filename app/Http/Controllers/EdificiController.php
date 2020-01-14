@@ -37,17 +37,7 @@ class EdificiController extends Controller
      */
     public function store(Request $request)
     {
-<<<<<<< HEAD
-     
-       $edificio = new Edificio();
-
-        $edificio->numero_aule= request('numero_aule');
-        $edificio->nome= request('nome');
-        $edificio->indirizzo= request('indirizzo');
-        $edificio->save();
-        redirect('/edifici'); 
-=======
-        /*
+         /*
             $data = $request->json()->all();
             $edificio = new edificio();
             $edificio->numero_aule = $data['numero_aule'];
@@ -65,9 +55,8 @@ class EdificiController extends Controller
        // redirect('/edifici');
 
 
-        return $edificio;
+        // return $edificio;
 
->>>>>>> 4485d6b62cb232e0bd9b1d1ac275ab3c179756b1
     }
 
     /**
