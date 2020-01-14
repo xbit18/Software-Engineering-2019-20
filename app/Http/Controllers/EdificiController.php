@@ -35,17 +35,17 @@ class EdificiController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(Request $request)
     {
-
-        $edificio = new Edificio();
+     
+       $edificio = new Edificio();
 
         $edificio->id= request('id');
         $edificio->numero= request('numero_aule');
         $edificio->nome= request('nome');
         $edificio->indirizzo= request('indirizzo');
         $edificio->save();
-        redirect('/edifici');
+        redirect('/edifici'); 
     }
 
     /**
@@ -101,6 +101,6 @@ class EdificiController extends Controller
     {
         $edificio= Edificio::findOrFail($id);
         $edificio->delete();
-        redirect('/edifici');
+      //  redirect('/edifici');
     }
 }
