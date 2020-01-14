@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Aula extends Model
 {
+    protected $guarded = [];
     public $id;
     public $codice;
     public $capienza;

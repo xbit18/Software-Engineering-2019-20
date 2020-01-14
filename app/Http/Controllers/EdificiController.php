@@ -106,6 +106,6 @@ class EdificiController extends Controller
     {
         $edificio= Edificio::findOrFail($id);
         $edificio->delete();
-        redirect('/edifici');
+      //  redirect('/edifici');
     }
 }
