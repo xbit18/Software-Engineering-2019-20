@@ -33,7 +33,9 @@
     <table class="tg" v-else-if="gestisce">
       <thead>
         <tr>
+          <th class="tg th">ID</th>
           <th class="tg th">Aula</th>
+          <th class="tg th">Edificio</th>
           <th class="tg th">Capienza</th>
           <th class="tg th">Tipo</th>
           <th class="tg th">Disponibilità</th>
@@ -43,7 +45,9 @@
       </thead>
       <tbody>
         <tr v-for="aula in listAule" :key="aula.id">
+          <td class="tg td">{{aula.id}}</td>
           <td class="tg td">{{aula.codice}}</td>
+          <td class="tg td">{{aula.edificio}}</td>
           <td class="tg td">{{aula.capienza}}</td>
           <td class="tg td">{{aula.tipo}}</td>
           <td class="tg td">{{aula.disponibilita}}</td>
