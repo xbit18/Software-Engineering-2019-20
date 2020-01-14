@@ -41,7 +41,8 @@ export default {
   },
   methods: {
     getListAule() {
-      axios.get("https://reqres.in/api/users?page=2").then(res => {
+      axios.get("https://reqres.in/api/users").then(res => {
+        console.log(res);
         this.listAule = res.data.data;
       });
     }

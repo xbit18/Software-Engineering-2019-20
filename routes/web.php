@@ -22,7 +22,7 @@ Route::get('/homepage', function(){
 
 Route::post('/edifici','EdificiController@store');               //Store salva le modifiche all’edificio
 Route::get('/edifici','EdificiController@index');                //Index mostra una lista di tutti gli edifici
-Route::get('/edifici/{edificio}/delete','EdificiController@delete');
+Route::delete('/edifici/{edificio}/delete','EdificiController@delete');
 // Delete lo elimina
 Route::get('/edifici/create','EdificiController@create');        //Create crea un form per creare un edificio
 Route::get('/edifici/{edificio}','EdificiController@show');

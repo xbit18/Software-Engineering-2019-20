@@ -25,7 +25,7 @@
         <span>Home</span>
       </router-link>
 
-      <router-link to="/">
+      <router-link to="/check">
         <span>Check-in</span>
       </router-link>
 

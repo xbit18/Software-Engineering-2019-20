@@ -9,6 +9,7 @@
           <th class="tg th">Capienza</th>
           <th class="tg th">Tipo</th>
           <th class="tg th">Disponibilità</th>
+          <th class="tg th">Avatar</th>
           <th class="tg th">Mappa</th>
         </tr>
       </thead>
@@ -18,6 +19,8 @@
           <td class="tg td">{{aula.email}}</td>
           <td class="tg td">{{aula.first_name}}</td>
           <td class="tg td">{{aula.last_name}}</td>
+          <td class="tg td">{{aula.disponibilita}}</td>
+
           <td class="tg td">
             <img :src="aula.avatar" />
           </td>

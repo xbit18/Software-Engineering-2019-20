@@ -16,6 +16,7 @@ import createEdificio from './components/createEdificio.vue'
 import editEdificio from './components/editEdificio.vue'
 import gestisceEdifici from './components/gestisceEdifici.vue'
 import Edificio from './components/Edificio.vue'
+import CheckIn from './components/CheckIn.vue'
 
 Vue.config.productionTip = false
 
@@ -38,7 +39,8 @@ const routes = [
  {path:'/createAula', component: createAula},
  {path:'/createEdificio', component: createEdificio},
  {path:'/editEdificio/:edificio', component: editEdificio},
- {path:'/edificio/:edificio', name:'edificio', component: Edificio}
+ {path:'/edificio/:edificio', name:'edificio', component: Edificio},
+ {path:'/check/:aula?', name:'check', component: CheckIn}
 ]
 
 const router = new VueRouter({

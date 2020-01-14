@@ -58,7 +58,7 @@ class AuleController extends Controller
         $aula= Aula::findOrFail($codice);
         return ['aula'=>$aula];
         //return view('aule.show',['aula'=>$aula]);
-    }-
+    }
 
     /**
      * Show the form for editing the specified resource.
