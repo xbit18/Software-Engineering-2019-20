@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Aula;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class AuleController extends Controller
 {
@@ -31,12 +30,6 @@ class AuleController extends Controller
     {
         $data = $request->json()->all();
 
-        $id_edifici = DB::table('edificio')->select('id')->where('nome','=',$data['edificio'])->get();
-        $id_edificio = $id_edifici[0].value();
-        var_dump($id_edificio);
-        die();
-
-        /*
         $aula = Aula::create([
             'codice' => $data['codice'],
             'capienza' => $data['capienza'],
@@ -46,7 +39,7 @@ class AuleController extends Controller
 
         $aula -> save();
         return response()->json(['aula'=>$aula],201);
-       // redirect('/aule'); */
+       // redirect('/aule');
     }
 
     /**
