@@ -41,9 +41,8 @@ export default {
   },
   methods: {
     getListAule() {
-      axios.get("https://reqres.in/api/users").then(res => {
-        console.log(res);
-        this.listAule = res.data.data;
+      axios.get("http://127.0.0.1:8000/aule").then(res => {
+        this.listAule = res.data.aule;
       });
     }
   },

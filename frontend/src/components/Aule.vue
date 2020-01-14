@@ -9,21 +9,16 @@
           <th class="tg th">Capienza</th>
           <th class="tg th">Tipo</th>
           <th class="tg th">Disponibilità</th>
-          <th class="tg th">Avatar</th>
           <th class="tg th">Mappa</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="aula in listAule" :key="aula.id">
-          <td class="tg td">{{aula.id}}</td>
-          <td class="tg td">{{aula.email}}</td>
-          <td class="tg td">{{aula.first_name}}</td>
-          <td class="tg td">{{aula.last_name}}</td>
+          <td class="tg td">{{aula.codice}}</td>
+          <td class="tg td">{{aula.edificio}}</td>
+          <td class="tg td">{{aula.capienza}}</td>
+          <td class="tg td">{{aula.tipo}}</td>
           <td class="tg td">{{aula.disponibilita}}</td>
-
-          <td class="tg td">
-            <img :src="aula.avatar" />
-          </td>
           <td class="tg td">
             <button class="button" @click="showMap(aula.avatar)">Mappa</button>
           </td>
@@ -69,6 +64,7 @@
     <table class="tg" v-else>
       <thead>
         <tr>
+          <th class="tg th">ID</th>
           <th class="tg th">Aula</th>
           <th class="tg th">Edificio</th>
           <th class="tg th">Capienza</th>
@@ -82,6 +78,7 @@
             <router-link :to="{name:'listaPersone',params:{aula: aula.id}}">{{aula.id}}</router-link>
           </td>
           <td class="tg td">{{aula.codice}}</td>
+          <td class="tg td">{{aula.edificio}}</td>
           <td class="tg td">{{aula.capienza}}</td>
           <td class="tg td">{{aula.tipo}}</td>
           <td class="tg td">{{aula.disponibilita}}</td>
@@ -130,7 +127,7 @@ export default {
         if (willDelete) {
           axios.get(`http://127.0.0.1:8000/aule/${id}/delete`).then(res => {
             console.log(res);
-            this.$router.push('/redirectDeleteAule');
+            this.$router.push("/redirectDeleteAule");
             swal("L'aula è stata eliminata!", {
               icon: "success"
             });

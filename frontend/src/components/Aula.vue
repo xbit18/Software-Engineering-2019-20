@@ -7,6 +7,7 @@
       <table class="tg" v-if="aula">
         <thead>
           <tr>
+            <th class="tg th">ID</th>
             <th class="tg th">Aula</th>
             <th class="tg th">Edificio</th>
             <th class="tg th">Capienza</th>
@@ -19,12 +20,11 @@
         <tbody>
           <tr>
             <td class="tg td">{{aula.id}}</td>
-            <td class="tg td">{{aula.email}}</td>
-            <td class="tg td">{{aula.first_name}}</td>
-            <td class="tg td">{{aula.last_name}}</td>
-            <td class="tg td">
-              <img :src="aula.avatar" />
-            </td>
+            <td class="tg td">{{aula.codice}}</td>
+            <td class="tg td">{{aula.edificio}}</td>
+            <td class="tg td">{{aula.capienza}}</td>
+            <td class="tg td">{{aula.tipo}}</td>
+            <td class="tg td">{{aula.disponibilita}}</td>
             <td class="tg td">
               <router-link :to="'/editAula/'+aula.id" class="button button-modifica">Modifica</router-link>
             </td>
@@ -66,8 +66,8 @@ export default {
   },
   methods: {
     getAula(id) {
-      axios.get("https://reqres.in/api/users/" + id).then(res => {
-        this.aula = res.data.data;
+      axios.get(`http://127.0.0.1:8000/aule/${id}`).then(res => {
+        this.aula = res.data.aula;
       });
     },
     goSearch: function() {

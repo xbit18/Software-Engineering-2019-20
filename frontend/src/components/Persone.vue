@@ -1,5 +1,5 @@
 <template>
-  <table class="tg" v-if="listPersone.length > 0">
+  <table class="tg" v-if="listPersone">
     <thead>
       <tr>
         <th class="tg th">ID</th>
@@ -16,9 +16,9 @@
     <tbody>
       <tr v-for="persona in listPersone" :key="persona.id">
         <td class="tg td">{{persona.id}}</td>
-        <td class="tg td">{{persona.email}}</td>
-        <td class="tg td">{{persona.first_name}}</td>
-        <td class="tg td">{{persona.last_name}}</td>
+        <td class="tg td">{{persona.codice}}</td>
+        <td class="tg td">{{persona.edificio}}</td>
+        <td class="tg td">{{persona.capienza}}</td>
         <td class="tg td"></td>
         <td class="tg td"></td>
         <td class="tg td"></td>
