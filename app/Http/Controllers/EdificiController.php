@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Edificio;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class EdificiController extends Controller
 {
@@ -37,27 +38,27 @@ class EdificiController extends Controller
      */
     public function store(Request $request)
     {
-        $edificio = $request->all();
-        var_dump($edificio);
-        die();
-           /* $data = $request->json()->all();
-            $edificio = new Edificio();
-            $edificio->numero_aule = $data['numero_aule'];
-            $edificio->nome = $data['nome'];
-            $edificio->indirizzo = $data['indirizzo'];
-            Edificio::insert($data);
+        /*FUNZIONA*****************************************************
+        $data = $request->json()->all();
 
-            var_dump($edificio);
-            die();
-        */
-        /*$edificio = new Edificio();
+        DB::table('edificio')->insert([
+            ['numero_aule' => $data['numero_aule'],
+                'nome' => $data['nome'],
+                'indirizzo' => $data['indirizzo']]
+        ]);
+        **************************************************************/
 
-        $edificio->numero_aule = request('numero_aule');
-        $edificio->nome = request('nome');
-        $edificio->indirizzo = request('indirizzo');
-        $edificio->save();
-       // redirect('/edifici');
-        */
+        ////////////////////////////////////////////////////
+            $data = $request->json()->all();
+
+            $edificio = Edificio::create([
+                'numero_aule' => $data['numero_aule'],
+                'nome' => $data['nome'],
+                'indirizzo' => $data['indirizzo']
+            ]);
+
+            $edificio -> save();
+        /////////////////////////////////////////////////////
     }
 
     /**
