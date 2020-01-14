@@ -35,9 +35,17 @@ class EdificiController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(Request $request)
     {
 
+            $data = Input::all(); //$data = $request->json()->all(); should also work
+            $edificio = new edificio();
+            $edificio->numero_aule = $data['numero_aule'];
+            $edificio->nome = $data['nome'];
+            $edificio->indirizzo = $data['indirizzo'];
+            $edificio->save();
+
+        /*
         $edificio = new Edificio();
 
         $edificio->id= request('id');
@@ -46,6 +54,7 @@ class EdificiController extends Controller
         $edificio->indirizzo= request('indirizzo');
         $edificio->save();
         redirect('/edifici');
+        */
     }
 
     /**
