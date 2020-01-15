@@ -14,12 +14,12 @@ class CreatePresenzasTable extends Migration
     public function up()
     {
         Schema::create('presenze', function (Blueprint $table) {
-            $table->bigIncrements('id')->primary();
+            $table->bigIncrements('id');
             $table->dateTime("data_entrata");
             $table->dateTime("data_uscita");
             $table->string("materia",50);
-            $table->integer("id_aula");
-            $table->integer("id_studente");
+            $table->unsignedBigInteger("id_aula")->nullable(true);
+            $table->unsignedBigInteger("id_utente")->nullable(true);
 
             $table->timestamps();
         });

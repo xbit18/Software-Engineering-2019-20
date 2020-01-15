@@ -14,11 +14,11 @@ class CreatePostosTable extends Migration
     public function up()
     {
         Schema::create('posti', function (Blueprint $table) {
-            $table->bigIncrements('id')->primary();
+            $table->bigIncrements('id');
             $table->integer("numero_posto")->unique();
             $table->enum("disponibilita", ["libero", "occupato"]);
-            $table->integer("id_utente");
-            $table->integer("id_aula")->unique();
+            $table->unsignedBigInteger("id_utente")->nullable(true);
+            $table->unsignedBigInteger("id_aula")->unique()->nullable(true);
 
             $table->timestamps();
         });

@@ -14,10 +14,10 @@ class CreateMappasTable extends Migration
     public function up()
     {
         Schema::create('mappe', function (Blueprint $table) {
-            $table->bigIncrements('id')->primary();
+            $table->bigIncrements('id');
             $table->string("piantina",200);
             $table->integer("piano");
-            $table->integer('id_edificio');
+            $table->unsignedBigInteger('id_edificio')->nullable(true);
             $table->timestamps();
         });
     }
