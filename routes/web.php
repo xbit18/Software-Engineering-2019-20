@@ -78,7 +78,4 @@ Route::put('/prenotazioni/{prenotazione}','PrenotazioniController@update');
 //Registra le modifiche alla prenotazione
 Route::post('/checks', 'CheckController@store');
 //Effettua check-in e check-out
-Route::get('/checks', function () {
-    return view('check');
-});
 ?>
