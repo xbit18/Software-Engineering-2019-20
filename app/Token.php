@@ -11,4 +11,8 @@ class Token extends Model
     public $id_aula;
 
     protected $table = 'token';
+
+    public function aula(){
+        return $this->belongsTo('App\Aula');
+    }
 }

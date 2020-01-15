@@ -13,4 +13,12 @@ class Posto extends Model
     public $id_aula;
 
     protected $table = "posto";
+
+    public function aula(){
+        return $this->belongsTo('App\Aula');
+    }
+
+    public function utente(){
+        return $this->hasOne('App\Utente');
+    }
 }

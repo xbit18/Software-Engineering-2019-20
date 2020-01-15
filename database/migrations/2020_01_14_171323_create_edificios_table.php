@@ -14,10 +14,10 @@ class CreateEdificiosTable extends Migration
     public function up()
     {
         Schema::create('edifici', function (Blueprint $table) {
-            $table->bigIncrements('id')->primary();
+            $table->bigIncrements('id');
             $table->string("nome",50)->unique();
-            $table->string("indirizzo",150)->nullable();
-            $table->integer("numero_aule")->nullable();
+            $table->string("indirizzo",150);
+            $table->integer("numero_aule");
 
             $table->timestamps();
         });

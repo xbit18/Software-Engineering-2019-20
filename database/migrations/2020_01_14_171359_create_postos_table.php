@@ -13,8 +13,13 @@ class CreatePostosTable extends Migration
      */
     public function up()
     {
-        Schema::create('postos', function (Blueprint $table) {
+        Schema::create('posti', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer("numero_posto")->unique();
+            $table->enum("disponibilita", ["libero", "occupato"]);
+            $table->unsignedBigInteger("id_utente")->nullable(true);
+            $table->unsignedBigInteger("id_aula")->unique()->nullable(true);
+
             $table->timestamps();
         });
     }
@@ -26,6 +31,6 @@ class CreatePostosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('postos');
+        Schema::dropIfExists('posti');
     }
 }
