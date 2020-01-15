@@ -16,8 +16,7 @@ class EdificiController extends Controller
     public function index()
     {
         $edifici=Edificio::all();
-        return response()->json(['edifici'=>$edifici], 200);
-        //return view('edifici.index',['edifici'=>$edifici]);
+        return response($edifici,200);
     }
 
     /**

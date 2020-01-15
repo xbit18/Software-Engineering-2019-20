@@ -21,6 +21,7 @@ import editEdificio from './components/editEdificio.vue'
 import gestisceEdifici from './components/gestisceEdifici.vue'
 import Edificio from './components/Edificio.vue'
 import CheckIn from './components/CheckIn.vue'
+require('./store/modules/subscriber.js')
 
 // axios.defaults.baseURL = "http://127.0.0.1:8000";
 
@@ -29,25 +30,216 @@ Vue.use(VueRouter);
 Vue.use(Vuelidate);
 Vue.use(require('vue-moment'));
 
+store.dispatch('auth/attempt', localStorage.getItem('token')).then(() =>{
 
+  new Vue({
+    router,
+    store,
+    render: h => h(App),
+  }).$mount('#app')
+
+});
+
+export const bus = new Vue();
+
+
+
+
+
+
+/* Router */
 const routes = [
- {path:'/', component: Inizio},
- {path:'/listaPersone/:aula', name:'listaPersone',component: listaPersone},
- {path:'/searchAula', component: searchAula},
- {path:'/redirectPersone/:aula', component: RedirectListaPersone},
- {path:'/redirectAula/:aula', component: RedirectAula},
- {path:'/redirectEdificio/:edificio', component: RedirectEdificio},
- {path:'/aula/:aula', name:'aula', component: Aula},
- {path:'/gestisceAule', component: gestisceAule},
- {path:'/gestisceEdifici', component: gestisceEdifici},
- {path:'/editAula/:aula', component: editAula},
- {path:'/createAula', component: createAula},
- {path:'/createEdificio', component: createEdificio},
- {path:'/editEdificio/:edificio', component: editEdificio},
- {path:'/edificio/:edificio', name:'edificio', component: Edificio},
- {path:'/check/:aula?', name:'check', component: CheckIn},
- {path:'/redirectDeleteEdificio', component: RedirectDeleteEdificio},
- {path:'/redirectDeleteAule', component: RedirectDeleteAula}
+  {
+    path:'/', 
+    name: 'inizio',
+    component: Inizio,
+   
+
+    
+  },
+  {
+    path:'/listaPersone/:aula', 
+    name:'listaPersone',
+    component: listaPersone,
+    beforeEnter: (to, from, next) => {
+      if(!store.getters['auth/Authenticated']){
+        return next({
+          name: 'inizio'
+        })
+      }
+      next()
+    }
+  },
+  {
+    path:'/searchAula', 
+    component: searchAula,
+    beforeEnter: (to, from, next) => {
+      if(!store.getters['auth/Authenticated']){
+        return next({
+          name: 'inizio'
+        })
+      }
+      next()
+    }
+  },
+  {path:'/redirectPersone/:aula',
+  component: RedirectListaPersone,
+  beforeEnter: (to, from, next) => {
+    if(!store.getters['auth/Authenticated']){
+      return next({
+        name: 'inizio'
+      })
+    }
+    next()
+  }
+  },
+  {path:'/redirectAula/:aula',
+  component: RedirectAula,
+  beforeEnter: (to, from, next) => {
+    if(!store.getters['auth/Authenticated']){
+      return next({
+        name: 'inizio'
+      })
+    }
+    next()
+  }
+  },
+  {path:'/redirectEdificio/:edificio', 
+  component: RedirectEdificio,
+  beforeEnter: (to, from, next) => {
+    if(!store.getters['auth/Authenticated']){
+      return next({
+        name: 'inizio'
+      })
+    }
+    next()
+  }
+  },
+  {path:'/aula/:aula', 
+  name:'aula', 
+  component: Aula,
+  beforeEnter: (to, from, next) => {
+    if(!store.getters['auth/Authenticated']){
+      return next({
+        name: 'inizio'
+      })
+    }
+    next()
+  }
+  },
+  {path:'/gestisceAule', 
+  component: gestisceAule,
+  beforeEnter: (to, from, next) => {
+    if(!store.getters['auth/Authenticated']){
+      return next({
+        name: 'inizio'
+      })
+    }
+    next()
+  }
+  },
+  {path:'/gestisceEdifici', 
+  component: gestisceEdifici,
+  beforeEnter: (to, from, next) => {
+    if(!store.getters['auth/Authenticated']){
+      return next({
+        name: 'inizio'
+      })
+    }
+    next()
+  }
+  },
+  {path:'/editAula/:aula',
+  component: editAula,
+  beforeEnter: (to, from, next) => {
+    if(!store.getters['auth/Authenticated']){
+      return next({
+        name: 'inizio'
+      })
+    }
+    next()
+  }
+  },
+  {path:'/createAula', 
+  component: createAula,
+  name: 'createAula',
+  beforeEnter: (to, from, next) => {
+    if(!store.getters['auth/Authenticated']){
+      return next({
+        name: 'inizio'
+      })
+    }
+    next()
+  }
+  },
+  {path:'/createEdificio',
+  component: createEdificio,
+  beforeEnter: (to, from, next) => {
+    if(!store.getters['auth/Authenticated']){
+      return next({
+        name: 'inizio'
+      })
+    }
+    next()
+  }
+  },
+  {path:'/editEdificio/:edificio', 
+  component: editEdificio,
+  beforeEnter: (to, from, next) => {
+    if(!store.getters['auth/Authenticated']){
+      return next({
+        name: 'inizio'
+      })
+    }
+    next()
+  }
+  },
+  {path:'/edificio/:edificio',
+  name:'edificio', 
+  component: Edificio,
+  beforeEnter: (to, from, next) => {
+    if(!store.getters['auth/Authenticated']){
+      return next({
+        name: 'inizio'
+      })
+    }
+    next()
+  }
+  },
+  {path:'/check/:aula?',
+  name:'check', 
+  component: CheckIn,
+  beforeEnter: (to, from, next) => {
+    if(!store.getters['auth/Authenticated']){
+      return next({
+        name: 'inizio'
+      })
+    }
+    next()
+  }
+  },
+  {path:'/redirectDeleteEdificio', 
+  component: RedirectDeleteEdificio,
+  beforeEnter: (to, from, next) => {
+    if(!store.getters['auth/Authenticated']){
+      return next({
+        name: 'inizio'
+      })
+    }
+    next()
+  }
+  },
+  {path:'/redirectDeleteAule',
+  component: RedirectDeleteAula,
+  beforeEnter: (to, from, next) => {
+    if(!store.getters['auth/Authenticated']){
+      return next({
+        name: 'inizio'
+      })
+    }
+    next()
+  }
+  }
 ]
 
 const router = new VueRouter({
@@ -55,10 +247,6 @@ const router = new VueRouter({
   mode: 'history'
 });
 
-export const bus = new Vue();
 
-new Vue({
-  router,
-  store,
-  render: h => h(App),
-}).$mount('#app')
+/* ----------------- Router ----------------------*/
+

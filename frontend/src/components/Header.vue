@@ -28,7 +28,7 @@
         </form>
       </div>
     </div>
-    <a id="logout" class="button" v-if="authenticated">LOGOUT</a>
+    <a id="logout" class="button" v-if="authenticated" @click.prevent="logOut()">LOGOUT</a>
 
     <Slide :right="true">
       <router-link to="/">
@@ -111,15 +111,22 @@ export default {
   },
   methods: {
     ...mapActions({
-      login: 'auth/login'
+      logInAction: 'auth/login',
+      logOutAction: 'auth/logout'
     }),
     submit() {
      //
-     this.login(this.utente).then(() => {
-       this.$router.push('/');
-     }).catch((e) => {
-       console.log(e);
-     })
+     this.logInAction(this.utente)
+    },
+    logOut(){
+      this.logOutAction().then(() =>{
+        this.$router.replace({
+          name: 'inizio'
+        })
+      })
+      .catch(e =>{
+        console.log(e)
+      })
     }
   }
 };

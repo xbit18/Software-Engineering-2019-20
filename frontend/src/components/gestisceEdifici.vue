@@ -4,7 +4,7 @@
       <div class="title">
         <h1>Lista Edifici</h1>
       </div>
-      <Edifici :listEdifici="listEdifici"></Edifici>  
+      <Edifici :listEdifici="listEdifici"></Edifici>
     </section>
     <aside class="sidebar search waitingAula">
       <div id="search" class="sidebar-item">
@@ -28,7 +28,7 @@ export default {
   data() {
     return {
       searchString: null,
-      listEdifici: ''
+      listEdifici: ""
     };
   },
   components: {
@@ -42,11 +42,10 @@ export default {
       this.$router.push("/redirectEdificio/" + this.searchString);
     },
     getEdifici() {
-      axios.get("http://127.0.0.1:8000/edifici").
-      then(res => {
-        console.log(res);
+      axios.get("http://127.0.0.1:8000/edifici").then(res => {
         this.listEdifici = res.data.edifici;
-        this.listEdifici.reverse();
+        console.log(res);
+        console.log(this.listEdifici);
       });
     }
   }
