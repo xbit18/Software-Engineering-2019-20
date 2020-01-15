@@ -13,8 +13,14 @@ class CreatePresenzasTable extends Migration
      */
     public function up()
     {
-        Schema::create('presenzas', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('presenze', function (Blueprint $table) {
+            $table->bigIncrements('id')->primary();
+            $table->dateTime("data_entrata");
+            $table->dateTime("data_uscita");
+            $table->string("materia",50);
+            $table->integer("id_aula");
+            $table->integer("id_studente");
+
             $table->timestamps();
         });
     }
@@ -26,6 +32,6 @@ class CreatePresenzasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('presenzas');
+        Schema::dropIfExists('presenze');
     }
 }

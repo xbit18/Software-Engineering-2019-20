@@ -13,8 +13,15 @@ class CreatePrenotazionesTable extends Migration
      */
     public function up()
     {
-        Schema::create('prenotaziones', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('prenotazioni', function (Blueprint $table) {
+            $table->bigIncrements('id')->primary();
+            $table->dateTime("data_inizio");
+            $table->dateTime("data_fine");
+            $table->text("motivazione");
+            $table->enum("stato",["accettata","rifiutata"]);
+            $table->integer("id_aula");
+            $table->integer("id_studente");
+
             $table->timestamps();
         });
     }
@@ -26,6 +33,6 @@ class CreatePrenotazionesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('prenotaziones');
+        Schema::dropIfExists('prenotazioni');
     }
 }

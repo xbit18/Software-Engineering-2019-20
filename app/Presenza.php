@@ -14,4 +14,12 @@ class Presenza extends Model
     public $id_utente;
 
     protected $table = "presenza";
+
+    public function aule(){
+        return $this->belongsTo('App\Aula');
+    }
+
+    public function utenti(){
+        return $this->belongsTo('App\Utente');
+    }
 }

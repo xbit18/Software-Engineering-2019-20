@@ -32,6 +32,22 @@ class ForeignKeys extends Migration
         Schema::table('posti', function(Blueprint $table4) {
             $table4->foreign('id_utente')->references('id')
                 ->on('utenti')->onDelete('set null'); });
+
+        Schema::table('presenze', function(Blueprint $table5) {
+            $table5->foreign('id_aula')->references('id')
+                ->on('aule')->onDelete('set null'); });
+
+        Schema::table('presenze', function(Blueprint $table6) {
+            $table6->foreign('id_utente')->references('id')
+                ->on('utenti')->onDelete('set null'); });
+
+        Schema::table('prenotazioni', function(Blueprint $table7) {
+            $table7->foreign('id_aula')->references('id')
+                ->on('aule')->onDelete('set null'); });
+
+        Schema::table('prenotazioni', function(Blueprint $table8) {
+            $table8->foreign('id_utente')->references('id')
+                ->on('utenti')->onDelete('set null'); });
     }
 
     /**

@@ -12,4 +12,8 @@ class Mappa extends Model
     public $id_edificio;
 
     protected $table = 'mappa';
+
+    public function edificio(){
+        return $this->belongsTo('App\Edificio');
+    }
 }
