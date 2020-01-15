@@ -2,6 +2,8 @@ import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router'
 import Vuelidate from 'vuelidate'
+import store from './store'
+// import axios from 'axios'
 import Inizio from "./components/Inizio.vue"
 import listaPersone from './components/listPersone.vue'
 import searchAula from './components/searchAula.vue'
@@ -20,8 +22,9 @@ import gestisceEdifici from './components/gestisceEdifici.vue'
 import Edificio from './components/Edificio.vue'
 import CheckIn from './components/CheckIn.vue'
 
-Vue.config.productionTip = false
+// axios.defaults.baseURL = "http://127.0.0.1:8000";
 
+Vue.config.productionTip = false;
 Vue.use(VueRouter);
 Vue.use(Vuelidate);
 Vue.use(require('vue-moment'));
@@ -56,5 +59,6 @@ export const bus = new Vue();
 
 new Vue({
   router,
+  store,
   render: h => h(App),
 }).$mount('#app')
