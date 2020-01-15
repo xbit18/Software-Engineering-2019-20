@@ -14,7 +14,7 @@ class Prenotazione extends Model
     public $id_aula;
     public $id_utente;
 
-    protected $table = 'prenotazione';
+    protected $table = 'prenotazioni';
 
     public function utenti(){
         return $this->belongsTo('App\Utente');

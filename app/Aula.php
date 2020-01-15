@@ -14,7 +14,7 @@ class Aula extends Model
     public $capienza;
     public $stato;
     public $id_edificio;
-    public $table = 'aula';
+    public $table = 'aule';
 
     public function edificio(){
         return $this->belongsTo('App\Edificio');

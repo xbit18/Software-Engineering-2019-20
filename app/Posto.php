@@ -12,7 +12,7 @@ class Posto extends Model
     public $id_utente;
     public $id_aula;
 
-    protected $table = "posto";
+    protected $table = "posti";
 
     public function aula(){
         return $this->belongsTo('App\Aula');

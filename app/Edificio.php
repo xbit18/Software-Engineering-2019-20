@@ -12,7 +12,7 @@ class Edificio extends Model
     public $nome;
     public $indirizzo;
 
-    protected $table = 'edificio';
+    protected $table = 'edifici';
 
     public function aule(){
         return $this->hasMany('App\Aula');

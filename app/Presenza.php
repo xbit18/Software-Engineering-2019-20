@@ -13,7 +13,7 @@ class Presenza extends Model
     public $id_aula;
     public $id_utente;
 
-    protected $table = "presenza";
+    protected $table = "presenze";
 
     public function aule(){
         return $this->belongsTo('App\Aula');

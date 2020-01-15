@@ -34,7 +34,7 @@ class AuleController extends Controller
             'codice' => $data['codice'],
             'capienza' => $data['capienza'],
             'tipo' => $data['tipo'],
-            'edificio' => $data['edificio']
+            'id_edificio' => $data['edificio']
         ]);
 
         $aula -> save();

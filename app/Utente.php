@@ -16,7 +16,7 @@ class Utente extends Model
     public $corso;
     public $matricola;
     public $numero_documento;
-    protected $table = 'utente';
+    protected $table = 'utenti';
 
     public function presenza(){
         return $this->hasMany('App\Presenza');
