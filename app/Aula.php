@@ -14,5 +14,5 @@ class Aula extends Model
     public $capienza;
     public $stato;
     public $id_edificio;
-    protected $table = 'aula';
+    public $table = 'aula';
 }

@@ -79,11 +79,12 @@ class AuleController extends Controller
     {
         $aula= Aula::findOrFail($codice);
         $aula->codice= request('codice');
+        $aula->id_edificio= request('edificio');
         $aula->capienza= request('capienza');
+        $aula->stato= request('stato');
         $aula->tipo= request('tipo');
         $aula->disponibilita= request('disponibilita');
         $aula->save();
-        redirect('/aule');
     }
 
     /**
