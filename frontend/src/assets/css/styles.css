@@ -125,6 +125,12 @@ h2{
     background: black;
 }
 
+#logout{
+    position: absolute;
+    left: 82%;
+    top: 3%;
+}
+
 .title {
     margin-top: 20px;
     padding: 20px 0px 10px 10px;
