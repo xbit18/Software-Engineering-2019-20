@@ -5,12 +5,11 @@ namespace App\Http\Controllers;
 use App\Aula;
 use Illuminate\Http\Request;
 use App\Edificio;
-use Illuminate\Support\Facades\DB;
 
 class AuleController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Mostra una lista di tutte le aule.
      *
      * @return \Illuminate\Http\Response
      */
@@ -21,7 +20,7 @@ class AuleController extends Controller
         $aule=Aula::all();
 
             foreach ($aule as $aula){
-                $edificio = Edificio::where('id', $aula['id_edificio'])->first();
+                $edificio = Edificio::findOrFail($aula['id_edificio']);
                 $aula['nome_edificio'] = $edificio['nome'];
             }
 
@@ -31,70 +30,69 @@ class AuleController extends Controller
 
 
     /**
-     * Store a newly created resource in storage.
+     * Aggiunge un'aula al database.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $data = $request->json()->all();
-
-        $aula = Aula::create([
-            'codice' => $data['codice'],
-            'capienza' => $data['capienza'],
-            'tipo' => $data['tipo'],
-            'id_edificio' => $data['edificio']
-        ]);
+        $aula = new Aula;
+        $aula->codice = $request->codice;
+        $aula->capienza = $request->capienza;
+        $aula->tipo = $request->tipo;
+        $aula->id_edificio = $request->id_edificio;
 
         $aula -> save();
+
         return response()->json(['aula'=>$aula],201);
     }
 
     /**
-     * Display the specified resource.
+     * Mostra un'aula in base all'ID.
      *
      * @param  \App\Aula  $aula
      * @return \Illuminate\Http\Response
      */
-    public function show($codice)
+    public function show($id)
     {
-        $aula= Aula::findOrFail($codice);
+        $aula= Aula::findOrFail($id);
         return response()->json(['aula'=>$aula],200);
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Mostra un'aula in base al codice.
      *
      * @param  \App\Aula  $aula
      * @return \Illuminate\Http\Response
      */
-    public function edit($codice)
-    {
-        $aula = Aula::findOrFail($codice);
-        return view('aule.edit',compact('aula'));
+    public function showNome($codice){
+        $aula = Aula::where('codice', $codice)->firstOr(function () {
+            return response()->json(["errore" => "aula non trovata"], 404);
+        });
+
+        return response()->json(["aula" => $aula], 200);
     }
 
-
     /**
-     * Update the specified resource in storage.
+     * Registra nel database i cambiamenti all'aula.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Aula  $aula
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request)
     {
         $data = $request->json()->all();
 
-        $aula = Aula::find($data['id']);
+        $aula = Aula::findOrFail($data['id']);
 
-        $aula->codice = $data['codice'];
-        $aula->id_edificio = $data['id_edificio'];
-        $aula->capienza = $data['capienza'];
-        $aula->stato = $data['stato'];
-        $aula->tipo = $data['tipo'];
-        $aula->disponibilita = $data['disponibilita'];
+        $aula->codice = $request->codice;
+        $aula->id_edificio = $request->id_edificio;
+
+        $aula->capienza = $request->capienza;
+        $aula->stato = $request->stato;
+        $aula->tipo = $request->tipo;
+        $aula->disponibilita = $request->disponibilita;
 
 
         $aula->save();
@@ -103,7 +101,7 @@ class AuleController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Rimuove l'aula specificata dal database
      *
      * @param  \App\Aula  $aula
      * @return \Illuminate\Http\Response
@@ -112,5 +110,7 @@ class AuleController extends Controller
     {
         $aula = Aula::findOrFail($codice);
         $aula->delete();
+
+        return response()->json(['aula'=>$aula],200);
     }
 }

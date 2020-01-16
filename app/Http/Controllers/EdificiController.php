@@ -27,30 +27,15 @@ class EdificiController extends Controller
      */
     public function store(Request $request)
     {
-        /*FUNZIONA*****************************************************
-        $data = $request->json()->all();
+        $edificio = new Edificio;
 
-        DB::table('edificio')->insert([
-            ['numero_aule' => $data['numero_aule'],
-                'nome' => $data['nome'],
-                'indirizzo' => $data['indirizzo']]
-        ]);
-        **************************************************************/
-
-        ////////////////////////////////////////////////////
-
-        $data = $request->json()->all();
-
-        $edificio = Edificio::create([
-            'numero_aule' => $data['numero_aule'],
-            'nome' => $data['nome'],
-            'indirizzo' => $data['indirizzo']
-        ]);
+        $edificio->numero_aule = $request->numero_aule;
+        $edificio->nome = $request->nome;
+        $edificio->indirizzo = $request->indirizzo;
 
         $edificio -> save();
-        return response()->json(['edificio'=>$edificio],201);
 
-        /////////////////////////////////////////////////////
+        return response()->json(['edificio'=>$edificio],201);
     }
 
     /**
@@ -66,33 +51,23 @@ class EdificiController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Edificio  $edificio
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        $edificio= Edificio::findOrFail($id);
-        return view('edifici.edit',compact('edificio'));
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Edificio  $edificio
      * @return \Illuminate\Http\Response
      */
-    public function update($id)
+    public function update(Request $request)
     {
-        $edificio= Edificio::findOrFail($id);
-        $edificio->id= request('id');
-        $edificio->numero= request('numero_aule');
-        $edificio->nome= request('nome');
-        $edificio->indirizzo= request('indirizzo');
-        $edificio->save();
-        redirect('/edifici');
+        $edificio= Edificio::findOrFail($request->id);
+
+        $edificio->nome= $request->nome;
+        $edificio->numero= $request->numero_aule;
+        $edificio->indirizzo= $request->indirizzo;
+        dd($edificio);
+        //$edificio->save();
+
+        //return response()->json(['edificio'=>$edificio], 200);
     }
 
     /**
