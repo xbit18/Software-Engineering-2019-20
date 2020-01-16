@@ -14,8 +14,9 @@ class AuleController extends Controller
      */
     public function index()
     {
-         $aule=Aula::all();
-        return ['aule'=>$aule];
+
+         //$aule=Aula::all();
+        //return response()->json(['aule'=>$aule]);
         // return view('aule.index',['aule'=>$aule]);
     }
 
