@@ -16,10 +16,11 @@ class CreatePresenzasTable extends Migration
         Schema::create('presenze', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->dateTime("data_entrata");
-            $table->dateTime("data_uscita");
+            $table->dateTime("data_uscita")->nullable();
             $table->string("materia",50);
             $table->unsignedBigInteger("id_aula")->nullable(true);
             $table->unsignedBigInteger("id_utente")->nullable(true);
+            $table->boolean('conferma');
 
             $table->timestamps();
         });

@@ -44,6 +44,8 @@ Route::get('/aula/{aula}', 'AuleController@showNome');                          
 
 Route::patch('/aule/{aula}','AuleController@stato');                               // apre/chiude aula
 
+Route::get('/aule/{aula}/presenze', 'AuleController@presenze');
+
 
 
 
