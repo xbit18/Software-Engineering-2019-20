@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Aula;
 use Illuminate\Http\Request;
+use App\Edificio;
+use Illuminate\Support\Facades\DB;
 
 class AuleController extends Controller
 {
@@ -12,12 +14,19 @@ class AuleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
 
-         //$aule=Aula::all();
-        //return response()->json(['aule'=>$aule]);
-        // return view('aule.index',['aule'=>$aule]);
+        $aule=Aula::all();
+
+            foreach ($aule as $aula){
+                $edificio = Edificio::where('id', $aula['id_edificio'])->first();
+                $aula['nome_edificio'] = $edificio['nome'];
+            }
+
+        return response()->json(['aule'=>$aule],200);
+
     }
 
 
@@ -40,7 +49,6 @@ class AuleController extends Controller
 
         $aula -> save();
         return response()->json(['aula'=>$aula],201);
-       // redirect('/aule');
     }
 
     /**
@@ -52,8 +60,7 @@ class AuleController extends Controller
     public function show($codice)
     {
         $aula= Aula::findOrFail($codice);
-        return ['aula'=>$aula];
-        //return view('aule.show',['aula'=>$aula]);
+        return response()->json(['aula'=>$aula],200);
     }
 
     /**
@@ -64,7 +71,7 @@ class AuleController extends Controller
      */
     public function edit($codice)
     {
-        $aula= Aula::findOrFail($codice);
+        $aula = Aula::findOrFail($codice);
         return view('aule.edit',compact('aula'));
     }
 
@@ -76,16 +83,23 @@ class AuleController extends Controller
      * @param  \App\Aula  $aula
      * @return \Illuminate\Http\Response
      */
-    public function update($codice)
+    public function update(Request $request)
     {
-        $aula= Aula::findOrFail($codice);
-        $aula->codice= request('codice');
-        $aula->id_edificio= request('edificio');
-        $aula->capienza= request('capienza');
-        $aula->stato= request('stato');
-        $aula->tipo= request('tipo');
-        $aula->disponibilita= request('disponibilita');
+        $data = $request->json()->all();
+
+        $aula = Aula::find($data['id']);
+
+        $aula->codice = $data['codice'];
+        $aula->id_edificio = $data['id_edificio'];
+        $aula->capienza = $data['capienza'];
+        $aula->stato = $data['stato'];
+        $aula->tipo = $data['tipo'];
+        $aula->disponibilita = $data['disponibilita'];
+
+
         $aula->save();
+
+        return response()->json(['aula'=>$aula],200);
     }
 
     /**
