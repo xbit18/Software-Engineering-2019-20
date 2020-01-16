@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Aula;
 use App\Posto;
+use App\Presenza;
 use Illuminate\Http\Request;
 use App\Edificio;
 use Illuminate\Support\Facades\DB;
@@ -135,5 +136,37 @@ class AuleController extends Controller
         $aula->delete();
 
         return response()->json($aula,200);
+    }
+
+
+    /**
+     * Permette di cambiare lo stato di un'aula da aperta a chiusa e viceversa
+     *
+     * @param $id_aula
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     *
+     */
+    public function stato($id_aula, Request $request){
+        $aula = Aula::find($id_aula);
+
+        $aula->stato = $request->stato;
+        $aula->save();
+
+        return response()->json($aula,200);
+    }
+
+
+    /**
+     * Restituisce tutti i presenti all'interno di una data aula
+     *
+     * @param $id_aula
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function presenze($id_aula){
+        $presenza = Presenza::where('id_aula', $id_aula)
+            ->where('data_uscita', null)->get();
+
+        return response()->json($presenza,200);
     }
 }

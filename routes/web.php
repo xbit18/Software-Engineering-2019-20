@@ -42,7 +42,9 @@ Route::get('/aule/{aula}/delete','AuleController@destroy');                     
 
 Route::get('/aula/{aula}', 'AuleController@showNome');                              //Restitusce un'aula in base al nome
 
-Route::patch('/aule/{aula}','AuleController@stato');                       // apre/chiude aula
+Route::patch('/aule/{aula}','AuleController@stato');                               // apre/chiude aula
+
+Route::get('/aule/{aula}/presenze', 'AuleController@presenze');
 
 
 
