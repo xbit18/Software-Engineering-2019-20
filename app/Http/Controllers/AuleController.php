@@ -24,7 +24,7 @@ class AuleController extends Controller
                 $aula['nome_edificio'] = $edificio['nome'];
             }
 
-        return response()->json(['aule'=>$aule],200);
+        return response()->json($aule,200);
 
     }
 
@@ -45,7 +45,7 @@ class AuleController extends Controller
 
         $aula -> save();
 
-        return response()->json(['aula'=>$aula],201);
+        return response()->json($aula,201);
     }
 
     /**
@@ -56,8 +56,12 @@ class AuleController extends Controller
      */
     public function show($id)
     {
-        $aula= Aula::findOrFail($id);
-        return response()->json(['aula'=>$aula],200);
+        $aula= Aula::find($id);
+        if($aula == null){
+            return response()->json(["errore"=>"aula non trovata"], 404);
+        }
+
+        return response()->json($aula, 200);
     }
 
     /**
@@ -67,12 +71,14 @@ class AuleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function showNome($codice){
-        $aula = Aula::where('codice', $codice)->firstOr(function () {
-            return response()->json(["errore" => "aula non trovata"], 404);
-        });
+        $aula = Aula::where('codice', $codice)->first();
+        if($aula == null){
+            return response()->json(["errore"=>"aula non trovata"], 404);
+        }
 
-        return response()->json(["aula" => $aula], 200);
+        return response()->json($aula, 200);
     }
+
 
     /**
      * Registra nel database i cambiamenti all'aula.
@@ -82,9 +88,7 @@ class AuleController extends Controller
      */
     public function update(Request $request)
     {
-        $data = $request->json()->all();
-
-        $aula = Aula::findOrFail($data['id']);
+        $aula = Aula::findOrFail($request->id);
 
         $aula->codice = $request->codice;
         $aula->id_edificio = $request->id_edificio;
@@ -97,7 +101,7 @@ class AuleController extends Controller
 
         $aula->save();
 
-        return response()->json(['aula'=>$aula],200);
+        return response()->json($aula,200);
     }
 
     /**
@@ -111,6 +115,6 @@ class AuleController extends Controller
         $aula = Aula::findOrFail($codice);
         $aula->delete();
 
-        return response()->json(['aula'=>$aula],200);
+        return response()->json($aula,200);
     }
 }

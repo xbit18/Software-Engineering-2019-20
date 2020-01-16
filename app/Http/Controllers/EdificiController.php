@@ -16,7 +16,7 @@ class EdificiController extends Controller
     public function index()
     {
         $edifici=Edificio::all();
-        return response($edifici,200);
+        return response()->json($edifici,200);
     }
 
     /**
@@ -35,7 +35,7 @@ class EdificiController extends Controller
 
         $edificio -> save();
 
-        return response()->json(['edificio'=>$edificio],201);
+        return response()->json($edificio,201);
     }
 
     /**
@@ -46,8 +46,12 @@ class EdificiController extends Controller
      */
     public function show($id)
     {
-        $edificio= Edificio::findOrFail($id);
-        return response()->json(['edificio'=>$edificio], 200);
+        $edificio= Edificio::find($id);
+        if($edificio == null){
+            return response()->json(["errore"=>"edificio non trovato"], 404);
+        }
+
+        return response()->json($edificio, 200);
     }
 
     /**
@@ -64,10 +68,10 @@ class EdificiController extends Controller
         $edificio->nome= $request->nome;
         $edificio->numero= $request->numero_aule;
         $edificio->indirizzo= $request->indirizzo;
-        dd($edificio);
-        //$edificio->save();
 
-        //return response()->json(['edificio'=>$edificio], 200);
+        $edificio->save();
+
+        return response()->json($edificio, 200);
     }
 
     /**
@@ -78,8 +82,7 @@ class EdificiController extends Controller
      */
     public function destroy($id)
     {
-        $edificio= Edificio::findOrFail($id);
+        $edificio = Edificio::findOrFail($id);
         $edificio->delete();
-      //  redirect('/edifici');
     }
 }
