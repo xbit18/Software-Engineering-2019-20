@@ -136,4 +136,13 @@ class AuleController extends Controller
 
         return response()->json($aula,200);
     }
+
+    public function stato($id_aula, Request $request){
+        $aula = Aula::find($id_aula);
+
+        $aula->stato = $request->stato;
+        $aula->save();
+
+        return response()->json($aula,200);
+    }
 }
