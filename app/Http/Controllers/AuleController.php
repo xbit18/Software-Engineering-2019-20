@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Aula;
+use App\Posto;
 use Illuminate\Http\Request;
 use App\Edificio;
+use Illuminate\Support\Facades\DB;
 
 class AuleController extends Controller
 {
@@ -30,7 +32,7 @@ class AuleController extends Controller
 
 
     /**
-     * Aggiunge un'aula al database.
+     * Aggiunge un'aula al database e tutti i posti al suo interno.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -45,7 +47,24 @@ class AuleController extends Controller
 
         $aula -> save();
 
+        $this -> creaPosti($aula);
+
         return response()->json($aula,201);
+    }
+
+
+    /**
+     *
+     * Auto generazione dei posti all'interno di un'aula
+     * @param $aula
+     */
+    public function creaPosti($aula){
+        for($i=1; $i<= $aula->capienza ;$i++){
+            $posto = new Posto;
+            $posto->numero_posto = $i;
+            $posto->id_aula = $aula->id;
+            $posto->save();
+        }
     }
 
     /**

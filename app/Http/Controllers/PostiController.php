@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Posto;
 
 class PostiController extends Controller
 {
@@ -28,6 +29,12 @@ class PostiController extends Controller
         $posto = new Posto;
 
         $posto->numero_posto = $request->numero_posto;
+
+        if($request->disponibilita != null){
+            $posto->disponibilita = $request->disponibilita;
+        }
+
+        $posto->id_utente = $request->id_utente;
         $posto->id_aula = $request->id_aula;
 
         $posto->save();
@@ -41,9 +48,13 @@ class PostiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id_posto)
     {
-        $posto = Posto::find($id);
+        $posto= Posto::find($id_posto);
+        if($posto == null){
+            return response()->json(["errore"=>"posto non trovato"], 404);
+        }
+
         return response()->json($posto, 200);
     }
 
