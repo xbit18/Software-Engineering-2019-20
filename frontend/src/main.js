@@ -60,185 +60,58 @@ const routes = [
   {
     path:'/listaPersone/:aula', 
     name:'listaPersone',
-    component: listaPersone,
-    beforeEnter: (to, from, next) => {
-      if(!store.getters['auth/Authenticated']){
-        return next({
-          name: 'inizio'
-        })
-      }
-      next()
-    }
+    component: listaPersone
   },
   {
     path:'/searchAula', 
-    component: searchAula,
-    beforeEnter: (to, from, next) => {
-      if(!store.getters['auth/Authenticated']){
-        return next({
-          name: 'inizio'
-        })
-      }
-      next()
-    }
+    component: searchAula
   },
-  {path:'/redirectPersone/:aula',
-  component: RedirectListaPersone,
-  beforeEnter: (to, from, next) => {
-    if(!store.getters['auth/Authenticated']){
-      return next({
-        name: 'inizio'
-      })
-    }
-    next()
-  }
+  {
+  path:'/redirectPersone/:aula',
+  component: RedirectListaPersone
   },
   {path:'/redirectAula/:aula',
-  component: RedirectAula,
-  beforeEnter: (to, from, next) => {
-    if(!store.getters['auth/Authenticated']){
-      return next({
-        name: 'inizio'
-      })
-    }
-    next()
-  }
+  component: RedirectAula
   },
   {path:'/redirectEdificio/:edificio', 
-  component: RedirectEdificio,
-  beforeEnter: (to, from, next) => {
-    if(!store.getters['auth/Authenticated']){
-      return next({
-        name: 'inizio'
-      })
-    }
-    next()
-  }
+  component: RedirectEdificio
   },
   {path:'/aula/:aula', 
   name:'aula', 
-  component: Aula,
-  beforeEnter: (to, from, next) => {
-    if(!store.getters['auth/Authenticated']){
-      return next({
-        name: 'inizio'
-      })
-    }
-    next()
-  }
+  component: Aula
   },
   {path:'/gestisceAule', 
-  component: gestisceAule,
-  beforeEnter: (to, from, next) => {
-    if(!store.getters['auth/Authenticated']){
-      return next({
-        name: 'inizio'
-      })
-    }
-    next()
-  }
+  component: gestisceAule
   },
   {path:'/gestisceEdifici', 
-  component: gestisceEdifici,
-  beforeEnter: (to, from, next) => {
-    if(!store.getters['auth/Authenticated']){
-      return next({
-        name: 'inizio'
-      })
-    }
-    next()
-  }
+  component: gestisceEdifici
   },
   {path:'/editAula/:aula',
-  component: editAula,
-  beforeEnter: (to, from, next) => {
-    if(!store.getters['auth/Authenticated']){
-      return next({
-        name: 'inizio'
-      })
-    }
-    next()
-  }
+  component: editAula
   },
   {path:'/createAula', 
   component: createAula,
-  name: 'createAula',
-  beforeEnter: (to, from, next) => {
-    if(!store.getters['auth/Authenticated']){
-      return next({
-        name: 'inizio'
-      })
-    }
-    next()
-  }
+  name: 'createAula'
   },
   {path:'/createEdificio',
-  component: createEdificio,
-  beforeEnter: (to, from, next) => {
-    if(!store.getters['auth/Authenticated']){
-      return next({
-        name: 'inizio'
-      })
-    }
-    next()
-  }
+  component: createEdificio
   },
   {path:'/editEdificio/:edificio', 
-  component: editEdificio,
-  beforeEnter: (to, from, next) => {
-    if(!store.getters['auth/Authenticated']){
-      return next({
-        name: 'inizio'
-      })
-    }
-    next()
-  }
+  component: editEdificio
   },
   {path:'/edificio/:edificio',
   name:'edificio', 
-  component: Edificio,
-  beforeEnter: (to, from, next) => {
-    if(!store.getters['auth/Authenticated']){
-      return next({
-        name: 'inizio'
-      })
-    }
-    next()
-  }
+  component: Edificio
   },
   {path:'/check/:aula?',
   name:'check', 
-  component: CheckIn,
-  beforeEnter: (to, from, next) => {
-    if(!store.getters['auth/Authenticated']){
-      return next({
-        name: 'inizio'
-      })
-    }
-    next()
-  }
+  component: CheckIn
   },
   {path:'/redirectDeleteEdificio', 
-  component: RedirectDeleteEdificio,
-  beforeEnter: (to, from, next) => {
-    if(!store.getters['auth/Authenticated']){
-      return next({
-        name: 'inizio'
-      })
-    }
-    next()
-  }
+  component: RedirectDeleteEdificio
   },
   {path:'/redirectDeleteAule',
-  component: RedirectDeleteAula,
-  beforeEnter: (to, from, next) => {
-    if(!store.getters['auth/Authenticated']){
-      return next({
-        name: 'inizio'
-      })
-    }
-    next()
-  }
+  component: RedirectDeleteAula
   }
 ]
 

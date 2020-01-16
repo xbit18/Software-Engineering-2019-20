@@ -42,7 +42,7 @@ export default {
   methods: {
     getListAule() {
       axios.get("http://127.0.0.1:8000/aule").then(res => {
-        this.listAule = res.data.aule;
+        this.listAule = res.data;
       });
     }
   },

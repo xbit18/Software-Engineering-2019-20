@@ -15,7 +15,7 @@
       <tbody>
         <tr v-for="aula in listAule" :key="aula.id">
           <td class="tg td">{{aula.codice}}</td>
-          <td class="tg td">{{aula.edificio}}</td>
+          <td class="tg td">{{aula.nome_edificio}}</td>
           <td class="tg td">{{aula.capienza}}</td>
           <td class="tg td">{{aula.tipo}}</td>
           <td class="tg td">{{aula.disponibilita}}</td>
@@ -47,7 +47,7 @@
         <tr v-for="aula in listAule" :key="aula.id">
           <td class="tg td">{{aula.id}}</td>
           <td class="tg td">{{aula.codice}}</td>
-          <td class="tg td">{{aula.edificio}}</td>
+          <td class="tg td">{{aula.nome_edificio}}</td>
           <td class="tg td">{{aula.capienza}}</td>
           <td class="tg td">{{aula.tipo}}</td>
           <td class="tg td">{{aula.disponibilita}}</td>
@@ -82,7 +82,7 @@
             <router-link :to="{name:'listaPersone',params:{aula: aula.id}}">{{aula.id}}</router-link>
           </td>
           <td class="tg td">{{aula.codice}}</td>
-          <td class="tg td">{{aula.edificio}}</td>
+          <td class="tg td">{{aula.nome_edificio}}</td>
           <td class="tg td">{{aula.capienza}}</td>
           <td class="tg td">{{aula.tipo}}</td>
           <td class="tg td">{{aula.disponibilita}}</td>
