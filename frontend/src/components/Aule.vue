@@ -53,10 +53,13 @@
           <td class="tg td">{{aula.tipo}}</td>
           <td class="tg td">{{aula.disponibilita}}</td>
           <td class="tg td" v-if="aula.stato == 'chiusa'">
-            <button class="button button-apri/chiudi" @click="apri_chiudi(aula.id, aula.stato)" >Apri</button>
+            <button class="button button-apri/chiudi" @click="apri_chiudi(aula.id, aula.stato)">Apri</button>
           </td>
           <td class="tg td" v-else>
-            <button class="button button-apri/chiudi" @click="apri_chiudi(aula.id, aula.stato)" >Chiudi</button>
+            <button
+              class="button button-apri/chiudi"
+              @click="apri_chiudi(aula.id, aula.stato)"
+            >Chiudi</button>
           </td>
           <td class="tg td">
             <router-link :to="'/editAula/'+aula.id" class="button button-modifica">Modifica</router-link>
@@ -136,8 +139,7 @@ export default {
         dangerMode: true
       }).then(willDelete => {
         if (willDelete) {
-          axios.get(`http://127.0.0.1:8000/aule/${id}/delete`).then(res => {
-            console.log(res);
+          axios.get(`http://127.0.0.1:8000/aule/${id}/delete`).then(() => {
             this.$router.push("/redirectDeleteAule");
             swal("L'aula è stata eliminata!", {
               icon: "success"
@@ -152,6 +154,7 @@ export default {
       if(stato == 'chiusa'){
         axios.patch(`http://127.0.0.1:8000/aule/${id}`,{stato : "aperta"})
         .then(()=>{
+          this.$router.push("/redirectDeleteAule");
           swal({
             text : 'Aula aperta',
             icon: 'success'
@@ -160,6 +163,7 @@ export default {
       } else{
         axios.patch(`http://127.0.0.1:8000/aule/${id}`,{stato : "chiusa"})
         .then(() =>{
+         this.$router.push("/redirectDeleteAule");
           swal({
             text : 'Aula chiusa',
             icon: 'success'

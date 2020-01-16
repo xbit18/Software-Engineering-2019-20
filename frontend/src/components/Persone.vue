@@ -16,14 +16,14 @@
     <tbody>
       <tr v-for="persona in listPersone" :key="persona.id">
         <td class="tg td">{{persona.id}}</td>
-        <td class="tg td">{{persona.codice}}</td>
-        <td class="tg td">{{persona.edificio}}</td>
-        <td class="tg td">{{persona.capienza}}</td>
-        <td class="tg td"></td>
-        <td class="tg td"></td>
-        <td class="tg td"></td>
-        <td class="tg td"></td>
-        <td class="tg td"></td>
+        <td class="tg td">{{persona.email}}</td>
+        <td class="tg td">{{persona.nome}}</td>
+        <td class="tg td">{{persona.cognome}}</td>
+        <td class="tg td">{{persona.data_nascita}}</td>
+        <td class="tg td">{{persona.tipo}}</td>
+        <td class="tg td">{{persona.corso}}</td>
+        <td class="tg td">{{persona.matricola}}</td>
+        <td class="tg td">{{persona.codice_documento}}</td>
       </tr>
     </tbody>
   </table>

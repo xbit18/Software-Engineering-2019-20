@@ -89,11 +89,11 @@ Route::get('/prenotazioni/{prenotazione}/delete','PrenotazioniController@delete'
 
 Route::get('/posti/aula/{id_aula}','PostiController@index');                                 //Mostra tutti i posti all'interno di un'aula
 
-Route::post('/posti','PostiController@store');                                          //Registra la nuova prenotazione
+Route::post('/posti','PostiController@store');                                          //crea il nuovo posto
 
-Route::get('/posti/{id_posto}','PostiController@show');                                 //Mostra una prenotazione
+Route::get('/posti/{id_posto}','PostiController@show');                                 //Mostra un posto
 
-Route::put('/posti/{id_posto}','PostiController@update');                               //Registra le modifiche alla prenotazione
+Route::put('/posti/{id_posto}','PostiController@update');                               //Registra le modifiche al posto
 
 Route::get('/posti/{id_posto}/delete','PostiController@destroy');                        //Elimina una prenotazione
 
