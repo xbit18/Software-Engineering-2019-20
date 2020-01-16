@@ -43,8 +43,7 @@ export default {
     },
     getListAule() {
       axios.get("http://127.0.0.1:8000/aule").then(res => {
-        console.log(res);
-        this.listAule = res.data.aule;
+        this.listAule = res.data;
       });
     }
   }

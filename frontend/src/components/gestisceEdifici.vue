@@ -43,9 +43,7 @@ export default {
     },
     getEdifici() {
       axios.get("http://127.0.0.1:8000/edifici").then(res => {
-        this.listEdifici = res.data.edifici;
-        console.log(res);
-        console.log(this.listEdifici);
+        this.listEdifici = res.data;
       });
     }
   }

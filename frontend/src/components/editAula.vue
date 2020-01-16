@@ -10,15 +10,20 @@ export default {
     return {
       isEdit: true,
       aula: new Aula(),
-      file: null
+      file: null,
+      building: { id: null, nome: null },
+      edifici: null,
     };
   },
   mounted() {
-    /* var id = this.$route.params.aula; */
-    /* this.getAula(id); */
+    var id = this.$route.params.aula;
+    this.getEdifici();
+    this.getAula(id);
   },
   methods: {
     save() {
+      this.aula.id_edificio = this.building.id;
+      this.aula.nome = this.building.nome;
       console.log(this.aula);
       /*  var aulaId = this.$route.params.aula;
     axios
@@ -61,10 +66,15 @@ export default {
       });
       this.$router.push("/gestisceAule");
     },
+    getEdifici() {
+      axios.get("http://127.0.0.1:8000/edifici").then(res => {
+        this.edifici = res.data;
+      });
+    },
     getAula(id) {
-      axios.get("https://reqres.in/api/users/" + id).then(res => {
-        this.aula = res.data.data;
-        console.log(this.user);
+      axios.get(`http://127.0.0.1:8000/aule/${id}`).then(res => {
+        console.log(res);
+        this.aula = res.data;
       });
     },
        fileChange() {
