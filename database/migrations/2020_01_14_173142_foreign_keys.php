@@ -15,39 +15,39 @@ class ForeignKeys extends Migration
     {
         Schema::table('aule', function(Blueprint $table0) {
             $table0->foreign('id_edificio')->references('id')
-                ->on('edifici')->onDelete('set null'); });
+                ->on('edifici')->onDelete('cascade'); });
 
         Schema::table('token', function(Blueprint $table1) {
             $table1->foreign('id_aula')->references('id')
-                ->on('aule')->onDelete('set null'); });
+                ->on('aule')->onDelete('cascade'); });
 
         Schema::table('mappe', function(Blueprint $table2) {
             $table2->foreign('id_edificio')->references('id')
-                ->on('edifici')->onDelete('set null'); });
+                ->on('edifici')->onDelete('cascade'); });
 
         Schema::table('posti', function(Blueprint $table3) {
             $table3->foreign('id_aula')->references('id')
-                ->on('aule')->onDelete('set null'); });
+                ->on('aule')->onDelete('cascade'); });
 
         Schema::table('posti', function(Blueprint $table4) {
             $table4->foreign('id_utente')->references('id')
-                ->on('utenti')->onDelete('set null'); });
+                ->on('utenti')->onDelete('cascade'); });
 
         Schema::table('presenze', function(Blueprint $table5) {
             $table5->foreign('id_aula')->references('id')
-                ->on('aule')->onDelete('set null'); });
+                ->on('aule')->onDelete('cascade'); });
 
         Schema::table('presenze', function(Blueprint $table6) {
             $table6->foreign('id_utente')->references('id')
-                ->on('utenti')->onDelete('set null'); });
+                ->on('utenti')->onDelete('cascade'); });
 
         Schema::table('prenotazioni', function(Blueprint $table7) {
             $table7->foreign('id_aula')->references('id')
-                ->on('aule')->onDelete('set null'); });
+                ->on('aule')->onDelete('cascade'); });
 
         Schema::table('prenotazioni', function(Blueprint $table8) {
             $table8->foreign('id_utente')->references('id')
-                ->on('utenti')->onDelete('set null'); });
+                ->on('utenti')->onDelete('cascade'); });
     }
 
     /**
