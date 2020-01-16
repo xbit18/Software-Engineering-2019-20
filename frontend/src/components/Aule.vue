@@ -52,8 +52,11 @@
           <td class="tg td">{{aula.capienza}}</td>
           <td class="tg td">{{aula.tipo}}</td>
           <td class="tg td">{{aula.disponibilita}}</td>
-          <td class="tg td">
-            <button class="button button-apri/chiudi" @click="apri_chiudi(aula.id)">Elimina</button>
+          <td class="tg td" v-if="aula.stato == 'chiusa'">
+            <button class="button button-apri/chiudi" @click="apri_chiudi(aula.id, aula.stato)" >Apri</button>
+          </td>
+          <td class="tg td" v-else>
+            <button class="button button-apri/chiudi" @click="apri_chiudi(aula.id, aula.stato)" >Chiudi</button>
           </td>
           <td class="tg td">
             <router-link :to="'/editAula/'+aula.id" class="button button-modifica">Modifica</router-link>
@@ -145,8 +148,24 @@ export default {
         }
       });
     },
-    apri_chiudi(id){
-      console.log(id,"Hola");
+    apri_chiudi(id,stato){
+      if(stato == 'chiusa'){
+        axios.patch(`http://127.0.0.1:8000/aule/${id}`,{stato : "aperta"})
+        .then(()=>{
+          swal({
+            text : 'Aula aperta',
+            icon: 'success'
+          })
+        })
+      } else{
+        axios.patch(`http://127.0.0.1:8000/aule/${id}`,{stato : "chiusa"})
+        .then(() =>{
+          swal({
+            text : 'Aula chiusa',
+            icon: 'success'
+          })
+        })
+      }
     }
   }
 };

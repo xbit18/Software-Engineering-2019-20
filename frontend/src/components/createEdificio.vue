@@ -19,7 +19,7 @@ export default {
       axios
         .post("http://127.0.0.1:8000/edifici", this.edificio)
         .then(res => {
-            console.log(res);
+          if (res.status == 201) {
             swal({
               text: "L'edificio è stato creato",
               icon: "success"
@@ -27,9 +27,13 @@ export default {
             setTimeout(() => {
               this.$router.push("/gestisceEdifici");
             }, 1000);
-          })
-        .catch(e => {
-          console.log(e);
+          }
+        })
+        .catch(() => {
+          swal({
+              text: "L'edificio già esiste",
+              icon: "warning"
+            })
         });
     }
   }

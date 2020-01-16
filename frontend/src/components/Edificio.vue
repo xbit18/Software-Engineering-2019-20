@@ -67,7 +67,7 @@ export default {
   methods: {
     getEdificio(id) {
       axios.get(`http://127.0.0.1:8000/edifici/${id}`).then(res => {
-        this.edificio = res.data.edificio;
+        this.edificio = res.data;
       });
     },
     goSearch: function() {
