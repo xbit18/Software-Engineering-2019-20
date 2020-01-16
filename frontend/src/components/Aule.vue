@@ -39,6 +39,7 @@
           <th class="tg th">Capienza</th>
           <th class="tg th">Tipo</th>
           <th class="tg th">Disponibilità</th>
+          <th class="tg th">Apri/chiudi</th>
           <th class="tg th">Modifica</th>
           <th class="tg th">Elimina</th>
         </tr>
@@ -51,6 +52,9 @@
           <td class="tg td">{{aula.capienza}}</td>
           <td class="tg td">{{aula.tipo}}</td>
           <td class="tg td">{{aula.disponibilita}}</td>
+          <td class="tg td">
+            <button class="button button-apri/chiudi" @click="apri_chiudi(aula.id)">Elimina</button>
+          </td>
           <td class="tg td">
             <router-link :to="'/editAula/'+aula.id" class="button button-modifica">Modifica</router-link>
           </td>
@@ -140,6 +144,9 @@ export default {
           swal("Quasi!!");
         }
       });
+    },
+    apri_chiudi(id){
+      console.log(id,"Hola");
     }
   }
 };
