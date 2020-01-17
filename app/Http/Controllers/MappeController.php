@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mappa;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
 class MappeController extends Controller
@@ -28,22 +29,25 @@ class MappeController extends Controller
     public function store(Request $request)
     {
 
-        $mappa = new Mappa();
+        $validator = Validator::make($request->all(), [
+            'mappa' => 'mimes:jpeg,jpg,png'
+        ]);
 
-        $mappa->piantina= request('piantina');
-        $mappa->piano= request('piano');
-        $mappa->id= request('id');
+        if ($validator->fails()) {
+            return response()->json(['errore'=>'formato non supportato'], 422);
+        }
+
+        $path = $request->file('mappa')->store('mappe');
+
+        $mappa = new Mappa;
+        $mappa->piantina = $path;
+        $mappa->piano = $request->piano;
         $mappa->id_edificio = $request->id_edificio;
         $mappa->save();
+
         return response()->json($mappa,201);
     }
 
-    public function upload(Request $request)
-    {
-        $path = $request->file('mappa')->store('/public/mappe');
-
-        return response()->json($path, 201);
-    }
 
     /**
      * Display the specified resource.
