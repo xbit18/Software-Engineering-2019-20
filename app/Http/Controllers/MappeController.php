@@ -40,7 +40,7 @@ class MappeController extends Controller
 
     public function upload(Request $request)
     {
-        $path = $request->file('mappa')->store('/public/mappe');
+        $path = $request->file('mappa')->store('/mappe');
 
         return response()->json($path, 201);
     }
