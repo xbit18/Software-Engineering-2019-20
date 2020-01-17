@@ -11,7 +11,7 @@ export default {
       isEdit: true,
       aula: new Aula(),
       file: null,
-      building: { id: null, nome: null },
+      building: { id: null},
       edifici: null,
     };
   },
@@ -24,10 +24,9 @@ export default {
     save() {
       this.aula.id_edificio = this.building.id;
       this.aula.nome = this.building.nome;
-      console.log(this.aula);
-      /*  var aulaId = this.$route.params.aula;
+      let aulaId = this.$route.params.aula;
     axios
-        .put("https://reqres.in/api/users/" + aulaId, this.aula)
+        .put(`http://127.0.0.1:8000/aule/${aulaId}`, this.aula)
         .then(res => {
           if(res.status == 201){
             if(
@@ -37,9 +36,9 @@ export default {
             ){
               const formData = new FormData();
               formData.append("file0",this.file, this.file.name);
-              axios.patch("URLAPI" + ID DELL'AULA , formData)
+              axios.patch(`http://127.0.0.1:8000/aula/${aulaId}/mappa`, formData)
               .then(res => {
-                if(res.data.aula){
+                if(res.data){
                   this.aula = res.data;
                           swal({
                              text: "L'aula è stata modificata",
@@ -59,7 +58,7 @@ export default {
         })
         .catch(e =>{
           console.log(e);
-        }); */
+        }); 
       swal({
         text: "L'aula è stata modificata",
         icon: "success"
@@ -73,7 +72,6 @@ export default {
     },
     getAula(id) {
       axios.get(`http://127.0.0.1:8000/aule/${id}`).then(res => {
-        console.log(res);
         this.aula = res.data;
       });
     },

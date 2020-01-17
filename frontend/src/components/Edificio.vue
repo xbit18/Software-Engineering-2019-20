@@ -11,8 +11,8 @@
             <th class="tg th">Nome</th>
             <th class="tg th">Numero aule</th>
             <th class="tg th">Indirizzo</th>
-            <th class="tg th">Modifica</th>
-            <th class="tg th">Elimina</th>
+            <th class="tg th" v-if="isAdmin">Modifica</th>
+            <th class="tg th" v-if="isAdmin">Elimina</th>
           </tr>
         </thead>
         <tbody>
@@ -21,13 +21,13 @@
             <td class="tg td">{{edificio.nome}}</td>
             <td class="tg td">{{edificio.numero_aule}}</td>
             <td class="tg td">{{edificio.indirizzo}}</td>
-            <td class="tg td">
+            <td class="tg td" v-if="isAdmin">
               <router-link
                 :to="'/editEdificio/'+edificio.id"
                 class="button button-modifica"
               >Modifica</router-link>
             </td>
-            <td class="tg td">
+            <td class="tg td" v-if="isAdmin">
               <button class="button button-elimina" @click="elimina(edificio.id)">Elimina</button>
             </td>
           </tr>
@@ -51,7 +51,7 @@
 <script>
 import axios from "axios";
 import swal from "sweetalert";
-
+import { mapGetters } from "vuex";
 export default {
   name: "Edificio",
   data() {
@@ -63,6 +63,11 @@ export default {
   mounted() {
     var id = this.$route.params.edificio;
     this.getEdificio(id);
+  },
+  computed:{
+    ...mapGetters({
+      isAdmin : 'auth/isAdmin'
+    })
   },
   methods: {
     getEdificio(id) {

@@ -3,6 +3,7 @@ import App from './App.vue'
 import VueRouter from 'vue-router'
 import Vuelidate from 'vuelidate'
 import store from './store'
+import swal from 'sweetalert'
 // import axios from 'axios'
 import Inizio from "./components/Inizio.vue"
 import listaPersone from './components/listPersone.vue'
@@ -52,23 +53,57 @@ const routes = [
   {
     path:'/', 
     name: 'inizio',
-    component: Inizio,
-   
-
-    
+    component: Inizio
   },
   {
     path:'/listaPersone/:aula', 
     name:'listaPersone',
-    component: listaPersone
+    component: listaPersone,
+    beforeEnter:(to,from,next) =>{
+      if(!store.getters['auth/isAdmin']){
+      swal({
+        text : 'Non sei autorizzato',
+        icon : 'error'
+      });
+      next({
+        name: 'inizio'
+      });
+      }
+      next();
+    }
   },
   {
     path:'/searchAula', 
-    component: searchAula
+    component: searchAula,
+    beforeEnter:(to,from,next) =>{
+      console.log(store.getters)
+      if(!store.getters['auth/isAdmin']){
+      swal({
+        text : 'Non sei autorizzato',
+        icon : 'error'
+      });
+      next({
+        name: 'inizio'
+      });
+      }
+      next();
+    }
   },
   {
   path:'/redirectPersone/:aula',
-  component: RedirectListaPersone
+  component: RedirectListaPersone,
+  beforeEnter:(to,from,next) =>{
+    if(!store.getters['auth/isAdmin']){
+    swal({
+      text : 'Non sei autorizzato',
+      icon : 'error'
+    });
+    next({
+      name: 'inizio'
+    });
+    }
+    next();
+  }
   },
   {path:'/redirectAula/:aula',
   component: RedirectAula
@@ -81,23 +116,101 @@ const routes = [
   component: Aula
   },
   {path:'/gestisceAule', 
-  component: gestisceAule
+  component: gestisceAule,
+  beforeEnter:(to,from,next) =>{
+    console.log(store.getters)
+    if(!store.getters['auth/isAdmin']){
+    swal({
+      text : 'Non sei autorizzato',
+      icon : 'error'
+    });
+    next({
+      name: 'inizio'
+    });
+    }
+    next();
+  }
   },
   {path:'/gestisceEdifici', 
-  component: gestisceEdifici
+  component: gestisceEdifici,
+  beforeEnter:(to,from,next) =>{
+    console.log(store.getters)
+    if(!store.getters['auth/isAdmin']){
+    swal({
+      text : 'Non sei autorizzato',
+      icon : 'error'
+    });
+    next({
+      name: 'inizio'
+    });
+    }
+    next();
+  }
   },
   {path:'/editAula/:aula',
-  component: editAula
+  component: editAula,
+  beforeEnter:(to,from,next) =>{
+    console.log(store.getters)
+    if(!store.getters['auth/isAdmin']){
+    swal({
+      text : 'Non sei autorizzato',
+      icon : 'error'
+    });
+    next({
+      name: 'inizio'
+    });
+    }
+    next();
+  }
   },
   {path:'/createAula', 
   component: createAula,
-  name: 'createAula'
+  name: 'createAula',
+  beforeEnter:(to,from,next) =>{
+    console.log(store.getters)
+    if(!store.getters['auth/isAdmin']){
+    swal({
+      text : 'Non sei autorizzato',
+      icon : 'error'
+    });
+    next({
+      name: 'inizio'
+    });
+    }
+    next();
+  }
   },
   {path:'/createEdificio',
-  component: createEdificio
+  component: createEdificio,
+  beforeEnter:(to,from,next) =>{
+    console.log(store.getters)
+    if(!store.getters['auth/isAdmin']){
+    swal({
+      text : 'Non sei autorizzato',
+      icon : 'error'
+    });
+    next({
+      name: 'inizio'
+    });
+    }
+    next();
+  }
   },
   {path:'/editEdificio/:edificio', 
-  component: editEdificio
+  component: editEdificio,
+  beforeEnter:(to,from,next) =>{
+    console.log(store.getters)
+    if(!store.getters['auth/isAdmin']){
+    swal({
+      text : 'Non sei autorizzato',
+      icon : 'error'
+    });
+    next({
+      name: 'inizio'
+    });
+    }
+    next();
+  }
   },
   {path:'/edificio/:edificio',
   name:'edificio', 
@@ -105,13 +218,52 @@ const routes = [
   },
   {path:'/check/:aula?',
   name:'check', 
-  component: CheckIn
+  component: CheckIn,
+  beforeEnter:(to,from,next) =>{
+    console.log(store.getters)
+    if(!store.getters['auth/authenticated']){
+    swal({
+      text : 'Non sei autorizzato',
+      icon : 'error'
+    });
+    next({
+      name: 'inizio'
+    });
+    }
+    next();
+  }
   },
   {path:'/redirectDeleteEdificio', 
-  component: RedirectDeleteEdificio
+  component: RedirectDeleteEdificio,
+  beforeEnter:(to,from,next) =>{
+    console.log(store.getters)
+    if(!store.getters['auth/isAdmin']){
+    swal({
+      text : 'Non sei autorizzato',
+      icon : 'error'
+    });
+    next({
+      name: 'inizio'
+    });
+    }
+    next();
+  }
   },
   {path:'/redirectDeleteAule',
-  component: RedirectDeleteAula
+  component: RedirectDeleteAula,
+  beforeEnter:(to,from,next) =>{
+    console.log(store.getters)
+    if(!store.getters['auth/isAdmin']){
+    swal({
+      text : 'Non sei autorizzato',
+      icon : 'error'
+    });
+    next({
+      name: 'inizio'
+    });
+    }
+    next();
+  }
   }
 ]
 

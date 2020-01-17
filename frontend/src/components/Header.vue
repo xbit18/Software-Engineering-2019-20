@@ -43,36 +43,32 @@
         <span>Prenota un posto</span >
       </router-link>
 
-      <router-link to="/" v-if="authenticated && (user.tipo == 'admin' || user.tipo =='docente')">
+      <router-link to="/" v-if="authenticated && (isAdmin || isDocente)">
         <span>Prenota Aula</span>
       </router-link>
 
-       <router-link to="/" v-if="authenticated && user.tipo == 'admin'">
+       <router-link to="/" v-if="authenticated && isAdmin">
         <span>Prenotazioni</span>
       </router-link>
 
-      <router-link to="/gestisceAule" v-if="authenticated && user.tipo == 'admin'">
+      <router-link to="/gestisceAule" v-if="authenticated && isAdmin">
         <span>Gestisci aule</span>
       </router-link>
 
-      <router-link to="/gestisceEdifici" v-if="authenticated && user.tipo == 'admin'">
+      <router-link to="/gestisceEdifici" v-if="authenticated && isAdmin">
         <span>Gestisci edifici</span>
       </router-link>
       
 
-      <router-link to="/createAula" v-if="authenticated && user.tipo == 'admin'">
+      <router-link to="/createAula" v-if="authenticated && isAdmin">
         <span>Crea Aula</span>
       </router-link>
 
-      <router-link to="/createEdificio" v-if="authenticated && user.tipo == 'admin'">
+      <router-link to="/createEdificio" v-if="authenticated && isAdmin">
         <span>Crea Edificio</span>
       </router-link>
 
-      <router-link to="/" v-if="authenticated && user.tipo == 'admin'">
-        <span>Apri/chiudi aule</span>
-      </router-link>
-
-      <router-link to="/searchAula" v-if="authenticated && user.tipo == 'admin'">
+      <router-link to="/searchAula" v-if="authenticated && isAdmin">
         <span>Visualizza info aule</span>
       </router-link>
 
@@ -106,7 +102,9 @@ export default {
   computed:{
     ...mapGetters({
       authenticated: 'auth/authenticated',
-      user: 'auth/user'
+      user: 'auth/user',
+      isAdmin: 'auth/isAdmin',
+      isDocente: 'auth/isDocente'
     })
   },
   methods: {

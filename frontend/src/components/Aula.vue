@@ -1,10 +1,10 @@
 <template>
   <div>
-    <section class="lista">
+    <section class="lista" v-if="aula">
       <div class="title">
         <h1>Aula</h1>
       </div>
-      <table class="tg" v-if="aula">
+      <table class="tg" >
         <thead>
           <tr>
             <th class="tg th">ID</th>
@@ -13,31 +13,41 @@
             <th class="tg th">Capienza</th>
             <th class="tg th">Tipo</th>
             <th class="tg th">Disponibilità</th>
-            <th class="tg th">Apri/chiudi</th>
-            <th class="tg th">Modifica</th>
-            <th class="tg th">Elimina</th>
+            <th class="tg th" v-if="isAdmin">Apri/chiudi</th>
+            <th class="tg th" v-if="isAdmin">Modifica</th>
+            <th class="tg th" v-if="isAdmin">Elimina</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td class="tg td">{{aula.id}}</td>
             <td class="tg td">{{aula.codice}}</td>
-            <td class="tg td">{{aula.edificio}}</td>
+            <td class="tg td">
+              <router-link :to="{name:'edificio',params:{edificio: aula.id_edificio}}">{{aula.id_edificio}}</router-link>
+            </td>
             <td class="tg td">{{aula.capienza}}</td>
             <td class="tg td">{{aula.tipo}}</td>
             <td class="tg td">{{aula.disponibilita}}</td>
-            <td class="tg td">
-              <button class="button button-apri/chiudi" @click="apri_chiudi(aula.id)">Elimina</button>
+            <td class="tg td" v-if="aula.stato == 'chiusa' && isAdmin ">
+              <button class="button button-apri/chiudi" @click="apri_chiudi(aula.id, aula.stato)">Apri</button>
             </td>
-            <td class="tg td">
+            <td class="tg td" v-else-if="aula.stato == 'aperta' && isAdmin">
+             <button class="button button-apri/chiudi" @click="apri_chiudi(aula.id, aula.stato)">Chiudi</button>
+            </td>
+            <td class="tg td" v-if="isAdmin">
               <router-link :to="'/editAula/'+aula.id" class="button button-modifica">Modifica</router-link>
             </td>
-            <td class="tg td">
+            <td class="tg td" v-if="isAdmin">
               <button class="button button-elimina" @click="elimina(aula.id)">Elimina</button>
             </td>
           </tr>
         </tbody>
       </table>
+    </section>
+    <section class="lista" v-else>
+        <div class="title">
+        <h1>Aula non trovata</h1>
+      </div>
     </section>
     <aside class="sidebar search waitingSearch">
       <div id="search" class="sidebar-item">
@@ -56,23 +66,38 @@
 <script>
 import swal from "sweetalert";
 import axios from "axios";
+import { mapGetters } from 'vuex';
 export default {
   name: "Aula",
   data() {
     return {
       aula: null,
-      searchString: null
+      searchString: null,
+      prova: null
     };
   },
   mounted() {
     var id = this.$route.params.aula;
     this.getAula(id);
   },
+  computed:{
+      ...mapGetters({
+        isAdmin: 'auth/isAdmin'
+         })
+  },
   methods: {
     getAula(id) {
-      axios.get(`http://127.0.0.1:8000/aule/${id}`).then(res => {
-        this.aula = res.data.aula;
+      console.log(typeof id);
+      if(typeof id == 'number'){
+        axios.get(`http://127.0.0.1:8000/aule/${id}`).then(res => {
+        this.aula = res.data;
       });
+      } else{
+        axios.get(`http://127.0.0.1:8000/aula/${id}`).then(res => {
+        this.aula = res.data;
+      });
+      }
+      
     },
     goSearch: function() {
       this.$router.push("/redirectAula/" + this.searchString);
@@ -86,7 +111,7 @@ export default {
         dangerMode: true
       }).then(willDelete => {
         if (willDelete) {
-          axios.delete("https://reqres.in/api/users/" + id).then(res => {
+          axios.get(`http://127.0.0.1:8000/aule/${id}/delete`).then(res => {
             console.log(res);
 
             swal("L'aula è stata eliminata!", {
@@ -104,6 +129,7 @@ export default {
         axios
           .patch(`http://127.0.0.1:8000/aule/${id}`, { stato: "aperta" })
           .then(() => {
+            this.$router.push(`/redirectAula/${id}`);
             swal({
               text: "Aula aperta",
               icon: "success"
