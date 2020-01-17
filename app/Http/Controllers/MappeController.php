@@ -15,7 +15,8 @@ class MappeController extends Controller
     public function index()
     {
         $mappe=Mappa::all();
-       return ['mappe'=>$mappe];
+        return response()->json($mappe,200);
+        //return ['mappe'=>$mappe];
         //return view('mappe.index',['mappe'=>$mappe]);
     }
 
@@ -24,18 +25,7 @@ class MappeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        return view('mappe.create');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store()
+    public function store(Request $request)
     {
 
         $mappa = new Mappa();
@@ -43,8 +33,16 @@ class MappeController extends Controller
         $mappa->piantina= request('piantina');
         $mappa->piano= request('piano');
         $mappa->id= request('id');
+        $mappa->id_edificio = $request->id_edificio;
         $mappa->save();
-        redirect('/mappe');
+        return response()->json($mappa,201);
+    }
+
+    public function upload(Request $request)
+    {
+        $path = $request->file('mappa')->store('/public/mappe');
+
+        return response()->json($path, 201);
     }
 
     /**
@@ -55,21 +53,12 @@ class MappeController extends Controller
      */
     public function show($id)
     {
-        $mappa= Mappa::findOrFail($id);
-       return ['mappa'=>$mappa];
-        // return view('mappe.show',compact('mappa'));
-    }
+        $mappa= Mappa::find($id);
+        if($mappa == null){
+            return response()->json(["errore"=>"mappa non trovata"], 404);
+        }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Mappa  $mappa
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        $mappa= Mappa::findOrFail($id);
-        return view('mappe.edit',compact('mappa'));
+        return response()->json($mappa, 200);
     }
 
     /**
@@ -79,15 +68,16 @@ class MappeController extends Controller
      * @param  \App\Mappa  $mappa
      * @return \Illuminate\Http\Response
      */
-    public function update($id)
+    public function update(Request $request)
     {
-        $mappa= Mappa::findOrFail($id);
+        $mappa= Mappa::findOrFail($request->id);
 
-        $mappa->piantina= request('piantina');
-        $mappa->piano= request('piano');
-        $mappa->id= request('id');
+        $mappa->piantina= $request->piantina;
+        $mappa->piano= $request->piano;
+        $mappa->id= $request->id;
+        $mappa->id_edificio= $request->id_edificio;
         $mappa->save();
-        redirect('/mappe');
+        return response()->json($mappa,200);
     }
 
     /**
@@ -100,6 +90,6 @@ class MappeController extends Controller
     {
         $mappa= Mappa::findOrFail($id);
         $mappa->delete();
-        redirect('/mappe');
+        return response()->json($mappa,200);
     }
 }
