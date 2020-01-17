@@ -21,6 +21,7 @@ class CreateAulasTable extends Migration
             $table->integer('capienza');
             $table->enum('stato',['aperta','chiusa']);
             $table->unsignedBigInteger('id_edificio')->nullable(true);
+            $table->integer('piano');
 
             $table->timestamps();
         });
