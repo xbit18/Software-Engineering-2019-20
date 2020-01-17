@@ -37,7 +37,7 @@ class MappeController extends Controller
             return response()->json(['errore'=>'formato non supportato'], 422);
         }
 
-        $path = $request->file('mappa')->store('mappe');
+        $path = $request->file('mappa')->store('img');
 
         $mappa = new Mappa;
         $mappa->piantina = $path;
