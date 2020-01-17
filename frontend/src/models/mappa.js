@@ -1,7 +1,8 @@
 class Mappa{
-    constructor(id,piantina,piano){
+    constructor(id,piantina,piano,edificio){
         this.id = id;
-        this.piantina = piantina;
+        this.id_edificio = edificio;
+        this.mappa = piantina;
         this.piano = piano;
     }
 }

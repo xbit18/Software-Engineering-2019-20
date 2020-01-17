@@ -55,13 +55,7 @@ Route::get('/aule/{aula}/presenze', 'AuleController@presenze');
 
 Route::get('/mappe','MappeController@index');                                       //Restituisce una lista di tutte le mappe
 
-<<<<<<< HEAD
-Route::post('/mappe/{edificio}/{piano}','MappeController@store');                   //Salva la nuova mappa aggiunta
-
-Route::post('/mappe/upload');
-=======
 Route::post('/mappe','MappeController@store');                   //Salva la nuova mappa aggiunta
->>>>>>> 9eb5dbf36d5be1b0e1dd3026e942f3464c2f062f
 
 Route::get('/mappe/{edificio}/{piano}','MappeController@show');                     //Mostra la mappa del piano
 

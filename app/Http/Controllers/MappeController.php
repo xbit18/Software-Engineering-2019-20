@@ -57,6 +57,8 @@ class MappeController extends Controller
      */
     public function show($id)
     {
+        var_dump($id);
+        die();
         $mappa= Mappa::find($id);
         if($mappa == null){
             return response()->json(["errore"=>"mappa non trovata"], 404);
@@ -74,8 +76,19 @@ class MappeController extends Controller
      */
     public function update(Request $request)
     {
+        var_dump($request->id);
+        die();
         $mappa= Mappa::findOrFail($request->id);
+        
+        $validator = Validator::make($request->all(), [
+            'mappa' => 'mimes:jpeg,jpg,png'
+        ]);
 
+        if ($validator->fails()) {
+            return response()->json(['errore'=>'formato non supportato'], 422);
+        }
+
+        $path = $request->file('mappa')->store('img');
         $mappa->piantina= $request->piantina;
         $mappa->piano= $request->piano;
         $mappa->id= $request->id;

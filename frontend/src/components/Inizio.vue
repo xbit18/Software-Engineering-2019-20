@@ -13,9 +13,10 @@
         <h2>Mappa</h2>
       </div>
       <div id="img-wrap">
-        <img :src="srcImg" />
+        <img title="mappa" alter="mappa" v-bind:src="'http://localhost/progetto%20ingegneria%20software/storage/app/'+srcImg"/>
       </div>
     </aside>
+  
     <aside v-else></aside>
     <div class="clearfix"></div>
 
@@ -35,7 +36,7 @@ export default {
   data() {
     return {
       listAule: "",
-      srcImg: null,
+      srcImg: 'null',
       show: false
     };
   },
@@ -52,6 +53,7 @@ export default {
   created() {
     bus.$on("imgSend", data => {
       this.srcImg = data.img;
+      console.log(this.srcImg)
       this.show = data.show;
     });
     bus.$on("toggle", data => {

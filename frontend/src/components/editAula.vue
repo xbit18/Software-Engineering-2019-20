@@ -3,6 +3,7 @@
 <script>
 import axios from "axios";
 import Aula from "../models/aula.js";
+import Mappa from "../models/mappa.js";
 import swal from "sweetalert";
 export default {
   name: "editAula",
@@ -28,7 +29,8 @@ export default {
     axios
         .put(`http://127.0.0.1:8000/aule/${aulaId}`, this.aula)
         .then(res => {
-          if(res.status == 201){
+          console.log(this.aula);
+          if(res.status == 200){
             if(
               this.file != null &&
               this.file != '' &&
@@ -36,7 +38,9 @@ export default {
             ){
               const formData = new FormData();
               formData.append("file0",this.file, this.file.name);
-              axios.patch(`http://127.0.0.1:8000/mappa/${this.aula.id_edificio}/${this.aula.piano}`, formData)
+             let mappa = new Mappa(null,formData,this.aula.piano,this.aula.id_edificio);
+             console.log(mappa)
+              axios.put(`http://127.0.0.1:8000/mappe/${this.aula.piano}/${this.aula.id_edificio}`,mappa)
               .then(res => {
                 if(res.data){
                   this.aula = res.data;

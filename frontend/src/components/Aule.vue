@@ -20,7 +20,7 @@
           <td class="tg td">{{aula.tipo}}</td>
           <td class="tg td">{{aula.disponibilita}}</td>
           <td class="tg td">
-            <button class="button" @click="showMap(aula.avatar)">Mappa</button>
+            <button class="button" @click="showMap(aula.id_edificio,aula.piano)">Mappa</button>
           </td>
         </tr>
       </tbody>
@@ -112,18 +112,19 @@ export default {
   },
   props: ["listAule", "waiting", "gestisce"],
   methods: {
-    showMap(mappa) {
+    showMap(piano,edificio) {
       if (!this.show) {
-        this.image = mappa;
-        this.show = true;
-        bus.$emit("imgSend", { img: this.image, show: this.show });
-      } else if (this.image == mappa) {
+       axios.get(`http://127.0.0.1:8000/mappe/${edificio}/${piano}`)
+       .then(res =>{
+         this.image = res.data.piantina;
+         this.show = true;
+         bus.$emit("imgSend", { img: this.image, show: this.show });
+       })
+        
+      } else if (this.show) {
         this.show = false;
         bus.$emit("toggle", this.show);
-      } else {
-        this.image = mappa;
-        bus.$emit("imgSend", { img: this.image, show: this.show });
-      }
+      } 
     },
     elimina(id) {
       swal({
