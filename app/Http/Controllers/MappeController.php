@@ -15,7 +15,7 @@ class MappeController extends Controller
     public function index()
     {
         $mappe=Mappa::all();
-        return response()->json(['mappe'=>$mappe],200);
+        return response()->json($mappe,200);
         //return ['mappe'=>$mappe];
         //return view('mappe.index',['mappe'=>$mappe]);
     }
@@ -36,6 +36,13 @@ class MappeController extends Controller
         $mappa->id_edificio = $request->id_edificio;
         $mappa->save();
         return response()->json($mappa,201);
+    }
+
+    public function upload(Request $request)
+    {
+        $path = $request->file('mappa')->store('/public/mappe');
+
+        return response()->json($path, 201);
     }
 
     /**

@@ -40,7 +40,6 @@ class PrenotazioniController extends Controller
     {
         $prenotazione = new Prenotazione();
 
-        $prenotazione->codice = $request->codice;
         $prenotazione->data_inizio = $request->data_inizio;
         $prenotazione->data_fine = $request->data_fine;
         $prenotazione->motivazione = $request->motivazione;

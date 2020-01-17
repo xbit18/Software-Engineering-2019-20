@@ -57,6 +57,8 @@ Route::get('/mappe','MappeController@index');                                   
 
 Route::post('/mappe/{edificio}/{piano}','MappeController@store');                   //Salva la nuova mappa aggiunta
 
+Route::post('/mappe/upload')
+
 Route::get('/mappe/{edificio}/{piano}','MappeController@show');                     //Mostra la mappa del piano
 
 Route::put('/mappe/{edificio}/{piano}','MappeController@update');                   //Registra le modifiche alla mappa
