@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 import Vuelidate from 'vuelidate'
 import store from './store'
 import swal from 'sweetalert'
+import FunctionalCalendar from 'vue-functional-calendar';
 // import axios from 'axios'
 import Inizio from "./components/Inizio.vue"
 import listPersone from './components/listPersone.vue'
@@ -35,6 +36,9 @@ Vue.config.productionTip = false;
 Vue.use(VueRouter);
 Vue.use(Vuelidate);
 Vue.use(require('vue-moment'));
+Vue.use(FunctionalCalendar, {
+  dayNames: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']
+});
 
 store.dispatch('auth/attempt', localStorage.getItem('token')).then(() =>{
 

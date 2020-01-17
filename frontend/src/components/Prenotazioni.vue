@@ -1,5 +1,5 @@
 <template>
-  <table class="tg">
+  <table class="tg" v-if="listPrenotazioni.length > 0">
     <thead>
       <tr>
         <th class="tg th">ID</th>

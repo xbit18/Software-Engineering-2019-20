@@ -410,3 +410,14 @@ select{
 }
 
   /* END FORM */
+
+  /* CALENDAR */
+.vfc-main.container{
+    width: 50% !important;
+    height: 200px;
+}
+
+.vfc-calendars-container{
+    width: 100%
+}
+  /* END CALENDAR */

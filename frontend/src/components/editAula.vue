@@ -36,7 +36,7 @@ export default {
             ){
               const formData = new FormData();
               formData.append("file0",this.file, this.file.name);
-              axios.patch(`http://127.0.0.1:8000/aula/${aulaId}/mappa`, formData)
+              axios.patch(`http://127.0.0.1:8000/mappa/${this.aula.id_edificio}/${this.aula.piano}`, formData)
               .then(res => {
                 if(res.data){
                   this.aula = res.data;

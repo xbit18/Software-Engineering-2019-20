@@ -7,8 +7,9 @@
       <form class="mid-form" @submit.prevent=save()>
 
         <label for="data_inizio">Data inizio</label>
-        <input type="text" name="data_inizio" v-model="prenotazione.data_inizio" required/>
-
+        <FunctionalCalendar
+        v-model="calendarData"
+        ></FunctionalCalendar>
         <label for="data_fine">Data fine</label>
         <input type="text" name="data_fine" v-model="prenotazione.data_fine" required/>
      
@@ -33,15 +34,25 @@ import axios from "axios";
 import Prenotazione from "../models/prenotazione.js"
 import Aula from "../models/aula.js";
 import swal from "sweetalert";
+import { FunctionalCalendar } from 'vue-functional-calendar';
 import { mapGetters } from 'vuex';
 export default {
   name: "PrenotaAula",
+  components: {
+       FunctionalCalendar
+  },
   data() {
     return {
      prenotazione : new Prenotazione(),
      aula: new Aula(),
      listAule: null,
-     room: {id:null}
+     room: {id:null},
+     calendarData: {},
+     calendarConfigs:{
+         placerholder: new Date(),
+         dateFormat: 'yyyy/mm/dd',
+         isDatePicker: true
+     }
     };
   },
   mounted() {

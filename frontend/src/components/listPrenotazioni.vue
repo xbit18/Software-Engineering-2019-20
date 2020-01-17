@@ -1,8 +1,9 @@
 <template>
 <div>
-  <section class="lista">
+  <section class="lista" >
        <div class="title">
-        <h1>Lista Prenotazioni</h1>
+        <h1  v-if="listPrenotazioni.length > 0">Lista Prenotazioni</h1>
+        <h1 v-else>Non ci sono prenotazioni...</h1>
       </div>
       <Prenotazioni :listPrenotazioni="listPrenotazioni"/>
   </section>
@@ -30,7 +31,7 @@ export default {
     },
     data(){
         return{
-            listPrenotazioni: null,
+            listPrenotazioni: '',
             searchString: null
         }
     },
