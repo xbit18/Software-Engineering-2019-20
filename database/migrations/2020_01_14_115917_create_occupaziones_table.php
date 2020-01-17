@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePrenotazionesTable extends Migration
+class CreateOccupazionesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,12 @@ class CreatePrenotazionesTable extends Migration
      */
     public function up()
     {
-        Schema::create('prenotazioni', function (Blueprint $table) {
+        Schema::create('occupazioni', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->dateTime("data_inizio");
-            $table->dateTime("data_fine");
-            $table->text("motivazione");
-            $table->enum("stato",["in attesa", "accettata","rifiutata"])->default("in attesa");
-            $table->unsignedBigInteger("id_aula");
+            $table->dateTime('data_inizio');
+            $table->dateTime('data_fine');
+            $table->unsignedBigInteger("id_posto");
             $table->unsignedBigInteger("id_utente");
-
             $table->timestamps();
         });
     }
@@ -33,6 +30,6 @@ class CreatePrenotazionesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('prenotazioni');
+        Schema::dropIfExists('occupazioni');
     }
 }

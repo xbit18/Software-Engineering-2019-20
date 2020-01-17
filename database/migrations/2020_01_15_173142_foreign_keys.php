@@ -48,6 +48,14 @@ class ForeignKeys extends Migration
         Schema::table('prenotazioni', function(Blueprint $table8) {
             $table8->foreign('id_utente')->references('id')
                 ->on('utenti')->onDelete('cascade'); });
+
+        Schema::table('occupazioni', function(Blueprint $table9) {
+            $table9->foreign('id_posto')->references('id')
+                ->on('posti')->onDelete('cascade'); });
+
+        Schema::table('occupazioni', function(Blueprint $table10) {
+            $table10->foreign('id_utente')->references('id')
+                ->on('utenti')->onDelete('cascade'); });
     }
 
     /**
@@ -83,6 +91,12 @@ class ForeignKeys extends Migration
         });
         Schema::table('prenotazioni', function(Blueprint $table8) {
             $table8->dropForeign(['id_utente']);
+        });
+        Schema::table('occupazioni', function(Blueprint $table9) {
+            $table9->dropForeign(['id_posto']);
+        });
+        Schema::table('occupazioni', function(Blueprint $table10) {
+            $table10->dropForeign(['id_utente']);
         });
 
     }

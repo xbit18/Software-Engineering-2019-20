@@ -13,6 +13,6 @@ class Posto extends Model
     }
 
     public function utente(){
-        return $this->hasOne('App\Utente');
+        return $this->belongsTo('App\Occupazione');
     }
 }

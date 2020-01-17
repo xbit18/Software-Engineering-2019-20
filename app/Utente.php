@@ -13,7 +13,7 @@ class Utente extends Model
     }
 
     public function posto(){
-        return $this->belongsTo('App\Posto');
+        return $this->belongsTo('App\Occupazione');
     }
 
     public function prenotazioni(){
