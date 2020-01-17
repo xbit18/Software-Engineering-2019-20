@@ -20,8 +20,8 @@
         <td class="tg td">{{prenotazione.data_fine}}</td>
         <td class="tg td">{{prenotazione.motivazione}}</td>
         <td class="tg td">{{prenotazione.stato}}</td>
-        <td class="tg td">{{prenotazione.id_aula}}</td>
-        <td class="tg td">{{prenotazione.id_utente}}</td>
+        <td class="tg td">{{prenotazione.codice}}</td>
+        <td class="tg td">{{prenotazione.nome}} {{prenotazione.cognome}}</td>
         <td class="tg td">
           <button class="button button-accetta" @click="accetta_rifiuta(prenotazione.id,prenotazione.stato,'accettata')">Accetta</button>
         </td>
@@ -40,7 +40,8 @@ export default {
   name: "Prenotazioni",
   props: ["listPrenotazioni"],
   methods: {
-    accetta_rifiuta(id,stato,newStato){
+    accetta_rifiuta(id,stato,newStato){ 
+      console.log(id);
                 axios.patch(`http://127.0.0.1:8000/prenotazioni/${id}`,{stato : newStato})
                 .then(() =>{
                     swal({
