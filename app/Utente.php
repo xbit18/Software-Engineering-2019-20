@@ -14,7 +14,7 @@ class Utente extends Model implements JWTSubject
     }
 
     public function posto(){
-        return $this->belongsTo('App\Posto');
+        return $this->belongsTo('App\Occupazione');
     }
 
     public function prenotazioni(){

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Aula;
 use App\Prenotazione;
+use App\Utente;
 use Illuminate\Http\Request;
 
 class PrenotazioniController extends Controller
@@ -14,20 +16,18 @@ class PrenotazioniController extends Controller
      */
     public function index()
     {
-        $prenotazione=Prenotazione::all();
-        return ['prenotazioni'=>$prenotazione];
-        //return view('prenotazioni.index',['prenotazioni'=>$prenotazione]);
+        $prenotazioni=Prenotazione::all();
+        foreach($prenotazioni as $prenotazione){
+            $aula = Aula::find($prenotazione->id_aula);
+            $utente = utente::find($prenotazione->id_utente);
+
+            $prenotazione['codice'] = $aula->codice;
+            $prenotazione['nome'] = $utente->nome;
+            $prenotazione['cognome'] = $utente->cognome;
+        }
+        return response()->json($prenotazioni, 200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('prenotazioni.create');
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -35,17 +35,19 @@ class PrenotazioniController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(Request $request)
     {
-        $prenotazioni = new Prenotazione();
+        $prenotazione = new Prenotazione();
 
-        $prenotazioni->codice= request('codice');
-        $prenotazioni->data= request('data');
-        $prenotazioni->dutrata= request('durata');
-        $prenotazioni->motivazione= request('motivazione');
-        $prenotazioni->stato= request('stato');
-        $prenotazioni->save();
-        redirect('/prenotazioni');
+        $prenotazione->codice = $request->codice;
+        $prenotazione->data_inizio = $request->data_inizio;
+        $prenotazione->data_fine = $request->data_fine;
+        $prenotazione->motivazione = $request->motivazione;
+        $prenotazione->id_aula = $request->id_aula;
+        $prenotazione->id_utente = $request->id_utente;
+        $prenotazione->save();
+
+        return response()->json($prenotazione, 201);
     }
     /**
      * Display the specified resource.
@@ -57,20 +59,15 @@ class PrenotazioniController extends Controller
     {
 
         $prenotazione= Prenotazione::findOrFail($id);
-        return ['prenotazione'=>$prenotazione];
-        //return view('prenotazioni.show',['prenotazione'=>$prenotazione]);
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Prenotazione  $prenotazione
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        $prenotazione= Prenotazione::findOrFail($id);
-        return view('prenotazioni.edit',compact('prenotazione'));
+        $aula = Aula::find($prenotazione->id_aula);
+        $utente = utente::find($prenotazione->id_utente);
+
+        $prenotazione['codice'] = $aula->codice;
+        $prenotazione['nome'] = $utente->nome;
+        $prenotazione['cognome'] = $utente->cognome;
+
+        return response()->json($prenotazione,200);
     }
 
     /**
@@ -80,17 +77,18 @@ class PrenotazioniController extends Controller
      * @param  \App\Prenotazione  $prenotazione
      * @return \Illuminate\Http\Response
      */
-    public function update($id)
+    public function update(Request $request)
     {
-        $prenotazioni= Prenotazione::findOrFail($id);
+        $prenotazione= Prenotazione::findOrFail($request->id);
 
-        $prenotazioni->id= request('id');
-        $prenotazioni->data= request('data');
-        $prenotazioni->dutrata= request('durata');
-        $prenotazioni->motivazione= request('motivazione');
-        $prenotazioni->stato= request('stato');
-        $prenotazioni->save();
-        redirect('/prenotazioni');
+        $prenotazione->id= $request->codice;
+        $prenotazione->data_inizio= $request->data_inizio;
+        $prenotazione->data_fine= $request->data_fine;
+        $prenotazione->motivazione= $request->motivazione;
+        $prenotazione->stato= $request->stato;
+        $prenotazione->save();
+
+        return response()->json($prenotazione,200);
     }
 
     /**
@@ -100,8 +98,9 @@ class PrenotazioniController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id){
-         $prenotazione= Prenotazione::findOrFail($id);
+        $prenotazione= Prenotazione::findOrFail($id);
         $prenotazione->delete();
-        redirect('/prenotazioni');
+
+        return response()->json($prenotazione,200);
     }
 }

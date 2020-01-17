@@ -66,12 +66,13 @@
 <script>
 import swal from "sweetalert";
 import axios from "axios";
+import Aula from "../models/aula.js"
 import { mapGetters } from 'vuex';
 export default {
   name: "Aula",
   data() {
     return {
-      aula: null,
+      aula: new Aula(),
       searchString: null,
       prova: null
     };

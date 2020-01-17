@@ -47,7 +47,7 @@
         <span>Prenota Aula</span>
       </router-link>
 
-       <router-link to="/" v-if="authenticated && isAdmin">
+       <router-link to="/listPrenotazioni" v-if="authenticated && isAdmin">
         <span>Prenotazioni</span>
       </router-link>
 

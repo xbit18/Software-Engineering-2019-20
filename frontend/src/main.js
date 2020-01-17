@@ -6,13 +6,14 @@ import store from './store'
 import swal from 'sweetalert'
 // import axios from 'axios'
 import Inizio from "./components/Inizio.vue"
-import listaPersone from './components/listPersone.vue'
+import listPersone from './components/listPersone.vue'
 import searchAula from './components/searchAula.vue'
 import RedirectListaPersone from './components/RedirectListaPersone.vue'
 import RedirectAula from './components/RedirectAula.vue'
 import RedirectEdificio from './components/RedirectEdificio.vue'
 import RedirectDeleteEdificio from './components/RedirectDeleteEdificio.vue'
 import RedirectDeleteAula from './components/RedirectDeleteAula.vue'
+import RedirectPrenotazione from './components/RedirectPrenotazione.vue'
 import Aula from './components/Aula.vue'
 import gestisceAule from './components/gestisceAule.vue'
 import editAula from './components/editAula.vue'
@@ -22,6 +23,8 @@ import editEdificio from './components/editEdificio.vue'
 import gestisceEdifici from './components/gestisceEdifici.vue'
 import Edificio from './components/Edificio.vue'
 import CheckIn from './components/CheckIn.vue'
+import Prenotazione from './components/Prenotazione.vue'
+import listPrenotazioni from './components/listPrenotazioni.vue'
 require('./store/modules/subscriber.js')
 
 // axios.defaults.baseURL = "http://127.0.0.1:8000";
@@ -58,7 +61,7 @@ const routes = [
   {
     path:'/listaPersone/:aula', 
     name:'listaPersone',
-    component: listaPersone,
+    component: listPersone,
     beforeEnter:(to,from,next) =>{
       if(!store.getters['auth/isAdmin']){
       swal({
@@ -264,6 +267,18 @@ const routes = [
     }
     next();
   }
+  },
+  {
+    path:'/listPrenotazioni',
+    component: listPrenotazioni
+  },
+  {
+    path:'/prenotazione/:prenotazione',
+    component: Prenotazione
+  },
+  {
+    path: '/redirectPrenotazione/:prenotazione',
+    component: RedirectPrenotazione
   }
 ]
 
