@@ -44,6 +44,7 @@ export default {
       console.log(id);
                 axios.patch(`http://127.0.0.1:8000/prenotazioni/${id}`,{stato : newStato})
                 .then(() =>{
+                  this.$router.push('/redirectPrenotazione');
                     swal({
                     text: `Prenotazione ${newStato}`,
                     icon: "success"

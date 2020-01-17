@@ -25,13 +25,13 @@
         <td class="tg td">{{prenotazione.data_fine}}</td>
         <td class="tg td">{{prenotazione.motivazione}}</td>
         <td class="tg td">{{prenotazione.stato}}</td>
-        <td class="tg td">{{prenotazione.id_aula}}</td>
-        <td class="tg td">{{prenotazione.id_utente}}</td>
+        <td class="tg td">{{prenotazione.codice}}</td>
+        <td class="tg td">{{prenotazione.nome}} {{prenotazione.cognome}}</td>
         <td class="tg td">
-          <button class="button button-accetta" @click="accetta(prenotazione.id)">Accetta</button>
+          <button class="button button-accetta" @click="accetta(prenotazione.id,prenotazione.stato,'accettata')">Accetta</button>
         </td>
         <td class="tg td">
-          <button class="button button-elimina" @click="rifiuta(prenotazione.id)">Rifiuta</button>
+          <button class="button button-elimina" @click="rifiuta(prenotazione.id,prenotazione.stato,'rifiutata')">Rifiuta</button>
         </td>
       </tr>
     </tbody>
@@ -54,6 +54,7 @@
 <script>
 import axios from 'axios'
 import Prenotazione from '../models/prenotazione.js'
+import swal from 'sweetalert'
 export default {
     name: 'Prenotazione',
     data(){
@@ -73,10 +74,20 @@ export default {
         getPrenotazione(id){
             axios.get(`http://127.0.0.1:8000/prenotazioni/${id}`)
             .then(res =>{
-                this.prenotazione = res.data.prenotazione;
-                console.log(this.prenotazione)
+                this.prenotazione = res.data;
             })
-        }
+        },
+        accetta_rifiuta(id,stato,newStato){ 
+      console.log(id);
+                axios.patch(`http://127.0.0.1:8000/prenotazioni/${id}`,{stato : newStato})
+                .then(() =>{
+                  this.$router.push('/redirectPrenotazione');
+                    swal({
+                    text: `Prenotazione ${newStato}`,
+                    icon: "success"
+                    });
+                })
+    }
     }
 }
 </script>
