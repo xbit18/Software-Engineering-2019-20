@@ -19,6 +19,7 @@ class CreatePrenotazionesTable extends Migration
             $table->dateTime("data_fine");
             $table->text("motivazione");
             $table->enum("stato",["in attesa", "accettata","rifiutata"])->default("in attesa");
+            $table->integer('piano');
             $table->unsignedBigInteger("id_aula");
             $table->unsignedBigInteger("id_utente");
 
