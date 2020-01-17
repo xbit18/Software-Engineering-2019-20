@@ -67,11 +67,7 @@ actions:{
       
         if(state.token){
             try{
-                        axios.get("http://127.0.0.1:9200/api/auth/me", {
-                            headers: {
-                                Authorization : "Bearer " + token
-                            }
-                        })
+                        axios.get("http://127.0.0.1:9200/api/auth/me")
                         .then(res => {
                             console.log(res.data);
                             commit('SET_UTENTE',res.data);

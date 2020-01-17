@@ -76,7 +76,7 @@ Route::post('/prenotazioni/{prenotazione}','PrenotazioniController@store');     
 
 Route::get('/prenotazioni/{prenotazione}','PrenotazioniController@show');           //Mostra una prenotazione
 
-Route::put('/prenotazioni/{prenotazione}','PrenotazioniController@update');         //Registra le modifiche alla prenotazione
+Route::patch('/prenotazioni/{prenotazione}','PrenotazioniController@update');         //Registra le modifiche alla prenotazione
 
 Route::get('/prenotazioni/{prenotazione}/delete','PrenotazioniController@delete');   //Elimina una prenotazione
 
@@ -93,7 +93,7 @@ Route::post('/posti','PostiController@store');                                  
 
 Route::get('/posti/{id_posto}','PostiController@show');                                 //Mostra un posto
 
-Route::put('/posti/{id_posto}','PostiController@update');                               //Registra le modifiche al posto
+Route::patch('/posti/{id_posto}','PostiController@update');                               //Registra le modifiche al posto
 
 Route::get('/posti/{id_posto}/delete','PostiController@destroy');                        //Elimina una prenotazione
 
