@@ -121,10 +121,16 @@ h2{
     margin-left: 45%;
 }
 
+.button-accetta{
+    background: rgb(22, 201, 16);
+}
+
 .button-success:hover{
     background: black;
 }
-
+.button-accetta:hover{
+    background: rgb(29, 110, 26);
+}
 #logout{
     position: absolute;
     left: 82%;
