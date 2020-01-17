@@ -76,9 +76,11 @@ Route::post('/prenotazioni/{prenotazione}','PrenotazioniController@store');     
 
 Route::get('/prenotazioni/{prenotazione}','PrenotazioniController@show');           //Mostra una prenotazione
 
-Route::patch('/prenotazioni/{prenotazione}','PrenotazioniController@update');         //Registra le modifiche alla prenotazione
+Route::patch('/prenotazioni/{prenotazione}','PrenotazioniController@update');        //Registra le modifiche alla prenotazione
 
 Route::get('/prenotazioni/{prenotazione}/delete','PrenotazioniController@delete');   //Elimina una prenotazione
+
+Route::patch('/prenotazioni/{prenotazione}','PrenotazioniController@stato');         // accetta/rifiuta prenotazione
 
 
 

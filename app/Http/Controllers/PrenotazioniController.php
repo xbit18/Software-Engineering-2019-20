@@ -25,6 +25,7 @@ class PrenotazioniController extends Controller
             $prenotazione['nome'] = $utente->nome;
             $prenotazione['cognome'] = $utente->cognome;
         }
+
         return response()->json($prenotazioni, 200);
     }
 
@@ -86,6 +87,23 @@ class PrenotazioniController extends Controller
         $prenotazione->data_fine= $request->data_fine;
         $prenotazione->motivazione= $request->motivazione;
         $prenotazione->stato= $request->stato;
+        $prenotazione->save();
+
+        return response()->json($prenotazione,200);
+    }
+
+    /**
+     * Permette di cambiare lo stato di una prenotazione da in attesa a accettata o rifiutata e viceversa
+     *
+     * @param $id_prenotazione
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     *
+     */
+    public function stato($id_prenotazione, Request $request){
+        $prenotazione = Prenotazione::find($id_prenotazione);
+
+        $prenotazione->stato = $request->stato;
         $prenotazione->save();
 
         return response()->json($prenotazione,200);
