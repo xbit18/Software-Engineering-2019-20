@@ -18,7 +18,6 @@ export default {
   },
   mounted() {
     this.getEdifici();
-    this.getAule();
   },
   methods: {
     save() {
@@ -40,12 +39,6 @@ export default {
       axios.get("http://127.0.0.1:8000/edifici").then(res => {
         console.log(res);
         this.edifici = res.data;
-      });
-    },
-    getAule() {
-      axios.get("http://127.0.0.1:8000/aule").then(res => {
-        console.log(res);
-        this.aule = res.data;
       });
     }
   }

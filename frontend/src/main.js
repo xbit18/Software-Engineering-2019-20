@@ -10,6 +10,7 @@ import listPersone from './components/listPersone.vue'
 import searchAula from './components/searchAula.vue'
 import RedirectListaPersone from './components/RedirectListaPersone.vue'
 import RedirectAula from './components/RedirectAula.vue'
+import RedirectAccept from './components/RedirectAccept.vue'
 import RedirectEdificio from './components/RedirectEdificio.vue'
 import RedirectDeleteEdificio from './components/RedirectDeleteEdificio.vue'
 import RedirectDeleteAula from './components/RedirectDeleteAula.vue'
@@ -25,6 +26,7 @@ import Edificio from './components/Edificio.vue'
 import CheckIn from './components/CheckIn.vue'
 import Prenotazione from './components/Prenotazione.vue'
 import listPrenotazioni from './components/listPrenotazioni.vue'
+import PrenotaAula from './components/PrenotaAula.vue'
 require('./store/modules/subscriber.js')
 
 // axios.defaults.baseURL = "http://127.0.0.1:8000";
@@ -279,6 +281,14 @@ const routes = [
   {
     path: '/redirectPrenotazione/:prenotazione',
     component: RedirectPrenotazione
+  },
+  {
+    path:'/redirectPrenotazione',
+    component: RedirectAccept
+  },
+  {
+    path:'/prenotaAula',
+    component: PrenotaAula
   }
 ]
 

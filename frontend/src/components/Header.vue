@@ -43,7 +43,7 @@
         <span>Prenota un posto</span >
       </router-link>
 
-      <router-link to="/" v-if="authenticated && (isAdmin || isDocente)">
+      <router-link to="/prenotaAula" v-if="authenticated && (isAdmin || isDocente)">
         <span>Prenota Aula</span>
       </router-link>
 

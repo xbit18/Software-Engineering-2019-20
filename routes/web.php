@@ -74,7 +74,7 @@ Route::get('/mappe/{mappa}/delete','MappeController@delete');                   
 
 Route::get('/prenotazioni','PrenotazioniController@index');                         //Mostra tutte le prenotazioni
 
-Route::post('/prenotazioni/{prenotazione}','PrenotazioniController@store');         //Registra la nuova prenotazione
+Route::post('/prenotazioni','PrenotazioniController@store');         //Registra la nuova prenotazione
 
 Route::get('/prenotazioni/{prenotazione}','PrenotazioniController@show');           //Mostra una prenotazione
 
