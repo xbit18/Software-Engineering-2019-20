@@ -57,15 +57,26 @@ class MappeController extends Controller
      * @param  \App\Mappa  $mappa
      * @return \Illuminate\Http\Response
      */
-    public function show($id_edificio, $piano)
+     public function show_mappa_edificio($id_edificio, $piano)
+     {
+         $mappa= Mappa::where('id_edificio',$id_edificio)->where('piano',$piano)->first();
+        if($mappa == null){
+             return response()->json(["errore"=>"mappa non trovata"], 404);
+         }
+
+         return response()->json($mappa, 200);
+     }
+
+    public function show($id)
     {
-        $mappa= Mappa::where('id_edificio',$id_edificio)->where('piano',$piano)->first();
+        $mappa= Mappa::find($id);
         if($mappa == null){
             return response()->json(["errore"=>"mappa non trovata"], 404);
         }
 
         return response()->json($mappa, 200);
     }
+
 
     /**
      * Update the specified resource in storage.

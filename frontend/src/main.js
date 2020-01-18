@@ -279,31 +279,122 @@ const routes = [
   },
   {
     path:'/listPrenotazioni',
-    component: listPrenotazioni
+    component: listPrenotazioni,
+    beforeEnter:(to,from,next) =>{
+      console.log(store.getters)
+      if(!store.getters['auth/isAdmin']){
+      swal({
+        text : 'Non sei autorizzato',
+        icon : 'error'
+      });
+      next({
+        name: 'inizio'
+      });
+      }
+      next();
+    }
   },
   {
     path:'/prenotazione/:prenotazione',
-    component: Prenotazione
+    component: Prenotazione,
+    beforeEnter:(to,from,next) =>{
+      console.log(store.getters)
+      if(!store.getters['auth/isAdmin']){
+      swal({
+        text : 'Non sei autorizzato',
+        icon : 'error'
+      });
+      next({
+        name: 'inizio'
+      });
+      }
+      next();
+    }
   },
   {
     path: '/redirectPrenotazione/:prenotazione',
-    component: RedirectPrenotazione
+    component: RedirectPrenotazione,
+    beforeEnter:(to,from,next) =>{
+      console.log(store.getters)
+      if(!store.getters['auth/isAdmin']){
+      swal({
+        text : 'Non sei autorizzato',
+        icon : 'error'
+      });
+      next({
+        name: 'inizio'
+      });
+      }
+      next();
+    }
   },
   {
     path:'/redirectPrenotazione',
-    component: RedirectAccept
+    component: RedirectAccept,
+    beforeEnter:(to,from,next) =>{
+      console.log(store.getters)
+      if(!store.getters['auth/isAdmin']){
+      swal({
+        text : 'Non sei autorizzato',
+        icon : 'error'
+      });
+      next({
+        name: 'inizio'
+      });
+      }
+      next();
+    }
   },
   {
     path:'/prenotaAula',
-    component: PrenotaAula
+    component: PrenotaAula,
+    beforeEnter:(to,from,next) =>{
+      console.log(store.getters)
+      if(!store.getters['auth/isAdmin']){
+      swal({
+        text : 'Non sei autorizzato',
+        icon : 'error'
+      });
+      next({
+        name: 'inizio'
+      });
+      }
+      next();
+    }
   },
   {
     path:'/creaMappa',
-    component: CreaMappa
+    component: CreaMappa,
+    beforeEnter:(to,from,next) =>{
+      console.log(store.getters)
+      if(!store.getters['auth/isAdmin']){
+      swal({
+        text : 'Non sei autorizzato',
+        icon : 'error'
+      });
+      next({
+        name: 'inizio'
+      });
+      }
+      next();
+    }
   },
   {
-    path:'/editMappa',
-    component: editMappa
+    path:'/editMappa/:mappa?',
+    component: editMappa,
+    beforeEnter:(to,from,next) =>{
+      console.log(store.getters)
+      if(!store.getters['auth/isAdmin']){
+      swal({
+        text : 'Non sei autorizzato',
+        icon : 'error'
+      });
+      next({
+        name: 'inizio'
+      });
+      }
+      next();
+    }
   }
 ]
 

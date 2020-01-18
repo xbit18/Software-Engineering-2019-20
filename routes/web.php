@@ -21,6 +21,8 @@ Route::get('/edifici/{edificio}','EdificiController@show');                     
 
 Route::put('/edifici/{edificio}','EdificiController@update');                       //Update salva le modifiche
 
+Route::get('/edifici/aule/{aula}','EdificiController@aule');
+
 Route::get('/edifici/{edificio}/delete','EdificiController@destroy');               // Delete lo elimina
 
 
@@ -61,8 +63,13 @@ Route::post('/mappe/{edificio}/{piano}','MappeController@update');              
 
 Route::get('/mappe/{edificio}/{piano}/delete','MappeController@destroy');                       //Cancella la mappa
 
-Route::get('/mappe/{edificio}/{piano}','MappeController@show');
-   //Mostra la mappa del piano
+Route::get('/mappe/{mappa}','MappeController@show');
+   //Mostra la mappa 
+
+   Route::get('/mappe/{edificio}/{piano}','MappeController@show_mappa_edificio');
+
+
+
 
 
 /**

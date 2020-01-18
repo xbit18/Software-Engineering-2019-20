@@ -10,8 +10,6 @@ export default {
     return {
       isEdit: false,
       aula: new Aula(),
-      aule: null,
-      file: null,
       edifici: null,
       building: { id: null }
     };
@@ -26,63 +24,27 @@ export default {
         .post(`http://127.0.0.1:8000/aule`, this.aula)
         .then(res => {
           if (res.status == 201) {
-            if (
-              this.file != null &&
-              this.file != "" &&
-              this.file != undefined
-            ) {
-              const formData = new FormData();
-              formData.append("mappa", this.file);
-              formData.append("piano", this.aula.piano);
-              formData.append("id_edificio", this.aula.id_edificio);
-              axios
-                .post(`http://127.0.0.1:8000/mappe`, formData, {
-                  headers: {
-                    "Content-Type": "multipart/form-data"
-                  }
-                })
-                .then(res => {
-                  if (res.data) {
-                    this.aula = res.data;
-                    this.file = "";
-                    swal({
-                      text: "L'aula è stata creata",
-                      icon: "success"
-                    });
-                    this.$router.push("/gestisceAule");
-                  }
-                })
-                .catch(e => {
-                  console.log(e);
-                });
-            } else {
-              this.aula = res.data;
-              this.$router.push("/gestisceAule");
-            }
-          }
-        })
-        .catch(e => {
-          console.log(e);
-        });
-      console.log(this.aula);
-      swal({
+            swal({
         text: "L'aula è stato creata",
         icon: "success"
       });
       setTimeout(() => {
         this.$router.push("/gestisceAule");
       }, 1000);
+          }
+        })
+        .catch(e => {
+          console.log(e);
+        });
+      
     },
     getEdifici() {
       axios.get("http://127.0.0.1:8000/edifici").then(res => {
         console.log(res);
         this.edifici = res.data;
       });
-    },
-    fileChange() {
-      this.file = this.$refs.file.files[0];
-      console.log(this.file);
     }
+    
   }
 };
 </script>

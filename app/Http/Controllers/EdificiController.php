@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Edificio;
+use App\Aula;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -79,6 +80,12 @@ class EdificiController extends Controller
         $edificio->save();
 
         return response()->json($edificio, 200);
+    }
+
+    public function aule($id)
+    {
+        $aule = Aule::find($id);
+        return response()->json($aule,200);
     }
 
     /**

@@ -10,7 +10,6 @@ export default {
     return {
       isEdit: true,
       aula: new Aula(),
-      file: null,
       building: { id: null },
       edifici: null
     };
@@ -51,10 +50,6 @@ export default {
       axios.get(`http://127.0.0.1:8000/aule/${id}`).then(res => {
         this.aula = res.data;
       });
-    },
-    fileChange() {
-      this.file = this.$refs.file.files[0];
-      console.log(this.file);
     }
   }
 };

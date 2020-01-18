@@ -1,19 +1,29 @@
 <template src="../views/createMappa.html">
+
 </template>
 
 <script>
 import axios from 'axios'
 import swal from 'sweetalert'
+import Mappa from '../models/mappa.js'
 export default {
     name: 'CreaMappa',
     data(){
         return{
             file:'',
-            isEdit: false
+            edifici: '',
+            mappa: new Mappa(),
+            isEdit: false,
+            building:{id : null}
         }
+    },
+    mounted(){
+        this.getEdifici();
+        this.see();
     },
     methods:{
         save(){
+            this.mappa.id_edificio = this.building.id;
             if (
               this.file != null &&
               this.file != "" &&
@@ -21,11 +31,11 @@ export default {
             ) {
               const formData = new FormData();
               formData.append("mappa", this.file);
-              formData.append("piano", this.aula.piano);
-              formData.append("id_edificio", this.aula.id_edificio);
+              formData.append("piano", this.mappa.piano);
+              formData.append("id_edificio", this.mappa.id_edificio);
               axios
                 .post(
-                  `http://127.0.0.1:8000/mappe/${this.aula.id_edificio}/${this.aula.piano}`,
+                  `http://127.0.0.1:8000/mappe`,
                   formData,
                   {
                     headers: {
@@ -43,8 +53,11 @@ export default {
                     this.$router.push("/gestisceAule");
                   }
                 })
-                .catch(e => {
-                  console.log(e);
+                .catch(() => {
+                  swal({
+                      text: 'Questa mappa esiste già!',
+                      icon: 'warning'
+                  })
                 });
             } else {
               swal({
@@ -52,7 +65,17 @@ export default {
                       icon: "warning"
                     });
             }
-        }
+        },
+        getEdifici(){
+            axios.get(`http://127.0.0.1:8000/edifici`)
+            .then( res =>{
+                this.edifici = res.data
+            })
+        },
+        fileChange() {
+      this.file = this.$refs.file.files[0];
+      console.log(this.file);
+    }
     }
 }
 </script>

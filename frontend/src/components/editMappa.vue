@@ -1,17 +1,25 @@
 <template src="../views/createMappa.html">
-  
 </template>
 
 <script>
 import axios from 'axios'
 import swal from 'sweetalert'
+import Mappa from '../models/mappa.js'
 export default {
      name: 'editMappa',
      data(){
          return{
              file: '',
-             isEdit: true
+             isEdit: true,
+             mappa: new Mappa(),
+             edifici: '',
+             building:{id:null}
          }
+     },
+     mounted(){
+       let id = this.$route.params.mappa;
+       this.getMappa(id);
+       this.getEdifici();
      },
      methods:{
          save(){
@@ -22,11 +30,11 @@ export default {
             ) {
               const formData = new FormData();
               formData.append("mappa", this.file);
-              formData.append("piano", this.aula.piano);
-              formData.append("id_edificio", this.aula.id_edificio);
+              formData.append("piano", this.mappa.piano);
+              formData.append("id_edificio", this.mappa.id_edificio);
               axios
                 .post(
-                  `http://127.0.0.1:8000/mappe/${this.aula.id_edificio}/${this.aula.piano}`,
+                  `http://127.0.0.1:8000/mappe/${this.mappa.id_edificio}/${this.mappa.piano}`,
                   formData,
                   {
                     headers: {
@@ -38,14 +46,17 @@ export default {
                   if (res.data) {
                     this.file = '';
                     swal({
-                      text: "La mappa è stata creata",
+                      text: "La mappa è stata modificata",
                       icon: "success"
                     });
                     this.$router.push("/gestisceAule");
                   }
                 })
-                .catch(e => {
-                  console.log(e);
+                .catch(() => {
+                  swal({
+                    text: 'La mappa non si è modificata',
+                    icon: 'warning'
+                  })
                 });
             } else {
               swal({
@@ -53,7 +64,23 @@ export default {
                       icon: "warning"
                     });
             }
-        }
+        },
+         fileChange() {
+      this.file = this.$refs.file.files[0];
+      console.log(this.file);
+    },
+    getEdifici(){
+            axios.get(`http://127.0.0.1:8000/edifici`)
+            .then( res =>{
+                this.edifici = res.data
+            })
+        },
+    getMappa(id){
+      axios.get(`http://127.0.0.1:8000/mappe/${id}`)
+      .then(res =>{
+        this.mappa = res.data
+      })
+    }
      }
 }
 </script>
