@@ -88,8 +88,8 @@ class MappeController extends Controller
         $path = $request->file('mappa')->store('img');
 
         $mappa->piantina = $path;
-        $mappa->piano = $request->piano;
-        $mappa->id_edificio = $request->id_edificio;
+        $mappa->piano = $piano;
+        $mappa->id_edificio = $id_edificio;
         $mappa->save();
 
         return response()->json($mappa,200);
