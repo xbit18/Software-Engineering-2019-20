@@ -55,12 +55,11 @@ Route::get('/aule/{aula}/presenze', 'AuleController@presenze');
 
 Route::get('/mappe','MappeController@index');                                       //Restituisce una lista di tutte le mappe
 
-Route::post('/mappe','MappeController@store');                   //Salva la nuova mappa aggiunta
-
+Route::post('/mappe','MappeController@store');                                      //Salva la nuova mappa aggiunta
 
 Route::post('/mappe/{edificio}/{piano}','MappeController@update');                   //Registra le modifiche alla mappa
 
-Route::get('/mappe/{mappa}/delete','MappeController@destroy');                       //Cancella la mappa
+Route::get('/mappe/{edificio}/{piano}/delete','MappeController@destroy');                       //Cancella la mappa
 
 Route::get('/mappe/{edificio}/{piano}','MappeController@show');
    //Mostra la mappa del piano

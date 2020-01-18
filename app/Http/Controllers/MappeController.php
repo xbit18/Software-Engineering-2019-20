@@ -26,6 +26,10 @@ class MappeController extends Controller
      */
     public function store(Request $request)
     {
+        $mappa= Mappa::where('id_edificio', $request->id_edificio)->where('piano',$request->piano)->first();
+        if($mappa != null){
+            return response()->json(["errore"=>"la mappa per questo piano esiste già"], 409);
+        }
 
         $validator = Validator::make($request->all(), [
             'mappa' => 'mimes:jpeg,jpg,png'
@@ -88,8 +92,9 @@ class MappeController extends Controller
         $path = $request->file('mappa')->store('img');
 
         $mappa->piantina = $path;
-        $mappa->piano = $piano;
+        if($request->piano != null) {$mappa->piano = $piano;}
         $mappa->id_edificio = $id_edificio;
+
         $mappa->save();
 
         return response()->json($mappa,200);
@@ -101,9 +106,9 @@ class MappeController extends Controller
      * @param  \App\Mappa  $mappa
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id_edificio, $piano)
     {
-        $mappa= Mappa::find($id);
+        $mappa= Mappa::where('id_edificio',$id_edificio)->where('piano',$piano)->first();
         $mappa->delete();
     }
 }
