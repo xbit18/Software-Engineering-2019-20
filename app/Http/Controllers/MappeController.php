@@ -34,7 +34,7 @@ class MappeController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json(['errore'=>'formato non supportato'], 422);
+            return response()->json(['errore'=>'formato non supportato'], 415);
         }
 
         $path = $request->file('mappa')->store('img');
@@ -72,11 +72,9 @@ class MappeController extends Controller
      * @param  \App\Mappa  $mappa
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update($id,Request $request)
     {
-        var_dump($request->id);
-        die();
-        $mappa= Mappa::findOrFail($request->id);
+        $mappa= Mappa::findOrFail($id);
         
         $validator = Validator::make($request->all(), [
             'mappa' => 'mimes:jpeg,jpg,png'
@@ -89,7 +87,6 @@ class MappeController extends Controller
         $path = $request->file('mappa')->store('img');
         $mappa->piantina= $request->piantina;
         $mappa->piano= $request->piano;
-        $mappa->id= $request->id;
         $mappa->id_edificio= $request->id_edificio;
         $mappa->save();
         return response()->json($mappa,200);
@@ -105,6 +102,5 @@ class MappeController extends Controller
     {
         $mappa= Mappa::findOrFail($id);
         $mappa->delete();
-        return response()->json($mappa,200);
     }
 }

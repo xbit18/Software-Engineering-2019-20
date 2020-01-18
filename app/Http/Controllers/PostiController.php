@@ -12,9 +12,9 @@ class PostiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id_aula)
+    public function index()
     {
-        $posti = Posto::where('id_aula',$id_aula);
+        $posti = Posto::all();
         return response()->json($posti, 200);
     }
 
@@ -48,9 +48,9 @@ class PostiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id_posto)
+    public function show($id)
     {
-        $posto= Posto::find($id_posto);
+        $posto = Posto::find($id);
         if($posto == null){
             return response()->json(["errore"=>"posto non trovato"], 404);
         }
@@ -67,11 +67,24 @@ class PostiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $posto = Posto::findOrFail($request->id);
+        $posto = Posto::findOrFail($id);
 
         $posto->numero_posto = $request->numero_posto;
         $posto->id_aula = $request->id_aula;
 
+        $posto->save();
+
+        return response()->json($posto,200);
+    }
+
+    public function stato($id,Request $request)
+    {
+        $posto = Posto::find($id);
+        if($posto == null){
+            return response()->json(["errore"=>"Aula non trovata"],404);
+        }
+        $posto->disponibilita = $request->disponibilita;
+        $posto->id_utente = $request->id_utente;
         $posto->save();
 
         return response()->json($posto,200);
@@ -88,7 +101,5 @@ class PostiController extends Controller
     {
         $posto = Posto::findOrFail($id);
         $posto->delete();
-
-        return response()->json($posto,200);
     }
 }

@@ -27,8 +27,13 @@ class EdificiController extends Controller
      */
     public function store(Request $request)
     {
+       
+        // if ($request->filled('numero_aule' && $request->filled('nome') && $request->filled('indirizzo'){
+        //     return response()->json([
+        //         'error' => 'I campi richiesti non sono stati riempiti'
+        //     ],400);
+        // } else {
         $edificio = new Edificio;
-
         $edificio->numero_aule = $request->numero_aule;
         $edificio->nome = $request->nome;
         $edificio->indirizzo = $request->indirizzo;
@@ -36,6 +41,8 @@ class EdificiController extends Controller
         $edificio -> save();
 
         return response()->json($edificio,201);
+       // }
+        
     }
 
     /**
@@ -61,13 +68,13 @@ class EdificiController extends Controller
      * @param  \App\Edificio  $edificio
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update($id,Request $request)
     {
-        $edificio= Edificio::findOrFail($request->id);
+        $edificio= Edificio::findOrFail($id);
 
-        $edificio->nome= $request->nome;
-        $edificio->numero= $request->numero_aule;
-        $edificio->indirizzo= $request->indirizzo;
+        $edificio->nome = $request->nome;
+        $edificio->numero_aule = $request->numero_aule;
+        $edificio->indirizzo = $request->indirizzo;
 
         $edificio->save();
 

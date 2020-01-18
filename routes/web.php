@@ -61,7 +61,7 @@ Route::get('/mappe/{edificio}/{piano}','MappeController@show');                 
 
 Route::put('/mappe/{edificio}/{piano}','MappeController@update');                   //Registra le modifiche alla mappa
 
-Route::get('/mappe/{mappa}/delete','MappeController@delete');                       //Cancella la mappa
+Route::get('/mappe/{mappa}/delete','MappeController@destroy');                       //Cancella la mappa
 
 
 
@@ -78,7 +78,7 @@ Route::get('/prenotazioni/{prenotazione}','PrenotazioniController@show');       
 
 Route::patch('/prenotazioni/{prenotazione}','PrenotazioniController@update');        //Registra le modifiche alla prenotazione
 
-Route::get('/prenotazioni/{prenotazione}/delete','PrenotazioniController@delete');   //Elimina una prenotazione
+Route::get('/prenotazioni/{prenotazione}/delete','PrenotazioniController@destroy');   //Elimina una prenotazione
 
 Route::patch('/prenotazioni/{prenotazione}','PrenotazioniController@stato');         // accetta/rifiuta prenotazione
 
@@ -89,13 +89,17 @@ Route::patch('/prenotazioni/{prenotazione}','PrenotazioniController@stato');    
  * Rotte per i posti
  */
 
-Route::get('/posti/aula/{id_aula}','PostiController@index');                                 //Mostra tutti i posti all'interno di un'aula
+ Route::get('/posti/aula/{id_aula}','PostiController@index_aula');                                 //Mostra tutti i posti all'interno di un'aula
+
+Route::get('/posti','PostiController@index');
 
 Route::post('/posti','PostiController@store');                                          //crea il nuovo posto
 
 Route::get('/posti/{id_posto}','PostiController@show');                                 //Mostra un posto
 
-Route::patch('/posti/{id_posto}','PostiController@update');                               //Registra le modifiche al posto
+Route::patch('/posti/{id_posto}','PostiController@stato');
+
+Route::put('/posti/{id_posto}','PostiController@update');                               //Registra le modifiche al posto
 
 Route::get('/posti/{id_posto}/delete','PostiController@destroy');                        //Elimina una prenotazione
 

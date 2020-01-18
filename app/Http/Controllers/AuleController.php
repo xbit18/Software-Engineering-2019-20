@@ -44,6 +44,7 @@ class AuleController extends Controller
         $aula->codice = $request->codice;
         $aula->capienza = $request->capienza;
         $aula->tipo = $request->tipo;
+        $aula->piano = $request->piano;
         $aula->id_edificio = $request->id_edificio;
 
         $aula -> save();
@@ -106,13 +107,12 @@ class AuleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update($id,Request $request)
     {
-        $aula = Aula::findOrFail($request->id);
+        $aula = Aula::findOrFail($id);
 
         $aula->codice = $request->codice;
         $aula->id_edificio = $request->id_edificio;
-
         $aula->capienza = $request->capienza;
         $aula->stato = $request->stato;
         $aula->tipo = $request->tipo;
@@ -135,7 +135,6 @@ class AuleController extends Controller
         $aula = Aula::findOrFail($codice);
         $aula->delete();
 
-        return response()->json($aula,200);
     }
 
 
@@ -147,8 +146,8 @@ class AuleController extends Controller
      * @return \Illuminate\Http\JsonResponse
      *
      */
-    public function stato($id_aula, Request $request){
-        $aula = Aula::find($id_aula);
+    public function stato($id, Request $request){
+        $aula = Aula::find($id);
 
         $aula->stato = $request->stato;
         $aula->save();

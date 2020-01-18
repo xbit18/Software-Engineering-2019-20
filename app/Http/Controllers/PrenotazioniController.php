@@ -117,7 +117,5 @@ class PrenotazioniController extends Controller
     public function destroy($id){
         $prenotazione= Prenotazione::findOrFail($id);
         $prenotazione->delete();
-
-        return response()->json($prenotazione,200);
     }
 }
