@@ -3,7 +3,6 @@
 <script>
 import axios from "axios";
 import Aula from "../models/aula.js";
-import Mappa from "../models/mappa.js";
 import swal from "sweetalert";
 export default {
   name: "editAula",
@@ -31,58 +30,17 @@ export default {
         .then(res => {
           console.log(this.aula);
           if (res.status == 200) {
-            if (
-              this.file != null &&
-              this.file != "" &&
-              this.file != undefined
-            ) {
-              const formData = new FormData();
-              formData.append("mappa", this.file);
-              let mappa = new Mappa(
-                null,
-                formData,
-                this.aula.piano,
-                this.aula.id_edificio
-              );
-              console.log(mappa);
-              axios
-                .put(
-                  `http://127.0.0.1:8000/mappe/${this.aula.piano}/${this.aula.id_edificio}`,
-                  mappa,
-                  {
-                    headers: {
-                      "Content-Type": "multipart/form-data"
-                    }
-                  }
-                )
-                .then(res => {
-                  if (res.data) {
-                    this.aula = res.data;
-                    this.file = '';
-                    swal({
-                      text: "L'aula è stata modificata",
-                      icon: "success"
-                    });
-                    this.$router.push("/gestisceAule");
-                  }
-                })
-                .catch(e => {
-                  console.log(e);
-                });
-            } else {
-              this.aula = res.data;
-              this.$router.push("/gestisceAule");
-            }
+            swal({
+        text: "L'aula è stata modificata",
+        icon: "success"
+      });
+      this.$router.push("/gestisceAule");
           }
         })
         .catch(e => {
           console.log(e);
         });
-      swal({
-        text: "L'aula è stata modificata",
-        icon: "success"
-      });
-      this.$router.push("/gestisceAule");
+      
     },
     getEdifici() {
       axios.get("http://127.0.0.1:8000/edifici").then(res => {

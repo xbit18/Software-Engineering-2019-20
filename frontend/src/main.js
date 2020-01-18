@@ -28,6 +28,9 @@ import CheckIn from './components/CheckIn.vue'
 import Prenotazione from './components/Prenotazione.vue'
 import listPrenotazioni from './components/listPrenotazioni.vue'
 import PrenotaAula from './components/PrenotaAula.vue'
+import CreaMappa from './components/CreaMappa.vue'
+import editMappa from './components/editMappa.vue'
+
 require('./store/modules/subscriber.js')
 
 // axios.defaults.baseURL = "http://127.0.0.1:8000";
@@ -293,6 +296,14 @@ const routes = [
   {
     path:'/prenotaAula',
     component: PrenotaAula
+  },
+  {
+    path:'/creaMappa',
+    component: CreaMappa
+  },
+  {
+    path:'/editMappa',
+    component: editMappa
   }
 ]
 

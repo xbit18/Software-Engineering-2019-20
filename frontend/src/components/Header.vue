@@ -68,6 +68,10 @@
         <span>Crea Edificio</span>
       </router-link>
 
+      <router-link to="/creaMappa" v-if="authenticated && isAdmin">
+        <span>Crea Mappa</span>
+      </router-link>
+
       <router-link to="/searchAula" v-if="authenticated && isAdmin">
         <span>Visualizza info aule</span>
       </router-link>
