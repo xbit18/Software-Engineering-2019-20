@@ -28,7 +28,7 @@ class EdificiController extends Controller
      */
     public function store(Request $request)
     {
-       
+
         // if ($request->filled('numero_aule' && $request->filled('nome') && $request->filled('indirizzo'){
         //     return response()->json([
         //         'error' => 'I campi richiesti non sono stati riempiti'
@@ -43,7 +43,7 @@ class EdificiController extends Controller
 
         return response()->json($edificio,201);
        // }
-        
+
     }
 
     /**
@@ -84,8 +84,7 @@ class EdificiController extends Controller
 
     public function aule($id)
     {
-        
-        $aule = Aule::find($id);
+        $aule = DB::table('aule')->where('id_edificio', $id)->get();
         return response()->json($aule,200);
     }
 
