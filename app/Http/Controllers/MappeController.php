@@ -57,8 +57,6 @@ class MappeController extends Controller
      */
     public function show($id)
     {
-        var_dump($id);
-        die();
         $mappa= Mappa::find($id);
         if($mappa == null){
             return response()->json(["errore"=>"mappa non trovata"], 404);

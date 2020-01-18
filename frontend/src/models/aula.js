@@ -7,9 +7,7 @@ class Aula {
         this.capienza = capienza;
         this.stato = stato;
         this.piano = piano;
-        this.edificio = edificio;
         this.id_edificio = id_edificio;
-        this.nome_edificio = nome_edificio;
         this.created_at = created_at;
         this.updated_at = updated_at;
     }

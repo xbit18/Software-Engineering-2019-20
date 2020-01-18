@@ -14,7 +14,7 @@ export default {
       aule: null,
       file: null,
       edifici: null,
-      building: { id: null, nome: null }
+      building: { id: null}
     };
   },
   mounted() {
@@ -23,7 +23,6 @@ export default {
   methods: {
     save() {
       this.aula.id_edificio = this.building.id;
-      this.aula.nome = this.building.nome;
       axios.post(`http://127.0.0.1:8000/aule`, 
       this.aula,
       {
@@ -62,6 +61,7 @@ export default {
         .catch(e =>{
           console.log(e);
         }); 
+        console.log(this.aula);
         swal({
           text: "L'aula è stato creata",
           icon: "success"
