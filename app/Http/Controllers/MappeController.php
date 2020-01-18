@@ -17,8 +17,6 @@ class MappeController extends Controller
     {
         $mappe=Mappa::all();
         return response()->json($mappe,200);
-        //return ['mappe'=>$mappe];
-        //return view('mappe.index',['mappe'=>$mappe]);
     }
 
     /**
@@ -72,9 +70,12 @@ class MappeController extends Controller
      * @param  \App\Mappa  $mappa
      * @return \Illuminate\Http\Response
      */
-    public function update($id,Request $request)
+    public function update($id_edificio, $piano, Request $request)
     {
-        $mappa= Mappa::findOrFail($id);
+        $mappa= Mappa::where('id_edificio',$id_edificio)->where('piano',$piano)->first();
+        if($mappa == null){
+            return response()->json(["errore"=>"mappa non trovata"], 404);
+        }
 
         $validator = Validator::make($request->all(), [
             'mappa' => 'mimes:jpeg,jpg,png'
@@ -85,10 +86,12 @@ class MappeController extends Controller
         }
 
         $path = $request->file('mappa')->store('img');
-        $mappa->piantina= $request->piantina;
-        $mappa->piano= $request->piano;
-        $mappa->id_edificio= $request->id_edificio;
+
+        $mappa->piantina = $path;
+        $mappa->piano = $request->piano;
+        $mappa->id_edificio = $request->id_edificio;
         $mappa->save();
+
         return response()->json($mappa,200);
     }
 
