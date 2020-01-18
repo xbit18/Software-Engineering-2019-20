@@ -57,13 +57,13 @@ Route::get('/mappe','MappeController@index');                                   
 
 Route::post('/mappe','MappeController@store');                   //Salva la nuova mappa aggiunta
 
-Route::get('/mappe/{edificio}/{piano}','MappeController@show');                     //Mostra la mappa del piano
-
+               
 Route::put('/mappe/{edificio}/{piano}','MappeController@update');                   //Registra le modifiche alla mappa
 
 Route::get('/mappe/{mappa}/delete','MappeController@destroy');                       //Cancella la mappa
 
-
+Route::get('/mappe/{edificio}/{piano}','MappeController@show');   
+   //Mostra la mappa del piano
 
 
 /**
