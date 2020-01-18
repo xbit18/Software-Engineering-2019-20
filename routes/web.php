@@ -66,7 +66,7 @@ Route::get('/mappe/{mappa}/delete','MappeController@destroy');                  
 Route::get('/mappe/{mappa}','MappeController@show');
    //Mostra la mappa
 
-   Route::get('/mappe/{edificio}/{piano}','MappeController@show_mappa_edificio');
+Route::get('/mappe/{edificio}/{piano}','MappeController@show_mappa_edificio');
 
 
 
@@ -110,8 +110,33 @@ Route::put('/posti/{id_posto}','PostiController@update');                       
 Route::get('/posti/{id_posto}/delete','PostiController@destroy');                        //Elimina una prenotazione
 
 
+/**
+ * Rotte per le presenze
+ */
+Route::get('/presenze','PresenzeController@index');
+
+Route::post('/presenze','PresenzeController@store');
+
+Route::get('/presenze/{presenza}','PresenzeController@show');
+
+Route::put('/presenze/{presenza}','PresenzeController@update');
+
+Route::get('/presenze/{presenza}/delete','PresenzeController@destroy');
+
+Route::patch('/presenze/{presenza}', 'PresenzeController@uscita');
 
 
-Route::post('/checks', 'CheckController@store');                                    //Effettua check-in e check-out
+/**
+ * Rotte per le occupazioni
+ */
+Route::get('/occupazioni','OccupazioniController@index');
+
+Route::post('/occupazioni','OccupazioniController@store');
+
+Route::get('/occupazioni/{occupazione}','OccupazioniController@show');
+
+Route::put('/occupazioni/{occupazione}','OccupazioniController@update');
+
+Route::get('/occupazioni/{occupazione}/delete','OccupazioniController@destroy');
 
 ?>

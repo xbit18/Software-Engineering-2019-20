@@ -8,5 +8,6 @@ use Illuminate\Support\Facades\DB;
 
 class LoginController extends Controller
 {
-    
+    public function login(){}
+    public function logout(){}
 }

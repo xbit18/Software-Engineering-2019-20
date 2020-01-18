@@ -18,6 +18,8 @@ class PostiController extends Controller
         return response()->json($posti, 200);
     }
 
+    public function index_aula($id){}
+
     /**
      * Store a newly created resource in storage.
      *
@@ -89,7 +91,6 @@ class PostiController extends Controller
 
         return response()->json($posto,200);
     }
-
 
     /**
      * Remove the specified resource from storage.

@@ -50,7 +50,6 @@ class MappeController extends Controller
         return response()->json($mappa,201);
     }
 
-
     /**
      * Display the specified resource.
      *
@@ -76,7 +75,6 @@ class MappeController extends Controller
 
         return response()->json($mappa, 200);
     }
-
 
     /**
      * Update the specified resource in storage.
