@@ -61,7 +61,7 @@ Route::post('/mappe','MappeController@store');                                  
 
 Route::post('/mappe/{edificio}/{piano}','MappeController@update');                   //Registra le modifiche alla mappa
 
-Route::get('/mappe/{edificio}/{piano}/delete','MappeController@destroy');                       //Cancella la mappa
+Route::get('/mappe/{mappa}/delete','MappeController@destroy');                       //Cancella la mappa
 
 Route::get('/mappe/{mappa}','MappeController@show');
    //Mostra la mappa 

@@ -117,9 +117,9 @@ class MappeController extends Controller
      * @param  \App\Mappa  $mappa
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id_edificio, $piano)
+    public function destroy($id)
     {
-        $mappa= Mappa::where('id_edificio',$id_edificio)->where('piano',$piano)->first();
+        $mappa= Mappa::find($id);
         $mappa->delete();
     }
 }
