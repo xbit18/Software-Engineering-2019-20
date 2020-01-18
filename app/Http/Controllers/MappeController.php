@@ -75,7 +75,7 @@ class MappeController extends Controller
     public function update($id,Request $request)
     {
         $mappa= Mappa::findOrFail($id);
-        
+
         $validator = Validator::make($request->all(), [
             'mappa' => 'mimes:jpeg,jpg,png'
         ]);
@@ -100,7 +100,7 @@ class MappeController extends Controller
      */
     public function destroy($id)
     {
-        $mappa= Mappa::findOrFail($id);
+        $mappa= Mappa::find($id);
         $mappa->delete();
     }
 }
