@@ -24,17 +24,25 @@ export default {
     save() {
       this.aula.id_edificio = this.building.id;
       this.aula.nome = this.building.nome;
-      axios.post(`http://127.0.0.1:8000/aule`, this.aula).then(res => {
+      axios.post(`http://127.0.0.1:8000/aule`, 
+      this.aula,
+      {
+        headers:{
+          'Content-Type' : 'multipart/form-data'
+        }
+      }
+      ).then(res => {
         if (res.status == 201) {
           if (this.file != null && this.file != "" && this.file != undefined) {
-            formData.append("file0", this.file, this.file.name);
               const formData = new FormData();
+              formData.append("mappa", this.file);
              let mappa = new Mappa(null,formData,this.aula.piano,this.aula.id_edificio);
              console.log(mappa);
              axios.post(`http://127.0.0.1:8000/mappe`,mappa)
               .then(res => {
                 if (res.data) {
                   this.aula = res.data;
+                  this.file = '';
                   swal({
                     text: "L'aula è stata modificata",
                     icon: "success"

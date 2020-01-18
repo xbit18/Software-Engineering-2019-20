@@ -12,8 +12,8 @@ export default {
       isEdit: true,
       aula: new Aula(),
       file: null,
-      building: { id: null},
-      edifici: null,
+      building: { id: null },
+      edifici: null
     };
   },
   mounted() {
@@ -26,43 +26,58 @@ export default {
       this.aula.id_edificio = this.building.id;
       this.aula.nome = this.building.nome;
       let aulaId = this.$route.params.aula;
-    axios
+      axios
         .put(`http://127.0.0.1:8000/aule/${aulaId}`, this.aula)
         .then(res => {
           console.log(this.aula);
-          if(res.status == 200){
-            if(
+          if (res.status == 200) {
+            if (
               this.file != null &&
-              this.file != '' &&
+              this.file != "" &&
               this.file != undefined
-            ){
+            ) {
               const formData = new FormData();
-              formData.append("file0",this.file, this.file.name);
-             let mappa = new Mappa(null,formData,this.aula.piano,this.aula.id_edificio);
-             console.log(mappa)
-              axios.put(`http://127.0.0.1:8000/mappe/${this.aula.piano}/${this.aula.id_edificio}`,mappa)
-              .then(res => {
-                if(res.data){
-                  this.aula = res.data;
-                          swal({
-                             text: "L'aula è stata modificata",
-                              icon: 'success'
-                              });
-                               this.$router.push('/gestisceAule');
-                }
-              })
-              .catch(e =>{
-                console.log(e);
-              });
+              formData.append("mappa", this.file);
+              let mappa = new Mappa(
+                null,
+                formData,
+                this.aula.piano,
+                this.aula.id_edificio
+              );
+              console.log(mappa);
+              axios
+                .put(
+                  `http://127.0.0.1:8000/mappe/${this.aula.piano}/${this.aula.id_edificio}`,
+                  mappa,
+                  {
+                    headers: {
+                      "Content-Type": "multipart/form-data"
+                    }
+                  }
+                )
+                .then(res => {
+                  if (res.data) {
+                    this.aula = res.data;
+                    this.file = '';
+                    swal({
+                      text: "L'aula è stata modificata",
+                      icon: "success"
+                    });
+                    this.$router.push("/gestisceAule");
+                  }
+                })
+                .catch(e => {
+                  console.log(e);
+                });
             } else {
               this.aula = res.data;
-               this.$router.push('/gestisceAule');
+              this.$router.push("/gestisceAule");
             }
           }
         })
-        .catch(e =>{
+        .catch(e => {
           console.log(e);
-        }); 
+        });
       swal({
         text: "L'aula è stata modificata",
         icon: "success"
@@ -79,10 +94,10 @@ export default {
         this.aula = res.data;
       });
     },
-       fileChange() {
+    fileChange() {
       this.file = this.$refs.file.files[0];
       console.log(this.file);
-  }
+    }
   }
 };
 </script>
