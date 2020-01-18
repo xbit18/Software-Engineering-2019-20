@@ -4,7 +4,7 @@
       <div class="title">
         <h1>Aula</h1>
       </div>
-      <table class="tg" >
+      <table class="tg">
         <thead>
           <tr>
             <th class="tg th">ID</th>
@@ -23,16 +23,24 @@
             <td class="tg td">{{aula.id}}</td>
             <td class="tg td">{{aula.codice}}</td>
             <td class="tg td">
-              <router-link :to="{name:'edificio',params:{edificio: aula.id_edificio}}">{{aula.id_edificio}}</router-link>
+              <router-link
+                :to="{name:'edificio',params:{edificio: aula.id_edificio}}"
+              >{{aula.id_edificio}}</router-link>
             </td>
             <td class="tg td">{{aula.capienza}}</td>
             <td class="tg td">{{aula.tipo}}</td>
             <td class="tg td">{{aula.disponibilita}}</td>
             <td class="tg td" v-if="aula.stato == 'chiusa' && isAdmin ">
-              <button class="button button-apri/chiudi" @click="apri_chiudi(aula.id, aula.stato)">Apri</button>
+              <button
+                class="button button-apri/chiudi"
+                @click="apri_chiudi(aula.id, aula.stato)"
+              >Apri</button>
             </td>
             <td class="tg td" v-else-if="aula.stato == 'aperta' && isAdmin">
-             <button class="button button-apri/chiudi" @click="apri_chiudi(aula.id, aula.stato)">Chiudi</button>
+              <button
+                class="button button-apri/chiudi"
+                @click="apri_chiudi(aula.id, aula.stato)"
+              >Chiudi</button>
             </td>
             <td class="tg td" v-if="isAdmin">
               <router-link :to="'/editAula/'+aula.id" class="button button-modifica">Modifica</router-link>
@@ -45,7 +53,7 @@
       </table>
     </section>
     <section class="lista" v-else>
-        <div class="title">
+      <div class="title">
         <h1>Aula non trovata</h1>
       </div>
     </section>
@@ -66,8 +74,8 @@
 <script>
 import swal from "sweetalert";
 import axios from "axios";
-import Aula from "../models/aula.js"
-import { mapGetters } from 'vuex';
+import Aula from "../models/aula.js";
+import { mapGetters } from "vuex";
 export default {
   name: "Aula",
   data() {
@@ -81,24 +89,50 @@ export default {
     var id = this.$route.params.aula;
     this.getAula(id);
   },
-  computed:{
-      ...mapGetters({
-        isAdmin: 'auth/isAdmin'
-         })
+  computed: {
+    ...mapGetters({
+      isAdmin: "auth/isAdmin"
+    })
   },
   methods: {
     getAula(id) {
       console.log(typeof id);
-      if(typeof id == 'number'){
-        axios.get(`http://127.0.0.1:8000/aule/${id}`).then(res => {
-        this.aula = res.data;
-      });
-      } else{
-        axios.get(`http://127.0.0.1:8000/aula/${id}`).then(res => {
-        this.aula = res.data;
-      });
+      if (typeof id == "number") {
+        axios
+          .get(`http://127.0.0.1:8000/aule/${id}`)
+          .then(res => {
+            this.aula = res.data;
+          })
+          .catch(() => {
+            if (this.isAdmin) {
+              this.$router.push("/gestisceAule");
+            } else {
+              this.$router.push("/");
+              swal({
+                text: "Aula non trovata",
+                icon: "error"
+              });
+            }
+          });
+      } else {
+        axios
+          .get(`http://127.0.0.1:8000/aula/${id}`)
+          .then(res => {
+            this.aula = res.data;
+          })
+          .catch(() => {
+            if (this.isAdmin) {
+              this.$router.push("/gestisceAule");
+            } else {
+              this.$router.push("/");
+
+              swal({
+                text: "Aula non trovata",
+                icon: "error"
+              });
+            }
+          });
       }
-      
     },
     goSearch: function() {
       this.$router.push("/redirectAula/" + this.searchString);

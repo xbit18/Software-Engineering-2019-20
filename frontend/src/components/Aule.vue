@@ -112,7 +112,7 @@ export default {
   },
   props: ["listAule", "waiting", "gestisce"],
   methods: {
-    showMap(piano,edificio) {
+    showMap(edificio,piano) {
       if (!this.show) {
        axios.get(`http://127.0.0.1:8000/mappe/${edificio}/${piano}`)
        .then(res =>{

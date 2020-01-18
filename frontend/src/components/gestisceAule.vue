@@ -1,10 +1,15 @@
 <template>
-  <div v-if="listAule.length > 0">
-    <section class="lista">
+  <div>
+    <section class="lista"  v-if="listAule.length > 0">
       <div class="title">
         <h1>Lista Aule</h1>
       </div>
       <Aule gestisce="true" :listAule="listAule"></Aule>  
+    </section>
+    <section class="lista"  v-else>
+      <div class="title">
+        <h1>Non ci sono aule da mostrare...</h1>
+      </div>
     </section>
     <aside class="sidebar search waitingAula">
       <div id="search" class="sidebar-item">

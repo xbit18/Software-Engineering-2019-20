@@ -66,7 +66,7 @@ Route::get('/mappe/{mappa}/delete','MappeController@destroy');                  
 Route::get('/mappe/{mappa}','MappeController@show');
    //Mostra la mappa 
 
-   Route::get('/mappe/{edificio}/{piano}','MappeController@show_mappa_edificio');
+Route::get('/mappe/{edificio}/{piano}','MappeController@show_mappa_edificio');
 
 
 

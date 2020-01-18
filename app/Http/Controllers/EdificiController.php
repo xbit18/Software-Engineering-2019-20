@@ -84,6 +84,7 @@ class EdificiController extends Controller
 
     public function aule($id)
     {
+        
         $aule = Aule::find($id);
         return response()->json($aule,200);
     }
