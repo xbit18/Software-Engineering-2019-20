@@ -73,6 +73,21 @@ export default {
     getEdificio(id) {
       axios.get(`http://127.0.0.1:8000/edifici/${id}`).then(res => {
         this.edificio = res.data;
+      })
+      .catch(()=>{
+        if(this.isAdmin){
+          this.$router.push('/gestisceEdifici');
+          swal({
+                text: "Edificio non trovato",
+                icon: "error"
+              });
+        } else {
+          this.$router.push('/');
+          swal({
+                text: "Edificio non trovato",
+                icon: "error"
+              });
+        }
       });
     },
     goSearch: function() {
