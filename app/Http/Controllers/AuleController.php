@@ -22,6 +22,10 @@ class AuleController extends Controller
 
         $aule=Aula::all();
 
+        if($aule->isEmpty()){
+            return response()->json(["errore"=>"nessuna aula presente"],404);
+        }
+
             foreach ($aule as $aula){
                 $edificio = Edificio::findOrFail($aula['id_edificio']);
                 $aula['nome_edificio'] = $edificio['nome'];
@@ -30,7 +34,6 @@ class AuleController extends Controller
         return response()->json($aule,200);
 
     }
-
 
     /**
      * Aggiunge un'aula al database e tutti i posti al suo interno.
@@ -53,7 +56,6 @@ class AuleController extends Controller
 
         return response()->json($aula,201);
     }
-
 
     /**
      *
@@ -100,7 +102,6 @@ class AuleController extends Controller
         return response()->json($aula, 200);
     }
 
-
     /**
      * Registra nel database i cambiamenti all'aula.
      *
@@ -137,7 +138,6 @@ class AuleController extends Controller
 
     }
 
-
     /**
      * Permette di cambiare lo stato di un'aula da aperta a chiusa e viceversa
      *
@@ -154,7 +154,6 @@ class AuleController extends Controller
 
         return response()->json($aula,200);
     }
-
 
     /**
      * Restituisce tutti i presenti all'interno di una data aula

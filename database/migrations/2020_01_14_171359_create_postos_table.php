@@ -17,7 +17,7 @@ class CreatePostosTable extends Migration
             $table->bigIncrements('id');
             $table->integer("numero_posto");
             $table->enum("disponibilita", ["libero", "occupato"])->default("libero")->nullable();
-            $table->unsignedBigInteger("id_utente")->nullable(true);
+            $table->unsignedBigInteger("id_occupazione")->nullable(true);
             $table->unsignedBigInteger("id_aula");
 
             $table->timestamps();

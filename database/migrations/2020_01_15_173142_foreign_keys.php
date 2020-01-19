@@ -78,7 +78,7 @@ class ForeignKeys extends Migration
             $table3->dropForeign(['id_aula']);
         });
         Schema::table('posti', function(Blueprint $table4) {
-            $table4->dropForeign(['id_utente']);
+            $table4->dropForeign(['id_occupazione']);
         });
         Schema::table('presenze', function(Blueprint $table5) {
             $table5->dropForeign(['id_aula']);

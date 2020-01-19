@@ -29,7 +29,6 @@ class PrenotazioniController extends Controller
         return response()->json($prenotazioni, 200);
     }
 
-
     /**
      * Store a newly created resource in storage.
      *
