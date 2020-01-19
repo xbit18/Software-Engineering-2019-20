@@ -14,7 +14,6 @@ export default {
             edifici: '',
             mappa: new Mappa(),
             isEdit: false,
-            building:{id : null}
         }
     },
     mounted(){
@@ -23,7 +22,6 @@ export default {
     },
     methods:{
         save(){
-            this.mappa.id_edificio = this.building.id;
             if (
               this.file != null &&
               this.file != "" &&

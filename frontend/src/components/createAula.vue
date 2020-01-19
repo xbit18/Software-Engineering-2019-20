@@ -10,8 +10,7 @@ export default {
     return {
       isEdit: false,
       aula: new Aula(),
-      edifici: null,
-      building: { id: null }
+      edifici: null
     };
   },
   mounted() {
@@ -19,7 +18,6 @@ export default {
   },
   methods: {
     save() {
-      this.aula.id_edificio = this.building.id;
       axios
         .post(`http://127.0.0.1:8000/aule`, this.aula)
         .then(res => {

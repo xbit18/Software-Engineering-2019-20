@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Aula;
 use App\Posto;
 use App\Presenza;
+use App\Utente;
 use Illuminate\Http\Request;
 use App\Edificio;
 use Illuminate\Support\Facades\DB;
@@ -161,10 +162,12 @@ class AuleController extends Controller
      * @param $id_aula
      * @return \Illuminate\Http\JsonResponse
      */
-    public function presenze($id_aula){
-        $presenza = Presenza::where('id_aula', $id_aula)
-            ->where('data_uscita', null)->get();
+    public function presenze($codice){
+        $aula = Aula::where('codice', $codice)->first();
 
+        $presenza = Presenza::where('id_aula', $aula->id)
+            ->where('data_uscita', null)->get();
+            
         return response()->json($presenza,200);
     }
 }

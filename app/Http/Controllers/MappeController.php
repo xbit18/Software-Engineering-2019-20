@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mappa;
+use App\Edificio;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
@@ -16,6 +17,10 @@ class MappeController extends Controller
     public function index()
     {
         $mappe=Mappa::all();
+        foreach ($mappe as $mappa){
+            $edificio = Edificio::findOrFail($mappa['id_edificio']);
+            $mappa['nome_edificio'] = $edificio['nome'];
+        }
         return response()->json($mappe,200);
     }
 

@@ -6,6 +6,7 @@
         <tr>
           <th class="tg th">Aula</th>
           <th class="tg th">Edificio</th>
+          <th class="tg th">Piano</th>
           <th class="tg th">Capienza</th>
           <th class="tg th">Tipo</th>
           <th class="tg th">Disponibilità</th>
@@ -16,6 +17,7 @@
         <tr v-for="aula in listAule" :key="aula.id">
           <td class="tg td">{{aula.codice}}</td>
           <td class="tg td">{{aula.nome_edificio}}</td>
+          <td class="tg td">{{aula.piano}}</td>
           <td class="tg td">{{aula.capienza}}</td>
           <td class="tg td">{{aula.tipo}}</td>
           <td class="tg td">{{aula.disponibilita}}</td>
@@ -36,6 +38,7 @@
           <th class="tg th">ID</th>
           <th class="tg th">Aula</th>
           <th class="tg th">Edificio</th>
+          <th class="tg th">Piano</th>
           <th class="tg th">Capienza</th>
           <th class="tg th">Tipo</th>
           <th class="tg th">Disponibilità</th>
@@ -49,6 +52,7 @@
           <td class="tg td">{{aula.id}}</td>
           <td class="tg td">{{aula.codice}}</td>
           <td class="tg td">{{aula.nome_edificio}}</td>
+          <td class="tg td">{{aula.piano}}</td>
           <td class="tg td">{{aula.capienza}}</td>
           <td class="tg td">{{aula.tipo}}</td>
           <td class="tg td">{{aula.disponibilita}}</td>
@@ -56,7 +60,10 @@
             <button class="button button-apri/chiudi" @click="apri_chiudi(aula.id, aula.stato)">Apri</button>
           </td>
           <td class="tg td" v-else>
-            <button class="button button-apri/chiudi" @click="apri_chiudi(aula.id, aula.stato)">Chiudi</button>
+            <button
+              class="button button-apri/chiudi"
+              @click="apri_chiudi(aula.id, aula.stato)"
+            >Chiudi</button>
           </td>
           <td class="tg td">
             <router-link :to="'/editAula/'+aula.id" class="button button-modifica">Modifica</router-link>
@@ -78,6 +85,7 @@
           <th class="tg th">ID</th>
           <th class="tg th">Aula</th>
           <th class="tg th">Edificio</th>
+          <th class="tg th">Piano</th>
           <th class="tg th">Capienza</th>
           <th class="tg th">Tipo</th>
           <th class="tg th">Disponibilità</th>
@@ -86,8 +94,11 @@
       <tbody>
         <tr v-for="aula in listAule" :key="aula.id">
           <td class="tg td">{{aula.id}}</td>
-          <td class="tg td"><router-link :to="{name: 'listaPersone', params:{aula: aula.codice}}">{{aula.codice}}</router-link></td>
+          <td class="tg td">
+            <router-link :to="{name: 'listaPersone', params:{aula: aula.codice}}">{{aula.codice}}</router-link>
+          </td>
           <td class="tg td">{{aula.nome_edificio}}</td>
+          <td class="tg td">{{aula.piano}}</td>
           <td class="tg td">{{aula.capienza}}</td>
           <td class="tg td">{{aula.tipo}}</td>
           <td class="tg td">{{aula.disponibilita}}</td>
@@ -112,19 +123,26 @@ export default {
   },
   props: ["listAule", "waiting", "gestisce"],
   methods: {
-    showMap(edificio,piano) {
+    showMap(edificio, piano) {
       if (!this.show) {
-       axios.get(`http://127.0.0.1:8000/mappe/${edificio}/${piano}`)
-       .then(res =>{
-         this.image = res.data.piantina;
-         this.show = true;
-         bus.$emit("imgSend", { img: this.image, show: this.show });
-       })
-        
+        axios
+          .get(`http://127.0.0.1:8000/mappe/${edificio}/${piano}`)
+          .then(res => {
+            this.image = res.data.piantina;
+            this.show = true;
+            bus.$emit("imgSend", { img: this.image, show: this.show });
+          })
+
+          .catch(() => {
+            swal({
+              text: "Quest'aula non ha la mappa",
+              icon: "warning"
+            });
+          });
       } else if (this.show) {
         this.show = false;
         bus.$emit("toggle", this.show);
-      } 
+      }
     },
     elimina(id) {
       swal({
@@ -146,25 +164,27 @@ export default {
         }
       });
     },
-    apri_chiudi(id,stato){
-      if(stato == 'chiusa'){
-        axios.patch(`http://127.0.0.1:8000/aule/${id}`,{stato : "aperta"})
-        .then(()=>{
-          this.$router.push("/redirectDeleteAule");
-          swal({
-            text : 'Aula aperta',
-            icon: 'success'
-          })
-        })
-      } else{
-        axios.patch(`http://127.0.0.1:8000/aule/${id}`,{stato : "chiusa"})
-        .then(() =>{
-         this.$router.push("/redirectDeleteAule");
-          swal({
-            text : 'Aula chiusa',
-            icon: 'success'
-          })
-        })
+    apri_chiudi(id, stato) {
+      if (stato == "chiusa") {
+        axios
+          .patch(`http://127.0.0.1:8000/aule/${id}`, { stato: "aperta" })
+          .then(() => {
+            this.$router.push("/redirectDeleteAule");
+            swal({
+              text: "Aula aperta",
+              icon: "success"
+            });
+          });
+      } else {
+        axios
+          .patch(`http://127.0.0.1:8000/aule/${id}`, { stato: "chiusa" })
+          .then(() => {
+            this.$router.push("/redirectDeleteAule");
+            swal({
+              text: "Aula chiusa",
+              icon: "success"
+            });
+          });
       }
     }
   }

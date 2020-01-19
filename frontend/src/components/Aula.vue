@@ -62,7 +62,7 @@
         <h3>Cerca</h3>
         <p>Trova una aula</p>
         <form @submit.prevent="goSearch">
-          <input class="input" type="text" name="search" v-model="searchString" />
+          <input class="input" type="text" name="search" v-model.trim="searchString" />
           <input type="submit" name="submit" value="Cerca" class="button button-search" />
         </form>
       </div>

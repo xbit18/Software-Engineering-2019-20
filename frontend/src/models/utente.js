@@ -1,5 +1,5 @@
 class Utente{
-    constructor(id,email,password,nome,cognome,data_nascita,tipo,corso,matricola,numero_documento){
+    constructor(id,email,password,nome,cognome,data_nascita,tipo,corso,matricola,numero_documento,created_at,updated_at){
         this.id = id;
         this.email = email;
         this.password = password;
@@ -10,7 +10,8 @@ class Utente{
         this.corso = corso;
         this.matricola = matricola;
         this.numero_documento = numero_documento;
-
+        this.created_at = created_at;
+        this.updated_at = updated_at;
     }
 }
 

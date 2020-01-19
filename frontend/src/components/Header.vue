@@ -59,6 +59,9 @@
         <span>Gestisci edifici</span>
       </router-link>
       
+       <router-link to="/gestisceMappe" v-if="authenticated && isAdmin">
+        <span>Gestisci mappe</span>
+      </router-link>
 
       <router-link to="/createAula" v-if="authenticated && isAdmin">
         <span>Crea Aula</span>
@@ -76,13 +79,7 @@
         <span>Visualizza info aule</span>
       </router-link>
 
-      <router-link to="/">
-        <span>Contattaci</span>
-      </router-link>
 
-      <router-link to="/">
-        <span>Aiuto</span>
-      </router-link>
     </Slide>
   </header>
 </template>
