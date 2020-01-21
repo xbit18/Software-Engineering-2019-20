@@ -164,9 +164,10 @@ class AuleController extends Controller
     public function presenze($codice){
         $aula = Aula::where('codice', $codice)->first();
 
-        $presenza = Presenza::where('id_aula', $aula->id)
+        $presenze = Presenza::where('id_aula', $aula->id)
             ->where('data_uscita', null)->get();
-            
-        return response()->json($presenza,200);
+        
+        $utenti = Utente::where('id', $presenze->id_utente)->get();
+        return response()->json($utenti,200);
     }
 }
