@@ -78,13 +78,13 @@ export default {
         if(this.isAdmin){
           this.$router.push('/gestisceEdifici');
           swal({
-                text: "Edificio non trovato",
+                text: "Building non trovato",
                 icon: "error"
               });
         } else {
           this.$router.push('/');
           swal({
-                text: "Edificio non trovato",
+                text: "Building non trovato",
                 icon: "error"
               });
         }

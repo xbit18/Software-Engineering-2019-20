@@ -1,4 +1,4 @@
-// import Utente from '@/models/utente.js'
+// import User from '@/models/utente.js'
 import axios from 'axios'
 export default ({
 namespaced:true,

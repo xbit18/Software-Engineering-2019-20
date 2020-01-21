@@ -44,7 +44,7 @@
       </router-link> -->
 
       <!-- <router-link to="/prenotaAula" v-if="authenticated && (isAdmin || isDocente)">
-        <span>Prenota Aula</span>
+        <span>Prenota Classroom</span>
       </router-link> -->
 
        <router-link to="/listPrenotazioni" v-if="authenticated && isAdmin">
@@ -58,7 +58,7 @@
       <router-link to="/gestisceEdifici" v-if="authenticated && isAdmin">
         <span>Gestisci edifici</span>
       </router-link>
-      
+
        <router-link to="/gestisceMappe" v-if="authenticated && isAdmin">
         <span>Gestisci mappe</span>
       </router-link>

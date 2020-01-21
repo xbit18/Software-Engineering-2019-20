@@ -171,7 +171,7 @@ export default {
           .then(() => {
             this.$router.push("/redirectDeleteAule");
             swal({
-              text: "Aula aperta",
+              text: "Classroom aperta",
               icon: "success"
             });
           });
@@ -181,7 +181,7 @@ export default {
           .then(() => {
             this.$router.push("/redirectDeleteAule");
             swal({
-              text: "Aula chiusa",
+              text: "Classroom chiusa",
               icon: "success"
             });
           });

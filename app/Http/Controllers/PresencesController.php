@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class PresenzeController extends Controller
+class PresencesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -62,5 +62,5 @@ class PresenzeController extends Controller
     }
 
 
-    public function uscita($id){}
+    public function exit($id){}
 }

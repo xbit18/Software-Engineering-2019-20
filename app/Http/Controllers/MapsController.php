@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Mappa;
-use App\Edificio;
+use App\Map;
+use App\Building;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
-class MappeController extends Controller
+class MapsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,12 +16,12 @@ class MappeController extends Controller
      */
     public function index()
     {
-        $mappe=Mappa::all();
-        foreach ($mappe as $mappa){
-            $edificio = Edificio::findOrFail($mappa['id_edificio']);
-            $mappa['nome_edificio'] = $edificio['nome'];
+        $maps=Map::all();
+        foreach ($maps as $map){
+            $building = Building::findOrFail($map['id_edificio']);
+            $map['nome_edificio'] = $building['nome'];
         }
-        return response()->json($mappe,200);
+        return response()->json($maps,200);
     }
 
     /**
@@ -31,8 +31,8 @@ class MappeController extends Controller
      */
     public function store(Request $request)
     {
-        $mappa= Mappa::where('id_edificio', $request->id_edificio)->where('piano',$request->piano)->first();
-        if($mappa != null){
+        $map= Map::where('id_edificio', $request->id_edificio)->where('piano',$request->piano)->first();
+        if($map != null){
             return response()->json(["errore"=>"la mappa per questo piano esiste già"], 409);
         }
 
@@ -46,52 +46,52 @@ class MappeController extends Controller
 
         $path = $request->file('mappa')->store('img');
 
-        $mappa = new Mappa;
-        $mappa->piantina = $path;
-        $mappa->piano = $request->piano;
-        $mappa->id_edificio = $request->id_edificio;
-        $mappa->save();
+        $map = new Map;
+        $map->piantina = $path;
+        $map->piano = $request->piano;
+        $map->id_edificio = $request->id_edificio;
+        $map->save();
 
-        return response()->json($mappa,201);
+        return response()->json($map,201);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Mappa  $mappa
+     * @param  \App\Map  $map
      * @return \Illuminate\Http\Response
      */
-     public function show_mappa_edificio($id_edificio, $piano)
+     public function show_map_building($id_building, $plane)
      {
-         $mappa= Mappa::where('id_edificio',$id_edificio)->where('piano',$piano)->first();
-        if($mappa == null){
+         $map= Map::where('id_edificio',$id_building)->where('piano',$plane)->first();
+        if($map == null){
              return response()->json(["errore"=>"mappa non trovata"], 404);
          }
 
-         return response()->json($mappa, 200);
+         return response()->json($map, 200);
      }
 
     public function show($id)
     {
-        $mappa= Mappa::find($id);
-        if($mappa == null){
+        $map= Map::find($id);
+        if($map == null){
             return response()->json(["errore"=>"mappa non trovata"], 404);
         }
 
-        return response()->json($mappa, 200);
+        return response()->json($map, 200);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Mappa  $mappa
+     * @param  \App\Map  $map
      * @return \Illuminate\Http\Response
      */
-    public function update($id_edificio, $piano, Request $request)
+    public function update($id_building, $plane, Request $request)
     {
-        $mappa= Mappa::where('id_edificio',$id_edificio)->where('piano',$piano)->first();
-        if($mappa == null){
+        $map= Map::where('id_edificio',$id_building)->where('piano',$plane)->first();
+        if($map == null){
             return response()->json(["errore"=>"mappa non trovata"], 404);
         }
 
@@ -105,24 +105,24 @@ class MappeController extends Controller
 
         $path = $request->file('mappa')->store('img');
 
-        $mappa->piantina = $path;
-        if($request->piano != null) {$mappa->piano = $piano;}
-        $mappa->id_edificio = $id_edificio;
+        $map->piantina = $path;
+        if($request->piano != null) {$map->piano = $plane;}
+        $map->id_edificio = $id_building;
 
-        $mappa->save();
+        $map->save();
 
-        return response()->json($mappa,200);
+        return response()->json($map,200);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Mappa  $mappa
+     * @param  \App\Map  $map
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $mappa= Mappa::find($id);
-        $mappa->delete();
+        $map= Map::find($id);
+        $map->delete();
     }
 }

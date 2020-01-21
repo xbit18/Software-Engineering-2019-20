@@ -109,7 +109,7 @@ export default {
             } else {
               this.$router.push("/");
               swal({
-                text: "Aula non trovata",
+                text: "Classroom non trovata",
                 icon: "error"
               });
             }
@@ -127,7 +127,7 @@ export default {
               this.$router.push("/");
 
               swal({
-                text: "Aula non trovata",
+                text: "Classroom non trovata",
                 icon: "error"
               });
             }
@@ -166,7 +166,7 @@ export default {
           .then(() => {
             this.$router.push(`/redirectAula/${id}`);
             swal({
-              text: "Aula aperta",
+              text: "Classroom aperta",
               icon: "success"
             });
           });
@@ -175,7 +175,7 @@ export default {
           .patch(`http://127.0.0.1:8000/aule/${id}`, { stato: "chiusa" })
           .then(() => {
             swal({
-              text: "Aula chiusa",
+              text: "Classroom chiusa",
               icon: "success"
             });
           });
