@@ -42,7 +42,7 @@ export default {
       this.$router.push("/listaPersone/" + this.searchString);
     },
     getListAule() {
-      axios.get("http://127.0.0.1:8000/aule").then(res => {
+      axios.get("http://127.0.0.1:8000/classrooms").then(res => {
         this.listAule = res.data;
       });
     }

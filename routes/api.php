@@ -68,14 +68,14 @@ Route::get('/maps', 'MapsController@index');                                    
 
 Route::post('/maps', 'MapsController@store');                                      //Salva la nuova map aggiunta
 
-Route::post('/maps/{building}/{plane}', 'MapsController@update');                   //Registra le modifiche alla map
+Route::post('/maps/{building}/{floor}', 'MapsController@update');                   //Registra le modifiche alla map
 
 Route::get('/maps/{map}/delete', 'MapsController@destroy');                       //Cancella la map
 
 Route::get('/maps/{map}', 'MapsController@show');
 //Mostra la map
 
-Route::get('/maps/{building}/{plane}', 'MapsController@show_map_building');
+Route::get('/maps/{building}/{floor}', 'MapsController@showMapBuilding');
 
 
 /**

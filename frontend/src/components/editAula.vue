@@ -42,12 +42,12 @@ export default {
       
     },
     getEdifici() {
-      axios.get("http://127.0.0.1:8000/edifici").then(res => {
+      axios.get("http://127.0.0.1:8000/buildings").then(res => {
         this.edifici = res.data;
       });
     },
     getAula(id) {
-      axios.get(`http://127.0.0.1:8000/aule/${id}`).then(res => {
+      axios.get(`http://127.0.0.1:8000/classrooms/${id}`).then(res => {
         this.aula = res.data;
       });
     }

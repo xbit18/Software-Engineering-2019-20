@@ -42,7 +42,7 @@ export default {
       this.$router.push("/redirectEdificio/" + this.searchString);
     },
     getEdifici() {
-      axios.get("http://127.0.0.1:8000/edifici").then(res => {
+      axios.get("http://127.0.0.1:8000/buildings").then(res => {
         this.listEdifici = res.data;
       });
     }

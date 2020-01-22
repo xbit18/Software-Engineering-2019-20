@@ -99,7 +99,7 @@ export default {
       console.log(typeof id);
       if (typeof id == "number") {
         axios
-          .get(`http://127.0.0.1:8000/aule/${id}`)
+          .get(`http://127.0.0.1:8000/classrooms/${id}`)
           .then(res => {
             this.aula = res.data;
           })
@@ -116,7 +116,7 @@ export default {
           });
       } else {
         axios
-          .get(`http://127.0.0.1:8000/aula/${id}`)
+          .get(`http://127.0.0.1:8000/classrooms/${id}`)
           .then(res => {
             this.aula = res.data;
           })
@@ -146,7 +146,7 @@ export default {
         dangerMode: true
       }).then(willDelete => {
         if (willDelete) {
-          axios.get(`http://127.0.0.1:8000/aule/${id}/delete`).then(res => {
+          axios.get(`http://127.0.0.1:8000/classrooms/${id}/delete`).then(res => {
             console.log(res);
 
             swal("L'aula è stata eliminata!", {
@@ -162,20 +162,20 @@ export default {
     apri_chiudi(id) {
       if (this.aula.stato == "chiusa") {
         axios
-          .patch(`http://127.0.0.1:8000/aule/${id}`, { stato: "aperta" })
+          .patch(`http://127.0.0.1:8000/classrooms/${id}`, { stato: "aperta" })
           .then(() => {
             this.$router.push(`/redirectAula/${id}`);
             swal({
-              text: "Classroom aperta",
+              text: "Aula aperta",
               icon: "success"
             });
           });
       } else {
         axios
-          .patch(`http://127.0.0.1:8000/aule/${id}`, { stato: "chiusa" })
+          .patch(`http://127.0.0.1:8000/classrooms/${id}`, { stato: "chiusa" })
           .then(() => {
             swal({
-              text: "Classroom chiusa",
+              text: "Aula chiusa",
               icon: "success"
             });
           });

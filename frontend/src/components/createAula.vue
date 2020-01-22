@@ -19,7 +19,7 @@ export default {
   methods: {
     save() {
       axios
-        .post(`http://127.0.0.1:8000/aule`, this.aula)
+        .post(`http://127.0.0.1:8000/classrooms`, this.aula)
         .then(res => {
           if (res.status == 201) {
             swal({
@@ -37,7 +37,7 @@ export default {
       
     },
     getEdifici() {
-      axios.get("http://127.0.0.1:8000/edifici").then(res => {
+      axios.get("http://127.0.0.1:8000/classrooms").then(res => {
         console.log(res);
         this.edifici = res.data;
       });

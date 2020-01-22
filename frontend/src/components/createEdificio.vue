@@ -17,7 +17,7 @@ export default {
       console.log(this.edificio);
 
       axios
-        .post("http://127.0.0.1:8000/edifici", this.edificio)
+        .post("http://127.0.0.1:8000/buildings", this.edificio)
         .then(res => {
           if (res.status == 201) {
             swal({
