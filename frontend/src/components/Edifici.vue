@@ -50,7 +50,7 @@ export default {
         dangerMode: true
       }).then(willDelete => {
         if (willDelete) {
-          axios.get(`http://127.0.0.1:8000/buildings/${id}/delete`).then(res => {
+          axios.get(`http://127.0.0.1:8000/api/buildings/${id}/delete`).then(res => {
             console.log(res);
             this.$router.push('/redirectDeleteEdificio');
             swal("L'edificio è stato eliminato!", {

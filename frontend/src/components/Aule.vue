@@ -126,7 +126,7 @@ export default {
     showMap(edificio, piano) {
       if (!this.show) {
         axios
-          .get(`http://127.0.0.1:8000/maps/${edificio}/${piano}`)
+          .get(`http://127.0.0.1:8000/api/maps/${edificio}/${piano}`)
           .then(res => {
             this.image = res.data.piantina;
             this.show = true;
@@ -153,7 +153,7 @@ export default {
         dangerMode: true
       }).then(willDelete => {
         if (willDelete) {
-          axios.get(`http://127.0.0.1:8000/classrooms/${id}/delete`).then(() => {
+          axios.get(`http://127.0.0.1:8000/api/classrooms/${id}/delete`).then(() => {
             this.$router.push("/redirectDeleteAule");
             swal("L'aula è stata eliminata!", {
               icon: "success"
@@ -167,7 +167,7 @@ export default {
     apri_chiudi(id, stato) {
       if (stato == "chiusa") {
         axios
-          .patch(`http://127.0.0.1:8000/classrooms/${id}`, { stato: "aperta" })
+          .patch(`http://127.0.0.1:8000/api/classrooms/${id}`, { stato: "aperta" })
           .then(() => {
             this.$router.push("/redirectDeleteAule");
             swal({
@@ -177,7 +177,7 @@ export default {
           });
       } else {
         axios
-          .patch(`http://127.0.0.1:8000/classrooms/${id}`, { stato: "chiusa" })
+          .patch(`http://127.0.0.1:8000/api/classrooms/${id}`, { stato: "chiusa" })
           .then(() => {
             this.$router.push("/redirectDeleteAule");
             swal({

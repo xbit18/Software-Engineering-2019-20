@@ -47,7 +47,7 @@ export default {
       this.$router.push(`/redirectAula/${this.searchString}`);
     },
     getListAule() {
-      axios.get("http://127.0.0.1:8000/classrooms").then(res => {
+      axios.get("http://127.0.0.1:8000/api/classrooms").then(res => {
         this.listAule = res.data;
       });
     }

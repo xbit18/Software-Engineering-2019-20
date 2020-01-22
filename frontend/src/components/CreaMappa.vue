@@ -33,7 +33,7 @@ export default {
               formData.append("id_edificio", this.mappa.id_edificio);
               axios
                 .post(
-                  `http://127.0.0.1:8000/maps`,
+                  `http://127.0.0.1:8000/api/maps`,
                   formData,
                   {
                     headers: {
@@ -65,7 +65,7 @@ export default {
             }
         },
         getEdifici(){
-            axios.get(`http://127.0.0.1:8000/buildings`)
+            axios.get(`http://127.0.0.1:8000/api/buildings`)
             .then( res =>{
                 this.edifici = res.data
             })

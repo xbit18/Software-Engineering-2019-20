@@ -20,7 +20,7 @@ export default {
     save() {
       let idEdificio = this.$route.params.edificio;
       axios
-        .put(`http://127.0.0.1:8000/buildings/${idEdificio}`, this.edificio)
+        .put(`http://127.0.0.1:8000/api/buildings/${idEdificio}`, this.edificio)
         .then(res => {
           if (res.status == 200) {
             this.$router.push("/gestisceEdifici");
@@ -35,7 +35,7 @@ export default {
         });
     },
     getEdificio(id) {
-      axios.get(`http://127.0.0.1:8000/buildings/${id}`).then(res => {
+      axios.get(`http://127.0.0.1:8000/api/buildings/${id}`).then(res => {
         this.edificio = res.data;
       });
     }

@@ -72,14 +72,14 @@ export default {
       this.$router.push(`/redirectPrenotazione/${this.searchString}`);
     },
         getPrenotazione(id){
-            axios.get(`http://127.0.0.1:8000/bookings/${id}`)
+            axios.get(`http://127.0.0.1:8000/api/bookings/${id}`)
             .then(res =>{
                 this.prenotazione = res.data;
             })
         },
         accetta_rifiuta(id,stato,newStato){ 
       console.log(id);
-                axios.patch(`http://127.0.0.1:8000/bookings/${id}`,{stato : newStato})
+                axios.patch(`http://127.0.0.1:8000/api/bookings/${id}`,{stato : newStato})
                 .then(() =>{
                   this.$router.push('/redirectPrenotazione');
                     swal({

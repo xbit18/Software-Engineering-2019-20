@@ -34,7 +34,7 @@ export default {
               formData.append("id_edificio", this.mappa.id_edificio);
               axios
                 .post(
-                  `http://127.0.0.1:8000/maps/${this.mappa.id_edificio}/${this.mappa.piano}`,
+                  `http://127.0.0.1:8000/api/maps/${this.mappa.id_edificio}/${this.mappa.piano}`,
                   formData,
                   {
                     headers: {
@@ -70,13 +70,13 @@ export default {
       console.log(this.file);
     },
     getEdifici(){
-            axios.get(`http://127.0.0.1:8000/buildings`)
+            axios.get(`http://127.0.0.1:8000/api/buildings`)
             .then( res =>{
                 this.edifici = res.data
             })
         },
     getMappa(id){
-      axios.get(`http://127.0.0.1:8000/maps/${id}`)
+      axios.get(`http://127.0.0.1:8000/api/maps/${id}`)
       .then(res =>{
         this.mappa = res.data
       })
