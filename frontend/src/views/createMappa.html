@@ -1,0 +1,26 @@
+<div class="center">
+    <section class="edit">
+      <div class="title">
+        <h1 v-if="isEdit">Modifica Mappa</h1>
+        <h1 v-else>Crea Mappa</h1>
+      </div>
+      <form class="mid-form" @submit.prevent=save()>
+
+        <label for="piano">Piano</label>
+        <input type="text" name="piano" v-model="mappa.piano"required/>
+
+        <label for="edificio">Edificio</label>
+        <select v-model="mappa.id_edificio" name="edificio" required @change="see()">
+          <option v-bind:value="edificio.id" v-for="edificio in edifici" :key="edificio.id"> {{edificio.nome}}</option>
+        </select>
+        
+        <label for="image" >Mappa</label>
+        <input type="file" id="file" ref="file" name="file0" @change="fileChange()" required />
+        
+        <input v-if="isEdit" type="submit" value ="Modifica" class="button button-success" />
+        <input v-else type="submit" value ="Salva" class="button button-success" />
+      </form>
+    </section>
+
+    <div class="clearfix"></div>
+  </div>
