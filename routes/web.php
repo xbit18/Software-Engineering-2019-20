@@ -1,4 +1,4 @@
-<?php
+<?php /*
 Route::options('/{path}', function(){
     return '';
 })->where('path', '.*');
@@ -8,11 +8,12 @@ Route::options('/{path}', function(){
 Route::post('/login', 'LoginController@check');
 
 
+*/
 
 /**
  * Rotte per gli edifici
  */
-
+/*
 Route::get('/edifici','EdificiController@index');                                   //Index mostra una lista di tutti gli edifici
 
 Route::post('/edifici','EdificiController@store');                                  //Store salva le modifiche all’edificio
@@ -24,14 +25,14 @@ Route::put('/edifici/{edificio}','EdificiController@update');                   
 Route::get('/edifici/aule/{edificio}','EdificiController@aule');
 
 Route::get('/edifici/{edificio}/delete','EdificiController@destroy');               // Delete lo elimina
-
+*/
 
 
 
 /**
  * Rotte per le aule
  */
-
+/*
 Route::get('/aule','AuleController@index');                                         //Restituisce una lista delle aule che appartengono a un edificio
 
 Route::post('/aule','AuleController@store');                                        //Salva la nuova aula
@@ -48,13 +49,16 @@ Route::patch('/aule/{aula}','AuleController@stato');                            
 
 Route::get('/aule/{aula}/presenze', 'AuleController@presenze');
 
+*/
+
+
 
 
 
 /**
  * Rotte per le mappe
  */
-
+/*
 Route::get('/mappe','MappeController@index');                                       //Restituisce una lista di tutte le mappe
 
 Route::post('/mappe','MappeController@store');                                      //Salva la nuova mappa aggiunta
@@ -64,10 +68,10 @@ Route::post('/mappe/{edificio}/{piano}','MappeController@update');              
 Route::get('/mappe/{mappa}/delete','MappeController@destroy');                       //Cancella la mappa
 
 Route::get('/mappe/{mappa}','MappeController@show');
-   //Mostra la mappa
+//Mostra la mappa
 
 Route::get('/mappe/{edificio}/{piano}','MappeController@show_mappa_edificio');
-
+*/
 
 
 
@@ -75,7 +79,7 @@ Route::get('/mappe/{edificio}/{piano}','MappeController@show_mappa_edificio');
 /**
  * Rotte per le prenotazioni
  */
-
+/*
 Route::get('/prenotazioni','PrenotazioniController@index');                         //Mostra tutte le prenotazioni
 
 Route::post('/prenotazioni','PrenotazioniController@store');         //Registra la nuova prenotazione
@@ -88,14 +92,14 @@ Route::get('/prenotazioni/{prenotazione}/delete','PrenotazioniController@destroy
 
 Route::patch('/prenotazioni/{prenotazione}','PrenotazioniController@stato');         // accetta/rifiuta prenotazione
 
-
+*/
 
 
 /**
  * Rotte per i posti
  */
-
- Route::get('/posti/aula/{id_aula}','PostiController@index_aula');                                 //Mostra tutti i posti all'interno di un'aula
+/*
+Route::get('/posti/aula/{id_aula}','PostiController@index_aula');                                 //Mostra tutti i posti all'interno di un'aula
 
 Route::get('/posti','PostiController@index');
 
@@ -109,10 +113,11 @@ Route::put('/posti/{id_posto}','PostiController@update');                       
 
 Route::get('/posti/{id_posto}/delete','PostiController@destroy');                        //Elimina una prenotazione
 
-
+ */
 /**
  * Rotte per le presenze
  */
+/*
 Route::get('/presenze','PresenzeController@index');
 
 Route::post('/presenze','PresenzeController@store');
@@ -124,11 +129,12 @@ Route::put('/presenze/{presenza}','PresenzeController@update');
 Route::get('/presenze/{presenza}/delete','PresenzeController@destroy');
 
 Route::patch('/presenze/{presenza}', 'PresenzeController@uscita');
-
+*/
 
 /**
  * Rotte per le occupazioni
  */
+/*
 Route::get('/occupazioni','OccupazioniController@index');
 
 Route::post('/occupazioni','OccupazioniController@store');
@@ -138,5 +144,5 @@ Route::get('/occupazioni/{occupazione}','OccupazioniController@show');
 Route::put('/occupazioni/{occupazione}','OccupazioniController@update');
 
 Route::get('/occupazioni/{occupazione}/delete','OccupazioniController@destroy');
-
+*/
 ?>
