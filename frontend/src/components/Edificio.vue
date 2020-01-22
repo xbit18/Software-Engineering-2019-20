@@ -39,7 +39,7 @@
         <h3>Cerca</h3>
         <p>Trova un edificio</p>
         <form @submit.prevent="goSearch">
-          <input class="input" type="text" name="search" v-model="searchString" />
+          <input class="input" type="text" name="search" v-model.trim="searchString" />
           <input type="submit" name="submit" value="Cerca" class="button button-search" />
         </form>
       </div>
@@ -71,20 +71,20 @@ export default {
   },
   methods: {
     getEdificio(id) {
-      axios.get(`http://127.0.0.1:8000/edifici/${id}`).then(res => {
+      axios.get(`http://127.0.0.1:8000/api/buildings/${id}`).then(res => {
         this.edificio = res.data;
       })
       .catch(()=>{
         if(this.isAdmin){
           this.$router.push('/gestisceEdifici');
           swal({
-                text: "Edificio non trovato",
+                text: "Building non trovato",
                 icon: "error"
               });
         } else {
           this.$router.push('/');
           swal({
-                text: "Edificio non trovato",
+                text: "Building non trovato",
                 icon: "error"
               });
         }
@@ -102,7 +102,7 @@ export default {
         dangerMode: true
       }).then(willDelete => {
         if (willDelete) {
-          axios.get(`http://127.0.0.1:8000/edifici/${id}/delete`).then(res => {
+          axios.get(`http://127.0.0.1:8000/api/buildings/${id}/delete`).then(res => {
             console.log(res);
             this.$router.push("/redirectDeleteEdificio");
             swal("L'edificio è stato eliminato!", {

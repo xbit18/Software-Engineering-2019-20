@@ -62,7 +62,7 @@
         <h3>Cerca</h3>
         <p>Trova una aula</p>
         <form @submit.prevent="goSearch">
-          <input class="input" type="text" name="search" v-model="searchString" />
+          <input class="input" type="text" name="search" v-model.trim="searchString" />
           <input type="submit" name="submit" value="Cerca" class="button button-search" />
         </form>
       </div>
@@ -99,7 +99,7 @@ export default {
       console.log(typeof id);
       if (typeof id == "number") {
         axios
-          .get(`http://127.0.0.1:8000/aule/${id}`)
+          .get(`http://127.0.0.1:8000/api/classrooms/${id}`)
           .then(res => {
             this.aula = res.data;
           })
@@ -109,14 +109,14 @@ export default {
             } else {
               this.$router.push("/");
               swal({
-                text: "Aula non trovata",
+                text: "Classroom non trovata",
                 icon: "error"
               });
             }
           });
       } else {
         axios
-          .get(`http://127.0.0.1:8000/aula/${id}`)
+          .get(`http://127.0.0.1:8000/api/classrooms/${id}`)
           .then(res => {
             this.aula = res.data;
           })
@@ -127,7 +127,7 @@ export default {
               this.$router.push("/");
 
               swal({
-                text: "Aula non trovata",
+                text: "Classroom non trovata",
                 icon: "error"
               });
             }
@@ -146,7 +146,7 @@ export default {
         dangerMode: true
       }).then(willDelete => {
         if (willDelete) {
-          axios.get(`http://127.0.0.1:8000/aule/${id}/delete`).then(res => {
+          axios.get(`http://127.0.0.1:8000/api/classrooms/${id}/delete`).then(res => {
             console.log(res);
 
             swal("L'aula è stata eliminata!", {
@@ -162,7 +162,7 @@ export default {
     apri_chiudi(id) {
       if (this.aula.stato == "chiusa") {
         axios
-          .patch(`http://127.0.0.1:8000/aule/${id}`, { stato: "aperta" })
+          .patch(`http://127.0.0.1:8000/api/classrooms/${id}`, { stato: "aperta" })
           .then(() => {
             this.$router.push(`/redirectAula/${id}`);
             swal({
@@ -172,7 +172,7 @@ export default {
           });
       } else {
         axios
-          .patch(`http://127.0.0.1:8000/aule/${id}`, { stato: "chiusa" })
+          .patch(`http://127.0.0.1:8000/api/classrooms/${id}`, { stato: "chiusa" })
           .then(() => {
             swal({
               text: "Aula chiusa",

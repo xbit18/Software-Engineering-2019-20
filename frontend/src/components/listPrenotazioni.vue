@@ -12,7 +12,7 @@
         <h3>Cerca</h3>
         <p>Trova una prenotazione</p>
         <form @submit.prevent="goSearch">
-          <input class="input" type="text" name="search" v-model="searchString" />
+          <input class="input" type="text" name="search" v-model.trim="searchString" />
           <input type="submit" name="submit" value="Cerca" class="button button-search" />
         </form>
       </div>
@@ -43,7 +43,7 @@ export default {
       this.$router.push(`/prenotazione/${this.searchString}`);
     },
         getPrenotazioni(){
-            axios.get(`http://127.0.0.1:8000/prenotazioni`)
+            axios.get(`http://127.0.0.1:8000/api/bookings`)
             .then(res =>{
                 this.listPrenotazioni = res.data;
             })

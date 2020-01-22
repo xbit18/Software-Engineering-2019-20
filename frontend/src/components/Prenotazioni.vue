@@ -42,7 +42,7 @@ export default {
   methods: {
     accetta_rifiuta(id,stato,newStato){ 
       console.log(id);
-                axios.patch(`http://127.0.0.1:8000/prenotazioni/${id}`,{stato : newStato})
+                axios.patch(`http://127.0.0.1:8000/api/bookings/${id}`,{stato : newStato})
                 .then(() =>{
                   this.$router.push('/redirectPrenotazione');
                     swal({

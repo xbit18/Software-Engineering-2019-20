@@ -10,8 +10,7 @@ export default {
     return {
       isEdit: false,
       aula: new Aula(),
-      edifici: null,
-      building: { id: null }
+      edifici: null
     };
   },
   mounted() {
@@ -19,9 +18,8 @@ export default {
   },
   methods: {
     save() {
-      this.aula.id_edificio = this.building.id;
       axios
-        .post(`http://127.0.0.1:8000/aule`, this.aula)
+        .post(`http://127.0.0.1:8000/api/classrooms`, this.aula)
         .then(res => {
           if (res.status == 201) {
             swal({
@@ -39,7 +37,7 @@ export default {
       
     },
     getEdifici() {
-      axios.get("http://127.0.0.1:8000/edifici").then(res => {
+      axios.get("http://127.0.0.1:8000/api/classrooms").then(res => {
         console.log(res);
         this.edifici = res.data;
       });

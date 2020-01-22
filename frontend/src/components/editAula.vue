@@ -25,7 +25,7 @@ export default {
       this.aula.nome = this.building.nome;
       let aulaId = this.$route.params.aula;
       axios
-        .put(`http://127.0.0.1:8000/aule/${aulaId}`, this.aula)
+        .put(`http://127.0.0.1:8000/api/aule/${aulaId}`, this.aula)
         .then(res => {
           console.log(this.aula);
           if (res.status == 200) {
@@ -42,12 +42,12 @@ export default {
       
     },
     getEdifici() {
-      axios.get("http://127.0.0.1:8000/edifici").then(res => {
+      axios.get("http://127.0.0.1:8000/api/buildings").then(res => {
         this.edifici = res.data;
       });
     },
     getAula(id) {
-      axios.get(`http://127.0.0.1:8000/aule/${id}`).then(res => {
+      axios.get(`http://127.0.0.1:8000/api/classrooms/${id}`).then(res => {
         this.aula = res.data;
       });
     }

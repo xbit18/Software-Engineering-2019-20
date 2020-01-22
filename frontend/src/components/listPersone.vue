@@ -17,7 +17,7 @@
         <h3>Cerca</h3>
         <p>Trova la lista delle persone dentro una certa aula</p>
         <form @submit.prevent="goSearch">
-          <input class="input" type="text" name="search" v-model="searchString" />
+          <input class="input" type="text" name="search" v-model.trim="searchString" />
           <input type="submit" name="submit" value="Cerca" class="button button-search" />
         </form>
       </div>
@@ -43,7 +43,7 @@ export default {
 
   methods: {
     getListPersone(searchString) {
-      axios.get(`http://127.0.0.1:8000/aule/${searchString}/presenze`).then(res => {
+      axios.get(`http://127.0.0.1:8000/api/classrooms/${searchString}/presences`).then(res => {
         this.listPersone = res.data;
         console.log(this.listPersone);
       });

@@ -4,20 +4,20 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Utente extends Model 
+class User extends Model
 {
     protected $table = 'utenti';
 
-    public function presenza(){
-        return $this->hasMany('App\Presenza');
+    public function presence(){
+        return $this->hasMany('App\Presence');
     }
 
-    public function posto(){
-        return $this->belongsTo('App\Occupazione');
+    public function place(){
+        return $this->belongsTo('App\Occupation');
     }
 
-    public function prenotazioni(){
-        return $this->hasMany('App\Prenotazione');
+    public function bookings(){
+        return $this->hasMany('App\Booking');
     }
 }
     /**

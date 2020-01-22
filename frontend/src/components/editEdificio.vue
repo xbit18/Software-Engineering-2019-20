@@ -19,18 +19,15 @@ export default {
   methods: {
     save() {
       let idEdificio = this.$route.params.edificio;
-      console.log(this.edificio);
       axios
-        .put(`http://127.0.0.1:8000/edifici/${idEdificio}`, this.edificio)
+        .put(`http://127.0.0.1:8000/api/buildings/${idEdificio}`, this.edificio)
         .then(res => {
-          console.log(res);
-          if (res.status == 201) {
-            console.log(res);
+          if (res.status == 200) {
+            this.$router.push("/gestisceEdifici");
             swal({
               text: "L'edificio è stato modificato",
               icon: "success"
             });
-            this.$router.push("/gestisceEdifici");
           }
         })
         .catch(e => {
@@ -38,7 +35,7 @@ export default {
         });
     },
     getEdificio(id) {
-      axios.get(`http://127.0.0.1:8000/edifici/${id}`).then(res => {
+      axios.get(`http://127.0.0.1:8000/api/buildings/${id}`).then(res => {
         this.edificio = res.data;
       });
     }

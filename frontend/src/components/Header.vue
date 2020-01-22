@@ -35,17 +35,17 @@
         <span>Home</span>
       </router-link>
 
-      <router-link to="/check" v-if="authenticated">
+      <!-- <router-link to="/check" v-if="authenticated">
         <span>Check-in</span>
-      </router-link>
+      </router-link> -->
 
-      <router-link to="/" v-if="authenticated">
+      <!-- <router-link to="/" v-if="authenticated">
         <span>Prenota un posto</span >
-      </router-link>
+      </router-link> -->
 
-      <router-link to="/prenotaAula" v-if="authenticated && (isAdmin || isDocente)">
-        <span>Prenota Aula</span>
-      </router-link>
+      <!-- <router-link to="/prenotaAula" v-if="authenticated && (isAdmin || isDocente)">
+        <span>Prenota Classroom</span>
+      </router-link> -->
 
        <router-link to="/listPrenotazioni" v-if="authenticated && isAdmin">
         <span>Prenotazioni</span>
@@ -58,7 +58,10 @@
       <router-link to="/gestisceEdifici" v-if="authenticated && isAdmin">
         <span>Gestisci edifici</span>
       </router-link>
-      
+
+       <router-link to="/gestisceMappe" v-if="authenticated && isAdmin">
+        <span>Gestisci mappe</span>
+      </router-link>
 
       <router-link to="/createAula" v-if="authenticated && isAdmin">
         <span>Crea Aula</span>
@@ -76,13 +79,7 @@
         <span>Visualizza info aule</span>
       </router-link>
 
-      <router-link to="/">
-        <span>Contattaci</span>
-      </router-link>
 
-      <router-link to="/">
-        <span>Aiuto</span>
-      </router-link>
     </Slide>
   </header>
 </template>

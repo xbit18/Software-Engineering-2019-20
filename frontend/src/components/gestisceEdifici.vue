@@ -11,7 +11,7 @@
         <h3>Cerca</h3>
         <p>Trova un edificio</p>
         <form @submit.prevent="goSearch">
-          <input class="input" type="text" name="search" v-model="searchString" />
+          <input class="input" type="text" name="search" v-model.trim="searchString" />
           <input type="submit" name="submit" value="Cerca" class="button button-search" />
         </form>
       </div>
@@ -27,7 +27,7 @@ export default {
   name: "gestisceEdifici",
   data() {
     return {
-      searchString: null,
+      searchString: '',
       listEdifici: ""
     };
   },
@@ -42,7 +42,7 @@ export default {
       this.$router.push("/redirectEdificio/" + this.searchString);
     },
     getEdifici() {
-      axios.get("http://127.0.0.1:8000/edifici").then(res => {
+      axios.get("http://127.0.0.1:8000/api/buildings").then(res => {
         this.listEdifici = res.data;
       });
     }

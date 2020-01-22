@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Edificio;
-use App\Aula;
+use App\Building;
+use App\Classroom;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class EdificiController extends Controller
+class BuildingsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class EdificiController extends Controller
      */
     public function index()
     {
-        $edifici=Edificio::all();
-        return response()->json($edifici,200);
+        $buildings=Building::all();
+        return response()->json($buildings,200);
     }
 
     /**
@@ -34,14 +34,14 @@ class EdificiController extends Controller
         //         'error' => 'I campi richiesti non sono stati riempiti'
         //     ],400);
         // } else {
-        $edificio = new Edificio;
-        $edificio->numero_aule = $request->numero_aule;
-        $edificio->nome = $request->nome;
-        $edificio->indirizzo = $request->indirizzo;
+        $building = new Building;
+        $building->numero_aule = $request->numero_aule;
+        $building->nome = $request->nome;
+        $building->indirizzo = $request->indirizzo;
 
-        $edificio -> save();
+        $building -> save();
 
-        return response()->json($edificio,201);
+        return response()->json($building,201);
        // }
 
     }
@@ -49,37 +49,37 @@ class EdificiController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Edificio  $edificio
+     * @param  \App\Building  $building
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $edificio= Edificio::find($id);
-        if($edificio == null){
+        $building= Building::find($id);
+        if($building == null){
             return response()->json(["errore"=>"edificio non trovato"], 404);
         }
 
-        return response()->json($edificio, 200);
+        return response()->json($building, 200);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Edificio  $edificio
+     * @param  \App\Building  $building
      * @return \Illuminate\Http\Response
      */
     public function update($id,Request $request)
     {
-        $edificio= Edificio::findOrFail($id);
+        $building= Building::findOrFail($id);
 
-        $edificio->nome = $request->nome;
-        $edificio->numero_aule = $request->numero_aule;
-        $edificio->indirizzo = $request->indirizzo;
+        $building->nome = $request->nome;
+        $building->numero_aule = $request->numero_aule;
+        $building->indirizzo = $request->indirizzo;
 
-        $edificio->save();
+        $building->save();
 
-        return response()->json($edificio, 200);
+        return response()->json($building, 200);
     }
 
     public function aule($id)
@@ -91,12 +91,12 @@ class EdificiController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Edificio  $edificio
+     * @param  \App\Building  $building
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $edificio = Edificio::findOrFail($id);
-        $edificio->delete();
+        $building = Building::findOrFail($id);
+        $building->delete();
     }
 }

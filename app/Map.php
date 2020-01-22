@@ -4,11 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Mappa extends Model
+class Map extends Model
 {
     protected $table = 'mappe';
 
-    public function edificio(){
-        return $this->belongsTo('App\Edificio');
+    public function building(){
+        return $this->belongsTo('App\Building');
     }
 }

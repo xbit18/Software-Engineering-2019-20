@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Posto;
+use App\Place;
 
-class PostiController extends Controller
+class PlacesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class PostiController extends Controller
      */
     public function index()
     {
-        $posti = Posto::all();
-        return response()->json($posti, 200);
+        $places = Place::all();
+        return response()->json($places, 200);
     }
 
     public function index_aula($id){}
@@ -28,20 +28,20 @@ class PostiController extends Controller
      */
     public function store(Request $request)
     {
-        $posto = new Posto;
+        $place = new Place;
 
-        $posto->numero_posto = $request->numero_posto;
+        $place->numero_posto = $request->numero_posto;
 
         if($request->disponibilita != null){
-            $posto->disponibilita = $request->disponibilita;
+            $place->disponibilita = $request->disponibilita;
         }
 
-        $posto->id_utente = $request->id_utente;
-        $posto->id_aula = $request->id_aula;
+        $place->id_utente = $request->id_utente;
+        $place->id_aula = $request->id_aula;
 
-        $posto->save();
+        $place->save();
 
-        return response()->json($posto, 201);
+        return response()->json($place, 201);
     }
 
     /**
@@ -52,12 +52,12 @@ class PostiController extends Controller
      */
     public function show($id)
     {
-        $posto = Posto::find($id);
-        if($posto == null){
+        $place = Place::find($id);
+        if($place == null){
             return response()->json(["errore"=>"posto non trovato"], 404);
         }
 
-        return response()->json($posto, 200);
+        return response()->json($place, 200);
     }
 
     /**
@@ -69,27 +69,27 @@ class PostiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $posto = Posto::findOrFail($id);
+        $place = Place::findOrFail($id);
 
-        $posto->numero_posto = $request->numero_posto;
-        $posto->id_aula = $request->id_aula;
+        $place->numero_posto = $request->numero_posto;
+        $place->id_aula = $request->id_aula;
 
-        $posto->save();
+        $place->save();
 
-        return response()->json($posto,200);
+        return response()->json($place,200);
     }
 
-    public function stato($id,Request $request)
+    public function state($id,Request $request)
     {
-        $posto = Posto::find($id);
-        if($posto == null){
-            return response()->json(["errore"=>"Aula non trovata"],404);
+        $place = Place::find($id);
+        if($place == null){
+            return response()->json(["errore"=>"Classroom non trovata"],404);
         }
-        $posto->disponibilita = $request->disponibilita;
-        $posto->id_utente = $request->id_utente;
-        $posto->save();
+        $place->disponibilita = $request->disponibilita;
+        $place->id_utente = $request->id_utente;
+        $place->save();
 
-        return response()->json($posto,200);
+        return response()->json($place,200);
     }
 
     /**
@@ -100,7 +100,7 @@ class PostiController extends Controller
      */
     public function destroy($id)
     {
-        $posto = Posto::findOrFail($id);
-        $posto->delete();
+        $place = Place::findOrFail($id);
+        $place->delete();
     }
 }
