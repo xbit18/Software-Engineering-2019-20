@@ -61,7 +61,7 @@ class MapsController extends Controller
      * @param  \App\Map  $map
      * @return \Illuminate\Http\Response
      */
-     public function show_map_building($id_building, $plane)
+     public function showMapBuilding($id_building, $plane)
      {
          $map= Map::where('id_edificio',$id_building)->where('piano',$plane)->first();
         if($map == null){
