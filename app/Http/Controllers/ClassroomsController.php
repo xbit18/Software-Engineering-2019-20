@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Classroom;
+use App\Http\Resources\ClassroomCollection;
 use App\Seat;
 use App\Presence;
 use App\User;
@@ -22,20 +23,19 @@ class ClassroomsController extends Controller
     public function index()
     {
 
-        $classrooms=ClassroomResource::collection(Classroom::paginate(2));
+        $classrooms = (new ClassroomCollection(Classroom::paginate(10)));
 
-        if($classrooms->isEmpty()){
-            return response()->json(["errore"=>"nessuna aula presente"],404);
-        }
-
-            foreach ($classrooms as $classroom){
+        if($classrooms == null){
+            $classrooms->additional(['error' => 'no classroom found']);
+        } else {
+            foreach ($classrooms as $classroom) {
                 $building = Building::findOrFail($classroom['id_edificio']);
                 $classroom['nome_edificio'] = $building['nome'];
             }
+            $classrooms->additional(['error' => null]);
+        }
 
         return $classrooms;
-        //return (ClassroomResource::collection(Classroom::paginate(2)))->response();
-        //return $classrooms; //response()->json($classrooms,200);
 
     }
 
@@ -47,7 +47,7 @@ class ClassroomsController extends Controller
      */
     public function store(Request $request)
     {
-        $classroom = new Classroom;
+        $classroom = Classroom::create();
         $classroom->codice = $request->codice;
         $classroom->capienza = $request->capienza;
         $classroom->tipo = $request->tipo;
