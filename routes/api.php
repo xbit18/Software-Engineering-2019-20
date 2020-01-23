@@ -14,133 +14,148 @@ use Illuminate\Http\Request;
 */
 
 
-Route::options('/{path}', function () {
+Route::options('/{path}', function(){
     return '';
 })->where('path', '.*');
+
 
 
 Route::post('/login', 'LoginController@check');
 
 
-/**
- * Rotte per gli building
- */
-
-Route::get('/buildings', 'BuildingsController@index');                                   //Index mostra una lista di tutti gli building
-
-Route::post('/buildings', 'BuildingsController@store');                                  //Store salva le modifiche all’building
-
-Route::get('/buildings/{building}', 'BuildingsController@show');                         //Show mostra un building specifico
-
-Route::put('/buildings/{building}', 'BuildingsController@update');                       //Update salva le modifiche
-
-Route::get('/buildings/classrooms/{building}', 'BuildingsController@classrooms');
-
-Route::get('/buildings/{building}/delete', 'BuildingsController@destroy');               // Delete lo elimina
 
 
 /**
- * Rotte per le classrooms
+ * Rotte per gli edifici
  */
 
-Route::get('/classrooms', 'ClassroomsController@index');                                         //Restituisce una lista delle classrooms che appartengono a un building
+Route::get('/edifici','BuildingsController@index');                                   //Index mostra una lista di tutti gli edifici
 
-Route::post('/classrooms', 'ClassroomsController@store');                                        //Salva la nuova classroom
+Route::post('/edifici','BuildingsController@store');                                  //Store salva le modifiche all’edificio
 
-Route::get('/classrooms/{classroom}', 'ClassroomsController@show');                                   // Mostra un’classroom specifica in base all'id
+Route::get('/edifici/{edificio}','BuildingsController@show');                         //Show mostra un edificio specifico
 
-Route::put('/classrooms/{classroom}', 'ClassroomsController@update');                                //Salva le modifiche ad un’classroom
+Route::put('/edifici/{edificio}','BuildingsController@update');                       //Update salva le modifiche
 
-Route::get('/classrooms/{classroom}/delete', 'ClassroomsController@destroy');                         //Cancella l’classroom
+Route::get('/edifici/aule/{edificio}','BuildingsController@aule');
 
-Route::get('/classroom/{classroom}/name', 'ClassroomsController@showName');                              //Restitusce un'classroom in base al nome
+Route::get('/edifici/{edificio}/delete','BuildingsController@destroy');               // Delete lo elimina
 
-Route::patch('/classrooms/{classroom}', 'ClassroomsController@state');                               // apre/chiude classroom
 
-Route::get('/classrooms/{classroom}/presences', 'ClassroomsController@presences');
 
 
 /**
- * Rotte per le maps
+ * Rotte per le aule
  */
 
-Route::get('/maps', 'MapsController@index');                                       //Restituisce una lista di tutte le maps
+Route::get('/aule','ClassroomsController@index');                                         //Restituisce una lista delle aule che appartengono a un edificio
 
-Route::post('/maps', 'MapsController@store');                                      //Salva la nuova map aggiunta
+Route::post('/aule','ClassroomsController@store');                                        //Salva la nuova aula
 
-Route::post('/maps/{building}/{floor}', 'MapsController@update');                   //Registra le modifiche alla map
+Route::get('/aule/{aula}','ClassroomsController@show');                                   // Mostra un’aula specifica in base all'id
 
-Route::get('/maps/{map}/delete', 'MapsController@destroy');                       //Cancella la map
+Route::put('/aule/{aula}','ClassroomsController@update') ;                                //Salva le modifiche ad un’aula
 
-Route::get('/maps/{map}', 'MapsController@show');
-//Mostra la map
+Route::get('/aule/{aula}/delete','ClassroomsController@destroy');                         //Cancella l’aula
 
-Route::get('/maps/{building}/{floor}', 'MapsController@showMapBuilding');
+Route::get('/aula/{aula}', 'ClassroomsController@showNome');                              //Restitusce un'aula in base al nome
+
+Route::patch('/aule/{aula}','ClassroomsController@stato');                               // apre/chiude aula
+
+Route::get('/aule/{aula}/presenze', 'ClassroomsController@presenze');
+
+
+
+
+
 
 
 /**
- * Rotte per le bookings
+ * Rotte per le mappe
  */
 
-Route::get('/bookings', 'BookingsController@index');                         //Mostra tutte le bookings
+Route::get('/mappe','MapsController@index');                                       //Restituisce una lista di tutte le mappe
 
-Route::post('/bookings', 'BookingsController@store');         //Registra la nuova booking
+Route::post('/mappe','MapsController@store');                                      //Salva la nuova mappa aggiunta
 
-Route::get('/bookings/{booking}:', 'BookingsController@show');           //Mostra una booking
+Route::post('/mappe/{edificio}/{piano}','MapsController@update');                   //Registra le modifiche alla mappa
 
-Route::patch('/bookings/{booking}', 'BookingsController@update');        //Registra le modifiche alla booking
+Route::get('/mappe/{mappa}/delete','MapsController@destroy');                       //Cancella la mappa
 
-Route::get('/bookings/{booking}/delete', 'BookingsController@destroy');   //Elimina una booking
+Route::get('/mappe/{mappa}','MapsController@show');
+//Mostra la mappa
 
-Route::patch('/bookings/{booking}', 'BookingsController@state');         // accetta/rifiuta booking
+Route::get('/mappe/{edificio}/{piano}','MapsController@show_mappa_edificio');
+
+
+
 
 
 /**
- * Rotte per i places
+ * Rotte per le prenotazioni
  */
 
-Route::get('/places/classroom/{id_classroom}', 'PlacesController@index_classroom');                                 //Mostra tutti i places all'interno di un'classroom
+Route::get('/prenotazioni','BookingsController@index');                         //Mostra tutte le prenotazioni
 
-Route::get('/places', 'PlacesController@index');
+Route::post('/prenotazioni','BookingsController@store');         //Registra la nuova prenotazione
 
-Route::post('/places', 'PlacesController@store');                                          //crea il nuovo place
+Route::get('/prenotazioni/{prenotazione}','BookingsController@show');           //Mostra una prenotazione
 
-Route::get('/places/{id_place}', 'PlacesController@show');                                 //Mostra un place
+Route::patch('/prenotazioni/{prenotazione}','BookingsController@update');        //Registra le modifiche alla prenotazione
 
-Route::patch('/places/{id_place}', 'PlacesController@stato');
+Route::get('/prenotazioni/{prenotazione}/delete','BookingsController@destroy');   //Elimina una prenotazione
 
-Route::put('/places/{id_place}', 'PlacesController@update');                               //Registra le modifiche al place
+Route::patch('/prenotazioni/{prenotazione}','BookingsController@stato');         // accetta/rifiuta prenotazione
 
-Route::get('/places/{id_place}/delete', 'PlacesController@destroy');                        //Elimina una booking
 
 
 /**
- * Rotte per le presences
+ * Rotte per i posti
  */
-Route::get('/presences', 'PresencesController@index');
 
-Route::post('/presences', 'PresencesController@store');
+Route::get('/posti/aula/{id_aula}','SeatsController@index_aula');                                 //Mostra tutti i posti all'interno di un'aula
 
-Route::get('/presences/{presence}', 'PresencesController@show');
+Route::get('/posti','SeatsController@index');
 
-Route::put('/presences/{presence}', 'PresencesController@update');
+Route::post('/posti','SeatsController@store');                                          //crea il nuovo posto
 
-Route::get('/presences/{presence}/delete', 'PresencesController@destroy');
+Route::get('/posti/{id_posto}','SeatsController@show');                                 //Mostra un posto
 
-Route::patch('/presences/{presence}', 'PresencesController@exit');
+Route::patch('/posti/{id_posto}','SeatsController@stato');
+
+Route::put('/posti/{id_posto}','SeatsController@update');                               //Registra le modifiche al posto
+
+Route::get('/posti/{id_posto}/delete','SeatsController@destroy');                        //Elimina una prenotazione
 
 
 /**
- * Rotte per le occupations
+ * Rotte per le presenze
  */
-Route::get('/occupations', 'OccupationController@index');
 
-Route::post('/occupations', 'OccupationController@store');
+Route::get('/presenze','PresencesController@index');
 
-Route::get('/occupations/{occupation}', 'OccupationController@show');
+Route::post('/presenze','PresencesController@store');
 
-Route::put('/occupations/{occupation}', 'OccupationController@update');
+Route::get('/presenze/{presenza}','PresencesController@show');
 
-Route::get('/occupations/{occupation}/delete', 'OccupationController@destroy');
+Route::put('/presenze/{presenza}','PresencesController@update');
 
+Route::get('/presenze/{presenza}/delete','PresencesController@destroy');
+
+Route::patch('/presenze/{presenza}', 'PresencesController@uscita');
+
+
+/**
+ * Rotte per le occupazioni
+ */
+
+Route::get('/occupazioni','OccupationsController@index');
+
+Route::post('/occupazioni','OccupationsController@store');
+
+Route::get('/occupazioni/{occupazione}','OccupationsController@show');
+
+Route::put('/occupazioni/{occupazione}','OccupationsController@update');
+
+Route::get('/occupazioni/{occupazione}/delete','OccupationsController@destroy');
 

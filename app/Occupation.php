@@ -9,7 +9,7 @@ class Occupation extends Model
     protected $table = "occupazioni";
 
     public function place(){
-        return $this->hasOne('App\Place');
+        return $this->hasOne('App\Seat');
     }
 
     public function user(){

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Place;
+use App\Seat;
 
-class PlacesController extends Controller
+class SeatsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class PlacesController extends Controller
      */
     public function index()
     {
-        $places = Place::all();
+        $places = Seat::all();
         return response()->json($places, 200);
     }
 
@@ -28,7 +28,7 @@ class PlacesController extends Controller
      */
     public function store(Request $request)
     {
-        $place = new Place;
+        $place = new Seat;
 
         $place->numero_posto = $request->numero_posto;
 
@@ -52,7 +52,7 @@ class PlacesController extends Controller
      */
     public function show($id)
     {
-        $place = Place::find($id);
+        $place = Seat::find($id);
         if($place == null){
             return response()->json(["errore"=>"posto non trovato"], 404);
         }
@@ -69,7 +69,7 @@ class PlacesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $place = Place::findOrFail($id);
+        $place = Seat::findOrFail($id);
 
         $place->numero_posto = $request->numero_posto;
         $place->id_aula = $request->id_aula;
@@ -81,7 +81,7 @@ class PlacesController extends Controller
 
     public function state($id,Request $request)
     {
-        $place = Place::find($id);
+        $place = Seat::find($id);
         if($place == null){
             return response()->json(["errore"=>"Classroom non trovata"],404);
         }
@@ -100,7 +100,7 @@ class PlacesController extends Controller
      */
     public function destroy($id)
     {
-        $place = Place::findOrFail($id);
+        $place = Seat::findOrFail($id);
         $place->delete();
     }
 }

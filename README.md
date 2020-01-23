@@ -1,30 +1,78 @@
-# Software-Engineering-2019-20
+<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
+<p align="center">
+<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
+</p>
 
-## Link Deliverable Google Docs
-https://drive.google.com/file/d/1KrRqcKMYcK2ow6woT8wwg3u8Q1Sc5oqK/view?usp=sharing  
-Le abbiamo anche dato l'accesso tramite le sue mail che abbiamo potuto trovare sul sito di univaq, quindi henry.muccini@univaq.it e henry.muccini@gmail.com  
-Il Personal Journal lo può trovare nella cartella docs nella root del progetto
+## About Laravel
 
-<b>Matricole e indirizzi email:</b>
-- <b>Giacomo Sfratato</b>, matricola 247318, giacomo.sfratato@student.univaq.it;
-- <b>Dawid Pado</b>, matricola 251813, dawid.pado@student.univaq.it;
-- <b>Bryant Sarabia</b>, matricola 251826, bryantmichelle.sarabiaortega@student.univaq.it;
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-## Progetto 2. Gestionale per l’occupazione delle aule e delle stanze di studio e lavoro
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Data una biblioteca, delle stanze studio o lavoro, il software deve permettere a degli utenti (studenti, docenti, o personale vario) di poter conoscerne le disponibilità in tempo reale. L’utente deve poter sapere, in tempo reale, le stanze aperte per lo studio/lavoro e quelle con posti disponibili. 
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-### Il software dovrà permettere, tra le altre cose, di:
-- aprire o chiudere una stanza/aula di studio o lavoro;
-- conoscere la disponibilità di ciascuna stanza/aula;
-- prenotare (per un tempo limitato) tale aula;
-- fare check-in nella stanza;
-- registrare l’identità di chi è dentro l’aula;
-- evitare che utenti possano bloccare postazioni di studio/lavoro quando non presenti;
-- avere una vista geo-localizzata delle aule disponibili;
-- altri possibili servizi: supporto vocale.
+## Learning Laravel
 
-Ove possibile, il software dovrà **minimizzare il data-entry**, integrandosi con applicativi esistenti. L’applicativo deve essere **indipendente** da una specifica Università.
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-L’applicativo dovrà poter gestire varie stanze in vari edifici all’interno di una città (fino a **1000 stanze in 100 edifici diversi**), con flussi anche pari a **centinaia di utenti per stanza**. L’applicativo non dovrà in alcun modo permettere a personale non abilitato di entrare in **possesso di informazioni** sull’identità di chi è attualmente in una stanza studio. 
+If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+
+## Laravel Sponsors
+
+We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+
+- **[Vehikl](https://vehikl.com/)**
+- **[Tighten Co.](https://tighten.co)**
+- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+- **[64 Robots](https://64robots.com)**
+- **[Cubet Techno Labs](https://cubettech.com)**
+- **[Cyber-Duck](https://cyber-duck.co.uk)**
+- **[British Software Development](https://www.britishsoftware.co)**
+- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
+- **[DevSquad](https://devsquad.com)**
+- [UserInsights](https://userinsights.com)
+- [Fragrantica](https://www.fragrantica.com)
+- [SOFTonSOFA](https://softonsofa.com/)
+- [User10](https://user10.com)
+- [Soumettre.fr](https://soumettre.fr/)
+- [CodeBrisk](https://codebrisk.com)
+- [1Forge](https://1forge.com)
+- [TECPRESSO](https://tecpresso.co.jp/)
+- [Runtime Converter](http://runtimeconverter.com/)
+- [WebL'Agence](https://weblagence.com/)
+- [Invoice Ninja](https://www.invoiceninja.com)
+- [iMi digital](https://www.imi-digital.de/)
+- [Earthlink](https://www.earthlink.ro/)
+- [Steadfast Collective](https://steadfastcollective.com/)
+- [We Are The Robots Inc.](https://watr.mx/)
+- [Understand.io](https://www.understand.io/)
+- [Abdel Elrafa](https://abdelelrafa.com)
+- [Hyper Host](https://hyper.host)
+- [Appoly](https://www.appoly.co.uk)
+- [OP.GG](https://op.gg)
+
+## Contributing
+
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+
+## Code of Conduct
+
+In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+
+## Security Vulnerabilities
+
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+
+## License
+
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).

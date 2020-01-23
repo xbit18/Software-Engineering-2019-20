@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Classroom;
-use App\Place;
+use App\Seat;
 use App\Presence;
 use App\User;
 use Illuminate\Http\Request;
 use App\Building;
 use Illuminate\Support\Facades\DB;
+use App\Http\Resources\Classroom as ClassroomResource;
+use Illuminate\Http\Response;
 
 class ClassroomsController extends Controller
 {
@@ -20,7 +22,7 @@ class ClassroomsController extends Controller
     public function index()
     {
 
-        $classrooms=Classroom::all();
+        $classrooms=ClassroomResource::collection(Classroom::paginate(2));
 
         if($classrooms->isEmpty()){
             return response()->json(["errore"=>"nessuna aula presente"],404);
@@ -31,7 +33,9 @@ class ClassroomsController extends Controller
                 $classroom['nome_edificio'] = $building['nome'];
             }
 
-        return response()->json($classrooms,200);
+        return $classrooms;
+        //return (ClassroomResource::collection(Classroom::paginate(2)))->response();
+        //return $classrooms; //response()->json($classrooms,200);
 
     }
 
@@ -64,7 +68,7 @@ class ClassroomsController extends Controller
      */
     public function creaPosti($classroom){
         for($i=1; $i<= $classroom->capienza ;$i++){
-            $posto = new Place;
+            $posto = new Seat;
             $posto->numero_posto = $i;
             $posto->id_aula = $classroom->id;
             $posto->save();

@@ -21,7 +21,7 @@ class Classroom extends Model
     }
 
     public function places(){
-        return $this->hasMany('App\Place');
+        return $this->hasMany('App\Seat');
     }
 
     public function bookings(){
