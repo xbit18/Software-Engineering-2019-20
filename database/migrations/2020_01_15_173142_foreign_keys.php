@@ -30,8 +30,8 @@ class ForeignKeys extends Migration
                 ->on('aule')->onDelete('cascade'); });
 
         Schema::table('posti', function(Blueprint $table4) {
-            $table4->foreign('id_utente')->references('id')
-                ->on('utenti')->onDelete('cascade'); });
+            $table4->foreign('id_occupazione')->references('id')
+                ->on('occupazioni')->onDelete('cascade'); });
 
         Schema::table('presenze', function(Blueprint $table5) {
             $table5->foreign('id_aula')->references('id')

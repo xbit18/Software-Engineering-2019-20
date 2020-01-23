@@ -13,14 +13,17 @@ use Illuminate\Http\Request;
 |
 */
 
+ 
+ 
 
 Route::options('/{path}', function(){
     return '';
 })->where('path', '.*');
 
-
-
-Route::post('/login', 'LoginController@check');
+Route::get('/me', 'Auth\AuthController@me');
+Route::post('/login', 'Auth\AuthController@login')->name('login');;
+Route::post('/logout', 'Auth\AuthController@logout');
+Route::post('/register', 'Auth\AuthController@register');
 
 
 
@@ -28,6 +31,7 @@ Route::post('/login', 'LoginController@check');
 /**
  * Rotte per gli edifici
  */
+Route::get('/edifici/{edificio}/delete','BuildingsController@destroy');               // Delete lo elimina
 
 Route::get('/edifici','BuildingsController@index');                                   //Index mostra una lista di tutti gli edifici
 
@@ -39,7 +43,6 @@ Route::put('/edifici/{edificio}','BuildingsController@update');                 
 
 Route::get('/edifici/aule/{edificio}','BuildingsController@aule');
 
-Route::get('/edifici/{edificio}/delete','BuildingsController@destroy');               // Delete lo elimina
 
 
 

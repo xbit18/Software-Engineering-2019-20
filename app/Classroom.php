@@ -7,8 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Classroom extends Model
 {
     public $table = 'aule';
+    protected $fillable = [];
 
-    public function buildng(){
+    public function building(){
         return $this->belongsTo('App\Building');
     }
 
