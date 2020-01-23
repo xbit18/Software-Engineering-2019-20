@@ -1,4 +1,4 @@
-// import User from '@/models/utente.js'
+import Utente from '@/models/utente.js'
 import axios from 'axios'
 export default ({
 namespaced:true,
@@ -6,7 +6,7 @@ namespaced:true,
 state:{
     // Qui si trovano i dati 
     token: null,
-    utente: null,
+    utente: new Utente(),
     admin: null,
     docente: null
 },
@@ -49,7 +49,7 @@ mutations:{
 actions:{
     // Faranno le richieste all'api e le commit alle mutations
     login({dispatch},user){
-    axios.post("http://127.0.0.1:9200/api/auth/signin", {email : user.email, password : user.password})
+    axios.post("http://127.0.0.1:8000/api/login", user)
     .then(res => {
         console.log(res.data);
         dispatch('attempt',res.data.token);    
@@ -67,7 +67,7 @@ actions:{
       
         if(state.token){
             try{
-                        axios.get("http://127.0.0.1:9200/api/auth/me")
+                        axios.get("http://127.0.0.1:8000/api/me")
                         .then(res => {
                             console.log(res.data);
                             commit('SET_UTENTE',res.data);
@@ -90,7 +90,7 @@ actions:{
     },
 
     logout({commit}){
-        return axios.post("http://127.0.0.1:9200/api/auth/signout")
+        return axios.post("http://127.0.0.1:8000/api/logout")
         .then(() => {
             commit('SET_UTENTE',null);
             commit('SET_TOKEN',null);
