@@ -15,7 +15,14 @@ class AuthController extends Controller
      *
      * @return void
      */
-    
+    public function __construct()
+    {
+        
+        $this->middleware('auth:api', ['except' => ['login']]);
+
+    }
+
+
 
     /**
      * Get a JWT via given credentials.
@@ -40,7 +47,7 @@ class AuthController extends Controller
     public function me(Request $request)
     {
         $user = $request->user();
-        if($user != null){
+        
             return response()->json([
                         'id' => $user->id,
                     'email' => $user->email,
@@ -52,11 +59,8 @@ class AuthController extends Controller
                     'data_nascita' => $user->data_nascita,
                     'codice_documento' => $user->codice_documento,
                 ]);
-        } else {
-            return response()->json(['error' => 'Unauthorized'], 401);
-        }
        
-    }
+            }
 
     /**
      * Log the user out (Invalidate the token).
