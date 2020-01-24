@@ -43,7 +43,7 @@ class User extends Authenticatable implements JWTSubject
      */
     public function getJWTCustomClaims()
     {
-        return ['email'];
+        return [];
         // TODO: Implement getJWTCustomClaims() method.
     }
 }

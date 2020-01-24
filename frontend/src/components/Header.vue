@@ -35,17 +35,17 @@
         <span>Home</span>
       </router-link>
 
-      <!-- <router-link to="/check" v-if="authenticated">
+      <router-link to="/check" v-if="authenticated">
         <span>Check-in</span>
-      </router-link> -->
+      </router-link>
 
-      <!-- <router-link to="/" v-if="authenticated">
+      <router-link to="/" v-if="authenticated">
         <span>Prenota un posto</span >
-      </router-link> -->
+      </router-link>
 
-      <!-- <router-link to="/prenotaAula" v-if="authenticated && (isAdmin || isDocente)">
-        <span>Prenota Classroom</span>
-      </router-link> -->
+      <router-link to="/prenotaAula" v-if="authenticated && (isAdmin || isDocente)">
+        <span>Prenota Aula</span>
+      </router-link>
 
        <router-link to="/listPrenotazioni" v-if="authenticated && isAdmin">
         <span>Prenotazioni</span>
