@@ -3,9 +3,9 @@
     <thead>
       <tr>
         <th class="tg th">Edificio</th>
-        <th class="tg th">name</th>
+        <th class="tg th">Nome</th>
         <th class="tg th">Numero aule</th>
-        <th class="tg th">address</th>
+        <th class="tg th">Indirizzo</th>
         <th class="tg th" v-if="isAdmin">Modifica</th>
         <th class="tg th" v-if="isAdmin">Elimina</th>
       </tr>

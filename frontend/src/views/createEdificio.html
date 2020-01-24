@@ -6,13 +6,13 @@
         </div>
         <form class="mid-form" @submit.prevent=save()>
            
-            <label for="name">name</label>
+            <label for="name">Nome</label>
             <input type="text" name="name" v-model="edificio.name" />
 
             <label for="total_classrooms">Numero Aule</label>
             <input type="text" name="total_classrooms" v-model="edificio.total_classrooms" />
 
-            <label for="type">address</label>
+            <label for="type">Indirizzo</label>
             <input type="text" name="type" v-model="edificio.address" />
 
             <input v-if="isEdit" type="submit" value="Modifica" class="button button-success" />

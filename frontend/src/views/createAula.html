@@ -6,20 +6,20 @@
       </div>
       <form class="mid-form" @submit.prevent=save()>
 
-        <label for="code">code</label>
+        <label for="code">Codice</label>
         <input type="text" name="code" v-model="aula.code" required/>
 
-        <label for="floor">floor</label>
+        <label for="floor">Piano</label>
         <input type="text" name="floor" v-model="aula.floor" required/>
 
-        <label for="type">type</label>
+        <label for="type">Tipo</label>
         <select v-model="aula.type" name="type" required>
           <option>lezione</option>
           <option>studio</option>
           <option>lavoro</option>
         </select>
      
-        <label for="capacity">capacity</label>
+        <label for="capacity">Capienza</label>
         <input type="text" name="capacity" v-model="aula.capacity" required/>
 
         <label for="edificio">Edificio</label>

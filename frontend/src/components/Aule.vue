@@ -6,9 +6,9 @@
         <tr>
           <th class="tg th">Aula</th>
           <th class="tg th">Edificio</th>
-          <th class="tg th">floor</th>
-          <th class="tg th">capacity</th>
-          <th class="tg th">type</th>
+          <th class="tg th">Piano</th>
+          <th class="tg th">Capienza</th>
+          <th class="tg th">Tipo</th>
           <th class="tg th">Disponibilità</th>
           <th class="tg th">Mappa</th>
         </tr>
@@ -38,9 +38,9 @@
           <th class="tg th">ID</th>
           <th class="tg th">Aula</th>
           <th class="tg th">Edificio</th>
-          <th class="tg th">floor</th>
-          <th class="tg th">capacity</th>
-          <th class="tg th">type</th>
+          <th class="tg th">Piano</th>
+          <th class="tg th">Capienza</th>
+          <th class="tg th">Tipo</th>
           <th class="tg th">Disponibilità</th>
           <th class="tg th">Apri/chiudi</th>
           <th class="tg th">Modifica</th>
