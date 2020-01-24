@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Booking extends Model
+class ClassroomReservation extends Model
 {
-    protected $table = 'prenotazioni';
+    protected $table = 'classroom_reservations';
 
     public function users(){
         return $this->belongsTo('App\User');

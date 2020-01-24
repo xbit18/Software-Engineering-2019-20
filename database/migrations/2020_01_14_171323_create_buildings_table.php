@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMappasTable extends Migration
+class CreateBuildingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateMappasTable extends Migration
      */
     public function up()
     {
-        Schema::create('mappe', function (Blueprint $table) {
+        Schema::create('buildings', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string("piantina",200);
-            $table->integer("piano");
-            $table->unsignedBigInteger('id_edificio')->nullable(true);
+            $table->string("name",50)->unique();
+            $table->string("address",150);
+            $table->integer("total_classrooms");
+
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateMappasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mappe');
+        Schema::dropIfExists('buildings');
     }
 }

@@ -13,8 +13,8 @@ use Illuminate\Http\Request;
 |
 */
 
- 
- 
+
+
 
 Route::options('/{path}', function(){
     return '';
@@ -98,17 +98,17 @@ Route::get('/mappe/{edificio}/{piano}','MapsController@show_mappa_edificio');
  * Rotte per le prenotazioni
  */
 
-Route::get('/prenotazioni','BookingsController@index');                         //Mostra tutte le prenotazioni
+Route::get('/prenotazioni','ClassroomReservationsController@index');                         //Mostra tutte le prenotazioni
 
-Route::post('/prenotazioni','BookingsController@store');         //Registra la nuova prenotazione
+Route::post('/prenotazioni','ClassroomReservationsController@store');         //Registra la nuova prenotazione
 
-Route::get('/prenotazioni/{prenotazione}','BookingsController@show');           //Mostra una prenotazione
+Route::get('/prenotazioni/{prenotazione}','ClassroomReservationsController@show');           //Mostra una prenotazione
 
-Route::patch('/prenotazioni/{prenotazione}','BookingsController@update');        //Registra le modifiche alla prenotazione
+Route::patch('/prenotazioni/{prenotazione}','ClassroomReservationsController@update');        //Registra le modifiche alla prenotazione
 
-Route::get('/prenotazioni/{prenotazione}/delete','BookingsController@destroy');   //Elimina una prenotazione
+Route::get('/prenotazioni/{prenotazione}/delete','ClassroomReservationsController@destroy');   //Elimina una prenotazione
 
-Route::patch('/prenotazioni/{prenotazione}','BookingsController@stato');         // accetta/rifiuta prenotazione
+Route::patch('/prenotazioni/{prenotazione}','ClassroomReservationsController@stato');         // accetta/rifiuta prenotazione
 
 
 
@@ -152,13 +152,13 @@ Route::patch('/presenze/{presenza}', 'PresencesController@uscita');
  * Rotte per le occupazioni
  */
 
-Route::get('/occupazioni','OccupationsController@index');
+Route::get('/occupazioni','SeatReservationsController@index');
 
-Route::post('/occupazioni','OccupationsController@store');
+Route::post('/occupazioni','SeatReservationsController@store');
 
-Route::get('/occupazioni/{occupazione}','OccupationsController@show');
+Route::get('/occupazioni/{occupazione}','SeatReservationsController@show');
 
-Route::put('/occupazioni/{occupazione}','OccupationsController@update');
+Route::put('/occupazioni/{occupazione}','SeatReservationsController@update');
 
-Route::get('/occupazioni/{occupazione}/delete','OccupationsController@destroy');
+Route::get('/occupazioni/{occupazione}/delete','SeatReservationsController@destroy');
 

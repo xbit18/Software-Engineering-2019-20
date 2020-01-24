@@ -4,10 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Presence extends Model
+class Attendance extends Model
 {
-    protected $table = "presenze";
-
     public function classrooms(){
         return $this->belongsTo('App\Classroom');
     }

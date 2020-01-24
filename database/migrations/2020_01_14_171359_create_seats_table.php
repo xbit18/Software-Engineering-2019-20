@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEdificiosTable extends Migration
+class CreateSeatsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateEdificiosTable extends Migration
      */
     public function up()
     {
-        Schema::create('edifici', function (Blueprint $table) {
+        Schema::create('seats', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string("nome",50)->unique();
-            $table->string("indirizzo",150);
-            $table->integer("numero_aule");
+            $table->integer("seat_number");
+            $table->enum("availability", ["free", "occupied"])->default("free")->nullable();
+            $table->unsignedBigInteger("seat_reservation_id")->nullable(true);
+            $table->unsignedBigInteger("classroom_id");
 
             $table->timestamps();
         });
@@ -30,6 +31,6 @@ class CreateEdificiosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('edifici');
+        Schema::dropIfExists('seats');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePostosTable extends Migration
+class CreateSeatReservationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreatePostosTable extends Migration
      */
     public function up()
     {
-        Schema::create('posti', function (Blueprint $table) {
+        Schema::create('seat_reservations', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer("numero_posto");
-            $table->enum("disponibilita", ["libero", "occupato"])->default("libero")->nullable();
-            $table->unsignedBigInteger("id_occupazione")->nullable(true);
-            $table->unsignedBigInteger("id_aula");
-
+            $table->dateTime('start_date');
+            $table->dateTime('end_date');
+            $table->unsignedBigInteger("seat_id");
+            $table->unsignedBigInteger("user_id");
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class CreatePostosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posti');
+        Schema::dropIfExists('seat_reservations');
     }
 }

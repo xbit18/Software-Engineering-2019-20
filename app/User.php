@@ -11,18 +11,17 @@ class User extends Authenticatable implements JWTSubject
 {
     use Notifiable;
 
-    protected $table = 'utenti';
     protected $fillable = ['email','password','corso','tipo','data_nascita','matricola','nome','cognome','codice_documento'];
     public function presence(){
-        return $this->hasMany('App\Presence');
+        return $this->hasMany('App\Attendance');
     }
 
     public function place(){
-        return $this->belongsTo('App\Occupation');
+        return $this->belongsTo('App\SeatReservation');
     }
 
     public function bookings(){
-        return $this->hasMany('App\Booking');
+        return $this->hasMany('App\ClassroomReservation');
     }
 
     /**
