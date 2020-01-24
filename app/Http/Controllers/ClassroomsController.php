@@ -27,6 +27,8 @@ class ClassroomsController extends Controller
 
         if($classrooms->isEmpty()){
             $classrooms->additional(['error' => 'No classroom was found!']);
+
+            return $classrooms->response()->setStatusCode(200);
         } else {
             foreach ($classrooms as $classroom) {
                 $building = Building::findOrFail($classroom['building_id']);
@@ -35,7 +37,7 @@ class ClassroomsController extends Controller
             $classrooms->additional(['error' => null]);
         }
 
-        return $classrooms;
+        return $classrooms->response()->setStatusCode(200);
 
     }
 
@@ -47,7 +49,7 @@ class ClassroomsController extends Controller
      */
     public function store(Request $request)
     {
-        $classroom = Classroom::create([
+        $classroom = new ClassroomResource(Classroom::create([
                 'code' => $request->code,
                 'availability' => $request->availability,
                 'type' => $request->type,
@@ -55,11 +57,12 @@ class ClassroomsController extends Controller
                 'state' => $request->state,
                 'building_id' => $request->building_id,
                 'floor' => $request->floor
-            ]);
+            ]));
 
         $this-> createSeats($classroom);
 
-        return response()->json($classroom,201);
+        $classroom->additional(['error' => null]);
+        return $classroom->response()->setStatusCode(201);
     }
 
     /**
@@ -87,10 +90,12 @@ class ClassroomsController extends Controller
         $classroom = new ClassroomResource(Classroom::find($id));
         if($classroom->resource == null){
             $classroom->additional(['error' => 'Classroom not found!']);
+
+            return $classroom->response()->setStatusCode(200);
         } else {
             $classroom->additional(['error' => null]);
         }
-       return $classroom;
+        return $classroom->response()->setStatusCode(200);
     }
 
     /**
@@ -104,10 +109,12 @@ class ClassroomsController extends Controller
 
         if($classroom->resource == null){
             $classroom->additional(['error' => 'Classroom not found!']);
+
+            return $classroom->response()->setStatusCode(200);
         } else {
             $classroom->additional(['error' => null]);
         }
-        return $classroom;
+        return $classroom->response()->setStatusCode(200);
     }
 
     /**
