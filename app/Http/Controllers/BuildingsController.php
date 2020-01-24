@@ -6,6 +6,8 @@ use App\Building;
 use App\Classroom;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Resources\BuildingCollection;
+use App\Http\Resources\Building as BuildingResource;
 
 class BuildingsController extends Controller
 {
@@ -16,8 +18,16 @@ class BuildingsController extends Controller
      */
     public function index()
     {
-        $buildings=Building::all();
-        return response()->json($buildings,200);
+            $buildings = new BuildingCollection(Building::paginate(10));
+
+            if($buildings->isEmpty()){
+                $buildings->additional(['error' => 'No building was found!']);
+
+                return $buildings->response()->setStatusCode(200);
+            } else {
+                $buildings->additional(['error' => null]);
+            }
+            return $buildings->response()->setStatusCode(200);
     }
 
     /**
@@ -34,16 +44,19 @@ class BuildingsController extends Controller
         //         'error' => 'I campi richiesti non sono stati riempiti'
         //     ],400);
         // } else {
-        $building = new Building;
-        $building->numero_aule = $request->numero_aule;
-        $building->nome = $request->nome;
-        $building->indirizzo = $request->indirizzo;
+        try {
+            $building = new BuildingResource(Building::create([
 
-        $building -> save();
+                'total_classrooms' => $request->total_classrooms,
+                'name' => $request->name,
+                'address' => $request->address
+            ]));
 
-        return response()->json($building,201);
-       // }
-
+            $building->additional(['error' => null]);
+            return $building->response()->setStatusCode(201);
+        } catch(QueryException $ex){
+            return response()->json(['SQL Exception'=>$ex->getMessage()], 500);
+        }
     }
 
     /**
@@ -54,12 +67,15 @@ class BuildingsController extends Controller
      */
     public function show($id)
     {
-        $building= Building::find($id);
-        if($building == null){
-            return response()->json(["errore"=>"edificio non trovato"], 404);
-        }
+        $building = new BuildingResource(Building::find($id));
+        if($building->resource == null){
+            $building->additional(['error' => 'Building not found!']);
 
-        return response()->json($building, 200);
+            return $building->response()->setStatusCode(200);
+        } else {
+            $building->additional(['error' => null]);
+        }
+        return $building->response()->setStatusCode(200);
     }
 
     /**
@@ -71,21 +87,32 @@ class BuildingsController extends Controller
      */
     public function update($id,Request $request)
     {
-        $building= Building::findOrFail($id);
+        try {
+            $building = Building::find($id);
 
-        $building->nome = $request->nome;
-        $building->numero_aule = $request->numero_aule;
-        $building->indirizzo = $request->indirizzo;
+            if($building == null){
+                $buildingResource = new BuildingResource($building);
+                $buildingResource->additional(['error' => 'Building not found!']);
+                return $buildingResource->response()->setStatusCode(400);
+            }
+            $building->name = $request->name;
+            $building->total_classrooms = $request->total_classrooms;
+            $building->address = $request->address;
 
-        $building->save();
+            $building->save();
+            $buildingResource = new BuildingResource($building);
+            $buildingResource->additional(['error' => null]);
 
-        return response()->json($building, 200);
+            return $buildingResource->response()->setStatusCode(200);
+        } catch(QueryException $ex){
+            return response()->json(['SQL Exception'=>$ex->getMessage()], 500);
+        }
     }
 
-    public function aule($id)
+    public function classrooms($id)
     {
-        $aule = DB::table('aule')->where('id_edificio', $id)->get();
-        return response()->json($aule,200);
+        $classrooms = DB::table('classrooms')->where('id_building', $id)->get();
+        return response()->json($classrooms,200);
     }
 
     /**
@@ -96,7 +123,13 @@ class BuildingsController extends Controller
      */
     public function destroy($id)
     {
-        $building = Building::findOrFail($id);
+        $building = Building::find($id);
+
+        if($building == null){
+            $buildingResource = new BuildingResource($building);
+            $buildingResource->additional(['error' => 'Building not found!']);
+            return $buildingResource->response()->setStatusCode(400);
+        }
         $building->delete();
     }
 }
