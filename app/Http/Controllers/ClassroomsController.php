@@ -236,6 +236,9 @@ class ClassroomsController extends Controller
     /**
      * Restituisce tutti i presenti all'interno di una data aula
      *
+     * Restituisce i dati degli utenti presenti nell'aula con codice 200 OK oppure
+     * restituisce in json un errore con codice 200 OK
+     *
      * @param $id_aula
      * @return \Illuminate\Http\JsonResponse
      */
