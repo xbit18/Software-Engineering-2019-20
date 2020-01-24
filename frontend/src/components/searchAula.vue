@@ -39,7 +39,7 @@ export default {
   },
   methods: {
     goSearch: function() {
-      this.$router.push("/listaPersone/" + this.searchString);
+     this.$router.push(`/redirectAula/${this.searchString}`);
     },
     getListAule() {
       axios.get("http://127.0.0.1:8000/api/classrooms").then(res => {

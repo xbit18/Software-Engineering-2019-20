@@ -14,6 +14,7 @@
             <th class="tg th">Tipo</th>
             <th class="tg th">Disponibilità</th>
             <th class="tg th" v-if="isAdmin">Apri/chiudi</th>
+            <th class="tg th" v-if="isAdmin">Visualizza presenti</th>
             <th class="tg th" v-if="isAdmin">Modifica</th>
             <th class="tg th" v-if="isAdmin">Elimina</th>
           </tr>
@@ -41,6 +42,9 @@
                 class="button button-apri/chiudi"
                 @click="apri_chiudi(aula.id, aula.state)"
               >Chiudi</button>
+            </td>
+            <td class="tg td" v-if="isAdmin">
+              <button class="button button-elimina" @click="visualizzaPresenti(aula.id)">Visualizza Presenti</button>
             </td>
             <td class="tg td" v-if="isAdmin">
               <router-link :to="'/editAula/'+aula.id" class="button button-modifica">Modifica</router-link>
@@ -146,14 +150,16 @@ export default {
         dangerMode: true
       }).then(willDelete => {
         if (willDelete) {
-          axios.get(`http://127.0.0.1:8000/api/classrooms/${id}/delete`).then(res => {
-            console.log(res);
+          axios
+            .get(`http://127.0.0.1:8000/api/classrooms/${id}/delete`)
+            .then(res => {
+              console.log(res);
 
-            swal("L'aula è stata eliminata!", {
-              icon: "success"
+              swal("L'aula è stata eliminata!", {
+                icon: "success"
+              });
+              this.$router.push("/gestisceAule");
             });
-            this.$router.push("/gestisceAule");
-          });
         } else {
           swal("Quasi!!");
         }
@@ -162,7 +168,9 @@ export default {
     apri_chiudi(id) {
       if (this.aula.state == "chiusa") {
         axios
-          .patch(`http://127.0.0.1:8000/api/classrooms/${id}`, { state: "aperta" })
+          .patch(`http://127.0.0.1:8000/api/classrooms/${id}`, {
+            state: "aperta"
+          })
           .then(() => {
             this.$router.push(`/redirectAula/${id}`);
             swal({
@@ -172,7 +180,9 @@ export default {
           });
       } else {
         axios
-          .patch(`http://127.0.0.1:8000/api/classrooms/${id}`, { state: "chiusa" })
+          .patch(`http://127.0.0.1:8000/api/classrooms/${id}`, {
+            state: "chiusa"
+          })
           .then(() => {
             swal({
               text: "Aula chiusa",
@@ -180,6 +190,9 @@ export default {
             });
           });
       }
+    },
+    visualizzaPresenti(id){
+      this.$router.push(`/redirectPersone/${id}`);
     }
   }
 };
