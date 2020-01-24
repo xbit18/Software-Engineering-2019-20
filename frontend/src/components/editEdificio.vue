@@ -25,7 +25,7 @@ export default {
           if (res.status == 200) {
             this.$router.push("/gestisceEdifici");
             swal({
-              text: "L'edificio è stato modificato",
+              text: "L'edificio è state modificato",
               icon: "success"
             });
           }
@@ -36,7 +36,7 @@ export default {
     },
     getEdificio(id) {
       axios.get(`http://127.0.0.1:8000/api/buildings/${id}`).then(res => {
-        this.edificio = res.data;
+        this.edificio = res.data.data;
       });
     }
   }

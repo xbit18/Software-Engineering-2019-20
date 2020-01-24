@@ -5,10 +5,10 @@
         <h1>Prenota Aula</h1>
       </div>
       <form class="mid-form" @submit.prevent="save()">
-        <label for="data_inizio">Data inizio</label>
+        <label for="start_date">Data inizio</label>
         <div class="clearfix"></div>
         <date-picker
-          v-model="prenotazione.data_inizio"
+          v-model="prenotazione.start_date"
           lang="en"
           type="datetime"
           format="YYYY-MM-DD HH:mm:ss"
@@ -20,10 +20,10 @@
         ></date-picker>
         <div class="clearfix"></div>
 
-          <label for="data_fine">Data fine</label>
+          <label for="end_date">Data fine</label>
         <div class="clearfix"></div>
         <date-picker
-          v-model="prenotazione.data_fine"
+          v-model="prenotazione.end_date"
           lang="en"
           type="datetime"
           format="YYYY-MM-DD HH:mm:ss"
@@ -37,12 +37,12 @@
         <div class="clearfix"></div>
 
         <label for="aula">Aula</label>
-        <select v-model="prenotazione.id_aula" name="aula" required>
-          <option v-bind:value="aula.id" v-for="aula in listAule" :key="aula.id">{{aula.codice}}</option>
+        <select v-model="prenotazione.classroom_id" name="aula" required>
+          <option v-bind:value="aula.id" v-for="aula in listAule" :key="aula.id">{{aula.code}}</option>
         </select>
 
-        <label for="motivazione">Motivazione</label>
-        <textarea v-model="prenotazione.motivazione" required></textarea>
+        <label for="motivation">motivation</label>
+        <textarea v-model="prenotazione.motivation" required></textarea>
 
         <input type="submit" value="Salva" class="button button-success" />
       </form>
@@ -53,7 +53,7 @@
 
 <script>
 import axios from "axios";
-import Prenotazione from "../models/prenotazione.js";
+import PrenotazioneAula from "../models/prenotazioneAula.js";
 import Aula from "../models/aula.js";
 import swal from "sweetalert";
 import DatePicker from "vue2-datepicker";
@@ -68,7 +68,7 @@ export default {
   data() {
     return {
       // Prenotazioni
-      prenotazione: new Prenotazione(),
+      prenotazione: new PrenotazioneAula(),
       aula: new Aula(),
       listAule: null,
     };
@@ -83,9 +83,9 @@ export default {
   },
   methods: {
     save() {
-      this.prenotazione.id_utente = this.user.id;
+      this.prenotazione.user_id = this.user.id;
       console.log(this.prenotazione);
-      // this.prenotazione.id_utente = store.user.id;
+      // this.prenotazione.user_id = store.user.id;
       axios
         .post(`http://127.0.0.1:8000/api/bookings`, this.prenotazione)
         .then(res => {
@@ -106,7 +106,7 @@ export default {
       });
     },
     verifica(){
-      if(this.prenotazione.data_inizio > this.prenotazione.data_fine){
+      if(this.prenotazione.start_date > this.prenotazione.end_date){
         swal({
           text: "La data fine non può essere maggiore alla data inizio",
           icon: "warning"

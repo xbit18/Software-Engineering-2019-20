@@ -17,7 +17,7 @@ class ForeignKeys extends Migration
             $table0->foreign('building_id')->references('id')
                 ->on('buildings')->onDelete('cascade'); });
 
-        Schema::table('token', function(Blueprint $table1) {
+        Schema::table('tokens', function(Blueprint $table1) {
             $table1->foreign('classroom_id')->references('id')
                 ->on('classrooms')->onDelete('cascade'); });
 

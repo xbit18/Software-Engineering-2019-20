@@ -10,8 +10,8 @@
             <th class="tg th">ID</th>
             <th class="tg th">Aula</th>
             <th class="tg th">Edificio</th>
-            <th class="tg th">Capienza</th>
-            <th class="tg th">Tipo</th>
+            <th class="tg th">capacity</th>
+            <th class="tg th">type</th>
             <th class="tg th">Disponibilità</th>
             <th class="tg th" v-if="isAdmin">Apri/chiudi</th>
             <th class="tg th" v-if="isAdmin">Modifica</th>
@@ -21,25 +21,25 @@
         <tbody>
           <tr>
             <td class="tg td">{{aula.id}}</td>
-            <td class="tg td">{{aula.codice}}</td>
+            <td class="tg td">{{aula.code}}</td>
             <td class="tg td">
               <router-link
-                :to="{name:'edificio',params:{edificio: aula.id_edificio}}"
-              >{{aula.id_edificio}}</router-link>
+                :to="{name:'edificio',params:{edificio: aula.building_id}}"
+              >{{aula.building_id}}</router-link>
             </td>
-            <td class="tg td">{{aula.capienza}}</td>
-            <td class="tg td">{{aula.tipo}}</td>
-            <td class="tg td">{{aula.disponibilita}}</td>
-            <td class="tg td" v-if="aula.stato == 'chiusa' && isAdmin ">
+            <td class="tg td">{{aula.capacity}}</td>
+            <td class="tg td">{{aula.type}}</td>
+            <td class="tg td">{{aula.availability}}</td>
+            <td class="tg td" v-if="aula.state == 'chiusa' && isAdmin ">
               <button
                 class="button button-apri/chiudi"
-                @click="apri_chiudi(aula.id, aula.stato)"
+                @click="apri_chiudi(aula.id, aula.state)"
               >Apri</button>
             </td>
-            <td class="tg td" v-else-if="aula.stato == 'aperta' && isAdmin">
+            <td class="tg td" v-else-if="aula.state == 'aperta' && isAdmin">
               <button
                 class="button button-apri/chiudi"
-                @click="apri_chiudi(aula.id, aula.stato)"
+                @click="apri_chiudi(aula.id, aula.state)"
               >Chiudi</button>
             </td>
             <td class="tg td" v-if="isAdmin">
@@ -101,7 +101,7 @@ export default {
         axios
           .get(`http://127.0.0.1:8000/api/classrooms/${id}`)
           .then(res => {
-            this.aula = res.data;
+            this.aula = res.data.data;
           })
           .catch(() => {
             if (this.isAdmin) {
@@ -109,7 +109,7 @@ export default {
             } else {
               this.$router.push("/");
               swal({
-                text: "Classroom non trovata",
+                text: "Aula non trovata",
                 icon: "error"
               });
             }
@@ -118,7 +118,7 @@ export default {
         axios
           .get(`http://127.0.0.1:8000/api/classrooms/${id}`)
           .then(res => {
-            this.aula = res.data;
+            this.aula = res.data.data;
           })
           .catch(() => {
             if (this.isAdmin) {
@@ -127,7 +127,7 @@ export default {
               this.$router.push("/");
 
               swal({
-                text: "Classroom non trovata",
+                text: "Aula non trovata",
                 icon: "error"
               });
             }
@@ -160,9 +160,9 @@ export default {
       });
     },
     apri_chiudi(id) {
-      if (this.aula.stato == "chiusa") {
+      if (this.aula.state == "chiusa") {
         axios
-          .patch(`http://127.0.0.1:8000/api/classrooms/${id}`, { stato: "aperta" })
+          .patch(`http://127.0.0.1:8000/api/classrooms/${id}`, { state: "aperta" })
           .then(() => {
             this.$router.push(`/redirectAula/${id}`);
             swal({
@@ -172,7 +172,7 @@ export default {
           });
       } else {
         axios
-          .patch(`http://127.0.0.1:8000/api/classrooms/${id}`, { stato: "chiusa" })
+          .patch(`http://127.0.0.1:8000/api/classrooms/${id}`, { state: "chiusa" })
           .then(() => {
             swal({
               text: "Aula chiusa",

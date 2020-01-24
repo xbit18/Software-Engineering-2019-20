@@ -8,9 +8,9 @@
         <thead>
           <tr>
             <th class="tg th">Edificio</th>
-            <th class="tg th">Nome</th>
+            <th class="tg th">name</th>
             <th class="tg th">Numero aule</th>
-            <th class="tg th">Indirizzo</th>
+            <th class="tg th">address</th>
             <th class="tg th" v-if="isAdmin">Modifica</th>
             <th class="tg th" v-if="isAdmin">Elimina</th>
           </tr>
@@ -18,9 +18,9 @@
         <tbody>
           <tr>
             <td class="tg td">{{edificio.id}}</td>
-            <td class="tg td">{{edificio.nome}}</td>
-            <td class="tg td">{{edificio.numero_aule}}</td>
-            <td class="tg td">{{edificio.indirizzo}}</td>
+            <td class="tg td">{{edificio.name}}</td>
+            <td class="tg td">{{edificio.total_classrooms}}</td>
+            <td class="tg td">{{edificio.address}}</td>
             <td class="tg td" v-if="isAdmin">
               <router-link
                 :to="'/editEdificio/'+edificio.id"
@@ -72,19 +72,19 @@ export default {
   methods: {
     getEdificio(id) {
       axios.get(`http://127.0.0.1:8000/api/buildings/${id}`).then(res => {
-        this.edificio = res.data;
+        this.edificio = res.data.data;
       })
       .catch(()=>{
         if(this.isAdmin){
           this.$router.push('/gestisceEdifici');
           swal({
-                text: "Building non trovato",
+                text: "Edificio non trovato",
                 icon: "error"
               });
         } else {
           this.$router.push('/');
           swal({
-                text: "Building non trovato",
+                text: "Edificio non trovato",
                 icon: "error"
               });
         }
@@ -105,7 +105,7 @@ export default {
           axios.get(`http://127.0.0.1:8000/api/buildings/${id}/delete`).then(res => {
             console.log(res);
             this.$router.push("/redirectDeleteEdificio");
-            swal("L'edificio è stato eliminato!", {
+            swal("L'edificio è state eliminato!", {
               icon: "success"
             });
           });

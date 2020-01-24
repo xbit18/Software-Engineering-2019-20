@@ -3,9 +3,9 @@
     <thead>
       <tr>
         <th class="tg th">Edificio</th>
-        <th class="tg th">Nome</th>
+        <th class="tg th">name</th>
         <th class="tg th">Numero aule</th>
-        <th class="tg th">Indirizzo</th>
+        <th class="tg th">address</th>
         <th class="tg th" v-if="isAdmin">Modifica</th>
         <th class="tg th" v-if="isAdmin">Elimina</th>
       </tr>
@@ -15,9 +15,9 @@
         <td class="tg td">
           <router-link :to="{name:'edificio',params:{edificio: edificio.id}}">{{edificio.id}}</router-link>
         </td>
-        <td class="tg td">{{edificio.nome}}</td>
-        <td class="tg td">{{edificio.numero_aule}}</td>
-        <td class="tg td">{{edificio.indirizzo}}</td>
+        <td class="tg td">{{edificio.name}}</td>
+        <td class="tg td">{{edificio.total_classrooms}}</td>
+        <td class="tg td">{{edificio.address}}</td>
         <td class="tg td" v-if="isAdmin">
           <router-link :to="'/editEdificio/'+edificio.id" class="button button-modifica">Modifica</router-link>
         </td>
@@ -53,7 +53,7 @@ export default {
           axios.get(`http://127.0.0.1:8000/api/buildings/${id}/delete`).then(res => {
             console.log(res);
             this.$router.push('/redirectDeleteEdificio');
-            swal("L'edificio è stato eliminato!", {
+            swal("L'edificio è state eliminato!", {
               icon: "success"
             });
           });

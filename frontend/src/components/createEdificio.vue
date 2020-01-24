@@ -21,7 +21,7 @@ export default {
         .then(res => {
           if (res.status == 201) {
             swal({
-              text: "L'edificio è stato creato",
+              text: "L'edificio è state creato",
               icon: "success"
             });
             setTimeout(() => {

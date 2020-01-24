@@ -6,23 +6,23 @@
         <tr>
           <th class="tg th">Aula</th>
           <th class="tg th">Edificio</th>
-          <th class="tg th">Piano</th>
-          <th class="tg th">Capienza</th>
-          <th class="tg th">Tipo</th>
+          <th class="tg th">floor</th>
+          <th class="tg th">capacity</th>
+          <th class="tg th">type</th>
           <th class="tg th">Disponibilità</th>
           <th class="tg th">Mappa</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="aula in listAule" :key="aula.id">
-          <td class="tg td">{{aula.codice}}</td>
-          <td class="tg td">{{aula.nome_edificio}}</td>
-          <td class="tg td">{{aula.piano}}</td>
-          <td class="tg td">{{aula.capienza}}</td>
-          <td class="tg td">{{aula.tipo}}</td>
-          <td class="tg td">{{aula.disponibilita}}</td>
+          <td class="tg td">{{aula.code}}</td>
+          <td class="tg td">{{aula.name_edificio}}</td>
+          <td class="tg td">{{aula.floor}}</td>
+          <td class="tg td">{{aula.capacity}}</td>
+          <td class="tg td">{{aula.type}}</td>
+          <td class="tg td">{{aula.availability}}</td>
           <td class="tg td">
-            <button class="button" @click="showMap(aula.id_edificio,aula.piano)">Mappa</button>
+            <button class="button" @click="showMap(aula.building_id,aula.floor)">Mappa</button>
           </td>
         </tr>
       </tbody>
@@ -38,9 +38,9 @@
           <th class="tg th">ID</th>
           <th class="tg th">Aula</th>
           <th class="tg th">Edificio</th>
-          <th class="tg th">Piano</th>
-          <th class="tg th">Capienza</th>
-          <th class="tg th">Tipo</th>
+          <th class="tg th">floor</th>
+          <th class="tg th">capacity</th>
+          <th class="tg th">type</th>
           <th class="tg th">Disponibilità</th>
           <th class="tg th">Apri/chiudi</th>
           <th class="tg th">Modifica</th>
@@ -50,19 +50,19 @@
       <tbody>
         <tr v-for="aula in listAule" :key="aula.id">
           <td class="tg td">{{aula.id}}</td>
-          <td class="tg td">{{aula.codice}}</td>
-          <td class="tg td">{{aula.nome_edificio}}</td>
-          <td class="tg td">{{aula.piano}}</td>
-          <td class="tg td">{{aula.capienza}}</td>
-          <td class="tg td">{{aula.tipo}}</td>
-          <td class="tg td">{{aula.disponibilita}}</td>
-          <td class="tg td" v-if="aula.stato == 'chiusa'">
-            <button class="button button-apri/chiudi" @click="apri_chiudi(aula.id, aula.stato)">Apri</button>
+          <td class="tg td">{{aula.code}}</td>
+          <td class="tg td">{{aula.name_edificio}}</td>
+          <td class="tg td">{{aula.floor}}</td>
+          <td class="tg td">{{aula.capacity}}</td>
+          <td class="tg td">{{aula.type}}</td>
+          <td class="tg td">{{aula.availability}}</td>
+          <td class="tg td" v-if="aula.state == 'chiusa'">
+            <button class="button button-apri/chiudi" @click="apri_chiudi(aula.id, aula.state)">Apri</button>
           </td>
           <td class="tg td" v-else>
             <button
               class="button button-apri/chiudi"
-              @click="apri_chiudi(aula.id, aula.stato)"
+              @click="apri_chiudi(aula.id, aula.state)"
             >Chiudi</button>
           </td>
           <td class="tg td">
@@ -85,9 +85,9 @@
           <th class="tg th">ID</th>
           <th class="tg th">Aula</th>
           <th class="tg th">Edificio</th>
-          <th class="tg th">Piano</th>
-          <th class="tg th">Capienza</th>
-          <th class="tg th">Tipo</th>
+          <th class="tg th">floor</th>
+          <th class="tg th">capacity</th>
+          <th class="tg th">type</th>
           <th class="tg th">Disponibilità</th>
         </tr>
       </thead>
@@ -95,13 +95,13 @@
         <tr v-for="aula in listAule" :key="aula.id">
           <td class="tg td">{{aula.id}}</td>
           <td class="tg td">
-            <router-link :to="{name: 'listaPersone', params:{aula: aula.codice}}">{{aula.codice}}</router-link>
+            <router-link :to="{name: 'listaPersone', params:{aula: aula.code}}">{{aula.code}}</router-link>
           </td>
-          <td class="tg td">{{aula.nome_edificio}}</td>
-          <td class="tg td">{{aula.piano}}</td>
-          <td class="tg td">{{aula.capienza}}</td>
-          <td class="tg td">{{aula.tipo}}</td>
-          <td class="tg td">{{aula.disponibilita}}</td>
+          <td class="tg td">{{aula.name_edificio}}</td>
+          <td class="tg td">{{aula.floor}}</td>
+          <td class="tg td">{{aula.capacity}}</td>
+          <td class="tg td">{{aula.type}}</td>
+          <td class="tg td">{{aula.availability}}</td>
         </tr>
       </tbody>
     </table>
@@ -123,12 +123,12 @@ export default {
   },
   props: ["listAule", "waiting", "gestisce"],
   methods: {
-    showMap(edificio, piano) {
+    showMap(edificio, floor) {
       if (!this.show) {
         axios
-          .get(`http://127.0.0.1:8000/api/maps/${edificio}/${piano}`)
+          .get(`http://127.0.0.1:8000/api/maps/${edificio}/${floor}`)
           .then(res => {
-            this.image = res.data.piantina;
+            this.image = res.data.data.floor_map;
             this.show = true;
             bus.$emit("imgSend", { img: this.image, show: this.show });
           })
@@ -164,10 +164,10 @@ export default {
         }
       });
     },
-    apri_chiudi(id, stato) {
-      if (stato == "chiusa") {
+    apri_chiudi(id, state) {
+      if (state == "chiusa") {
         axios
-          .patch(`http://127.0.0.1:8000/api/classrooms/${id}`, { stato: "aperta" })
+          .patch(`http://127.0.0.1:8000/api/classrooms/${id}`, { state: "aperta" })
           .then(() => {
             this.$router.push("/redirectDeleteAule");
             swal({
@@ -177,7 +177,7 @@ export default {
           });
       } else {
         axios
-          .patch(`http://127.0.0.1:8000/api/classrooms/${id}`, { stato: "chiusa" })
+          .patch(`http://127.0.0.1:8000/api/classrooms/${id}`, { state: "chiusa" })
           .then(() => {
             this.$router.push("/redirectDeleteAule");
             swal({

@@ -1,10 +1,9 @@
 class Posto{
-    constructor(id,numero,disponibilita,utente,aula,created_at,updated_at){
+    constructor(id,seat_number,availability,classroom_id,created_at,updated_at){
         this.id = id;
-        this.numero_posto = numero;
-        this.disponibilita = disponibilita;
-        this.id_utente = utente;
-        this.id_aula = aula;
+        this.seat_number = seat_number;
+        this.availability = availability;
+        this.classroom_id = classroom_id;
         this.created_at = created_at;
         this.updated_at = updated_at;
     }
