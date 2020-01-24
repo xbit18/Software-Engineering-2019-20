@@ -17,7 +17,6 @@ class CreateSeatsTable extends Migration
             $table->bigIncrements('id');
             $table->integer("seat_number");
             $table->enum("availability", ["free", "occupied"])->default("free")->nullable();
-            $table->unsignedBigInteger("seat_reservation_id")->nullable(true);
             $table->unsignedBigInteger("classroom_id");
 
             $table->timestamps();
