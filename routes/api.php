@@ -65,7 +65,7 @@ Route::get('/aula/{aula}', 'ClassroomsController@showNome');                    
 
 Route::patch('/aule/{aula}','ClassroomsController@stato');                               // apre/chiude aula
 
-Route::get('/aule/{aula}/presenze', 'ClassroomsController@presenze');
+Route::get('/aule/{aula}/presenze', 'ClassroomsController@attendances');
 
 
 

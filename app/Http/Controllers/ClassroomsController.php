@@ -12,12 +12,16 @@ use Illuminate\Http\Request;
 use App\Building;
 use Illuminate\Support\Facades\DB;
 use App\Http\Resources\Classroom as ClassroomResource;
+use App\Http\Resources\User as UserResource;
 use Illuminate\Http\Response;
 
 class ClassroomsController extends Controller
 {
     /**
      * Mostra una lista di tutte le aule.
+     *
+     * Restituisce tutte le classi con codice 200 OK oppure
+     * restituisce in json un errore con codice 200 OK
      *
      * @return \Illuminate\Http\Response
      */
@@ -29,7 +33,7 @@ class ClassroomsController extends Controller
         if($classrooms->isEmpty()){
             $classrooms->additional(['error' => 'No classroom was found!']);
 
-            return $classrooms->response()->setStatusCode(200);                         //Nessuna classe presente
+            return $classrooms->response()->setStatusCode(200);
         } else {
             foreach ($classrooms as $classroom) {
                 $building = Building::findOrFail($classroom['building_id']);
@@ -38,12 +42,15 @@ class ClassroomsController extends Controller
             $classrooms->additional(['error' => null]);
         }
 
-        return $classrooms->response()->setStatusCode(200);                             //Classi restituite con successo
+        return $classrooms->response()->setStatusCode(200);
 
     }
 
     /**
      * Aggiunge un'aula al database e tutti i posti al suo interno.
+     *
+     * Restituisce l'aula inserita con codice 201 oppure
+     * restituisce in json l'eccezone SQL con codice 500
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -64,16 +71,16 @@ class ClassroomsController extends Controller
             $this-> createSeats($classroom);
 
             $classroom->additional(['error' => null]);
-            return $classroom->response()->setStatusCode(201);                              //Restituisce l'aula inserita con codice 201
+            return $classroom->response()->setStatusCode(201);
         } catch(QueryException $ex){
-            return response()->json(['SQL Exception'=>$ex->getMessage()], 500);            //Restituisce in json l'eccezione SQL con codide 500
+            return response()->json(['SQL Exception'=>$ex->getMessage()], 500);
         }
 
     }
 
     /**
-     *
      * Auto generazione dei posti all'interno di un'aula
+     *
      * @param $classroom
      */
     public function createSeats($classroom){
@@ -87,6 +94,9 @@ class ClassroomsController extends Controller
 
     /**
      * Mostra un'aula in base all'ID.
+     *
+     * Restituisce l'aula con codice 200 OK oppure
+     * restituisce in json un errore con codice 200 OK
      *
      * @param  \App\Classroom  $classroom
      * @return \Illuminate\Http\Response
@@ -107,6 +117,9 @@ class ClassroomsController extends Controller
     /**
      * Mostra un'aula in base al codice.
      *
+     * Restituisce un'aula in base al nome con codice 200 OK oppure
+     * restituisce in json un errore con codice 200 OK
+     *
      * @param  \App\Classroom  $classroom
      * @return \Illuminate\Http\Response
      */
@@ -120,11 +133,15 @@ class ClassroomsController extends Controller
         } else {
             $classroom->additional(['error' => null]);
         }
-
+        return $classroom->response()->setStatusCode(200);
     }
 
     /**
      * Registra nel database i cambiamenti all'aula.
+     *
+     * Restituisce l'aula aggiornata con codice 200 OK oppure
+     * restituisce in json un errore con codice 400 oppure
+     * restituisce in json l'eccezone SQL con codice 500
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -162,12 +179,21 @@ class ClassroomsController extends Controller
     /**
      * Rimuove l'aula specificata dal database
      *
+     * Non restituisce nulla con codice 204 oppure
+     * restituisce in json un errore con codice 400
+     *
      * @param  \App\Classroom  $classroom
      * @return \Illuminate\Http\Response
      */
     public function destroy($codice)
     {
-        $classroom = Classroom::findOrFail($codice);
+        $classroom = Classroom::find($codice);
+
+        if($classroom == null){
+            $classroomResource = new ClassroomResource($classroom);
+            $classroomResource->additional(['error' => 'Classroom not found!']);
+            return $classroomResource->response()->setStatusCode(400);
+        }
         $classroom->delete();
 
         return response()->json([],204);
@@ -176,18 +202,35 @@ class ClassroomsController extends Controller
     /**
      * Permette di cambiare lo stato di un'aula da aperta a chiusa e viceversa
      *
+     * Restituisce l'aula aggiornata con codice 200 OK oppure
+     * restituisce in json un errore con codice 400 oppure
+     * restituisce in json l'eccezone SQL con codice 500
+     *
      * @param $id_aula
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      *
      */
     public function state($id, Request $request){
-        $classroom = Classroom::find($id);
+        try {
+            $classroom = Classroom::find($id);
 
-        $classroom->stato = $request->stato;
-        $classroom->save();
+            if($classroom == null){
+                $classroomResource = new ClassroomResource($classroom);
+                $classroomResource->additional(['error' => 'Classroom not found!']);
+                return $classroomResource->response()->setStatusCode(400);
+            }
 
-        return response()->json($classroom,200);
+            $classroom->stato = $request->stato;
+            $classroom->save();
+
+            $classroomResource = new ClassroomResource($classroom);
+            $classroomResource->additional(['error' => null]);
+
+            return $classroomResource->response()->setStatusCode(200);
+            } catch(QueryException $ex){
+                return response()->json(['SQL Exception'=>$ex->getMessage()], 500);
+       }
     }
 
     /**
@@ -196,13 +239,25 @@ class ClassroomsController extends Controller
      * @param $id_aula
      * @return \Illuminate\Http\JsonResponse
      */
-    public function presences($codice){
-        $classroom = Classroom::where('codice', $codice)->first();
+    public function attendances($id){
+        $attendances = Attendance::where('classroom_id', $id)
+            ->where('exit_date', null)->get();
 
-        $presenze = Attendance::where('id_aula', $classroom->id)
-            ->where('data_uscita', null)->get();
+        if($attendances->isEmpty()){
+            $users = array();
+            $usersCollection = UserResource::collection($users);
+            $usersCollection->additional(['error' => "This classroom is empty"]);
+            return $usersCollection->response()->setStatusCode(200);
+        }
 
-        $utenti = User::where('id', $presenze->id_utente)->get();
-        return response()->json($utenti,200);
+        $users = array();
+        foreach($attendances as $attendance){
+            $user = User::find($attendance->user_id);
+            $users[] = $user;
+        }
+
+        $usersCollection = UserResource::collection($users);
+        $usersCollection->additional(['error' => null]);
+        return $usersCollection->response()->setStatusCode(200);
     }
 }
