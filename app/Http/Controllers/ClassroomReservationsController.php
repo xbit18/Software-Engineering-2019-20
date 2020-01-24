@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Classroom;
-use App\Booking;
+use App\ClassroomReservation;
 use App\User;
 use Illuminate\Http\Request;
 
-class BookingsController extends Controller
+class ClassroomReservationsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class BookingsController extends Controller
      */
     public function index()
     {
-        $bookings=Booking::all();
+        $bookings=ClassroomReservation::all();
         foreach($bookings as $booking){
             $classroom = Classroom::find($booking->id_aula);
             $user = User::find($booking->id_utente);
@@ -37,7 +37,7 @@ class BookingsController extends Controller
      */
     public function store(Request $request)
     {
-        $booking = new Booking();
+        $booking = new ClassroomReservation();
 
         $booking->data_inizio = $request->data_inizio;
         $booking->data_fine = $request->data_fine;
@@ -51,13 +51,13 @@ class BookingsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Booking  $booking
+     * @param  \App\ClassroomReservation  $booking
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
 
-        $booking= Booking::findOrFail($id);
+        $booking= ClassroomReservation::findOrFail($id);
 
         $classroom = Classroom::find($booking->id_aula);
         $user = User::find($booking->id_utente);
@@ -73,12 +73,12 @@ class BookingsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Booking  $booking
+     * @param  \App\ClassroomReservation  $booking
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request)
     {
-        $booking= Booking::findOrFail($request->id);
+        $booking= ClassroomReservation::findOrFail($request->id);
 
         $booking->id= $request->codice;
         $booking->data_inizio= $request->data_inizio;
@@ -99,7 +99,7 @@ class BookingsController extends Controller
      *
      */
     public function state($id_prenotazione, Request $request){
-        $booking = Booking::find($id_prenotazione);
+        $booking = ClassroomReservation::find($id_prenotazione);
 
         $booking->stato = $request->stato;
         $booking->save();
@@ -110,11 +110,11 @@ class BookingsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Booking  $booking
+     * @param  \App\ClassroomReservation  $booking
      * @return \Illuminate\Http\Response
      */
     public function destroy($id){
-        $booking= Booking::findOrFail($id);
+        $booking= ClassroomReservation::findOrFail($id);
         $booking->delete();
     }
 }

@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Occupation extends Model
+class SeatReservation extends Model
 {
-    protected $table = "occupazioni";
+    protected $table = "seat_reservations";
 
     public function place(){
         return $this->hasOne('App\Seat');
