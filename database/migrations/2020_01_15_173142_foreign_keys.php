@@ -29,10 +29,6 @@ class ForeignKeys extends Migration
             $table3->foreign('classroom_id')->references('id')
                 ->on('classrooms')->onDelete('cascade'); });
 
-        Schema::table('seats', function(Blueprint $table4) {
-            $table4->foreign('seat_reservation_id')->references('id')
-                ->on('seat_reservations')->onDelete('cascade'); });
-
         Schema::table('attendances', function(Blueprint $table5) {
             $table5->foreign('classroom_id')->references('id')
                 ->on('classrooms')->onDelete('cascade'); });

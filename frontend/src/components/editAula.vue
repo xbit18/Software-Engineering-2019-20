@@ -21,8 +21,8 @@ export default {
   },
   methods: {
     save() {
-      this.aula.id_edificio = this.building.id;
-      this.aula.nome = this.building.nome;
+      this.aula.building_id = this.building.id;
+      this.aula.name = this.building.name;
       let aulaId = this.$route.params.aula;
       axios
         .put(`http://127.0.0.1:8000/api/aule/${aulaId}`, this.aula)
@@ -43,12 +43,12 @@ export default {
     },
     getEdifici() {
       axios.get("http://127.0.0.1:8000/api/buildings").then(res => {
-        this.edifici = res.data;
+        this.edifici = res.data.data;
       });
     },
     getAula(id) {
       axios.get(`http://127.0.0.1:8000/api/classrooms/${id}`).then(res => {
-        this.aula = res.data;
+        this.aula = res.data.data;
       });
     }
   }

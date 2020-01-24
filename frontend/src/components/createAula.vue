@@ -23,7 +23,7 @@ export default {
         .then(res => {
           if (res.status == 201) {
             swal({
-        text: "L'aula è stato creata",
+        text: "L'aula è state creata",
         icon: "success"
       });
       setTimeout(() => {
@@ -39,7 +39,7 @@ export default {
     getEdifici() {
       axios.get("http://127.0.0.1:8000/api/classrooms").then(res => {
         console.log(res);
-        this.edifici = res.data;
+        this.edifici = res.data.data;
       });
     }
     

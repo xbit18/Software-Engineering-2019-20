@@ -1,13 +1,13 @@
 class Aula {
-    constructor(id,codice,id_edificio,nome_edificio,disponibilita,tipo,capienza,stato,edificio, created_at,updated_at, piano){
+    constructor(id,code,building_id,availability,type,capacity,state,edificio, created_at,updated_at, floor){
         this.id = id;
-        this.codice = codice;
-        this.disponibilita = disponibilita;
-        this.tipo = tipo;
-        this.capienza = capienza;
-        this.stato = stato;
-        this.piano = piano;
-        this.id_edificio = id_edificio;
+        this.code = code;
+        this.availability = availability;
+        this.type = type;
+        this.capacity = capacity;
+        this.state = state;
+        this.floor = floor;
+        this.building_id = building_id;
         this.created_at = created_at;
         this.updated_at = updated_at;
     }

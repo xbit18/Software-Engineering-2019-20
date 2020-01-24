@@ -4,17 +4,17 @@
       <thead>
         <tr>
           <th class="tg th">ID</th>
-          <th class="tg th">Piano</th>
+          <th class="tg th">floor</th>
           <th class="tg th">Edificio</th>
-          <th class="tg th">Piantina</th>
+          <th class="tg th">floor_map</th>
 
         </tr>
       </thead>
       <tbody>
         <tr v-for="mappa in listMappe" :key="mappa.id">
           <td class="tg td">{{mappa.id}}</td>
-          <td class="tg td">{{mappa.nome_edificio}}</td>
-          <td class="tg td"><img :src="'http://localhost/progetto%20ingegneria%20software/storage/app/'+mappa.piantina"/></td>
+          <td class="tg td">{{mappa.name_edificio}}</td>
+          <td class="tg td"><img :src="'http://localhost/progetto%20ingegneria%20software/storage/app/'+mappa.floor_map"/></td>
         </tr>
       </tbody>
     </table>

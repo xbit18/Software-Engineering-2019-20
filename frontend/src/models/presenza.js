@@ -1,14 +1,15 @@
-class Token{
-    constructor(id,data_entrata,data_uscita,materia,id_utente,id_aula,created_at,updated_at){
+class Presenza{
+    constructor(id,entry_date,exit_date,subject,user_id,classroom_id,confirmation,created_at,updated_at){
         this.id = id;
-        this.data_entrata = data_entrata;
-        this.data_uscita = data_uscita;
-        this.materia = materia;
-        this.id_utente = id_utente;
-        this.id_aula = id_aula;
+        this.entry_date = entry_date;
+        this.exit_date = exit_date;
+        this.subject = subject;
+        this.user_id = user_id;
+        this.confirmation = confirmation;
+        this.classroom_id = classroom_id;
         this.created_at = created_at;
         this.updated_at = updated_at;
     }
 }
 
-export default Token;
+export default Presenza;

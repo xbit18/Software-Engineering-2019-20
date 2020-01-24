@@ -10,8 +10,8 @@
         <th class="tg th">ID</th>
         <th class="tg th">Data inizio</th>
         <th class="tg th">Data fine</th>
-        <th class="tg th">Motivazione</th>
-        <th class="tg th">Stato</th>
+        <th class="tg th">motivation</th>
+        <th class="tg th">state</th>
         <th class="tg th">Aula</th>
         <th class="tg th">Utente</th>
         <th class="tg th">Accetta</th>
@@ -21,17 +21,17 @@
     <tbody>
       <tr>
         <td class="tg td">{{prenotazione.id}}</td>
-        <td class="tg td">{{prenotazione.data_inizio}}</td>
-        <td class="tg td">{{prenotazione.data_fine}}</td>
-        <td class="tg td">{{prenotazione.motivazione}}</td>
-        <td class="tg td">{{prenotazione.stato}}</td>
-        <td class="tg td">{{prenotazione.codice}}</td>
-        <td class="tg td">{{prenotazione.nome}} {{prenotazione.cognome}}</td>
+        <td class="tg td">{{prenotazione.start_date}}</td>
+        <td class="tg td">{{prenotazione.end_date}}</td>
+        <td class="tg td">{{prenotazione.motivation}}</td>
+        <td class="tg td">{{prenotazione.state}}</td>
+        <td class="tg td">{{prenotazione.code}}</td>
+        <td class="tg td">{{prenotazione.name}} {{prenotazione.surname}}</td>
         <td class="tg td">
-          <button class="button button-accetta" @click="accetta(prenotazione.id,prenotazione.stato,'accettata')">Accetta</button>
+          <button class="button button-accetta" @click="accetta(prenotazione.id,prenotazione.state,'accettata')">Accetta</button>
         </td>
         <td class="tg td">
-          <button class="button button-elimina" @click="rifiuta(prenotazione.id,prenotazione.stato,'rifiutata')">Rifiuta</button>
+          <button class="button button-elimina" @click="rifiuta(prenotazione.id,prenotazione.state,'rifiutata')">Rifiuta</button>
         </td>
       </tr>
     </tbody>
@@ -53,13 +53,13 @@
 
 <script>
 import axios from 'axios'
-import Prenotazione from '../models/prenotazione.js'
+import PrenotazioneAula from '../models/prenotazioneAula.js'
 import swal from 'sweetalert'
 export default {
     name: 'Prenotazione',
     data(){
         return{
-            prenotazione: new Prenotazione(),
+            prenotazione: new PrenotazioneAula(),
             searchString: null
         }
     },
@@ -74,16 +74,16 @@ export default {
         getPrenotazione(id){
             axios.get(`http://127.0.0.1:8000/api/bookings/${id}`)
             .then(res =>{
-                this.prenotazione = res.data;
+                this.prenotazione = res.data.data;
             })
         },
-        accetta_rifiuta(id,stato,newStato){ 
+        accetta_rifiuta(id,state,newstate){ 
       console.log(id);
-                axios.patch(`http://127.0.0.1:8000/api/bookings/${id}`,{stato : newStato})
+                axios.patch(`http://127.0.0.1:8000/api/bookings/${id}`,{state : newstate})
                 .then(() =>{
                   this.$router.push('/redirectPrenotazione');
                     swal({
-                    text: `Prenotazione ${newStato}`,
+                    text: `Prenotazione ${newstate}`,
                     icon: "success"
                     });
                 })

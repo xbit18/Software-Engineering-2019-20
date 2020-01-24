@@ -6,25 +6,25 @@
       </div>
       <form class="mid-form" @submit.prevent=save()>
 
-        <label for="codice">Codice</label>
-        <input type="text" name="codice" v-model="aula.codice" required/>
+        <label for="code">Codice</label>
+        <input type="text" name="code" v-model="aula.code" required/>
 
-        <label for="piano">Piano</label>
-        <input type="text" name="piano" v-model="aula.piano" required/>
+        <label for="floor">Piano</label>
+        <input type="text" name="floor" v-model="aula.floor" required/>
 
-        <label for="tipo">Tipo</label>
-        <select v-model="aula.tipo" name="tipo" required>
+        <label for="type">Tipo</label>
+        <select v-model="aula.type" name="type" required>
           <option>lezione</option>
           <option>studio</option>
           <option>lavoro</option>
         </select>
      
-        <label for="capienza">Capienza</label>
-        <input type="text" name="capienza" v-model="aula.capienza" required/>
+        <label for="capacity">Capienza</label>
+        <input type="text" name="capacity" v-model="aula.capacity" required/>
 
         <label for="edificio">Edificio</label>
-        <select v-model="aula.id_edificio" name="edificio" required >
-          <option :value="edificio.id" v-for="edificio in edifici" :key="edificio.id"> {{edificio.nome}}</option>
+        <select v-model="aula.building_id" name="edificio" required >
+          <option :value="edificio.id" v-for="edificio in edifici" :key="edificio.id"> {{edificio.name}}</option>
         </select>
         
         <input v-if="isEdit" type="submit" value ="Modifica" class="button button-success" />
