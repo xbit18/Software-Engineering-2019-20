@@ -7,6 +7,7 @@ use App\Http\Resources\ClassroomCollection;
 use App\Seat;
 use App\Attendance;
 use App\User;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use App\Building;
 use Illuminate\Support\Facades\DB;
@@ -28,7 +29,7 @@ class ClassroomsController extends Controller
         if($classrooms->isEmpty()){
             $classrooms->additional(['error' => 'No classroom was found!']);
 
-            return $classrooms->response()->setStatusCode(200);
+            return $classrooms->response()->setStatusCode(200);                         //Nessuna classe presente
         } else {
             foreach ($classrooms as $classroom) {
                 $building = Building::findOrFail($classroom['building_id']);
@@ -37,7 +38,7 @@ class ClassroomsController extends Controller
             $classrooms->additional(['error' => null]);
         }
 
-        return $classrooms->response()->setStatusCode(200);
+        return $classrooms->response()->setStatusCode(200);                             //Classi restituite con successo
 
     }
 
@@ -49,7 +50,8 @@ class ClassroomsController extends Controller
      */
     public function store(Request $request)
     {
-        $classroom = new ClassroomResource(Classroom::create([
+        try {
+            $classroom = new ClassroomResource(Classroom::create([
                 'code' => $request->code,
                 'availability' => $request->availability,
                 'type' => $request->type,
@@ -59,10 +61,14 @@ class ClassroomsController extends Controller
                 'floor' => $request->floor
             ]));
 
-        $this-> createSeats($classroom);
+            $this-> createSeats($classroom);
 
-        $classroom->additional(['error' => null]);
-        return $classroom->response()->setStatusCode(201);
+            $classroom->additional(['error' => null]);
+            return $classroom->response()->setStatusCode(201);                              //Restituisce l'aula inserita con codice 201
+        } catch(QueryException $ex){
+            return response()->json(['SQL Exception'=>$ex->getMessage()], 500);            //Restituisce in json l'eccezione SQL con codide 500
+        }
+
     }
 
     /**
@@ -114,7 +120,7 @@ class ClassroomsController extends Controller
         } else {
             $classroom->additional(['error' => null]);
         }
-        return $classroom->response()->setStatusCode(200);
+
     }
 
     /**
@@ -125,22 +131,32 @@ class ClassroomsController extends Controller
      */
     public function update($id,Request $request)
     {
-        $classroom = Classroom::find($id);
+        try {
+            $classroom = Classroom::find($id);
 
-        $classroom->code = $request->code;
-        $classroom->building_id = $request->building_id;
-        $classroom->capacity = $request->capacity;
-        $classroom->state = $request->state;
-        $classroom->type = $request->type;
-        $classroom->availability = $request->availability;
-        $classroom->floor = $request->floor;
+            if($classroom == null){
+                $classroomResource = new ClassroomResource($classroom);
+                $classroomResource->additional(['error' => 'Classroom not found!']);
+                return $classroomResource->response()->setStatusCode(400);
+            }
 
-        $classroom->save();
+            $classroom->code = $request->code;
+            $classroom->building_id = $request->building_id;
+            $classroom->capacity = $request->capacity;
+            $classroom->state = $request->state;
+            $classroom->type = $request->type;
+            $classroom->availability = $request->availability;
+            $classroom->floor = $request->floor;
 
-        $classroomResource = new ClassroomResource($classroom);
-        $classroomResource->additional(['error' => null]);
-        return $classroomResource;
-        //return response()->json($classroom,200);
+            $classroom->save();
+
+            $classroomResource = new ClassroomResource($classroom);
+            $classroomResource->additional(['error' => null]);
+
+            return $classroomResource->response()->setStatusCode(200);
+        } catch(QueryException $ex){
+            return response()->json(['SQL Exception'=>$ex->getMessage()], 500);
+        }
     }
 
     /**
