@@ -27,6 +27,7 @@ class BuildingsController extends Controller
             } else {
                 $buildings->additional(['error' => null]);
             }
+
             return $buildings->response()->setStatusCode(200);
     }
 
@@ -46,7 +47,6 @@ class BuildingsController extends Controller
         // } else {
         try {
             $building = new BuildingResource(Building::create([
-
                 'total_classrooms' => $request->total_classrooms,
                 'name' => $request->name,
                 'address' => $request->address
@@ -111,8 +111,8 @@ class BuildingsController extends Controller
 
     public function classrooms($id)
     {
-        $classrooms = DB::table('classrooms')->where('id_building', $id)->get();
-        return response()->json($classrooms,200);
+        $classrooms = Classroom::collection(DB::table('classrooms')->where('id_building', $id)->get());
+        return $classrooms->response()->setStatusCode(200);
     }
 
     /**
@@ -131,5 +131,7 @@ class BuildingsController extends Controller
             return $buildingResource->response()->setStatusCode(400);
         }
         $building->delete();
+
+        return response()->json([],204);
     }
 }
