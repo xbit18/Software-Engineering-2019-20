@@ -17,13 +17,13 @@
       <tr v-for="persona in listPersone" :key="persona.id">
         <td class="tg td">{{persona.id}}</td>
         <td class="tg td">{{persona.email}}</td>
-        <td class="tg td">{{persona.nome}}</td>
-        <td class="tg td">{{persona.cognome}}</td>
-        <td class="tg td">{{persona.data_nascita}}</td>
-        <td class="tg td">{{persona.tipo}}</td>
-        <td class="tg td">{{persona.corso}}</td>
-        <td class="tg td">{{persona.matricola}}</td>
-        <td class="tg td">{{persona.codice_documento}}</td>
+        <td class="tg td">{{persona.name}}</td>
+        <td class="tg td">{{persona.surname}}</td>
+        <td class="tg td">{{persona.birthdate}}</td>
+        <td class="tg td">{{persona.type}}</td>
+        <td class="tg td">{{persona.course}}</td>
+        <td class="tg td">{{persona.matriculation_number}}</td>
+        <td class="tg td">{{persona.identification_number}}</td>
       </tr>
     </tbody>
   </table>

@@ -30,11 +30,11 @@ export default {
             ) {
               const formData = new FormData();
               formData.append("mappa", this.file);
-              formData.append("piano", this.mappa.piano);
-              formData.append("id_edificio", this.mappa.id_edificio);
+              formData.append("floor", this.mappa.floor);
+              formData.append("building_id", this.mappa.building_id);
               axios
                 .post(
-                  `http://127.0.0.1:8000/api/maps/${this.mappa.id_edificio}/${this.mappa.piano}`,
+                  `http://127.0.0.1:8000/api/maps/${this.mappa.building_id}/${this.mappa.floor}`,
                   formData,
                   {
                     headers: {
@@ -43,7 +43,7 @@ export default {
                   }
                 )
                 .then(res => {
-                  if (res.data) {
+                  if (res.data.data) {
                     this.file = '';
                     swal({
                       text: "La mappa è stata modificata",
@@ -72,13 +72,13 @@ export default {
     getEdifici(){
             axios.get(`http://127.0.0.1:8000/api/buildings`)
             .then( res =>{
-                this.edifici = res.data
+                this.edifici = res.data.data
             })
         },
     getMappa(id){
       axios.get(`http://127.0.0.1:8000/api/maps/${id}`)
       .then(res =>{
-        this.mappa = res.data
+        this.mappa = res.data.data
       })
     }
      }

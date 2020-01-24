@@ -29,8 +29,8 @@ export default {
             ) {
               const formData = new FormData();
               formData.append("mappa", this.file);
-              formData.append("piano", this.mappa.piano);
-              formData.append("id_edificio", this.mappa.id_edificio);
+              formData.append("floor", this.mappa.floor);
+              formData.append("building_id", this.mappa.building_id);
               axios
                 .post(
                   `http://127.0.0.1:8000/api/maps`,
@@ -42,7 +42,7 @@ export default {
                   }
                 )
                 .then(res => {
-                  if (res.data) {
+                  if (res.data.data) {
                     this.file = '';
                     swal({
                       text: "La mappa è stata creata",
@@ -67,7 +67,7 @@ export default {
         getEdifici(){
             axios.get(`http://127.0.0.1:8000/api/buildings`)
             .then( res =>{
-                this.edifici = res.data
+                this.edifici = res.data.data
             })
         },
         fileChange() {

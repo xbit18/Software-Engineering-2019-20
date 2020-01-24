@@ -45,7 +45,7 @@ export default {
         getPrenotazioni(){
             axios.get(`http://127.0.0.1:8000/api/bookings`)
             .then(res =>{
-                this.listPrenotazioni = res.data;
+                this.listPrenotazioni = res.data.data;
             })
         }
     }

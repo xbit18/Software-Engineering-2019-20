@@ -1,8 +1,8 @@
 class Token{
-    constructor(id,codice,id_aula,created_at,updated_at){
+    constructor(id,code,classroom_id,created_at,updated_at){
         this.id = id;
-        this.codice = codice;
-        this.id_aula = id_aula;
+        this.code = code;
+        this.classroom_id = classroom_id;
         this.created_at = created_at;
         this.updated_at = updated_at;
     }

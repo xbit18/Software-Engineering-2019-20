@@ -16,17 +16,17 @@
     <tbody>
       <tr v-for="prenotazione in listPrenotazioni" :key="prenotazione.id">
         <td class="tg td">{{prenotazione.id}}</td>
-        <td class="tg td">{{prenotazione.data_inizio}}</td>
-        <td class="tg td">{{prenotazione.data_fine}}</td>
-        <td class="tg td">{{prenotazione.motivazione}}</td>
-        <td class="tg td">{{prenotazione.stato}}</td>
-        <td class="tg td">{{prenotazione.codice}}</td>
-        <td class="tg td">{{prenotazione.nome}} {{prenotazione.cognome}}</td>
+        <td class="tg td">{{prenotazione.start_date}}</td>
+        <td class="tg td">{{prenotazione.end_date}}</td>
+        <td class="tg td">{{prenotazione.motivation}}</td>
+        <td class="tg td">{{prenotazione.state}}</td>
+        <td class="tg td">{{prenotazione.code}}</td>
+        <td class="tg td">{{prenotazione.name}} {{prenotazione.surname}}</td>
         <td class="tg td">
-          <button class="button button-accetta" @click="accetta_rifiuta(prenotazione.id,prenotazione.stato,'accettata')">Accetta</button>
+          <button class="button button-accetta" @click="accetta_rifiuta(prenotazione.id,prenotazione.state,'accettata')">Accetta</button>
         </td>
         <td class="tg td">
-          <button class="button button-elimina" @click="accetta_rifiuta(prenotazione.id,prenotazione.stato,'rifiutata')">Rifiuta</button>
+          <button class="button button-elimina" @click="accetta_rifiuta(prenotazione.id,prenotazione.state,'rifiutata')">Rifiuta</button>
         </td>
       </tr>
     </tbody>
@@ -40,13 +40,13 @@ export default {
   name: "Prenotazioni",
   props: ["listPrenotazioni"],
   methods: {
-    accetta_rifiuta(id,stato,newStato){ 
+    accetta_rifiuta(id,state,newstate){ 
       console.log(id);
-                axios.patch(`http://127.0.0.1:8000/api/bookings/${id}`,{stato : newStato})
+                axios.patch(`http://127.0.0.1:8000/api/bookings/${id}`,{state : newstate})
                 .then(() =>{
                   this.$router.push('/redirectPrenotazione');
                     swal({
-                    text: `Prenotazione ${newStato}`,
+                    text: `Prenotazione ${newstate}`,
                     icon: "success"
                     });
                 })
