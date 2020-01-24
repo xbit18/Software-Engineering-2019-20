@@ -6,8 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Classroom extends Model
 {
-    public $table = 'aule';
-    protected $fillable = [];
+    protected $fillable = ['code','availability','type','capacity','state','building_id','floor'];
 
     public function building(){
         return $this->belongsTo('App\Building');
@@ -17,16 +16,16 @@ class Classroom extends Model
         return $this->hasMany('App\Token');
     }
 
-    public function presences(){
-        return $this->hasMany('App\Presence');
+    public function attendances(){
+        return $this->hasMany('App\Attendance');
     }
 
-    public function places(){
+    public function seats(){
         return $this->hasMany('App\Seat');
     }
 
-    public function bookings(){
-        return $this->hasMany('App\Booking');
+    public function classroomReservations(){
+        return $this->hasMany('App\ClassroomReservation');
     }
 
 }

@@ -13,49 +13,49 @@ class ForeignKeys extends Migration
      */
     public function up()
     {
-        Schema::table('aule', function(Blueprint $table0) {
-            $table0->foreign('id_edificio')->references('id')
-                ->on('edifici')->onDelete('cascade'); });
+        Schema::table('classrooms', function(Blueprint $table0) {
+            $table0->foreign('building_id')->references('id')
+                ->on('buildings')->onDelete('cascade'); });
 
-        Schema::table('token', function(Blueprint $table1) {
-            $table1->foreign('id_aula')->references('id')
-                ->on('aule')->onDelete('cascade'); });
+        Schema::table('tokens', function(Blueprint $table1) {
+            $table1->foreign('classroom_id')->references('id')
+                ->on('classrooms')->onDelete('cascade'); });
 
-        Schema::table('mappe', function(Blueprint $table2) {
-            $table2->foreign('id_edificio')->references('id')
-                ->on('edifici')->onDelete('cascade'); });
+        Schema::table('maps', function(Blueprint $table2) {
+            $table2->foreign('building_id')->references('id')
+                ->on('buildings')->onDelete('cascade'); });
 
-        Schema::table('posti', function(Blueprint $table3) {
-            $table3->foreign('id_aula')->references('id')
-                ->on('aule')->onDelete('cascade'); });
+        Schema::table('seats', function(Blueprint $table3) {
+            $table3->foreign('classroom_id')->references('id')
+                ->on('classrooms')->onDelete('cascade'); });
 
-        Schema::table('posti', function(Blueprint $table4) {
-            $table4->foreign('id_occupazione')->references('id')
-                ->on('occupazioni')->onDelete('cascade'); });
+        Schema::table('seats', function(Blueprint $table4) {
+            $table4->foreign('seat_reservation_id')->references('id')
+                ->on('seat_reservations')->onDelete('cascade'); });
 
-        Schema::table('presenze', function(Blueprint $table5) {
-            $table5->foreign('id_aula')->references('id')
-                ->on('aule')->onDelete('cascade'); });
+        Schema::table('attendances', function(Blueprint $table5) {
+            $table5->foreign('classroom_id')->references('id')
+                ->on('classrooms')->onDelete('cascade'); });
 
-        Schema::table('presenze', function(Blueprint $table6) {
-            $table6->foreign('id_utente')->references('id')
-                ->on('utenti')->onDelete('cascade'); });
+        Schema::table('attendances', function(Blueprint $table6) {
+            $table6->foreign('user_id')->references('id')
+                ->on('users')->onDelete('cascade'); });
 
-        Schema::table('prenotazioni', function(Blueprint $table7) {
-            $table7->foreign('id_aula')->references('id')
-                ->on('aule')->onDelete('cascade'); });
+        Schema::table('classroom_reservations', function(Blueprint $table7) {
+            $table7->foreign('classroom_id')->references('id')
+                ->on('classrooms')->onDelete('cascade'); });
 
-        Schema::table('prenotazioni', function(Blueprint $table8) {
-            $table8->foreign('id_utente')->references('id')
-                ->on('utenti')->onDelete('cascade'); });
+        Schema::table('classroom_reservations', function(Blueprint $table8) {
+            $table8->foreign('user_id')->references('id')
+                ->on('users')->onDelete('cascade'); });
 
-        Schema::table('occupazioni', function(Blueprint $table9) {
-            $table9->foreign('id_posto')->references('id')
-                ->on('posti')->onDelete('cascade'); });
+        Schema::table('seat_reservations', function(Blueprint $table9) {
+            $table9->foreign('seat_id')->references('id')
+                ->on('seats')->onDelete('cascade'); });
 
-        Schema::table('occupazioni', function(Blueprint $table10) {
-            $table10->foreign('id_utente')->references('id')
-                ->on('utenti')->onDelete('cascade'); });
+        Schema::table('seat_reservations', function(Blueprint $table10) {
+            $table10->foreign('user_id')->references('id')
+                ->on('users')->onDelete('cascade'); });
     }
 
     /**
@@ -65,38 +65,38 @@ class ForeignKeys extends Migration
      */
     public function down()
     {
-        Schema::table('aule', function(Blueprint $table0) {
-            $table0->dropForeign(['id_edificio']);
+        Schema::table('classrooms', function(Blueprint $table0) {
+            $table0->dropForeign(['building_id']);
         });
         Schema::table('token', function(Blueprint $table1) {
-            $table1->dropForeign(['id_aula']);
+            $table1->dropForeign(['classroom_id']);
         });
-        Schema::table('mappe', function(Blueprint $table2) {
-            $table2->dropForeign(['id_edificio']);
+        Schema::table('maps', function(Blueprint $table2) {
+            $table2->dropForeign(['building_id']);
         });
-        Schema::table('posti', function(Blueprint $table3) {
-            $table3->dropForeign(['id_aula']);
+        Schema::table('seats', function(Blueprint $table3) {
+            $table3->dropForeign(['classroom_id']);
         });
-        Schema::table('posti', function(Blueprint $table4) {
-            $table4->dropForeign(['id_occupazione']);
+        Schema::table('seats', function(Blueprint $table4) {
+            $table4->dropForeign(['seat_reservation_id']);
         });
-        Schema::table('presenze', function(Blueprint $table5) {
-            $table5->dropForeign(['id_aula']);
+        Schema::table('attendances', function(Blueprint $table5) {
+            $table5->dropForeign(['classroom_id']);
         });
-        Schema::table('presenze', function(Blueprint $table6) {
-            $table6->dropForeign(['id_utente']);
+        Schema::table('attendances', function(Blueprint $table6) {
+            $table6->dropForeign(['user_id']);
         });
-        Schema::table('prenotazioni', function(Blueprint $table7) {
-            $table7->dropForeign(['id_aula']);
+        Schema::table('classroom_reservations', function(Blueprint $table7) {
+            $table7->dropForeign(['classroom_id']);
         });
-        Schema::table('prenotazioni', function(Blueprint $table8) {
-            $table8->dropForeign(['id_utente']);
+        Schema::table('classroom_reservations', function(Blueprint $table8) {
+            $table8->dropForeign(['user_id']);
         });
-        Schema::table('occupazioni', function(Blueprint $table9) {
-            $table9->dropForeign(['id_posto']);
+        Schema::table('seat_reservations', function(Blueprint $table9) {
+            $table9->dropForeign(['seat_id']);
         });
-        Schema::table('occupazioni', function(Blueprint $table10) {
-            $table10->dropForeign(['id_utente']);
+        Schema::table('seat_reservations', function(Blueprint $table10) {
+            $table10->dropForeign(['user_id']);
         });
 
     }

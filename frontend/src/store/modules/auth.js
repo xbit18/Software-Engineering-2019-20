@@ -63,6 +63,16 @@ actions:{
     attempt({commit,state},token){
         if(token){
             commit('SET_TOKEN', token);
+            setInterval(() => {
+                axios.post("http://127.0.0.1:8000/api/logout")
+            .then(() => {
+            commit('SET_UTENTE',null);
+            commit('SET_TOKEN',null);
+            commit('SET_ISADMIN',null);
+            commit('SET_DOCENTE',null);
+
+        })
+            }, 5988000);
         }
       
         if(state.token){

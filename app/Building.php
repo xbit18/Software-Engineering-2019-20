@@ -6,8 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Building extends Model
 {
-    protected $table = 'edifici';
-
     public function classrooms(){
         return $this->hasMany('App\Classroom');
     }

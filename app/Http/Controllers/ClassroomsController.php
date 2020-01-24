@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Classroom;
 use App\Http\Resources\ClassroomCollection;
 use App\Seat;
-use App\Presence;
+use App\Attendance;
 use App\User;
 use Illuminate\Http\Request;
 use App\Building;
@@ -23,19 +23,21 @@ class ClassroomsController extends Controller
     public function index()
     {
 
-        $classrooms = (new ClassroomCollection(Classroom::paginate(10)));
+        $classrooms = new ClassroomCollection(Classroom::paginate(10));
 
-        if($classrooms == null){
-            $classrooms->additional(['error' => 'no classroom found']);
+        if($classrooms->isEmpty()){
+            $classrooms->additional(['error' => 'No classroom was found!']);
+
+            return $classrooms->response()->setStatusCode(200);
         } else {
             foreach ($classrooms as $classroom) {
-                $building = Building::findOrFail($classroom['id_edificio']);
-                $classroom['nome_edificio'] = $building['nome'];
+                $building = Building::findOrFail($classroom['building_id']);
+                $classroom['building_name'] = $building['name'];
             }
             $classrooms->additional(['error' => null]);
         }
 
-        return $classrooms;
+        return $classrooms->response()->setStatusCode(200);
 
     }
 
@@ -47,18 +49,20 @@ class ClassroomsController extends Controller
      */
     public function store(Request $request)
     {
-        $classroom = Classroom::create();
-        $classroom->codice = $request->codice;
-        $classroom->capienza = $request->capienza;
-        $classroom->tipo = $request->tipo;
-        $classroom->piano = $request->piano;
-        $classroom->id_edificio = $request->id_edificio;
+        $classroom = new ClassroomResource(Classroom::create([
+                'code' => $request->code,
+                'availability' => $request->availability,
+                'type' => $request->type,
+                'capacity' => $request->capacity,
+                'state' => $request->state,
+                'building_id' => $request->building_id,
+                'floor' => $request->floor
+            ]));
 
-        $classroom -> save();
+        $this-> createSeats($classroom);
 
-        $this -> creaPosti($classroom);
-
-        return response()->json($classroom,201);
+        $classroom->additional(['error' => null]);
+        return $classroom->response()->setStatusCode(201);
     }
 
     /**
@@ -66,12 +70,12 @@ class ClassroomsController extends Controller
      * Auto generazione dei posti all'interno di un'aula
      * @param $classroom
      */
-    public function creaPosti($classroom){
-        for($i=1; $i<= $classroom->capienza ;$i++){
-            $posto = new Seat;
-            $posto->numero_posto = $i;
-            $posto->id_aula = $classroom->id;
-            $posto->save();
+    public function createSeats($classroom){
+        for($i=1; $i<= $classroom->capacity ;$i++){
+            $seat = new Seat;
+            $seat->seat_number = $i;
+            $seat->classroom_id = $classroom->id;
+            $seat->save();
         }
     }
 
@@ -83,12 +87,15 @@ class ClassroomsController extends Controller
      */
     public function show($id)
     {
-        $classroom= Classroom::find($id);
-        if($classroom == null){
-            return response()->json(["errore"=>"aula non trovata"], 404);
-        }
+        $classroom = new ClassroomResource(Classroom::find($id));
+        if($classroom->resource == null){
+            $classroom->additional(['error' => 'Classroom not found!']);
 
-        return response()->json($classroom, 200);
+            return $classroom->response()->setStatusCode(200);
+        } else {
+            $classroom->additional(['error' => null]);
+        }
+        return $classroom->response()->setStatusCode(200);
     }
 
     /**
@@ -97,13 +104,17 @@ class ClassroomsController extends Controller
      * @param  \App\Classroom  $classroom
      * @return \Illuminate\Http\Response
      */
-    public function showNome($codice){
-        $classroom = Classroom::where('codice', $codice)->first();
-        if($classroom == null){
-            return response()->json(["errore"=>"aula non trovata"], 404);
-        }
+    public function showNome($code){
+        $classroom = new ClassroomResource(Classroom::where('code', $code)->first());
 
-        return response()->json($classroom, 200);
+        if($classroom->resource == null){
+            $classroom->additional(['error' => 'Classroom not found!']);
+
+            return $classroom->response()->setStatusCode(200);
+        } else {
+            $classroom->additional(['error' => null]);
+        }
+        return $classroom->response()->setStatusCode(200);
     }
 
     /**
@@ -114,19 +125,22 @@ class ClassroomsController extends Controller
      */
     public function update($id,Request $request)
     {
-        $classroom = Classroom::findOrFail($id);
+        $classroom = Classroom::find($id);
 
-        $classroom->codice = $request->codice;
-        $classroom->id_edificio = $request->id_edificio;
-        $classroom->capienza = $request->capienza;
-        $classroom->stato = $request->stato;
-        $classroom->tipo = $request->tipo;
-        $classroom->disponibilita = $request->disponibilita;
-
+        $classroom->code = $request->code;
+        $classroom->building_id = $request->building_id;
+        $classroom->capacity = $request->capacity;
+        $classroom->state = $request->state;
+        $classroom->type = $request->type;
+        $classroom->availability = $request->availability;
+        $classroom->floor = $request->floor;
 
         $classroom->save();
 
-        return response()->json($classroom,200);
+        $classroomResource = new ClassroomResource($classroom);
+        $classroomResource->additional(['error' => null]);
+        return $classroomResource;
+        //return response()->json($classroom,200);
     }
 
     /**
@@ -140,6 +154,7 @@ class ClassroomsController extends Controller
         $classroom = Classroom::findOrFail($codice);
         $classroom->delete();
 
+        return response()->json([],204);
     }
 
     /**
@@ -168,7 +183,7 @@ class ClassroomsController extends Controller
     public function presences($codice){
         $classroom = Classroom::where('codice', $codice)->first();
 
-        $presenze = Presence::where('id_aula', $classroom->id)
+        $presenze = Attendance::where('id_aula', $classroom->id)
             ->where('data_uscita', null)->get();
 
         $utenti = User::where('id', $presenze->id_utente)->get();
