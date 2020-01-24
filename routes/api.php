@@ -135,17 +135,17 @@ Route::get('/posti/{id_posto}/delete','SeatsController@destroy');               
  * Rotte per le presenze
  */
 
-Route::get('/presenze','PresencesController@index');
+Route::get('/presenze','AttendancesController@index');
 
-Route::post('/presenze','PresencesController@store');
+Route::post('/presenze','AttendancesController@store');
 
-Route::get('/presenze/{presenza}','PresencesController@show');
+Route::get('/presenze/{presenza}','AttendancesController@show');
 
-Route::put('/presenze/{presenza}','PresencesController@update');
+Route::put('/presenze/{presenza}','AttendancesController@update');
 
-Route::get('/presenze/{presenza}/delete','PresencesController@destroy');
+Route::get('/presenze/{presenza}/delete','AttendancesController@destroy');
 
-Route::patch('/presenze/{presenza}', 'PresencesController@uscita');
+Route::patch('/presenze/{presenza}', 'AttendancesController@uscita');
 
 
 /**
