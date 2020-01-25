@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Classroom;
 use Illuminate\Http\Request;
 use App\Seat;
+use App\Http\Resources\SeatCollection;
+use App\Http\Resources\Seat as SeatResource;
 
 class SeatsController extends Controller
 {
@@ -14,12 +17,35 @@ class SeatsController extends Controller
      */
     public function index()
     {
-        $places = Seat::all();
-        return response()->json($places, 200);
+        $seats = new SeatCollection(Classroom::paginate(10));
+
+        if($seats>isEmpty()){
+            $seats->additional(['error' => 'No seat was found!']);
+
+            return $seats->response()->setStatusCode(200);
+        } else {
+            foreach ($seats as $seat) {
+                $classroom = Classroom::findOrFail($seat['classroom_id']);
+                $seat['class_code'] = $classroom['code'];
+            }
+            $seats->additional(['error' => null]);
+        }
+
+        return $seats->response()->setStatusCode(200);
+
     }
 
-    public function index_aula($id){}
-
+    public function index_classroom($classroom_id)
+    {
+        $seats = new SeatCollection(Seat::find($classroom_id));
+        if ($seats->resource == null) {
+            $seats->additional(['error' => 'Classroom not found!']);
+            return $seats->response()->setStatusCode(200);
+        }else {
+            $seats->additional(['error' => null]);
+        }
+        return $seats->response()->setStatusCode(200);
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -28,21 +54,18 @@ class SeatsController extends Controller
      */
     public function store(Request $request)
     {
-        $place = new Seat;
+        try {
+            $seat = new SeatResource(Classroom::create([
+                'seat_number' => $request->seat_number,
+                'availability' => $request->availability,
+                'classroom_id' => $request->classroom_id
+            ]));
+            $seat->additional(['error' => null]);
+            return $seat->response()->setStatusCode(201);
+        } catch(QueryException $ex){
+            return response()->json(['SQL Exception'=>$ex->getMessage()], 500);
+    }}
 
-        $place->numero_posto = $request->numero_posto;
-
-        if($request->disponibilita != null){
-            $place->disponibilita = $request->disponibilita;
-        }
-
-        $place->id_utente = $request->id_utente;
-        $place->id_aula = $request->id_aula;
-
-        $place->save();
-
-        return response()->json($place, 201);
-    }
 
     /**
      * Display the specified resource.
@@ -52,12 +75,15 @@ class SeatsController extends Controller
      */
     public function show($id)
     {
-        $place = Seat::find($id);
-        if($place == null){
-            return response()->json(["errore"=>"posto non trovato"], 404);
-        }
+        $seat = new SeatResource(Seat::find($id));
+        if($seat->resource == null){
+            $seat->additional(['error' => 'Seat not found!']);
 
-        return response()->json($place, 200);
+            return $seat->response()->setStatusCode(200);
+        } else {
+            $seat->additional(['error' => null]);
+        }
+        return $seat->response()->setStatusCode(200);
     }
 
     /**
@@ -69,29 +95,28 @@ class SeatsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $place = Seat::findOrFail($id);
+        try {
+            $seat = Seat::find($id);
 
-        $place->numero_posto = $request->numero_posto;
-        $place->id_aula = $request->id_aula;
+            if($seat == null){
+                $seatResource = new SeatResource($seat);
+                $seatResource->additional(['error' => 'seat not found!']);
+                return $seatResource->response()->setStatusCode(400);
+            }
 
-        $place->save();
+            $seat->classroom_id = $request->classroom_id;
+            $seat->seat_number = $request->seat_number;
+            $seat->availability = $request->availability;
+            $seat->save();
 
-        return response()->json($place,200);
-    }
+            $seatResource = new SeatResource($seat);
+            $seatResource->additional(['error' => null]);
 
-    public function state($id,Request $request)
-    {
-        $place = Seat::find($id);
-        if($place == null){
-            return response()->json(["errore"=>"Classroom non trovata"],404);
+            return $seatResource->response()->setStatusCode(200);
+        } catch(QueryException $ex){
+            return response()->json(['SQL Exception'=>$ex->getMessage()], 500);
         }
-        $place->disponibilita = $request->disponibilita;
-        $place->id_utente = $request->id_utente;
-        $place->save();
-
-        return response()->json($place,200);
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -100,7 +125,15 @@ class SeatsController extends Controller
      */
     public function destroy($id)
     {
-        $place = Seat::findOrFail($id);
-        $place->delete();
+        $seat = Seat::find($id);
+
+        if($seat == null){
+            $seatResource = new SeatResource($seat);
+            $seatResource->additional(['error' => 'Seat not found!']);
+            return $seatResource->response()->setStatusCode(400);
+        }
+        $seat->delete();
+
+        return response()->json([],204);
     }
 }
