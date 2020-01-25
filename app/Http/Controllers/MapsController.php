@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Map;
 use App\Building;
+use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use App\Http\Resources\MapCollection;
+use App\Http\Resources\Map as MapResource;
 
 class MapsController extends Controller
 {
@@ -16,12 +20,20 @@ class MapsController extends Controller
      */
     public function index()
     {
-        $maps=Map::all();
-        foreach ($maps as $map){
-            $building = Building::findOrFail($map['id_edificio']);
-            $map['nome_edificio'] = $building['nome'];
+        $maps = new MapCollection(Map::paginate(10));
+
+        if ($maps->isEmpty()) {
+            $maps->additional(['error' => 'No map was found!']);
+
+            return $maps->response()->setStatusCode(200);
+        } else {
+            foreach ($maps as $map) {
+                $building = Building::findOrFail($map['building_id']);
+                $map['building_name'] = $building['name'];
+            }
+            $maps->additional(['error' => null]);
         }
-        return response()->json($maps,200);
+        return $maps->response()->setStatusCode(200);
     }
 
     /**
@@ -31,28 +43,38 @@ class MapsController extends Controller
      */
     public function store(Request $request)
     {
-        $map= Map::where('id_edificio', $request->id_edificio)->where('piano',$request->piano)->first();
-        if($map != null){
-            return response()->json(["errore"=>"la mappa per questo piano esiste già"], 409);
+        try {
+
+            $map = new MapResource(Map::where('building_id', $request->building_id)->where('floor', $request->floor)->first());
+            if ($map->resource != null) {
+                $map->additional(['error' => 'This floor already has a map']);
+                return $map->response()->setStatusCode(409);
+            }
+
+            $validator = Validator::make($request->all(), [
+                'mappa' => 'mimes:jpeg,jpg,png'
+            ]);
+
+            if ($validator->fails()) {
+                $map->additional(['error' => 'Format not supported']);
+                return $map->response()->setStatusCode(415);
+            }
+
+            $path = $request->file('map')->store('img');
+
+            $map = new MapResource(Map::create([
+                'floor_map' => $path,
+                'floor' => $request->floor,
+                'building_id' => $request->building_id
+            ]));
+
+            $map->additional(['error' => null]);
+            return $map->response()->setStatusCode(201);
+        } catch(QueryException $ex){
+            $map = new MapResource([]);
+            $map->additional(['error' => $ex->getMessage()]);
+            return $map->response()->setStatusCode(500);
         }
-
-        $validator = Validator::make($request->all(), [
-            'mappa' => 'mimes:jpeg,jpg,png'
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json(['errore'=>'formato non supportato'], 415);
-        }
-
-        $path = $request->file('mappa')->store('img');
-
-        $map = new Map;
-        $map->piantina = $path;
-        $map->piano = $request->piano;
-        $map->id_edificio = $request->id_edificio;
-        $map->save();
-
-        return response()->json($map,201);
     }
 
     /**
@@ -61,24 +83,30 @@ class MapsController extends Controller
      * @param  \App\Map  $map
      * @return \Illuminate\Http\Response
      */
-     public function showMapBuilding($id_building, $floor)
+     public function showWithFloorAndBuilding($building_id, $floor)
      {
-         $map= Map::where('id_edificio',$id_building)->where('piano',$floor)->first();
-        if($map == null){
-             return response()->json(["errore"=>"mappa non trovata"], 404);
-         }
+         $map= new MapResource(Map::where('building_id',$building_id)->where('floor',$floor)->first());
+        if($map->resource == null){
+            $map->additional(['error' => 'Map not found!']);
 
-         return response()->json($map, 200);
+            return $map->response()->setStatusCode(200);
+        } else {
+            $map->additional(['error' => null]);
+        }
+         return $map->response()->setStatusCode(200);
      }
 
     public function show($id)
     {
-        $map= Map::find($id);
-        if($map == null){
-            return response()->json(["errore"=>"mappa non trovata"], 404);
-        }
+        $map= new MapResource(Map::find($id));
+        if($map->resource == null){
+            $map->additional(['error' => 'Map not found!']);
 
-        return response()->json($map, 200);
+            return $map->response()->setStatusCode(200);
+        } else {
+            $map->additional(['error' => null]);
+        }
+        return $map->response()->setStatusCode(200);
     }
 
     /**
@@ -88,30 +116,43 @@ class MapsController extends Controller
      * @param  \App\Map  $map
      * @return \Illuminate\Http\Response
      */
-    public function update($id_building, $plane, Request $request)
+    public function update($id, Request $request)
     {
-        $map= Map::where('id_edificio',$id_building)->where('piano',$plane)->first();
-        if($map == null){
-            return response()->json(["errore"=>"mappa non trovata"], 404);
+        try {
+            $map = Map::find($id);
+            if ($map == null) {
+                $map = new MapResource([]);
+                $map->additional(['error'=>'Map not found']);
+                return $map->response()->setStatusCode(200);
+            }
+
+            $validator = Validator::make($request->all(), [
+                'mappa' => 'mimes:jpeg,jpg,png'
+            ]);
+
+            if ($validator->fails()) {
+                $map = new MapResource([]);
+                $map->additional(['error'=>'Format not supported']);
+                return $map->response()->setStatusCode(415);
+            }
+
+            $path = $request->file('map')->store('img');
+
+            $map->floor_map = $path;
+            $map->floor = $request->floor;
+            $map->building_id = $request->building_id;
+
+            $map->save();
+
+            $mapResource = new MapResource($map);
+            $mapResource->additional(['error' => null]);
+
+            return $mapResource->response()->setStatusCode(200);
+        }catch(QueryException $ex){
+            $map = new MapResource([]);
+            $map->additional(['error' => $ex->getMessage()]);
+            return $map->response()->setStatusCode(500);
         }
-
-        $validator = Validator::make($request->all(), [
-            'mappa' => 'mimes:jpeg,jpg,png'
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json(['errore'=>'formato non supportato'], 422);
-        }
-
-        $path = $request->file('mappa')->store('img');
-
-        $map->piantina = $path;
-        if($request->piano != null) {$map->piano = $plane;}
-        $map->id_edificio = $id_building;
-
-        $map->save();
-
-        return response()->json($map,200);
     }
 
     /**
@@ -123,6 +164,16 @@ class MapsController extends Controller
     public function destroy($id)
     {
         $map= Map::find($id);
+
+        if($map == null){
+            $mapResource = new MapResource($map);
+            $mapResource->additional(['error' => 'Map not found!']);
+            return $mapResource->response()->setStatusCode(400);
+        }
+
+        Storage::delete($map->floor_map);
         $map->delete();
+
+        return response()->json([],204);
     }
 }

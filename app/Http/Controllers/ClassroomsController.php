@@ -27,7 +27,6 @@ class ClassroomsController extends Controller
      */
     public function index()
     {
-
         $classrooms = new ClassroomCollection(Classroom::paginate(10));
 
         if($classrooms->isEmpty()){
@@ -73,7 +72,9 @@ class ClassroomsController extends Controller
             $classroom->additional(['error' => null]);
             return $classroom->response()->setStatusCode(201);
         } catch(QueryException $ex){
-            return response()->json(['SQL Exception'=>$ex->getMessage()], 500);
+            $classroom = new ClassroomResource([]);
+            $classroom->additional(['error' => $ex->getMessage()]);
+            return $classroom->response()->setStatusCode(500);
         }
 
     }
@@ -123,7 +124,7 @@ class ClassroomsController extends Controller
      * @param  \App\Classroom  $classroom
      * @return \Illuminate\Http\Response
      */
-    public function showNome($code){
+    public function showWithName($code){
         $classroom = new ClassroomResource(Classroom::where('code', $code)->first());
 
         if($classroom->resource == null){
@@ -172,7 +173,9 @@ class ClassroomsController extends Controller
 
             return $classroomResource->response()->setStatusCode(200);
         } catch(QueryException $ex){
-            return response()->json(['SQL Exception'=>$ex->getMessage()], 500);
+            $classroom = new ClassroomResource([]);
+            $classroom->additional(['error' => $ex->getMessage()]);
+            return $classroom->response()->setStatusCode(500);
         }
     }
 

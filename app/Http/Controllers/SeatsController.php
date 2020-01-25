@@ -35,7 +35,8 @@ class SeatsController extends Controller
 
     }
 
-    public function index_classroom($classroom_id)
+    //Restituisce tutti i posti all'interno di un'aula
+    public function indexClassroom($classroom_id)
     {
         $seats = new SeatCollection(Seat::find($classroom_id));
         if ($seats->resource == null) {
@@ -46,6 +47,7 @@ class SeatsController extends Controller
         }
         return $seats->response()->setStatusCode(200);
     }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -65,7 +67,6 @@ class SeatsController extends Controller
         } catch(QueryException $ex){
             return response()->json(['SQL Exception'=>$ex->getMessage()], 500);
     }}
-
 
     /**
      * Display the specified resource.
@@ -117,6 +118,7 @@ class SeatsController extends Controller
             return response()->json(['SQL Exception'=>$ex->getMessage()], 500);
         }
     }
+
     /**
      * Remove the specified resource from storage.
      *
