@@ -18,7 +18,7 @@ class SeatsController extends Controller
         return response()->json($places, 200);
     }
 
-    public function index_aula($id){}
+    public function indexAula($id){}
 
     /**
      * Store a newly created resource in storage.

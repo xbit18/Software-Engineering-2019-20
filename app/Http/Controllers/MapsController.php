@@ -61,9 +61,9 @@ class MapsController extends Controller
      * @param  \App\Map  $map
      * @return \Illuminate\Http\Response
      */
-     public function showMapBuilding($id_building, $plane)
+     public function showMapBuilding($id_building, $floor)
      {
-         $map= Map::where('id_edificio',$id_building)->where('piano',$plane)->first();
+         $map= Map::where('id_edificio',$id_building)->where('piano',$floor)->first();
         if($map == null){
              return response()->json(["errore"=>"mappa non trovata"], 404);
          }
