@@ -224,7 +224,7 @@ class ClassroomsController extends Controller
                 return $classroomResource->response()->setStatusCode(400);
             }
 
-            $classroom->stato = $request->stato;
+            $classroom->state = $request->state;
             $classroom->save();
 
             $classroomResource = new ClassroomResource($classroom);

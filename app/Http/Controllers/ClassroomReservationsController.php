@@ -6,6 +6,8 @@ use App\Classroom;
 use App\ClassroomReservation;
 use App\User;
 use Illuminate\Http\Request;
+use App\Http\Resources\ClassroomReservation as ClassroomReservationResource;
+use App\Http\Resources\ClassroomReservationCollection;
 
 class ClassroomReservationsController extends Controller
 {
@@ -16,19 +18,18 @@ class ClassroomReservationsController extends Controller
      */
     public function index()
     {
-        $bookings=ClassroomReservation::all();
-        foreach($bookings as $booking){
-            $classroom = Classroom::find($booking->id_aula);
-            $user = User::find($booking->id_utente);
+        $classroomsreservations = new ClassroomReservationCollection(Classroom::paginate(10));
 
-            $booking['codice'] = $classroom->codice;
-            $booking['nome'] = $user->nome;
-            $booking['cognome'] = $user->cognome;
+        if($classroomsreservations->isEmpty()){
+            $classroomsreservations->additional(['error' => 'No classroom was found!']);
+
+            return $classroomsreservations->response()->setStatusCode(200);
+        } else {
+            $classroomsreservations->additional(['error' => null]);
         }
 
-        return response()->json($bookings, 200);
-    }
-
+        return $classroomsreservations->response()->setStatusCode(200);
+        }
     /**
      * Store a newly created resource in storage.
      *
@@ -37,16 +38,22 @@ class ClassroomReservationsController extends Controller
      */
     public function store(Request $request)
     {
-        $booking = new ClassroomReservation();
-
-        $booking->data_inizio = $request->data_inizio;
-        $booking->data_fine = $request->data_fine;
-        $booking->motivazione = $request->motivazione;
-        $booking->id_aula = $request->id_aula;
-        $booking->id_utente = $request->id_utente;
-        $booking->save();
-
-        return response()->json($booking, 201);
+        try {
+            $classroomsreservations = new ClassroomReservationResource(Classroom::create([
+                'start_date' => $request->start_date,
+                'end_date' => $request->end_date,
+                'motivation' => $request->motivation,
+                'state' => $request->state,
+                'classroom_id' => $request->classroom_id,
+                'user_id' => $request->user_id
+            ]));
+            $classroomsreservations->additional(['error' => null]);
+            return $classroomsreservations->response()->setStatusCode(201);
+        } catch(QueryException $ex){
+            $classroomsreservations = new ClassroomReservationResource([]);
+            $classroomsreservations->additional(['error' => $ex->getMessage()]);
+            return $classroomsreservations->response()->setStatusCode(500);
+        }
     }
     /**
      * Display the specified resource.
@@ -56,17 +63,15 @@ class ClassroomReservationsController extends Controller
      */
     public function show($id)
     {
+        $classroomsreservation = new ClassroomReservationResource(ClassroomReservation::find($id));
+        if($classroomsreservation->resource == null){
+            $classroomsreservation->additional(['error' => 'Classroom not found!']);
 
-        $booking= ClassroomReservation::findOrFail($id);
-
-        $classroom = Classroom::find($booking->id_aula);
-        $user = User::find($booking->id_utente);
-
-        $booking['codice'] = $classroom->codice;
-        $booking['nome'] = $user->nome;
-        $booking['cognome'] = $user->cognome;
-
-        return response()->json($booking,200);
+            return $classroomsreservation->response()->setStatusCode(200);
+        } else {
+            $classroomsreservation->additional(['error' => null]);
+        }
+        return $classroomsreservation->response()->setStatusCode(200);
     }
 
     /**
@@ -76,18 +81,34 @@ class ClassroomReservationsController extends Controller
      * @param  \App\ClassroomReservation  $booking
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update($id,Request $request)
     {
-        $booking= ClassroomReservation::findOrFail($request->id);
+        try {
+            $classroomsreservation = ClassroomReservation::find($id);
 
-        $booking->id= $request->codice;
-        $booking->data_inizio= $request->data_inizio;
-        $booking->data_fine= $request->data_fine;
-        $booking->motivazione= $request->motivazione;
-        $booking->stato= $request->stato;
-        $booking->save();
+            if($classroomsreservation == null){
+                $classroomsreservationResource = new ClassroomReservationResource($classroomsreservation);
+                $classroomsreservationResource->additional(['error' => 'Classroom not found!']);
+                return $classroomsreservationResource->response()->setStatusCode(400);
+            }
 
-        return response()->json($booking,200);
+            $classroomsreservation->start_date = $request->start_date;
+            $classroomsreservation->end_date = $request->end_date;
+            $classroomsreservation->motivation = $request->motivation;
+            $classroomsreservation->state = $request->state;
+            $classroomsreservation->classroom_id = $request->classroom_id;
+            $classroomsreservation->user_id = $request->user_id;
+            $classroomsreservation->save();
+
+            $classroomsreservationResource = new ClassroomReservationResource($classroomsreservation);
+            $classroomsreservationResource->additional(['error' => null]);
+
+            return $classroomsreservationResource->response()->setStatusCode(200);
+        } catch(QueryException $ex){
+            $classroomsreservation = new ClassroomResource([]);
+            $classroomsreservation->additional(['error' => $ex->getMessage()]);
+            return $classroomsreservation->response()->setStatusCode(500);
+        }
     }
 
     /**
@@ -98,13 +119,26 @@ class ClassroomReservationsController extends Controller
      * @return \Illuminate\Http\JsonResponse
      *
      */
-    public function state($id_prenotazione, Request $request){
-        $booking = ClassroomReservation::find($id_prenotazione);
+    public function state($id_classroomsreservation, Request $request){
+        try {
+            $classroomsreservation = ClassroomReservation::find($id_classroomsreservation);
 
-        $booking->stato = $request->stato;
-        $booking->save();
+            if($classroomsreservation == null){
+                $classroomsreservationResource = new ClassroomReservationResource($classroomsreservation);
+                $classroomsreservationResource->additional(['error' => '$classrooms reservation not found!']);
+                return $classroomsreservationResource->response()->setStatusCode(400);
+            }
 
-        return response()->json($booking,200);
+            $classroomsreservation->state = $request->state;
+            $classroomsreservation->save();
+
+            $classroomsreservationResource = new ClassroomReservationResource($classroomsreservation);
+            $classroomsreservationResource->additional(['error' => null]);
+
+            return $classroomsreservationResource->response()->setStatusCode(200);
+        } catch(QueryException $ex){
+            return response()->json(['SQL Exception'=>$ex->getMessage()], 500);
+        }
     }
 
     /**
@@ -114,7 +148,15 @@ class ClassroomReservationsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id){
-        $booking= ClassroomReservation::findOrFail($id);
-        $booking->delete();
+        $classroomsreservation = ClassroomReservation::find($id);
+
+    if($classroomsreservation == null){
+        $classroomsreservationResource = new ClassroomReservationResource($classroomsreservation);
+        $classroomsreservationResource->additional(['error' => '$classroomsreservation not found!']);
+        return $classroomsreservationResource->response()->setStatusCode(400);
+    }
+        $classroomsreservation->delete();
+
+    return response()->json([],204);
     }
 }
