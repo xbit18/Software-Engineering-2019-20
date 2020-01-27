@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- INIZIO -->
-    <table class="tg" v-if="!waiting && !gestisce">
+    <table class="tg" v-if="inizio">
       <thead>
         <tr>
           <th class="tg th">Aula</th>
@@ -16,7 +16,7 @@
       <tbody>
         <tr v-for="aula in listAule" :key="aula.id">
           <td class="tg td">{{aula.code}}</td>
-          <td class="tg td">{{aula.name_edificio}}</td>
+          <td class="tg td">{{aula.building_name}}</td>
           <td class="tg td">{{aula.floor}}</td>
           <td class="tg td">{{aula.capacity}}</td>
           <td class="tg td">{{aula.type}}</td>
@@ -29,7 +29,7 @@
     </table>
 
     <!-- FINE INIZIO -->
-
+    
     <!-- GESTISCE AULA-->
 
     <table class="tg" v-else-if="gestisce">
@@ -51,7 +51,7 @@
         <tr v-for="aula in listAule" :key="aula.id">
           <td class="tg td">{{aula.id}}</td>
           <td class="tg td">{{aula.code}}</td>
-          <td class="tg td">{{aula.name_edificio}}</td>
+          <td class="tg td">{{aula.building_name}}</td>
           <td class="tg td">{{aula.floor}}</td>
           <td class="tg td">{{aula.capacity}}</td>
           <td class="tg td">{{aula.type}}</td>
@@ -79,7 +79,7 @@
 
     <!-- WAITING AULA -->
 
-    <table class="tg" v-else>
+    <table class="tg" v-else-if="waiting">
       <thead>
         <tr>
           <th class="tg th">ID</th>
@@ -97,7 +97,7 @@
           <td class="tg td">
             <router-link :to="{name: 'listaPersone', params:{aula: aula.code}}">{{aula.code}}</router-link>
           </td>
-          <td class="tg td">{{aula.name_edificio}}</td>
+          <td class="tg td">{{aula.building_name}}</td>
           <td class="tg td">{{aula.floor}}</td>
           <td class="tg td">{{aula.capacity}}</td>
           <td class="tg td">{{aula.type}}</td>
@@ -106,6 +106,36 @@
       </tbody>
     </table>
     <!-- FINE WAITING -->
+    <!-- <table class="tg" v-else>
+      <thead>
+        <tr>
+          <th class="tg th">Aula</th>
+          <th class="tg th">Edificio</th>
+          <th class="tg th">Piano</th>
+          <th class="tg th">Capienza</th>
+          <th class="tg th">Tipo</th>
+          <th class="tg th">Disponibilità</th>
+          <th class="tg th">Check-in</th>
+          <th class="tg th">Check-out</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="aula in listAule" :key="aula.id">
+          <td class="tg td">{{aula.code}}</td>
+          <td class="tg td">{{aula.building_name}}</td>
+          <td class="tg td">{{aula.floor}}</td>
+          <td class="tg td">{{aula.capacity}}</td>
+          <td class="tg td">{{aula.type}}</td>
+          <td class="tg td">{{aula.availability}}</td>
+          <td class="tg td">
+            <router-link to="/check/" + aula.id></router-link>
+          </td>
+            <td class="tg td">
+            <router-link></router-link>
+          </td>
+        </tr>
+      </tbody>
+    </table> -->
   </div>
 </template>
 
@@ -153,12 +183,14 @@ export default {
         dangerMode: true
       }).then(willDelete => {
         if (willDelete) {
-          axios.get(`http://127.0.0.1:8000/api/classrooms/${id}/delete`).then(() => {
-            this.$router.push("/redirectDeleteAule");
-            swal("L'aula è stata eliminata!", {
-              icon: "success"
+          axios
+            .get(`http://127.0.0.1:8000/api/classrooms/${id}/delete`)
+            .then(() => {
+              this.$router.push("/redirectDeleteAule");
+              swal("L'aula è stata eliminata!", {
+                icon: "success"
+              });
             });
-          });
         } else {
           swal("Quasi!!");
         }
@@ -167,7 +199,9 @@ export default {
     apri_chiudi(id, state) {
       if (state == "chiusa") {
         axios
-          .patch(`http://127.0.0.1:8000/api/classrooms/${id}`, { state: "aperta" })
+          .patch(`http://127.0.0.1:8000/api/classrooms/${id}`, {
+            state: "aperta"
+          })
           .then(() => {
             this.$router.push("/redirectDeleteAule");
             swal({
@@ -177,7 +211,9 @@ export default {
           });
       } else {
         axios
-          .patch(`http://127.0.0.1:8000/api/classrooms/${id}`, { state: "chiusa" })
+          .patch(`http://127.0.0.1:8000/api/classrooms/${id}`, {
+            state: "chiusa"
+          })
           .then(() => {
             this.$router.push("/redirectDeleteAule");
             swal({

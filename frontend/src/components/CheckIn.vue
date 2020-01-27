@@ -1,18 +1,80 @@
 <template>
   <div class="center">
-      <section>
-          <div class="title">
-              <h1>Effetua il check-in</h1>
-          </div>
-          <div id="checkin">
-              <img src="https://it.qr-code-generator.com/wp-content/themes/qr/new_structure/markets/core_market/generator/dist/generator/assets/images/websiteQRCode_noFrame.png" />
-          </div>
-      </section>
+    <section class="edit">
+      <div class="title">
+        <h1>Effettua Check-in</h1>
+      </div>
+      <form class="mid-form">
+        <div id="token">
+          <h3>Token</h3>
+          <p>{{token}}</p>
+        </div>
+
+        <label for="token">Codice Token</label>
+        <input type="text" name="token" v-model="actualToken" required />
+
+        <label for="materia">Materia</label>
+        <input type="text" name="materia" v-model="materia" />
+
+        <input type="submit" value="Check" class="button button-success" />
+      </form>
+    </section>
+
+    <div class="clearfix"></div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+import swal from "sweetalert";
 export default {
-    name: 'CheckIn'
-}
+  name: "CheckIn",
+  data() {
+    return {
+      token: "asdasdas",
+      actualToken: "",
+      materia: "",
+      listToken: ""
+    };
+  },
+  methods: {
+    getTokens(id) {
+      axios
+        .get(`http://127.0.0.1:8000/tokens/${id}`)
+        .then(res => {
+          this.listToken = res.data.data;
+        })
+        .catch(e => {
+          console.log(e);
+        });
+    },
+    effettua() {
+      axios
+        .post(`http://127.0.0.1:8000/checkin`, {code: this.actualToken, subject: this.materia })
+        .then(() => {
+          swal({
+            text: "Check in effettuato",
+            icon: "succeess"
+          });
+        });
+    }
+  },
+  mounted() {
+    let id = this.$route.params.aula;
+    this.getTokens(id);
+
+    let i = 1;
+    setInterval(() => {
+        axios
+          .patch(`http://127.0.0.1:8000/api/token/${this.listToken[i].id}/validate`)
+          .then(() => {
+            this.token = this.listToken[i].code;
+          });
+      i++;
+      if (i > 10) {
+        i = 1;
+      }
+    }, 5000);
+  }
+};
 </script>
