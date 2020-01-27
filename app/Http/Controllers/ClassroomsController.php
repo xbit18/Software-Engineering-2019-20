@@ -56,6 +56,17 @@ class ClassroomsController extends Controller
      */
     public function store(Request $request)
     {
+        $user = auth()->user();
+        if($user == null){
+            $userResource = new UserResource([]);
+            $userResource->additional(['error' => "authentication required"]);
+            return $userResource->response()->setStatusCode(401);
+        } else if($user->type != 'admin') {
+            $userResource = new UserResource([]);
+            $userResource->additional(['error' => "forbidden"]);
+            return $userResource->response()->setStatusCode(403);
+        }
+
         try {
             $classroom = new ClassroomResource(Classroom::create([
                 'code' => $request->code,

@@ -11,6 +11,10 @@
 |
 */
 
+use App\Http\Controllers\AttendancesController;
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/checkout', 'AttendancesController@automaticCheckOut');
