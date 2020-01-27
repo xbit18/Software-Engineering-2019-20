@@ -7,6 +7,7 @@ use App\Http\Resources\Token as TokenResource;
 use App\Token;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use App\Http\Resources\User as UserResource;
 
 class TokensController extends Controller
 {
@@ -54,7 +55,7 @@ class TokensController extends Controller
     {
         try {
             $token = new TokenResource(Token::create([
-                'code' => $request->code,
+                'code' => substr(str_shuffle(MD5(microtime())), 0, 10),
                 'classroom_id' => $request->classroom_id,
                 'validity' => $request->validity
             ]));
@@ -66,6 +67,17 @@ class TokensController extends Controller
         }
     }
 
+
+    public function createClassroomTokens($classroom){
+        for($i = 1; $i<=5; $i++){
+            $token = Token::create([
+                'code' => substr(str_shuffle(MD5(microtime())), 0, 10),
+                'classroom_id' => $classroom->id,
+                'validity' => 0
+            ]);
+        }
+    }
+
     /**
      * Display the specified resource.
      *
@@ -74,7 +86,15 @@ class TokensController extends Controller
      */
     public function show($id)
     {
-        //
+        $token = new TokenResource(Token::find($id));
+        if($token->resource == null){
+            $token->additional(['error' => 'Token not found!']);
+
+            return $token->response()->setStatusCode(200);
+        } else {
+            $token->additional(['error' => null]);
+        }
+        return $token->response()->setStatusCode(200);
     }
 
     /**
@@ -86,7 +106,26 @@ class TokensController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+        $token = Token::find($id);
+
+        if($token == null){
+            $tokenResource = new TokenResource($token);
+            $tokenResource->additional(['error' => 'Token not found!']);
+            return $tokenResource->response()->setStatusCode(400);
+        }
+            $token->code = $request->code;
+            $token->classroom_id = $request->classroom_id;
+            $token->validity = $request->validity;
+
+            $token->save();
+            $tokenResource = new TokenResource($token);
+            $tokenResource->additional(['error' => null]);
+
+        return $tokenResource->response()->setStatusCode(200);
+        } catch(QueryException $ex){
+            return response()->json(['SQL Exception'=>$ex->getMessage()], 500);
+        }
     }
 
 
@@ -110,6 +149,27 @@ class TokensController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = auth()->user();
+
+        if($user == null){
+            $userResource = new UserResource([]);
+            $userResource->additional(['error' => "unauthorized"]);         //L'utente non è autenticato
+            return $userResource->response()->setStatusCode(401);
+        } else if($user->type != 'admin') {
+            $userResource = new UserResource([]);
+            $userResource->additional(['error' => "forbidden"]);            //L'utente non ha i permessi giusti
+            return $userResource->response()->setStatusCode(403);
+        }
+
+        $token = Token::find($id);
+
+        if($token == null){
+            $tokenResource = new TokenResource($token);
+            $tokenResource->additional(['error' => 'Token not found!']);
+            return $tokenResource->response()->setStatusCode(400);
+        }
+        $token->delete();
+
+        return response()->json([],204);
     }
 }

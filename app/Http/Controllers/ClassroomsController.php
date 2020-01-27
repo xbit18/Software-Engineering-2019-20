@@ -78,7 +78,10 @@ class ClassroomsController extends Controller
                 'floor' => $request->floor
             ]));
 
-            $this-> createSeats($classroom);
+            $seats = new SeatsController;
+            $seats-> createSeats($classroom);
+            $tokens = new TokensController;
+            $tokens->createClassroomTokens($classroom);
 
             $classroom->additional(['error' => null]);
             return $classroom->response()->setStatusCode(201);
@@ -88,20 +91,6 @@ class ClassroomsController extends Controller
             return $classroom->response()->setStatusCode(500);
         }
 
-    }
-
-    /**
-     * Auto generazione dei posti all'interno di un'aula
-     *
-     * @param $classroom
-     */
-    public function createSeats($classroom){
-        for($i=1; $i<= $classroom->capacity ;$i++){
-            $seat = new Seat;
-            $seat->seat_number = $i;
-            $seat->classroom_id = $classroom->id;
-            $seat->save();
-        }
     }
 
     /**

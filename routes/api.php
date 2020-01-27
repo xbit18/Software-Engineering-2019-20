@@ -163,17 +163,19 @@ Route::put('/occupazioni/{occupazione}','SeatReservationsController@update');
 Route::get('/occupazioni/{occupazione}/delete','SeatReservationsController@destroy');
 
 
-Route::get('/tokens','TokenController@index');
+Route::get('/tokens','TokensController@index');
 
-Route::post('/tokens','TokenController@store');
+Route::post('/tokens','TokensController@store');
 
-Route::get('/tokens/{id}','TokenController@show');
+Route::get('/tokens/{id}','TokensController@show');
 
-Route::put('/tokens/{id}','TokenController@update');
+Route::put('/tokens/{id}','TokensController@update');
 
-Route::get('/tokens/{id}/delete','TokenController@destroy');
+Route::get('/tokens/{id}/delete','TokensController@destroy');
 
-Route::get('/tokens/classroom/{id}','TokenController@indexWithClassroom');
+Route::get('/tokens/classroom/{id}','TokensController@indexWithClassroom');
 
-Route::post('/tokens/{classroom_id}/{token_id}/validate','TokenController@changeValidity');
+Route::post('/tokens/{classroom_id}/{token_id}/validate','TokensController@changeValidity');
+
+Route::get('/tokens/classroom/create/tokens','TokensController@createClassroomTokens');
 
