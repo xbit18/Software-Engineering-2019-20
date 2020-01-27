@@ -137,7 +137,7 @@ Route::get('/posti/{id_posto}/delete','SeatsController@destroy');               
 
 Route::get('/presenze','AttendancesController@index');
 
-Route::post('/presenze','AttendancesController@store');
+Route::post('/checkin','AttendancesController@store');
 
 Route::get('/presenze/{presenza}','AttendancesController@show');
 
@@ -145,7 +145,7 @@ Route::put('/presenze/{presenza}','AttendancesController@update');
 
 Route::get('/presenze/{presenza}/delete','AttendancesController@destroy');
 
-Route::patch('/presenze/{presenza}', 'AttendancesController@uscita');
+Route::patch('/checkout', 'AttendancesController@checkOut');
 
 
 /**
@@ -161,4 +161,19 @@ Route::get('/occupazioni/{occupazione}','SeatReservationsController@show');
 Route::put('/occupazioni/{occupazione}','SeatReservationsController@update');
 
 Route::get('/occupazioni/{occupazione}/delete','SeatReservationsController@destroy');
+
+
+Route::get('/tokens','TokenController@index');
+
+Route::post('/tokens','TokenController@store');
+
+Route::get('/tokens/{id}','TokenController@show');
+
+Route::put('/tokens/{id}','TokenController@update');
+
+Route::get('/tokens/{id}/delete','TokenController@destroy');
+
+Route::get('/tokens/classroom/{id}','TokenController@indexWithClassroom');
+
+Route::post('/tokens/{classroom_id}/{token_id}/validate','TokenController@changeValidity');
 

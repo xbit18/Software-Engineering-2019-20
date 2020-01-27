@@ -64,7 +64,7 @@ class ForeignKeys extends Migration
         Schema::table('classrooms', function(Blueprint $table0) {
             $table0->dropForeign(['building_id']);
         });
-        Schema::table('token', function(Blueprint $table1) {
+        Schema::table('tokens', function(Blueprint $table1) {
             $table1->dropForeign(['classroom_id']);
         });
         Schema::table('maps', function(Blueprint $table2) {

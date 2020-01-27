@@ -155,13 +155,15 @@ class AttendancesController extends Controller
     }
 
 
-    public function exit(Request $request){
+    public function checkOut(Request $request){
         $user = auth()->user();
+
         $token = Token::where('code',$request->token)->first();
 
         $currentDateTime = date('Y-m-d H:i:s');
 
         $attendance = Attendance::where('user_id',$user->id)->where('classroom_id',$token->classroom_id)->first();
+
         $attendance->exit_date = $currentDateTime;
         $attendance->confirmation = 1;
 
