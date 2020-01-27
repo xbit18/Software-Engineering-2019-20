@@ -101,10 +101,4 @@ class AuthController extends Controller
             'identification_number' => $request->get('identification_number'),
         ]);
     }
-
-    public function user(){
-        $user = auth()->user();
-
-        return $user;
-    }
 }

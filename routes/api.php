@@ -24,7 +24,6 @@ Route::get('/me', 'Auth\AuthController@me');
 Route::post('/login', 'Auth\AuthController@login')->name('login');;
 Route::post('/logout', 'Auth\AuthController@logout');
 Route::post('/register', 'Auth\AuthController@register');
-Route::get('/user', 'Auth\phpAuthController@user');
 
 
 
