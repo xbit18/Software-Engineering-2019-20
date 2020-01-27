@@ -52,7 +52,7 @@ actions:{
     axios.post("http://127.0.0.1:8000/api/login", user)
     .then(res => {
         console.log(res.data.data);
-        dispatch('attempt',res.data.data.token);    
+        dispatch('attempt',res.data.token);    
     })
     .catch(e => {
       console.log(e);
@@ -79,11 +79,11 @@ actions:{
             try{
                         axios.get("http://127.0.0.1:8000/api/me")
                         .then(res => {
-                            console.log(res.data.data);
-                            commit('SET_UTENTE',res.data.data);
-                            if(res.data.data.type == 'admin'){
+                            console.log(res.data);
+                            commit('SET_UTENTE',res.data);
+                            if(res.data.type == 'admin'){
                                 commit('SET_ISADMIN',true);
-                            } else if (res.data.data.type == 'teacher'){
+                            } else if (res.data.type == 'teacher'){
                                 commit('SET_DOCENTE',true);
                             }
                          

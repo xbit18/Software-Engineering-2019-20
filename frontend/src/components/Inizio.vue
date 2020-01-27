@@ -4,7 +4,7 @@
       <div class="title">
         <h1>Visualizza Aule Disponibili</h1>
       </div>
-      <Aule :listAule="listAule"></Aule>
+      <Aule inizio="true" :listAule="listAule"></Aule>
     </section>
 
     <section class="vuoto" v-else>

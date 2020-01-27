@@ -30,6 +30,7 @@ import listPrenotazioni from './components/listPrenotazioni.vue'
 import PrenotaAula from './components/PrenotaAula.vue'
 import CreaMappa from './components/CreaMappa.vue'
 import editMappa from './components/editMappa.vue'
+import selectAulaToCheck from './components/selectAulaToCheck.vue'
 require('./store/modules/subscriber.js')
 
 // axios.defaults.baseURL = "http://127.0.0.1:8000";
@@ -227,9 +228,26 @@ const routes = [
         name:'edificio',
         component: Edificio
     },
-    {path:'/check/:aula?',
-        name:'check',
+    {path:'/check/:aula',
+        name:'checkin',
         component: CheckIn,
+        beforeEnter:(to,from,next) =>{
+            console.log(store.getters)
+            if(!store.getters['auth/authenticated']){
+                swal({
+                    text : 'Non sei autorizzato',
+                    icon : 'error'
+                });
+                next({
+                    name: 'inizio'
+                });
+            }
+            next();
+        }
+    },
+    {
+        path:'/selectAulaToCheck',
+        component: selectAulaToCheck,
         beforeEnter:(to,from,next) =>{
             console.log(store.getters)
             if(!store.getters['auth/authenticated']){

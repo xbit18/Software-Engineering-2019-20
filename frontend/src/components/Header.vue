@@ -35,7 +35,7 @@
         <span>Home</span>
       </router-link>
 
-      <router-link to="/check" v-if="authenticated">
+      <router-link to="/selectAulaToCheck" v-if="authenticated">
         <span>Check-in</span>
       </router-link>
 

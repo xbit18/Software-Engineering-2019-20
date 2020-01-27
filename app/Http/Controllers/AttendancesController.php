@@ -25,7 +25,7 @@ class AttendancesController extends Controller
         $attendances = new AttendanceCollection(Attendance::paginate(10));
 
         if($attendances->isEmpty()){
-            $attendances->additional(['error' => 'No attendance was found!']);
+            $attendances->additional(['error' => 'No attendances were found!']);
 
             return $attendances->response()->setStatusCode(200);
         } else {
