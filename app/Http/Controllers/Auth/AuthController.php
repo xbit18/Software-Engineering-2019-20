@@ -17,8 +17,8 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        
-        $this->middleware('auth:api', ['except' => ['login']]);
+
+        $this->middleware('auth:api', ['except' => ['login','register']]);
 
     }
 
@@ -46,21 +46,9 @@ class AuthController extends Controller
      */
     public function me(Request $request)
     {
-        $user = $request->user();
-        
-            return response()->json([
-                        'id' => $user->id,
-                    'email' => $user->email,
-                    'tipo' => $user->tipo,
-                    'nome' => $user->nome,
-                    'cognome' => $user->cognome,
-                    'corso' => $user->corso,
-                    'matricola' => $user->matricola,
-                    'data_nascita' => $user->data_nascita,
-                    'codice_documento' => $user->codice_documento,
-                ]);
-       
-            }
+        $user=auth()->user();
+        return $user;
+    }
 
     /**
      * Log the user out (Invalidate the token).
@@ -104,12 +92,19 @@ class AuthController extends Controller
         $user = User::create([
             'email' => $request->get('email'),
             'password' => bcrypt($request->get('password')),
-            'corso' => $request->get('corso'),
-            'matricola' => $request->get('matricola'),
-            'tipo' => $request->get('tipo'),
-            'data_nascita' => $request->get('data_nascita'),
-            'nome' => $request->get('nome'),
-            'cognome' => $request->get('cognome'),
+            'course' => $request->get('course'),
+            'matriculation_number' => $request->get('matriculation_number'),
+            'type' => $request->get('type'),
+            'birthdate' => $request->get('birthdate'),
+            'name' => $request->get('name'),
+            'surname' => $request->get('surname'),
+            'identification_number' => $request->get('identification_number'),
         ]);
+    }
+
+    public function user(){
+        $user = auth()->user();
+
+        return $user;
     }
 }

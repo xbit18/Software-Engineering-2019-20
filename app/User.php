@@ -11,7 +11,7 @@ class User extends Authenticatable implements JWTSubject
 {
     use Notifiable;
 
-    protected $fillable = ['email','password','corso','tipo','data_nascita','matricola','nome','cognome','codice_documento'];
+    protected $fillable = ['email','password','course','type','birthdate','matriculation_number','name','surname','identification_number'];
     public function presence(){
         return $this->hasMany('App\Attendance');
     }
