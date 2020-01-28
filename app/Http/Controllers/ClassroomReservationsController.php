@@ -63,6 +63,18 @@ class ClassroomReservationsController extends Controller
      */
     public function store(Request $request)
     {
+        $user = auth()->user();
+
+        if($user == null){
+            $userResource = new UserResource([]);
+            $userResource->additional(['error' => "unauthorized"]);         //L'utente non è autenticato
+            return $userResource->response()->setStatusCode(401);
+        } else if($user->type != 'admin' and $user->type != 'teacher') {
+            $userResource = new UserResource([]);
+            $userResource->additional(['error' => "forbidden"]);            //L'utente non ha i permessi giusti
+            return $userResource->response()->setStatusCode(403);
+        }
+
         try {
             $classroomsreservations = new ClassroomReservationResource(Classroom::create([
                 'start_date' => $request->start_date,
@@ -88,6 +100,25 @@ class ClassroomReservationsController extends Controller
      */
     public function show($id)
     {
+        $user = auth()->user();
+        $userResource = new UserResource([]);
+
+        if($user == null){
+            $userResource->additional(['error' => "unauthorized"]);             //L'utente non è autenticato
+            return $userResource->response()->setStatusCode(401);
+        }
+
+        if($user->type != 'admin' and $user->type != 'teacher'){
+                $userResource->additional(['error' => "forbidden"]);            //L'utente non ha i permessi giusti
+                return $userResource->response()->setStatusCode(403);
+        }
+
+        $reservation = ClassroomReservation::find($id);
+        if($user->type == 'teacher' and  $user->id != $reservation->user_id){
+            $userResource->additional(['error' => "forbidden"]);                //L'utente non ha i permessi giusti
+            return $userResource->response()->setStatusCode(403);
+        }
+
         $classroomsreservation = new ClassroomReservationResource(ClassroomReservation::find($id));
         if($classroomsreservation->resource == null){
             $classroomsreservation->additional(['error' => 'Classroom not found!']);
@@ -108,6 +139,25 @@ class ClassroomReservationsController extends Controller
      */
     public function update($id,Request $request)
     {
+        $user = auth()->user();
+        $userResource = new UserResource([]);
+
+        if($user == null){
+            $userResource->additional(['error' => "unauthorized"]);             //L'utente non è autenticato
+            return $userResource->response()->setStatusCode(401);
+        }
+
+        if($user->type != 'admin' and $user->type != 'teacher'){
+            $userResource->additional(['error' => "forbidden"]);            //L'utente non ha i permessi giusti
+            return $userResource->response()->setStatusCode(403);
+        }
+
+        $reservation = ClassroomReservation::find($id);
+        if($user->type == 'teacher' and  $user->id != $reservation->user_id){
+            $userResource->additional(['error' => "forbidden"]);                //L'utente non ha i permessi giusti
+            return $userResource->response()->setStatusCode(403);
+        }
+
         try {
             $classroomsreservation = ClassroomReservation::find($id);
 
@@ -185,15 +235,34 @@ class ClassroomReservationsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id){
+        $user = auth()->user();
+        $userResource = new UserResource([]);
+
+        if($user == null){
+            $userResource->additional(['error' => "unauthorized"]);             //L'utente non è autenticato
+            return $userResource->response()->setStatusCode(401);
+        }
+
+        if($user->type != 'admin' and $user->type != 'teacher'){
+            $userResource->additional(['error' => "forbidden"]);            //L'utente non ha i permessi giusti
+            return $userResource->response()->setStatusCode(403);
+        }
+
+        $reservation = ClassroomReservation::find($id);
+        if($user->type == 'teacher' and  $user->id != $reservation->user_id){
+            $userResource->additional(['error' => "forbidden"]);                //L'utente non ha i permessi giusti
+            return $userResource->response()->setStatusCode(403);
+        }
+
         $classroomsreservation = ClassroomReservation::find($id);
 
-    if($classroomsreservation == null){
-        $classroomsreservationResource = new ClassroomReservationResource($classroomsreservation);
-        $classroomsreservationResource->additional(['error' => '$classroomsreservation not found!']);
-        return $classroomsreservationResource->response()->setStatusCode(400);
-    }
-        $classroomsreservation->delete();
+        if($classroomsreservation == null){
+            $classroomsreservationResource = new ClassroomReservationResource($classroomsreservation);
+            $classroomsreservationResource->additional(['error' => '$classroomsreservation not found!']);
+            return $classroomsreservationResource->response()->setStatusCode(400);
+        }
+            $classroomsreservation->delete();
 
-    return response()->json([],204);
+        return response()->json([],204);
     }
 }

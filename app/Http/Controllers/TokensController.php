@@ -18,6 +18,18 @@ class TokensController extends Controller
      */
     public function index()
     {
+        $user = auth()->user();
+
+        if($user == null){
+            $userResource = new UserResource([]);
+            $userResource->additional(['error' => "unauthorized"]);         //L'utente non è autenticato
+            return $userResource->response()->setStatusCode(401);
+        } else if($user->type != 'admin') {
+            $userResource = new UserResource([]);
+            $userResource->additional(['error' => "forbidden"]);            //L'utente non ha i permessi giusti
+            return $userResource->response()->setStatusCode(403);
+        }
+
         $tokens = new TokenCollection(Token::all());
 
         if($tokens->isEmpty()){
@@ -32,6 +44,18 @@ class TokensController extends Controller
     }
 
     public function indexWithClassroom($classroom_id){
+        $user = auth()->user();
+
+        if($user == null){
+            $userResource = new UserResource([]);
+            $userResource->additional(['error' => "unauthorized"]);         //L'utente non è autenticato
+            return $userResource->response()->setStatusCode(401);
+        } else if($user->type != 'admin') {
+            $userResource = new UserResource([]);
+            $userResource->additional(['error' => "forbidden"]);            //L'utente non ha i permessi giusti
+            return $userResource->response()->setStatusCode(403);
+        }
+
         $tokens = new TokenCollection(Token::where('classroom_id',$classroom_id)->get());
 
         if($tokens->isEmpty()){
@@ -53,6 +77,18 @@ class TokensController extends Controller
      */
     public function store(Request $request)
     {
+        $user = auth()->user();
+
+        if($user == null){
+            $userResource = new UserResource([]);
+            $userResource->additional(['error' => "unauthorized"]);         //L'utente non è autenticato
+            return $userResource->response()->setStatusCode(401);
+        } else if($user->type != 'admin') {
+            $userResource = new UserResource([]);
+            $userResource->additional(['error' => "forbidden"]);            //L'utente non ha i permessi giusti
+            return $userResource->response()->setStatusCode(403);
+        }
+
         try {
             $token = new TokenResource(Token::create([
                 'code' => substr(str_shuffle(MD5(microtime())), 0, 10),
@@ -86,6 +122,18 @@ class TokensController extends Controller
      */
     public function show($id)
     {
+        $user = auth()->user();
+
+        if($user == null){
+            $userResource = new UserResource([]);
+            $userResource->additional(['error' => "unauthorized"]);         //L'utente non è autenticato
+            return $userResource->response()->setStatusCode(401);
+        } else if($user->type != 'admin') {
+            $userResource = new UserResource([]);
+            $userResource->additional(['error' => "forbidden"]);            //L'utente non ha i permessi giusti
+            return $userResource->response()->setStatusCode(403);
+        }
+
         $token = new TokenResource(Token::find($id));
         if($token->resource == null){
             $token->additional(['error' => 'Token not found!']);
@@ -106,6 +154,18 @@ class TokensController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $user = auth()->user();
+
+        if($user == null){
+            $userResource = new UserResource([]);
+            $userResource->additional(['error' => "unauthorized"]);         //L'utente non è autenticato
+            return $userResource->response()->setStatusCode(401);
+        } else if($user->type != 'admin') {
+            $userResource = new UserResource([]);
+            $userResource->additional(['error' => "forbidden"]);            //L'utente non ha i permessi giusti
+            return $userResource->response()->setStatusCode(403);
+        }
+
         try {
         $token = Token::find($id);
 
@@ -130,7 +190,29 @@ class TokensController extends Controller
 
 
     public function changeValidity($classroom_id, $token_id){
+        $user = auth()->user();
+
+        if($user == null){
+            $userResource = new UserResource([]);
+            $userResource->additional(['error' => "unauthorized"]);         //L'utente non è autenticato
+            return $userResource->response()->setStatusCode(401);
+        } else if($user->type != 'admin') {
+            $userResource = new UserResource([]);
+            $userResource->additional(['error' => "forbidden"]);            //L'utente non ha i permessi giusti
+            return $userResource->response()->setStatusCode(403);
+        }
+
         $tokens = Token::where('classroom_id',$classroom_id)->get();
+
+        if($tokens->isEmpty()){
+            $tokensCollection = new TokenCollection([]);
+            $tokensCollection->additional(['error' => 'No token was found!']);
+
+            return $tokensCollection->response()->setStatusCode(200);
+        } else {
+            $tokensCollection = new TokenCollection([]);
+            $tokensCollection->additional(['error' => null]);
+        }
 
         foreach($tokens as $token){
             if($token->id == $token_id){

@@ -281,7 +281,7 @@ class ClassroomsController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function attendances($id){
-        /*$user = auth()->user();
+        $user = auth()->user();
 
         if($user == null){
             $userResource = new UserResource([]);
@@ -292,7 +292,7 @@ class ClassroomsController extends Controller
             $userResource->additional(['error' => "forbidden"]);            //L'utente non ha i permessi giusti
             return $userResource->response()->setStatusCode(403);
         }
-        */
+
 
         $attendances = Attendance::where('classroom_id', $id)
             ->where('exit_date', null)->get();

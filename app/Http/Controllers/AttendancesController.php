@@ -54,12 +54,35 @@ class AttendancesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request){
-    try {
+        $user = auth()->user();
+
+        if($user == null){
+            $userResource = new UserResource([]);
+            $userResource->additional(['error' => "unauthorized"]);         //L'utente non è autenticato
+            return $userResource->response()->setStatusCode(401);
+        } else if($user->type != 'admin' and $user->type != 'student') {
+            $userResource = new UserResource([]);
+            $userResource->additional(['error' => "forbidden"]);            //L'utente non ha i permessi giusti
+            return $userResource->response()->setStatusCode(403);
+        }
+
+        try {
             $user = auth()->user();
             $token = Token::where('code',$request->token)->first();
+
             if($token->validity != 1){
-                return response()->json(['error' => 'The token is not valid'],400);
+                $userResource = new UserResource;
+                $userResource->additional(['error' => 'The token is not valid']);
+                return $userResource->response()->setStatusCode(400);
             }
+
+            $tokens = Token::where('user_id',$user->id)->where('classroom_id',$token->classroom_id)->where('exit_date',null)->get();
+            if(!$tokens->isEmpty){
+                $userResource = new UserResource;
+                $userResource->additional(['error' => 'forbidden multiple check-in']);
+                return $userResource->response()->setStatusCode(400);
+            }
+
             $currentDateTime = date('Y-m-d H:i:s');
 
             $attendance = new AttendanceResource(Attendance::create([
@@ -194,6 +217,18 @@ class AttendancesController extends Controller
 
 
     public function checkOut(Request $request){
+        $user = auth()->user();
+
+        if($user == null){
+            $userResource = new UserResource([]);
+            $userResource->additional(['error' => "unauthorized"]);         //L'utente non è autenticato
+            return $userResource->response()->setStatusCode(401);
+        } else if($user->type != 'admin' and $user->type != 'student') {
+            $userResource = new UserResource([]);
+            $userResource->additional(['error' => "forbidden"]);            //L'utente non ha i permessi giusti
+            return $userResource->response()->setStatusCode(403);
+        }
+
         $user = auth()->user();
 
         $token = Token::where('code',$request->token)->first();
