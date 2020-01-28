@@ -12,16 +12,7 @@
       </div>
     </section>
 
-    <aside class="sidebar search">
-      <div id="search" class="sidebar-item">
-        <h3>Cerca</h3>
-        <p>Trova la lista delle persone dentro una certa aula</p>
-        <form @submit.prevent="goSearch">
-          <input class="input" type="text" name="search" v-model.trim="searchString" />
-          <input type="submit" name="submit" value="Cerca" class="button button-search" />
-        </form>
-      </div>
-    </aside>
+  
     <div class="clearfix"></div>
   </div>
 </template>
@@ -30,7 +21,7 @@
 import axios from "axios";
 import Persone from "./Persone.vue";
 export default {
-  name: "listaAula",
+  name: "listPersone",
   components: {
     Persone
   },
@@ -43,7 +34,7 @@ export default {
 
   methods: {
     getListPersone(searchString) {
-      axios.get(`http://127.0.0.1:8000/api/classrooms/${searchString}/presences`).then(res => {
+      axios.get(`http://127.0.0.1:8000/api/classrooms/${searchString}/attendances`).then(res => {
         this.listPersone = res.data.data;
         console.log(this.listPersone);
       });

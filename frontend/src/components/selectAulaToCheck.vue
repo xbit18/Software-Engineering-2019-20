@@ -28,7 +28,7 @@
             <td class="tg td"><router-link
                 class="button button-successcheck"
                 :to="{name:'checkin', params:{aula: aula.id}}"
-              >Checkin</router-link>
+              >CheckIn</router-link>
             </td>
             <td class="tg td">
               <router-link

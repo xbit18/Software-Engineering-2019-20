@@ -76,11 +76,10 @@ class ClassroomReservationsController extends Controller
         }
 
         try {
-            $classroomsreservations = new ClassroomReservationResource(Classroom::create([
+            $classroomsreservations = new ClassroomReservationResource(ClassroomReservation::create([
                 'start_date' => $request->start_date,
                 'end_date' => $request->end_date,
                 'motivation' => $request->motivation,
-                'state' => $request->state,
                 'classroom_id' => $request->classroom_id,
                 'user_id' => $request->user_id
             ]));
@@ -208,7 +207,7 @@ class ClassroomReservationsController extends Controller
         }
 
         try {
-            $classroomsreservation = ClassroomReservation::find($id_classroomsreservation);
+            $classroomsreservation = ClassroomReservation::find($id);
 
             if($classroomsreservation == null){
                 $classroomsreservationResource = new ClassroomReservationResource($classroomsreservation);

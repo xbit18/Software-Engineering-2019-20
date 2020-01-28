@@ -95,7 +95,7 @@
         <tr v-for="aula in listAule" :key="aula.id">
           <td class="tg td">{{aula.id}}</td>
           <td class="tg td">
-            <router-link :to="{name: 'listaPersone', params:{aula: aula.code}}">{{aula.code}}</router-link>
+            <router-link :to="{name: 'listaPersone', params:{aula: aula.id}}">{{aula.code}}</router-link>
           </td>
           <td class="tg td">{{aula.building_name}}</td>
           <td class="tg td">{{aula.floor}}</td>

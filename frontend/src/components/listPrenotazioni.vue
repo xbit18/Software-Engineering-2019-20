@@ -43,9 +43,10 @@ export default {
       this.$router.push(`/prenotazione/${this.searchString}`);
     },
         getPrenotazioni(){
-            axios.get(`http://127.0.0.1:8000/api/bookings`)
+            axios.get(`http://127.0.0.1:8000/api/classroomreservations`)
             .then(res =>{
                 this.listPrenotazioni = res.data.data;
+                console.log(this.listPrenotazioni)
             })
         }
     }

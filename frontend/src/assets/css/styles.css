@@ -141,7 +141,7 @@ h2{
 .checkout{
     background-color: rgb(216, 21, 21);
     margin-top: 10px;
-     float: left;
+    float: left;
     margin-left: 45%;
 }
 #logout{
