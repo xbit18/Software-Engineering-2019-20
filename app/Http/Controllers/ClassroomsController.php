@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Classroom;
 use App\Http\Resources\ClassroomCollection;
+use App\Http\Resources\UserCollection;
+use App\Http\Resources\User as UserResource;
 use App\Seat;
 use App\Attendance;
 use App\User;
@@ -12,7 +14,6 @@ use Illuminate\Http\Request;
 use App\Building;
 use Illuminate\Support\Facades\DB;
 use App\Http\Resources\Classroom as ClassroomResource;
-use App\Http\Resources\User as UserResource;
 use Illuminate\Http\Response;
 
 class ClassroomsController extends Controller
@@ -296,23 +297,19 @@ class ClassroomsController extends Controller
         $attendances = Attendance::where('classroom_id', $id)
             ->where('exit_date', null)->get();
 
-        /*if($attendances->isEmpty()){
-            $users = array();
-            $usersCollection = UserResource::collection($users);
-            $usersCollection->additional(['error' => "This classroom is empty"]);
-            return $usersCollection->response()->setStatusCode(200);
+        if($attendances->isEmpty()){
+            $users = new UserCollection([]);
+            $users->additional(['error' => "This classroom is empty"]);
+            return $users->response()->setStatusCode(200);
         }
 
-        $users = array();
+        $users = new UserCollection([]);
         foreach($attendances as $attendance){
-            $user = User::find($attendance->user_id);
-            $users[] = $user;
+            $user = new UserResource(User::find($attendance->user_id));
+            $users->push($user);
         }
 
-        $usersCollection = UserResource::collection($users);
-        $usersCollection->additional(['error' => null]);
-        return $usersCollection->response()->setStatusCode(200);*/
-
-        return $attendances;
+        $users->additional(['error' => null]);
+        return $users->response()->setStatusCode(200);
     }
 }
