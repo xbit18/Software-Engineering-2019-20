@@ -7,7 +7,6 @@
       <table class="tg">
         <thead>
           <tr>
-            <th class="tg th">ID</th>
             <th class="tg th">Aula</th>
             <th class="tg th">Edificio</th>
             <th class="tg th">Capienza</th>
@@ -21,7 +20,6 @@
         </thead>
         <tbody>
           <tr>
-            <td class="tg td">{{aula.id}}</td>
             <td class="tg td">{{aula.code}}</td>
             <td class="tg td">
               <router-link
@@ -31,20 +29,23 @@
             <td class="tg td">{{aula.capacity}}</td>
             <td class="tg td">{{aula.type}}</td>
             <td class="tg td">{{aula.availability}}</td>
-            <td class="tg td" v-if="aula.state == 'chiusa' && isAdmin ">
+            <td class="tg td" v-if="aula.state == 'closed'">
               <button
                 class="button button-apri/chiudi"
                 @click="apri_chiudi(aula.id, aula.state)"
               >Apri</button>
             </td>
-            <td class="tg td" v-else-if="aula.state == 'aperta' && isAdmin">
+            <td class="tg td" v-else>
               <button
                 class="button button-apri/chiudi"
                 @click="apri_chiudi(aula.id, aula.state)"
               >Chiudi</button>
             </td>
             <td class="tg td" v-if="isAdmin">
-              <button class="button button-elimina" @click="visualizzaPresenti(aula.id)">Visualizza Presenti</button>
+              <button
+                class="button button-elimina"
+                @click="visualizzaPresenti(aula.id)"
+              >Visualizza Presenti</button>
             </td>
             <td class="tg td" v-if="isAdmin">
               <router-link :to="'/editAula/'+aula.id" class="button button-modifica">Modifica</router-link>
@@ -120,7 +121,7 @@ export default {
           });
       } else {
         axios
-          .get(`http://127.0.0.1:8000/api/classrooms/${id}`)
+          .get(`http://127.0.0.1:8000/api/classroom/${id}`)
           .then(res => {
             this.aula = res.data.data;
           })
@@ -166,13 +167,13 @@ export default {
       });
     },
     apri_chiudi(id) {
-      if (this.aula.state == "chiusa") {
+      if (this.aula.state == "closed") {
         axios
           .patch(`http://127.0.0.1:8000/api/classrooms/${id}`, {
-            state: "aperta"
+            state: "open"
           })
           .then(() => {
-            this.$router.push(`/redirectAula/${id}`);
+            this.$router.push(`/redirectAula/${this.aula.code}`);
             swal({
               text: "Aula aperta",
               icon: "success"
@@ -181,9 +182,11 @@ export default {
       } else {
         axios
           .patch(`http://127.0.0.1:8000/api/classrooms/${id}`, {
-            state: "chiusa"
+            state: "closed"
           })
           .then(() => {
+            this.$router.push(`/redirectAula/${this.aula.code}`);
+
             swal({
               text: "Aula chiusa",
               icon: "success"
@@ -191,7 +194,7 @@ export default {
           });
       }
     },
-    visualizzaPresenti(id){
+    visualizzaPresenti(id) {
       this.$router.push(`/redirectPersone/${id}`);
     }
   }

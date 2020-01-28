@@ -13,10 +13,7 @@
         <label for="token">Codice Token</label>
         <input type="text" name="token" v-model="actualToken" required />
 
-        <label for="materia">Materia</label>
-        <input type="text" name="materia" v-model="materia" />
-
-        <input type="submit" value="Check" class="button button-success" />
+        <input type="submit" value="Check out" class="button checkout" />
       </form>
     </section>
 
@@ -28,12 +25,11 @@
 import axios from "axios";
 import swal from "sweetalert";
 export default {
-  name: "CheckIn",
+  name: "CheckOut",
   data() {
     return {
       token: "",
       actualToken: "",
-      materia: "",
       listToken: ""
     };
   },
@@ -65,20 +61,19 @@ export default {
     },
     effettua() {
       axios
-        .post(`http://127.0.0.1:8000/api/checkin`, {
+        .patch(`http://127.0.0.1:8000/api/checkout`, {
           token: this.actualToken,
-          subject: this.materia
         })
         .then(() => {
           this.$router.push('/selectAulaToCheck');
           swal({
-            text: "Check in effettuato",
+            text: "Checkout effettuato",
             icon: "success"
           });
         })
         .catch(()=>{
          swal({
-           text: 'Checkin non effettuato',
+           text: 'Checkout non effettuato',
            icon : 'warning'
          })
         })
