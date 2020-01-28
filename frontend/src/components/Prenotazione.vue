@@ -28,10 +28,10 @@
         <td class="tg td">{{prenotazione.code}}</td>
         <td class="tg td">{{prenotazione.name}} {{prenotazione.surname}}</td>
         <td class="tg td">
-          <button class="button button-accetta" @click="accetta(prenotazione.id,prenotazione.state,'accettata')">Accetta</button>
+          <button class="button button-accetta" @click="accetta_rifiuta(prenotazione.id,'accepted')">Accetta</button>
         </td>
         <td class="tg td">
-          <button class="button button-elimina" @click="rifiuta(prenotazione.id,prenotazione.state,'rifiutata')">Rifiuta</button>
+          <button class="button button-elimina" @click="accetta_rifiuta(prenotazione.id,'refused')">Rifiuta</button>
         </td>
       </tr>
     </tbody>
@@ -72,14 +72,14 @@ export default {
       this.$router.push(`/redirectPrenotazione/${this.searchString}`);
     },
         getPrenotazione(id){
-            axios.get(`http://127.0.0.1:8000/api/bookings/${id}`)
+            axios.get(`http://127.0.0.1:8000/api/classroomreservations/${id}`)
             .then(res =>{
                 this.prenotazione = res.data.data;
             })
         },
-        accetta_rifiuta(id,state,newstate){ 
-      console.log(id);
-                axios.patch(`http://127.0.0.1:8000/api/bookings/${id}`,{state : newstate})
+        accetta_rifiuta(id,newstate){ 
+      console.log(newstate);
+                axios.patch(`http://127.0.0.1:8000/api/classroomreservations/${id}`,{state : newstate})
                 .then(() =>{
                   this.$router.push('/redirectPrenotazione');
                     swal({

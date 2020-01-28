@@ -87,7 +87,7 @@ export default {
       console.log(this.prenotazione);
       // this.prenotazione.user_id = store.user.id;
       axios
-        .post(`http://127.0.0.1:8000/api/bookings`, this.prenotazione)
+        .post(`http://127.0.0.1:8000/api/classroomreservations`, this.prenotazione)
         .then(res => {
           console.log(res);
           swal({
@@ -100,7 +100,7 @@ export default {
         });
     },
     getAule() {
-      axios.get("http://127.0.0.1:8000/api/aule").then(res => {
+      axios.get("http://127.0.0.1:8000/api/classrooms").then(res => {
         console.log(res);
         this.listAule = res.data.data;
       });

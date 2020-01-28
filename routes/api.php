@@ -108,7 +108,7 @@ Route::patch('/classroomreservations/{classroomreservation}','ClassroomReservati
 
 Route::get('/classroomreservations/{classroomreservation}/delete','ClassroomReservationsController@destroy');   //Elimina una classroomreservation
 
-Route::patch('/classroomreservations/{classroomreservation}','ClassroomReservationsController@stato');         // accetta/rifiuta classroomreservation
+Route::patch('/classroomreservations/{classroomreservation}','ClassroomReservationsController@state');         // accetta/rifiuta classroomreservation
 
 
 

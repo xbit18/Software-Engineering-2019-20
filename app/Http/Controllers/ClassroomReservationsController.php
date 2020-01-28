@@ -18,7 +18,7 @@ class ClassroomReservationsController extends Controller
      */
     public function index()
     {
-        $classroomsreservations = new ClassroomReservationCollection(Classroom::paginate(10));
+        $classroomsreservations = new ClassroomReservationCollection(ClassroomReservation::paginate(10));
 
         if($classroomsreservations->isEmpty()){
             $classroomsreservations->additional(['error' => 'No classroom was found!']);
@@ -39,11 +39,10 @@ class ClassroomReservationsController extends Controller
     public function store(Request $request)
     {
         try {
-            $classroomsreservations = new ClassroomReservationResource(Classroom::create([
+            $classroomsreservations = new ClassroomReservationResource(ClassroomReservation::create([
                 'start_date' => $request->start_date,
                 'end_date' => $request->end_date,
                 'motivation' => $request->motivation,
-                'state' => $request->state,
                 'classroom_id' => $request->classroom_id,
                 'user_id' => $request->user_id
             ]));
@@ -119,9 +118,9 @@ class ClassroomReservationsController extends Controller
      * @return \Illuminate\Http\JsonResponse
      *
      */
-    public function state($id_classroomsreservation, Request $request){
+    public function state($id, Request $request){
         try {
-            $classroomsreservation = ClassroomReservation::find($id_classroomsreservation);
+            $classroomsreservation = ClassroomReservation::find($id);
 
             if($classroomsreservation == null){
                 $classroomsreservationResource = new ClassroomReservationResource($classroomsreservation);

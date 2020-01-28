@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class ClassroomReservation extends Model
 {
     protected $table = 'classroom_reservations';
-
+    protected $fillable = ["start_date","end_date", "motivation", "state", "classroom_id", "user_id"];
     public function users(){
         return $this->belongsTo('App\User');
     }
