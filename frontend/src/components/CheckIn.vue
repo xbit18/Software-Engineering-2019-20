@@ -31,7 +31,7 @@ export default {
   name: "CheckIn",
   data() {
     return {
-      token: "asdasdas",
+      token: "",
       actualToken: "",
       materia: "",
       listToken: ""
@@ -40,9 +40,10 @@ export default {
   methods: {
     getTokens(id) {
       axios
-        .get(`http://127.0.0.1:8000/tokens/classroom/${id}`)
+        .get(`http://127.0.0.1:8000/api/tokens/classroom/${id}`)
         .then(res => {
           this.listToken = res.data.data;
+          console.log(this.listToken);
         })
         .catch(e => {
           console.log(e);
@@ -50,7 +51,10 @@ export default {
     },
     effettua() {
       axios
-        .post(`http://127.0.0.1:8000/checkin`, {code: this.actualToken, subject: this.materia })
+        .post(`http://127.0.0.1:8000/checkin`, {
+          code: this.actualToken,
+          subject: this.materia
+        })
         .then(() => {
           swal({
             text: "Check in effettuato",
@@ -63,17 +67,20 @@ export default {
     let aula_id = this.$route.params.aula;
     this.getTokens(aula_id);
 
-    let i = 1;
+    let i = 0;
     setInterval(() => {
-        axios
-          .patch(`http://127.0.0.1:8000/api/tokens/${aula_id}/${this.listToken[i].id}/validate`)
-          .then(() => {
-            this.token = this.listToken[i].code;
-          });
-      i++;
-      if (i > 10) {
-        i = 1;
-      }
+      axios
+        .post(
+          `http://127.0.0.1:8000/api/tokens/${aula_id}/${this.listToken[i].id}/validate`
+        )
+        .then(() => {
+          console.log(this.listToken[i].id);
+          this.token = this.listToken[i].code;
+          i++;
+          if (i >= 5) {
+            i = 0;
+          }
+        });
     }, 5000);
   }
 };
