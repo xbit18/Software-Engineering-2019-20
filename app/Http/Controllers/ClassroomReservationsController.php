@@ -20,9 +20,6 @@ class ClassroomReservationsController extends Controller
      */
     public function index()
     {
-<<<<<<< HEAD
-        $classroomsreservations = new ClassroomReservationCollection(ClassroomReservation::paginate(10));
-=======
         $user = auth()->user();
 
         if($user == null){
@@ -36,7 +33,6 @@ class ClassroomReservationsController extends Controller
         }
 
         $classroomsreservations = ClassroomReservation::all();
->>>>>>> f4a787b3bf31983f31f28b6a8c785e7cb534727a
 
         if($classroomsreservations->isEmpty()){
             $classroomsreservationsCollection = new ClassroomReservationCollection([]);

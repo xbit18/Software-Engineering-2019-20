@@ -43,7 +43,7 @@ export default {
 
   methods: {
     getListPersone(searchString) {
-      axios.get(`http://127.0.0.1:8000/api/classrooms/${searchString}/presences`).then(res => {
+      axios.get(`http://127.0.0.1:8000/api/classrooms/${searchString}/attendances`).then(res => {
         this.listPersone = res.data.data;
         console.log(this.listPersone);
       });
