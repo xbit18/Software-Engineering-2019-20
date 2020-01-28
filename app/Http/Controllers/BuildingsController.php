@@ -40,12 +40,19 @@ class BuildingsController extends Controller
      */
     public function store(Request $request)
     {
+        $user = auth()->user();
 
-        // if ($request->filled('numero_aule' && $request->filled('nome') && $request->filled('indirizzo'){
-        //     return response()->json([
-        //         'error' => 'I campi richiesti non sono stati riempiti'
-        //     ],400);
-        // } else {
+        if($user == null){
+            $userResource = new UserResource([]);
+            $userResource->additional(['error' => "unauthorized"]);         //L'utente non è autenticato
+            return $userResource->response()->setStatusCode(401);
+        } else if($user->type != 'admin') {
+            $userResource = new UserResource([]);
+            $userResource->additional(['error' => "forbidden"]);            //L'utente non ha i permessi giusti
+            return $userResource->response()->setStatusCode(403);
+        }
+
+
         try {
             $building = new BuildingResource(Building::create([
                 'total_classrooms' => $request->total_classrooms,
@@ -88,6 +95,18 @@ class BuildingsController extends Controller
      */
     public function update($id,Request $request)
     {
+        $user = auth()->user();
+
+        if($user == null){
+            $userResource = new UserResource([]);
+            $userResource->additional(['error' => "unauthorized"]);         //L'utente non è autenticato
+            return $userResource->response()->setStatusCode(401);
+        } else if($user->type != 'admin') {
+            $userResource = new UserResource([]);
+            $userResource->additional(['error' => "forbidden"]);            //L'utente non ha i permessi giusti
+            return $userResource->response()->setStatusCode(403);
+        }
+
         try {
             $building = Building::find($id);
 

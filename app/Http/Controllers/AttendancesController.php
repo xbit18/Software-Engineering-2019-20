@@ -22,6 +22,18 @@ class AttendancesController extends Controller
      */
     public function index()
     {
+        $user = auth()->user();
+
+        if($user == null){
+            $userResource = new UserResource([]);
+            $userResource->additional(['error' => "unauthorized"]);         //L'utente non è autenticato
+            return $userResource->response()->setStatusCode(401);
+        } else if($user->type != 'admin') {
+            $userResource = new UserResource([]);
+            $userResource->additional(['error' => "forbidden"]);            //L'utente non ha i permessi giusti
+            return $userResource->response()->setStatusCode(403);
+        }
+
         $attendances = new AttendanceCollection(Attendance::paginate(10));
 
         if($attendances->isEmpty()){
@@ -75,6 +87,18 @@ class AttendancesController extends Controller
      */
     public function show($id)
     {
+        $user = auth()->user();
+
+        if($user == null){
+            $userResource = new UserResource([]);
+            $userResource->additional(['error' => "unauthorized"]);         //L'utente non è autenticato
+            return $userResource->response()->setStatusCode(401);
+        } else if($user->type != 'admin') {
+            $userResource = new UserResource([]);
+            $userResource->additional(['error' => "forbidden"]);            //L'utente non ha i permessi giusti
+            return $userResource->response()->setStatusCode(403);
+        }
+
         $attendance = new AttendanceResource(Attendance::find($id));
         if($attendance->resource == null){
             $attendance->additional(['error' => 'Attendance not found!']);
@@ -95,6 +119,18 @@ class AttendancesController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $user = auth()->user();
+
+        if($user == null){
+            $userResource = new UserResource([]);
+            $userResource->additional(['error' => "unauthorized"]);         //L'utente non è autenticato
+            return $userResource->response()->setStatusCode(401);
+        } else if($user->type != 'admin') {
+            $userResource = new UserResource([]);
+            $userResource->additional(['error' => "forbidden"]);            //L'utente non ha i permessi giusti
+            return $userResource->response()->setStatusCode(403);
+        }
+
         try {
             $attendance = Attendance::find($id);
 

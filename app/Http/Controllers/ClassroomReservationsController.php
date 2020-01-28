@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Classroom;
 use App\ClassroomReservation;
+use App\Http\Resources\User as UserResource;
 use App\User;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use App\Http\Resources\ClassroomReservation as ClassroomReservationResource;
 use App\Http\Resources\ClassroomReservationCollection;
@@ -18,17 +20,40 @@ class ClassroomReservationsController extends Controller
      */
     public function index()
     {
-        $classroomsreservations = new ClassroomReservationCollection(Classroom::paginate(10));
+        $user = auth()->user();
 
-        if($classroomsreservations->isEmpty()){
-            $classroomsreservations->additional(['error' => 'No classroom was found!']);
-
-            return $classroomsreservations->response()->setStatusCode(200);
-        } else {
-            $classroomsreservations->additional(['error' => null]);
+        if($user == null){
+            $userResource = new UserResource([]);
+            $userResource->additional(['error' => "unauthorized"]);         //L'utente non è autenticato
+            return $userResource->response()->setStatusCode(401);
+        } else if($user->type != 'admin') {
+            $userResource = new UserResource([]);
+            $userResource->additional(['error' => "forbidden"]);            //L'utente non ha i permessi giusti
+            return $userResource->response()->setStatusCode(403);
         }
 
-        return $classroomsreservations->response()->setStatusCode(200);
+        $classroomsreservations = ClassroomReservation::all();
+
+        if($classroomsreservations->isEmpty()){
+            $classroomsreservationsCollection = new ClassroomReservationCollection([]);
+            $classroomsreservationsCollection->additional(['error' => 'No reservation was found for this classroom!']);
+
+            return $classroomsreservationsCollection->response()->setStatusCode(200);
+        }
+
+        foreach($classroomsreservations as $classroomsreservation){
+            $classroom = Classroom::find($classroomsreservation->classroom_id);
+            $user = User::find($classroomsreservation->user_id);
+
+            $classroomsreservation['code'] = $classroom->code;
+            $classroomsreservation['name'] = $user->name;
+            $classroomsreservation['surname'] = $user->surname;
+        }
+
+        $classroomsreservationsCollection = new ClassroomReservationCollection($classroomsreservations);
+        $classroomsreservationsCollection->additional(['error' => null]);
+
+        return $classroomsreservationsCollection->response()->setStatusCode(200);
         }
     /**
      * Store a newly created resource in storage.
@@ -120,6 +145,18 @@ class ClassroomReservationsController extends Controller
      *
      */
     public function state($id_classroomsreservation, Request $request){
+        $user = auth()->user();
+
+        if($user == null){
+            $userResource = new UserResource([]);
+            $userResource->additional(['error' => "unauthorized"]);         //L'utente non è autenticato
+            return $userResource->response()->setStatusCode(401);
+        } else if($user->type != 'admin') {
+            $userResource = new UserResource([]);
+            $userResource->additional(['error' => "forbidden"]);            //L'utente non ha i permessi giusti
+            return $userResource->response()->setStatusCode(403);
+        }
+
         try {
             $classroomsreservation = ClassroomReservation::find($id_classroomsreservation);
 
