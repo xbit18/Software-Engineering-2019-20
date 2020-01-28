@@ -68,7 +68,7 @@ export default {
   },
   methods: {
     getListAule() {
-      axios.get("http://127.0.0.1:8000/api/aule").then(res => {
+      axios.get("http://127.0.0.1:8000/api/classrooms").then(res => {
         console.log(res);
         this.listAule = res.data.data;
         console.log(this.listAule)

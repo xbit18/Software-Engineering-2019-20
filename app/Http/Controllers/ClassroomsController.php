@@ -70,10 +70,8 @@ class ClassroomsController extends Controller
         try {
             $classroom = new ClassroomResource(Classroom::create([
                 'code' => $request->code,
-                'availability' => $request->availability,
                 'type' => $request->type,
                 'capacity' => $request->capacity,
-                'state' => $request->state,
                 'building_id' => $request->building_id,
                 'floor' => $request->floor
             ]));

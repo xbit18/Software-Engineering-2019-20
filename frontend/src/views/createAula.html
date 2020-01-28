@@ -14,9 +14,9 @@
 
         <label for="type">Tipo</label>
         <select v-model="aula.type" name="type" required>
-          <option>lezione</option>
-          <option>studio</option>
-          <option>lavoro</option>
+          <option>lesson</option>
+          <option>studying</option>
+          <option>work</option>
         </select>
      
         <label for="capacity">Capienza</label>
@@ -24,7 +24,7 @@
 
         <label for="edificio">Edificio</label>
         <select v-model="aula.building_id" name="edificio" required >
-          <option :value="edificio.id" v-for="edificio in edifici" :key="edificio.id"> {{edificio.name}}</option>
+          <option :value="building.id" v-for="building in buildings" :key="building.id"> {{building.name}}</option>
         </select>
         
         <input v-if="isEdit" type="submit" value ="Modifica" class="button button-success" />

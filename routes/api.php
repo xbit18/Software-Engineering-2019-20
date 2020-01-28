@@ -63,7 +63,7 @@ Route::get('/classrooms/{clasroom}/delete','ClassroomsController@destroy');     
 
 Route::get('/clasroom/{clasroom}', 'ClassroomsController@showNome');                              //Restitusce un'clasroom in base al nome
 
-Route::patch('/classrooms/{clasroom}','ClassroomsController@stato');                               // apre/chiude clasroom
+Route::patch('/classrooms/{clasroom}','ClassroomsController@state');                               // apre/chiude clasroom
 
 Route::get('/classrooms/{clasroom}/attendances', 'ClassroomsController@attendances');
 

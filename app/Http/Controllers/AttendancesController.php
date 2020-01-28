@@ -45,7 +45,9 @@ class AttendancesController extends Controller
     try {
             $user = auth()->user();
             $token = Token::where('code',$request->token)->first();
-
+            if($token->validity != 1){
+                return response()->json(['error' => 'The token is not valid'],400);
+            }
             $currentDateTime = date('Y-m-d H:i:s');
 
             $attendance = new AttendanceResource(Attendance::create([

@@ -40,7 +40,7 @@ export default {
   methods: {
     getTokens(id) {
       axios
-        .get(`http://127.0.0.1:8000/tokens/${id}`)
+        .get(`http://127.0.0.1:8000/tokens/classroom/${id}`)
         .then(res => {
           this.listToken = res.data.data;
         })
@@ -60,13 +60,13 @@ export default {
     }
   },
   mounted() {
-    let id = this.$route.params.aula;
-    this.getTokens(id);
+    let aula_id = this.$route.params.aula;
+    this.getTokens(aula_id);
 
     let i = 1;
     setInterval(() => {
         axios
-          .patch(`http://127.0.0.1:8000/api/token/${this.listToken[i].id}/validate`)
+          .patch(`http://127.0.0.1:8000/api/tokens/${aula_id}/${this.listToken[i].id}/validate`)
           .then(() => {
             this.token = this.listToken[i].code;
           });

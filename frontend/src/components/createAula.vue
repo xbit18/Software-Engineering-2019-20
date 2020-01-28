@@ -10,7 +10,7 @@ export default {
     return {
       isEdit: false,
       aula: new Aula(),
-      edifici: null
+      buildings: null
     };
   },
   mounted() {
@@ -33,13 +33,14 @@ export default {
         })
         .catch(e => {
           console.log(e);
+          console.log(this.aula);
         });
       
     },
     getEdifici() {
-      axios.get("http://127.0.0.1:8000/api/classrooms").then(res => {
+      axios.get("http://127.0.0.1:8000/api/buildings").then(res => {
         console.log(res);
-        this.edifici = res.data.data;
+        this.buildings = res.data.data;
       });
     }
     

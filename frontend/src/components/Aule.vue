@@ -56,7 +56,7 @@
           <td class="tg td">{{aula.capacity}}</td>
           <td class="tg td">{{aula.type}}</td>
           <td class="tg td">{{aula.availability}}</td>
-          <td class="tg td" v-if="aula.state == 'chiusa'">
+          <td class="tg td" v-if="aula.state == 'closed'">
             <button class="button button-apri/chiudi" @click="apri_chiudi(aula.id, aula.state)">Apri</button>
           </td>
           <td class="tg td" v-else>
@@ -148,10 +148,10 @@ export default {
   data() {
     return {
       image: null,
-      show: false
+      show: false,
     };
   },
-  props: ["listAule", "waiting", "gestisce"],
+  props: ["listAule", "waiting", "gestisce","inizio"],
   methods: {
     showMap(edificio, floor) {
       if (!this.show) {
@@ -197,10 +197,10 @@ export default {
       });
     },
     apri_chiudi(id, state) {
-      if (state == "chiusa") {
+      if (state == "closed") {
         axios
           .patch(`http://127.0.0.1:8000/api/classrooms/${id}`, {
-            state: "aperta"
+            state: "open"
           })
           .then(() => {
             this.$router.push("/redirectDeleteAule");
@@ -212,7 +212,7 @@ export default {
       } else {
         axios
           .patch(`http://127.0.0.1:8000/api/classrooms/${id}`, {
-            state: "chiusa"
+            state: "closed"
           })
           .then(() => {
             this.$router.push("/redirectDeleteAule");
