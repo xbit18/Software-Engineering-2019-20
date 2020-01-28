@@ -17,6 +17,7 @@ class CreateTokensTable extends Migration
             $table->bigIncrements('id');
             $table->string("code",300)->unique();
             $table->unsignedBigInteger('classroom_id')->nullable(true);
+            $table->boolean('validity')->default(0);
             $table->timestamps();
         });
     }

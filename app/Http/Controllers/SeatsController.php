@@ -69,6 +69,20 @@ class SeatsController extends Controller
     }}
 
     /**
+     * Auto generazione dei posti all'interno di una specifica aula
+     *
+     * @param $classroom
+     */
+    public function createSeats($classroom){
+        for($i=1; $i<= $classroom->capacity ;$i++){
+            $seat = new Seat;
+            $seat->seat_number = $i;
+            $seat->classroom_id = $classroom->id;
+            $seat->save();
+        }
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param  int  $id
