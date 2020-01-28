@@ -135,8 +135,10 @@ class TokensController extends Controller
         foreach($tokens as $token){
             if($token->id == $token_id){
                 $token->validity = 1;
+                $token->save();
             } else {
                 $token->validity = 0;
+                $token->save();
             }
         }
     }

@@ -61,7 +61,7 @@ Route::put('/classrooms/{clasroom}','ClassroomsController@update') ;            
 
 Route::get('/classrooms/{clasroom}/delete','ClassroomsController@destroy');                         //Cancella l’aula
 
-Route::get('/clasroom/{clasroom}', 'ClassroomsController@showNome');                              //Restitusce un'clasroom in base al nome
+Route::get('/classroom/{clasroom}', 'ClassroomsController@showNome');                              //Restitusce un'clasroom in base al nome
 
 Route::patch('/classrooms/{clasroom}','ClassroomsController@state');                               // apre/chiude clasroom
 
@@ -175,7 +175,5 @@ Route::get('/tokens/{id}/delete','TokensController@destroy');
 
 Route::get('/tokens/classroom/{id}','TokensController@indexWithClassroom');
 
-Route::post('/tokens/{classroom_id}/{token_id}/validate','TokensController@changeValidity');
-
-Route::get('/tokens/classroom/create/tokens','TokensController@createClassroomTokens');
+Route::get('/tokens/{classroom_id}/{token_id}/validate','TokensController@changeValidity');
 
