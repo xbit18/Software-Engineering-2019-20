@@ -25,6 +25,7 @@ import editEdificio from './components/editEdificio.vue'
 import gestisceEdifici from './components/gestisceEdifici.vue'
 import Edificio from './components/Edificio.vue'
 import CheckIn from './components/CheckIn.vue'
+import CheckOut from './components/CheckOut.vue'
 import Prenotazione from './components/Prenotazione.vue'
 import listPrenotazioni from './components/listPrenotazioni.vue'
 import PrenotaAula from './components/PrenotaAula.vue'
@@ -227,6 +228,23 @@ const routes = [
     {path:'/edificio/:edificio',
         name:'edificio',
         component: Edificio
+    },
+    {path:'/checkout/:aula',
+        name:'checkout',
+        component: CheckOut,
+        beforeEnter:(to,from,next) =>{
+            console.log(store.getters)
+            if(!store.getters['auth/authenticated']){
+                swal({
+                    text : 'Non sei autorizzato',
+                    icon : 'error'
+                });
+                next({
+                    name: 'inizio'
+                });
+            }
+            next();
+        }
     },
     {path:'/check/:aula',
         name:'checkin',

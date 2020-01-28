@@ -61,7 +61,7 @@ Route::put('/classrooms/{clasroom}','ClassroomsController@update') ;            
 
 Route::get('/classrooms/{clasroom}/delete','ClassroomsController@destroy');                         //Cancella l’aula
 
-Route::get('/classroom/{clasroom}', 'ClassroomsController@showNome');                              //Restitusce un'clasroom in base al nome
+Route::get('/classroom/{clasroom}', 'ClassroomsController@showWithName');                              //Restitusce un'clasroom in base al nome
 
 Route::patch('/classrooms/{clasroom}','ClassroomsController@state');                               // apre/chiude clasroom
 

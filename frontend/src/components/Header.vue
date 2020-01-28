@@ -36,7 +36,7 @@
       </router-link>
 
       <router-link to="/selectAulaToCheck" v-if="authenticated">
-        <span>Check-in</span>
+        <span>Check</span>
       </router-link>
 
       <router-link to="/" v-if="authenticated">
@@ -59,9 +59,6 @@
         <span>Gestisci edifici</span>
       </router-link>
 
-       <router-link to="/gestisceMappe" v-if="authenticated && isAdmin">
-        <span>Gestisci mappe</span>
-      </router-link>
 
       <router-link to="/createAula" v-if="authenticated && isAdmin">
         <span>Crea Aula</span>
