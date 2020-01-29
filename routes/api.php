@@ -173,7 +173,7 @@ Route::put('/tokens/{id}','TokensController@update');
 
 Route::get('/tokens/{id}/delete','TokensController@destroy');
 
-Route::get('/tokens/classroom/{id}','TokensController@indexWithClassroom');
+Route::get('/tokens/classroom/{id}','TokensController@updateToken');
 
 Route::get('/tokens/{classroom_id}/{token_id}/validate','TokensController@changeValidity');
 

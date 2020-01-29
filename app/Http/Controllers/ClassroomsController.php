@@ -80,7 +80,7 @@ class ClassroomsController extends Controller
             $seats = new SeatsController;
             $seats-> createSeats($classroom);               //Generazione automatica dei posti
             $tokens = new TokensController;
-            $tokens->createClassroomTokens($classroom);     //Generazione automatica dei token
+            $tokens->createClassroomToken($classroom);     //Generazione automatica del token
 
             $classroom->additional(['error' => null]);
             return $classroom->response()->setStatusCode(201);
