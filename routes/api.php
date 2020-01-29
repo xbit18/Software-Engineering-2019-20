@@ -65,7 +65,7 @@ Route::get('/classroom/{clasroom}', 'ClassroomsController@showWithName');       
 
 Route::patch('/classrooms/{clasroom}','ClassroomsController@state');                               // apre/chiude clasroom
 
-Route::get('/classrooms/{clasroom}/attendances', 'ClassroomsController@attendances');
+Route::get('/classrooms/{classroom}/attendances', 'ClassroomsController@attendances');
 
 
 
@@ -174,6 +174,4 @@ Route::put('/tokens/{id}','TokensController@update');
 Route::get('/tokens/{id}/delete','TokensController@destroy');
 
 Route::get('/tokens/classroom/{id}','TokensController@updateToken');
-
-Route::get('/tokens/{classroom_id}/{token_id}/validate','TokensController@changeValidity');
 
