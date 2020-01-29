@@ -11,6 +11,8 @@ use App\Http\Resources\User as UserResource;
 
 class TokensController extends Controller
 {
+    private $TOKEN_LENGTH = 15;
+
     /**
      * Display a listing of the resource.
      *
@@ -65,11 +67,11 @@ class TokensController extends Controller
             return $tokenResource->response()->setStatusCode(200);
         }
 
-        $token->code = substr(str_shuffle(MD5(microtime())), 0, 10);
+        $token->code = substr(str_shuffle(MD5(microtime())), 0, $this->TOKEN_LENGTH);
         $token->save();
 
         $tokenResource = new TokenResource($token);
-        $tokenResource->additional(['error' => 'No token was found!']);
+        $tokenResource->additional(['error' => null]);
         return $tokenResource->response()->setStatusCode(200);
     }
 
@@ -95,9 +97,8 @@ class TokensController extends Controller
 
         try {
             $token = new TokenResource(Token::create([
-                'code' => substr(str_shuffle(MD5(microtime())), 0, 10),
-                'classroom_id' => $request->classroom_id,
-                'validity' => $request->validity
+                'code' => substr(str_shuffle(MD5(microtime())), 0, $this->TOKEN_LENGTH),
+                'classroom_id' => $request->classroom_id
             ]));
 
             $token->additional(['error' => null]);
@@ -107,13 +108,13 @@ class TokensController extends Controller
         }
     }
 
-    public function createClassroomToken($classroom){
-            $token = Token::create([
-                'code' => substr(str_shuffle(MD5(microtime())), 0, 10),
-                'classroom_id' => $classroom->id,
-                'validity' => 0
-            ]);
-    }
+    public function createClassroomToken($classroom)
+    {
+        $token = Token::create([
+            'code' => substr(str_shuffle(MD5(microtime())), 0, $this->TOKEN_LENGTH),
+            'classroom_id' => $classroom->id
+        ]);
+     }
 
     /**
      * Display the specified resource.
@@ -177,7 +178,6 @@ class TokensController extends Controller
         }
             $token->code = $request->code;
             $token->classroom_id = $request->classroom_id;
-            $token->validity = $request->validity;
 
             $token->save();
             $tokenResource = new TokenResource($token);
@@ -186,43 +186,6 @@ class TokensController extends Controller
         return $tokenResource->response()->setStatusCode(200);
         } catch(QueryException $ex){
             return response()->json(['SQL Exception'=>$ex->getMessage()], 500);
-        }
-    }
-
-
-    public function changeValidity($classroom_id, $token_id){
-        $user = auth()->user();
-
-        if($user == null){
-            $userResource = new UserResource([]);
-            $userResource->additional(['error' => "unauthorized"]);         //L'utente non è autenticato
-            return $userResource->response()->setStatusCode(401);
-        } else if($user->type != 'admin') {
-            $userResource = new UserResource([]);
-            $userResource->additional(['error' => "forbidden"]);            //L'utente non ha i permessi giusti
-            return $userResource->response()->setStatusCode(403);
-        }
-
-        $tokens = Token::where('classroom_id',$classroom_id)->get();
-
-        if($tokens->isEmpty()){
-            $tokensCollection = new TokenCollection([]);
-            $tokensCollection->additional(['error' => 'No token was found!']);
-
-            return $tokensCollection->response()->setStatusCode(200);
-        } else {
-            $tokensCollection = new TokenCollection([]);
-            $tokensCollection->additional(['error' => null]);
-        }
-
-        foreach($tokens as $token){
-            if($token->id == $token_id){
-                $token->validity = 1;
-                $token->save();
-            } else {
-                $token->validity = 0;
-                $token->save();
-            }
         }
     }
 
