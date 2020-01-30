@@ -71,7 +71,7 @@ class SeatsController extends Controller
         }
 
         try {
-            $seat = new SeatResource(Classroom::create([
+            $seat = new SeatResource(Seat::create([
                 'seat_number' => $request->seat_number,
                 'classroom_id' => $request->classroom_id
             ]));
