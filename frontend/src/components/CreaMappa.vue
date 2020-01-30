@@ -27,14 +27,14 @@ export default {
               this.file != "" &&
               this.file != undefined
             ) {
-              const formData = new FormData();
-              formData.append("map", this.file);
-              formData.append("floor", this.mappa.floor);
-              formData.append("building_id", this.mappa.building_id);
+              const map = new FormData();
+              map.append("map", this.file);
+              map.append("floor", this.mappa.floor);
+              map.append("building_id", this.mappa.building_id);
               axios
                 .post(
                   `http://127.0.0.1:8000/api/maps`,
-                  formData,
+                  map,
                   {
                     headers: {
                       "Content-Type": "multipart/form-data"
