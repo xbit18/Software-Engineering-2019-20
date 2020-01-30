@@ -73,7 +73,6 @@ class SeatsController extends Controller
         try {
             $seat = new SeatResource(Classroom::create([
                 'seat_number' => $request->seat_number,
-                'availability' => $request->availability,
                 'classroom_id' => $request->classroom_id
             ]));
             $seat->additional(['error' => null]);
