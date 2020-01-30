@@ -60,4 +60,12 @@ class UsersController extends Controller
     {
         //
     }
+
+    public function checkUser($user){
+        if($user == null){
+            return response()->json([
+                'data'=>[],
+                'error' => "authentication required"], 401);
+        }
+    }
 }

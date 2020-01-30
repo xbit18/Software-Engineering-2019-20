@@ -58,12 +58,14 @@ class ClassroomsController extends Controller
     public function store(Request $request)
     {
         $user = auth()->user();
+
         if($user == null){
-            $userResource = new UserResource;
-            $userResource->additional(['error' => "authentication required"]);
-            return $userResource->response()->setStatusCode(401);
+            return response()->json([
+                'data'=>[],
+                'error' => "authentication required"
+            ], 401);
         } else if($user->type != 'admin') {
-            $userResource = new UserResource;
+            $userResource = new UserResource([]);
             $userResource->additional(['error' => "forbidden"]);
             return $userResource->response()->setStatusCode(403);
         }
@@ -151,9 +153,10 @@ class ClassroomsController extends Controller
         $user = auth()->user();
 
         if($user == null){
-            $userResource = new UserResource([]);
-            $userResource->additional(['error' => "unauthorized"]);         //L'utente non è autenticato
-            return $userResource->response()->setStatusCode(401);
+            return response()->json([
+                'data'=>[],
+                'error' => "authentication required"
+            ], 401);
         } else if($user->type != 'admin') {
             $userResource = new UserResource([]);
             $userResource->additional(['error' => "forbidden"]);            //L'utente non ha i permessi giusti
@@ -204,9 +207,10 @@ class ClassroomsController extends Controller
         $user = auth()->user();
 
         if($user == null){
-            $userResource = new UserResource([]);
-            $userResource->additional(['error' => "unauthorized"]);         //L'utente non è autenticato
-            return $userResource->response()->setStatusCode(401);
+            return response()->json([
+                'data'=>[],
+                'error' => "authentication required"
+            ], 401);
         } else if($user->type != 'admin') {
             $userResource = new UserResource([]);
             $userResource->additional(['error' => "forbidden"]);            //L'utente non ha i permessi giusti
@@ -241,9 +245,10 @@ class ClassroomsController extends Controller
         $user = auth()->user();
 
         if($user == null){
-            $userResource = new UserResource([]);
-            $userResource->additional(['error' => "unauthorized"]);         //L'utente non è autenticato
-            return $userResource->response()->setStatusCode(401);
+            return response()->json([
+                'data'=>[],
+                'error' => "authentication required"
+            ], 401);
         } else if($user->type != 'admin' and $user->type != 'operator') {
             $userResource = new UserResource([]);
             $userResource->additional(['error' => "forbidden"]);            //L'utente non ha i permessi giusti
@@ -284,9 +289,10 @@ class ClassroomsController extends Controller
         $user = auth()->user();
 
         if($user == null){
-            $userResource = new UserResource([]);
-            $userResource->additional(['error' => "unauthorized"]);         //L'utente non è autenticato
-            return $userResource->response()->setStatusCode(401);
+            return response()->json([
+                'data'=>[],
+                'error' => "authentication required"
+            ], 401);
         } else if($user->type != 'admin') {
             $userResource = new UserResource([]);
             $userResource->additional(['error' => "forbidden"]);            //L'utente non ha i permessi giusti
