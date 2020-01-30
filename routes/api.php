@@ -104,7 +104,7 @@ Route::post('/classroomreservations','ClassroomReservationsController@store');  
 
 Route::get('/classroomreservations/{classroomreservation}','ClassroomReservationsController@show');           //Mostra una classroomreservation
 
-Route::patch('/classroomreservations/{classroomreservation}','ClassroomReservationsController@update');        //Registra le modifiche alla classroomreservation
+Route::put('/classroomreservations/{classroomreservation}','ClassroomReservationsController@update');        //Registra le modifiche alla classroomreservation
 
 Route::get('/classroomreservations/{classroomreservation}/delete','ClassroomReservationsController@destroy');   //Elimina una classroomreservation
 
@@ -124,7 +124,7 @@ Route::post('/seats','SeatsController@store');                                  
 
 Route::get('/seats/{seat_id}','SeatsController@show');                                 //Mostra un posto
 
-Route::patch('/seats/{seat_id}','SeatsController@stato');
+Route::patch('/seats/{seat_id}','SeatsController@state');
 
 Route::put('/seats/{seat_id}','SeatsController@update');                               //Registra le modifiche al posto
 
