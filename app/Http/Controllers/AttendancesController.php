@@ -68,20 +68,19 @@ class AttendancesController extends Controller
 
         try {
             $user = auth()->user();
-            $token = Token::where('code',$request->token)->first();
-            var_dump($token);
-            die();
-            // if($token->validity != 1){
-            //     $userResource = new UserResource;
-            //     $userResource->additional(['error' => 'The token is not valid']);
-            //     return $userResource->response()->setStatusCode(400);
-            // }
 
-            $attendances = Attendance::where('user_id',$user->id)->where('classroom_id',$token->classroom_id)->where('exit_date',null)->get();
-            if(!$attendances->isEmpty){
-                $userResource = new UserResource;
-                $userResource->additional(['error' => 'forbidden multiple check-in']);
-                return $userResource->response()->setStatusCode(400);
+            $token = Token::where('code',$request->token)->first();
+            if($token==null){
+                 $userResource = new UserResource;
+                 $userResource->additional(['error' => 'The token is not valid']);
+                 return $userResource->response()->setStatusCode(400);
+             }
+
+            $attendance = Attendance::where('user_id',$user->id)->where('classroom_id',$token->classroom_id)->where('exit_date',null)->first();
+            if(!($attendance==null)){
+                $attendanceResource = new AttendanceResource([]);
+                $attendanceResource->additional(['error' => 'forbidden multiple check-in']);
+                return $attendanceResource->response()->setStatusCode(400);
             }
 
             $currentDateTime = date('Y-m-d H:i:s');
@@ -97,6 +96,7 @@ class AttendancesController extends Controller
 
             $attendance->additional(['error' => null]);
             return $attendance->response()->setStatusCode(201);
+
 
         } catch(QueryException $ex){
             return response()->json(['SQL Exception'=>$ex->getMessage()], 500);
