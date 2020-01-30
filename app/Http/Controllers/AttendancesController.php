@@ -70,11 +70,11 @@ class AttendancesController extends Controller
             $user = auth()->user();
             $token = Token::where('code',$request->token)->first();
 
-            if($token->validity != 1){
-                $userResource = new UserResource;
-                $userResource->additional(['error' => 'The token is not valid']);
-                return $userResource->response()->setStatusCode(400);
-            }
+            // if($token->validity != 1){
+            //     $userResource = new UserResource;
+            //     $userResource->additional(['error' => 'The token is not valid']);
+            //     return $userResource->response()->setStatusCode(400);
+            // }
 
             $tokens = Token::where('user_id',$user->id)->where('classroom_id',$token->classroom_id)->where('exit_date',null)->get();
             if(!$tokens->isEmpty){
