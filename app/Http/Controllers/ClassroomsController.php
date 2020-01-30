@@ -59,11 +59,11 @@ class ClassroomsController extends Controller
     {
         $user = auth()->user();
         if($user == null){
-            $userResource = new UserResource([]);
+            $userResource = new UserResource;
             $userResource->additional(['error' => "authentication required"]);
             return $userResource->response()->setStatusCode(401);
         } else if($user->type != 'admin') {
-            $userResource = new UserResource([]);
+            $userResource = new UserResource;
             $userResource->additional(['error' => "forbidden"]);
             return $userResource->response()->setStatusCode(403);
         }
