@@ -49,7 +49,7 @@ export default {
         .catch(e => {
           console.log(e);
         })
-    }, 7000);
+    }, 5000);
     },
     effettua() {
       axios

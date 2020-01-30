@@ -35,29 +35,19 @@ export default {
   },
   methods: {
    
-    getTokens(id) {
-      axios
-        .get(`http://127.0.0.1:8000/api/tokens/classroom/${id}`)
-        .then(res => {
-          this.listToken = res.data.data;
-          let i = 0;
+    changeToken(id) {
     setInterval(() => {
       axios
         .get(
-          `http://127.0.0.1:8000/api/tokens/${id}/${this.listToken[i].id}/validate`
+          `http://127.0.0.1:8000/api/tokens/classroom/${id}`
         )
-        .then(() => {
-          this.token = this.listToken[i].code;
-          i++;
-          if (i >= 5) {
-            i = 0;
-          }
-        });
-    }, 5000);
+        .then(res => {
+          this.token = res.data.data.code;
         })
         .catch(e => {
           console.log(e);
-        });
+        })
+    }, 5000);
     },
     effettua() {
       axios
@@ -81,7 +71,7 @@ export default {
   },
   mounted() {
     let aula_id = this.$route.params.aula;
-    this.getTokens(aula_id);
+    this.changeToken(aula_id);
 
     
   }
