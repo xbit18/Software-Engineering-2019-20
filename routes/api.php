@@ -88,7 +88,7 @@ Route::get('/maps/{map}/delete','MapsController@destroy');                      
 Route::get('/maps/{map}','MapsController@show');
 //Mostra la map
 
-Route::get('/maps/{building}/{floor}','MapsController@show_mappa_edificio');
+Route::get('/maps/{building}/{floor}','MapsController@showWithFloorAndBuilding');
 
 
 

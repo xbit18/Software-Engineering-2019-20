@@ -153,11 +153,12 @@ export default {
   },
   props: ["listAule", "waiting", "gestisce","inizio"],
   methods: {
-    showMap(edificio, floor) {
+    showMap(building, floor) {
       if (!this.show) {
         axios
-          .get(`http://127.0.0.1:8000/api/maps/${edificio}/${floor}`)
+          .get(`http://127.0.0.1:8000/api/maps/${building}/${floor}`)
           .then(res => {
+            console.log(res);
             this.image = res.data.data.floor_map;
             this.show = true;
             bus.$emit("imgSend", { img: this.image, show: this.show });
