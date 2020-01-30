@@ -31,9 +31,11 @@ export default {
       }, 1000);
           }
         })
-        .catch(e => {
-          console.log(e);
-          console.log(this.aula);
+        .catch(() => {
+          swal({
+            text: "L'aula non è stata creata",
+            icon: "warning"
+          })
         });
       
     },
