@@ -8,6 +8,7 @@ use App\Http\Resources\User as UserResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Resources\BuildingCollection;
+use App\Http\Resources\ClassroomCollection;
 use App\Http\Resources\Building as BuildingResource;
 
 class BuildingsController extends Controller
@@ -133,8 +134,8 @@ class BuildingsController extends Controller
 
     public function classrooms($id)
     {
-        $classrooms = Classroom::collection(DB::table('classrooms')->where('id_building', $id)->get());
-        return $classrooms->response()->setStatusCode(200);
+        $classrooms = new ClassroomCollection(Classroom::where('building_id', $id)->get());
+                return $classrooms->response()->setStatusCode(200);
     }
 
     /**
