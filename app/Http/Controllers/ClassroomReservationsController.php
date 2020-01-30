@@ -25,7 +25,7 @@ class ClassroomReservationsController extends Controller
         if($user == null){
             return response()->json([
                 'data'=>[],
-                'error' => "authentication required"
+                'error' => "unauthorized"
             ], 401);
         } else if($user->type != 'admin') {
             $userResource = new UserResource([]);
@@ -69,7 +69,7 @@ class ClassroomReservationsController extends Controller
         if($user == null){
             return response()->json([
                 'data'=>[],
-                'error' => "authentication required"
+                'error' => "unauthorized"
             ], 401);
         } else if($user->type != 'admin' and $user->type != 'teacher') {
             $userResource = new UserResource([]);
@@ -122,7 +122,7 @@ class ClassroomReservationsController extends Controller
 
         $classroomsreservation = new ClassroomReservationResource(ClassroomReservation::find($id));
         if($classroomsreservation->resource == null){
-            $classroomsreservation->additional(['error' => 'Classroom not found!']);
+            $classroomsreservation->additional(['error' => 'Reservation not found!']);
 
             return $classroomsreservation->response()->setStatusCode(200);
         } else {
@@ -173,7 +173,7 @@ class ClassroomReservationsController extends Controller
             $classroomsreservation->motivation = $request->motivation;
             $classroomsreservation->state = $request->state;
             $classroomsreservation->classroom_id = $request->classroom_id;
-            $classroomsreservation->user_id = $request->user_id;
+            $classroomsreservation->user_id = $user->id;
             $classroomsreservation->save();
 
             $classroomsreservationResource = new ClassroomReservationResource($classroomsreservation);
@@ -201,7 +201,7 @@ class ClassroomReservationsController extends Controller
         if($user == null){
             return response()->json([
                 'data'=>[],
-                'error' => "authentication required"
+                'error' => "unauthorized"
             ], 401);
         } else if($user->type != 'admin') {
             $userResource = new UserResource([]);

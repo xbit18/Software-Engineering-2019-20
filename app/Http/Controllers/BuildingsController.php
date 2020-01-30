@@ -46,7 +46,7 @@ class BuildingsController extends Controller
         if($user == null){
             return response()->json([
                 'data'=>[],
-                'error' => "authentication required"
+                'error' => "unauthorized"
             ], 401);
         } else if($user->type != 'admin') {
             $userResource = new UserResource([]);
@@ -102,7 +102,7 @@ class BuildingsController extends Controller
         if($user == null){
             return response()->json([
                 'data'=>[],
-                'error' => "authentication required"
+                'error' => "unauthorized"
             ], 401);
         } else if($user->type != 'admin') {
             $userResource = new UserResource([]);
@@ -151,7 +151,7 @@ class BuildingsController extends Controller
         if($user == null){
             return response()->json([
                 'data'=>[],
-                'error' => "authentication required"
+                'error' => "unauthorized"
             ], 401);
         } else if($user->type != 'admin') {
             $userResource = new UserResource([]);

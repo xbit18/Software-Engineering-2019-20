@@ -25,7 +25,7 @@ class TokensController extends Controller
         if($user == null){
             return response()->json([
                 'data'=>[],
-                'error' => "authentication required"
+                'error' => "unauthorized"
             ], 401);
         } else if($user->type != 'admin') {
             $userResource = new UserResource([]);
@@ -52,17 +52,20 @@ class TokensController extends Controller
         if($user == null){
             return response()->json([
                 'data'=>[],
-                'error' => "authentication required"
+                'error' => "unauthorized"
             ], 401);
         }
 
         $token = Token::where('classroom_id', $classroom_id)->first();
 
 
-        if($token == null){
-            $tokenResource = new TokenResource([]);
-            $tokenResource->additional(['error' => 'No token was found!']);
-            return $tokenResource->response()->setStatusCode(200);
+        if($token == null) {
+            $token = new TokenResource(Token::create([
+                'code' => substr(str_shuffle(MD5(microtime())), 0, $this->TOKEN_LENGTH),
+                'classroom_id' => $classroom_id
+            ]));
+            $token->additional(['error' => null]);
+            return $token->response()->setStatusCode(200);
         }
 
         $token->code = substr(str_shuffle(MD5(microtime())), 0, $this->TOKEN_LENGTH);
@@ -86,7 +89,7 @@ class TokensController extends Controller
         if($user == null){
             return response()->json([
                 'data'=>[],
-                'error' => "authentication required"
+                'error' => "unauthorized"
             ], 401);
         } else if($user->type != 'admin') {
             $userResource = new UserResource([]);
@@ -128,7 +131,7 @@ class TokensController extends Controller
         if($user == null){
             return response()->json([
                 'data'=>[],
-                'error' => "authentication required"
+                'error' => "unauthorized"
             ], 401);
         } else if($user->type != 'admin') {
             $userResource = new UserResource([]);
@@ -161,7 +164,7 @@ class TokensController extends Controller
         if($user == null){
             return response()->json([
                 'data'=>[],
-                'error' => "authentication required"
+                'error' => "unauthorized"
             ], 401);
         } else if($user->type != 'admin') {
             $userResource = new UserResource([]);
@@ -203,7 +206,7 @@ class TokensController extends Controller
         if($user == null){
             return response()->json([
                 'data'=>[],
-                'error' => "authentication required"
+                'error' => "unauthorized"
             ], 401);
         } else if($user->type != 'admin') {
             $userResource = new UserResource([]);

@@ -27,7 +27,7 @@ class AttendancesController extends Controller
         if($user == null){
             return response()->json([
                 'data'=>[],
-                'error' => "authentication required"
+                'error' => "unauthorized"
             ], 401);
         } else if($user->type != 'admin') {
             $userResource = new UserResource([]);
@@ -60,7 +60,7 @@ class AttendancesController extends Controller
         if($user == null){
             return response()->json([
                 'data'=>[],
-                'error' => "authentication required"
+                'error' => "unauthorized"
             ], 401);
         } else if($user->type != 'admin' and $user->type != 'student') {
             $userResource = new UserResource([]);
@@ -118,7 +118,7 @@ class AttendancesController extends Controller
         if($user == null){
             return response()->json([
                 'data'=>[],
-                'error' => "authentication required"
+                'error' => "unauthorized"
             ], 401);
         } else if($user->type != 'admin') {
             $userResource = new UserResource([]);
@@ -151,7 +151,7 @@ class AttendancesController extends Controller
         if($user == null){
             return response()->json([
                 'data'=>[],
-                'error' => "authentication required"
+                'error' => "unauthorized"
             ], 401);
         } else if($user->type != 'admin') {
             $userResource = new UserResource([]);
@@ -201,7 +201,7 @@ class AttendancesController extends Controller
         if($user == null){
             return response()->json([
                 'data'=>[],
-                'error' => "authentication required"
+                'error' => "unauthorized"
             ], 401);
         } else if($user->type != 'admin') {
             $userResource = new UserResource([]);
@@ -228,7 +228,7 @@ class AttendancesController extends Controller
         if($user == null){
             return response()->json([
                 'data'=>[],
-                'error' => "authentication required"
+                'error' => "unauthorized"
             ], 401);
         } else if($user->type != 'admin' and $user->type != 'student') {
             $userResource = new UserResource([]);
@@ -249,6 +249,7 @@ class AttendancesController extends Controller
 
         $attendance->save();
 
+        return response()->setStatusCode(204);
     }
 
     /*

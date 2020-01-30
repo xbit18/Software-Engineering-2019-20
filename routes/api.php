@@ -63,7 +63,7 @@ Route::get('/classrooms/{clasroom}/delete','ClassroomsController@destroy');     
 
 Route::get('/classroom/{clasroom}', 'ClassroomsController@showWithName');                              //Restitusce un'clasroom in base al nome
 
-Route::patch('/classrooms/{clasroom}','ClassroomsController@state');                               // apre/chiude clasroom
+Route::patch('/classrooms/{classroom}','ClassroomsController@state');                               // apre/chiude clasroom
 
 Route::get('/classrooms/{classroom}/attendances', 'ClassroomsController@attendances');
 
@@ -116,7 +116,7 @@ Route::patch('/classroomreservations/{classroomreservation}','ClassroomReservati
  * Rotte per i posti
  */
 
-Route::get('/seats/classroom/{classroom_id}','SeatsController@index_aula');                                 //Mostra tutti i seats all'interno di un'classroom
+Route::get('/seats/classroom/{classroom_id}','SeatsController@indexClassroom');                                 //Mostra tutti i seats all'interno di un'classroom
 
 Route::get('/seats','SeatsController@index');
 
@@ -129,6 +129,8 @@ Route::patch('/seats/{seat_id}','SeatsController@stato');
 Route::put('/seats/{seat_id}','SeatsController@update');                               //Registra le modifiche al posto
 
 Route::get('/seats/{seat_id}/delete','SeatsController@destroy');                        //Elimina una prenotazione
+
+Route::patch('/seats/{seat_id}','SeatsController@availability');
 
 
 /**

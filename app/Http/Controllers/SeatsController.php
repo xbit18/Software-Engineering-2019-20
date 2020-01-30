@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Classroom;
 use App\Http\Resources\User as UserResource;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use App\Seat;
 use App\Http\Resources\SeatCollection;
@@ -18,15 +19,15 @@ class SeatsController extends Controller
      */
     public function index()
     {
-        $seats = new SeatCollection(Classroom::paginate(10));
+        $seats = new SeatCollection(Seat::paginate(10));
 
-        if($seats>isEmpty()){
+        if($seats->isEmpty()){
             $seats->additional(['error' => 'No seat was found!']);
 
             return $seats->response()->setStatusCode(200);
         } else {
             foreach ($seats as $seat) {
-                $classroom = Classroom::findOrFail($seat['classroom_id']);
+                $classroom = Classroom::findOrFail($seat->classroom_id);
                 $seat['class_code'] = $classroom['code'];
             }
             $seats->additional(['error' => null]);
@@ -39,9 +40,9 @@ class SeatsController extends Controller
     //Restituisce tutti i posti all'interno di un'aula
     public function indexClassroom($classroom_id)
     {
-        $seats = new SeatCollection(Seat::find($classroom_id));
-        if ($seats->resource == null) {
-            $seats->additional(['error' => 'Classroom not found!']);
+        $seats = new SeatCollection(Seat::where('classroom_id',$classroom_id)->get());
+        if ($seats->isEmpty()) {
+            $seats->additional(['error' => 'No seats in this classroom']);
             return $seats->response()->setStatusCode(200);
         }else {
             $seats->additional(['error' => null]);
@@ -62,7 +63,7 @@ class SeatsController extends Controller
         if($user == null){
             return response()->json([
                 'data'=>[],
-                'error' => "authentication required"
+                'error' => "unauthorized"
             ], 401);
         } else if($user->type != 'admin') {
             $userResource = new UserResource([]);
@@ -128,7 +129,7 @@ class SeatsController extends Controller
         if($user == null){
             return response()->json([
                 'data'=>[],
-                'error' => "authentication required"
+                'error' => "unauthorized"
             ], 401);
         } else if($user->type != 'admin') {
             $userResource = new UserResource([]);
@@ -172,7 +173,7 @@ class SeatsController extends Controller
         if($user == null){
             return response()->json([
                 'data'=>[],
-                'error' => "authentication required"
+                'error' => "unauthorized"
             ], 401);
         } else if($user->type != 'admin') {
             $userResource = new UserResource([]);
@@ -190,5 +191,36 @@ class SeatsController extends Controller
         $seat->delete();
 
         return response()->json([],204);
+    }
+
+    public function availability($id, Request $request){
+        $user = auth()->user();
+
+        if($user == null){
+            return response()->json([
+                'data'=>[],
+                'error' => "unauthorized"
+            ], 401);
+        }
+
+        try {
+            $seat = Seat::find($id);
+
+            if($seat == null){
+                $seatResource = new SeatResource($seat);
+                $seatResource->additional(['error' => 'Seat not found!']);
+                return $seatResource->response()->setStatusCode(400);
+            }
+
+            $seat->availability = $request->availability;
+            $seat->save();
+
+            $seatResource = new SeatResource($seat);
+            $seatResource->additional(['error' => null]);
+
+            return $seatResource->response()->setStatusCode(200);
+        } catch(QueryException $ex){
+            return response()->json(['SQL Exception'=>$ex->getMessage()], 500);
+        }
     }
 }

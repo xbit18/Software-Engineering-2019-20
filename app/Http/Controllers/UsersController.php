@@ -65,7 +65,7 @@ class UsersController extends Controller
         if($user == null){
             return response()->json([
                 'data'=>[],
-                'error' => "authentication required"], 401);
+                'error' => "unauthorized"], 401);
         }
     }
 }

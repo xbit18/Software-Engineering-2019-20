@@ -49,7 +49,7 @@ class MapsController extends Controller
         if($user == null){
             return response()->json([
                 'data'=>[],
-                'error' => "authentication required"], 401);
+                'error' => "unauthorized"], 401);
         } else if($user->type != 'admin') {
             return response()->json([
                 'data'=>[],
@@ -143,7 +143,7 @@ class MapsController extends Controller
         if($user == null){
             return response()->json([
                 'data'=>[],
-                'error' => "authentication required"], 401);
+                'error' => "unauthorized"], 401);
         } else if($user->type != 'admin') {
             return response()->json([
                 'data'=>[],
@@ -209,7 +209,7 @@ class MapsController extends Controller
         if($user == null){
             return response()->json([
                 'data'=>[],
-                'error' => "authentication required"], 401);
+                'error' => "unauthorized"], 401);
         } else if($user->type != 'admin') {
             return response()->json([
                 'data'=>[],
