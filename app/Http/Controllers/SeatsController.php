@@ -20,7 +20,7 @@ class SeatsController extends Controller
     {
         $seats = new SeatCollection(Classroom::paginate(10));
 
-        if($seats>isEmpty()){
+        if($seats->isEmpty()){
             $seats->additional(['error' => 'No seat was found!']);
 
             return $seats->response()->setStatusCode(200);

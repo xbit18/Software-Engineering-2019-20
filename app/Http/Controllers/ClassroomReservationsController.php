@@ -37,7 +37,7 @@ class ClassroomReservationsController extends Controller
 
         if($classroomsreservations->isEmpty()){
             $classroomsreservationsCollection = new ClassroomReservationCollection([]);
-            $classroomsreservationsCollection->additional(['error' => 'No reservation was found for this classroom!']);
+            $classroomsreservationsCollection->additional(['error' => 'No reservation were found!']);
 
             return $classroomsreservationsCollection->response()->setStatusCode(200);
         }
@@ -195,7 +195,7 @@ class ClassroomReservationsController extends Controller
      * @return \Illuminate\Http\JsonResponse
      *
      */
-    public function state($id_classroomsreservation, Request $request){
+    public function state($id, Request $request){
         $user = auth()->user();
 
         if($user == null){
