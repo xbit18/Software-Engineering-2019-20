@@ -81,7 +81,7 @@ Route::get('/maps','MapsController@index');                                     
 
 Route::post('/maps','MapsController@store');                                      //Salva la nuova map aggiunta
 
-Route::put('/maps/{map}','MapsController@update');                   //Registra le modifiche alla map
+Route::post('/maps/{map}/update','MapsController@update');                   //Registra le modifiche alla map
 
 Route::get('/maps/{map}/delete','MapsController@destroy');                       //Cancella la map
 
