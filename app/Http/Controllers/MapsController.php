@@ -168,9 +168,18 @@ class MapsController extends Controller
                 return $map->response()->setStatusCode(415);
             }
 
-            $path = $request->file('map')->store('img');
+            $request->file('map');
+            $extension = $request->file('map')->extension();
 
-            $map->floor_map = $path;
+            $name = "building" . $request->building_id . "floor". $request->floor . "." . $extension;
+
+            Storage::delete($map->floor_map);
+
+            $path = $request->map->storeAs('public', $name);
+
+            $url = Storage::url($name);
+
+            $map->floor_map = $url;
             $map->floor = $request->floor;
             $map->building_id = $request->building_id;
 
