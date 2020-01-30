@@ -22,7 +22,7 @@
         <img
           title="mappa"
           alter="mappa"
-          v-bind:src="'http://localhost/progetto%20ingegneria%20software/storage/app/'+srcImg"
+          v-bind:src="'http://127.0.0.1:8000'+srcImg"
         />
       </div>
     </aside>
