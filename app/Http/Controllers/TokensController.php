@@ -52,10 +52,6 @@ class TokensController extends Controller
             $userResource = new UserResource([]);
             $userResource->additional(['error' => "unauthorized"]);         //L'utente non è autenticato
             return $userResource->response()->setStatusCode(401);
-        } else if($user->type != 'admin') {
-            $userResource = new UserResource([]);
-            $userResource->additional(['error' => "forbidden"]);            //L'utente non ha i permessi giusti
-            return $userResource->response()->setStatusCode(403);
         }
 
         $token = Token::where('classroom_id', $classroom_id)->first();
