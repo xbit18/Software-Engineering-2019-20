@@ -28,7 +28,7 @@ export default {
               this.file != undefined
             ) {
               const formData = new FormData();
-              formData.append("mappa", this.file);
+              formData.append("map", this.file);
               formData.append("floor", this.mappa.floor);
               formData.append("building_id", this.mappa.building_id);
               axios
