@@ -27,6 +27,5 @@
       color: #2c3e50;
       margin-top: 60px;
     }*/
-
     @import url('./assets/css/styles.css');
 </style>
