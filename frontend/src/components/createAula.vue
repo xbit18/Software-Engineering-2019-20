@@ -32,6 +32,7 @@ export default {
           }
         })
         .catch(() => {
+          
           swal({
             text: "L'aula non è stata creata",
             icon: "warning"

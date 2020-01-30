@@ -41,7 +41,7 @@ Route::get('/buildings/{building}','BuildingsController@show');                 
 
 Route::put('/buildings/{building}','BuildingsController@update');                       //Update salva le modifiche
 
-Route::get('/buildings/aule/{building}','BuildingsController@aule');
+Route::get('/buildings/classrooms/{building}','BuildingsController@classrooms');
 
 
 
@@ -81,7 +81,7 @@ Route::get('/maps','MapsController@index');                                     
 
 Route::post('/maps','MapsController@store');                                      //Salva la nuova map aggiunta
 
-Route::post('/maps/{edificio}/{piano}','MapsController@update');                   //Registra le modifiche alla map
+Route::put('/maps/{map}','MapsController@update');                   //Registra le modifiche alla map
 
 Route::get('/maps/{map}/delete','MapsController@destroy');                       //Cancella la map
 
