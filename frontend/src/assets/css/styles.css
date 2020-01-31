@@ -162,6 +162,27 @@ h2{
 
 }
 
+.aule {
+    margin-top: 20px;
+    margin-left: 250px;
+    padding: 20px 0px 10px 10px;
+    font-family:Arial, sans-serif;
+    font-size:18px;
+    font-style: italic;
+    color: #822627;
+    text-decoration: underline;
+}
+
+.mappa {
+    margin-top: 20px;
+    padding: 20px 0px 10px 10px;
+    font-family:Arial, sans-serif;
+    font-size:18px;
+    font-style: italic;
+    color: #822627;
+    text-decoration: underline;
+}
+
 .clearfix{
     clear: both;
     float: none;
@@ -186,10 +207,9 @@ h2{
     border-collapse:collapse;
     border-spacing:0;
     border: 1px solid black;
-    margin-left: 5px;
+    margin-left: 100px;
     margin-top: 30px;
     margin-right: 0px;
-    width: 100%;
 }
 
 .tg td{
@@ -304,11 +324,11 @@ h2{
 
 #img-wrap img{
     display: block;
-    width:250px;
+    width:500px;
     border: 1px solid black;
     position: fixed;
-    top: 41%;
-    left: 78%;
+    top: 20%;
+    left: 65%;
 }
 
 #top{
@@ -351,7 +371,7 @@ nav div {
     cursor: pointer;
   }
   .bm-burger-bars {
-    background-color: black;
+    background-color: white;
   }
   .line-style {
     position: absolute;

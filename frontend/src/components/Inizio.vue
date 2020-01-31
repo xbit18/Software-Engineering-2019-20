@@ -1,7 +1,7 @@
 <template>
   <div>
     <section class="lista" v-if="listAule.length > 0">
-      <div class="title">
+      <div class="aule">
         <h1>Visualizza Aule Disponibili</h1>
       </div>
       <Aule inizio="true" :listAule="listAule"></Aule>
@@ -15,7 +15,7 @@
     <!-- Sidebar -->
 
     <aside id="sidebar mappa" v-if="srcImg != null && srcImg != '' && show">
-      <div class="title">
+      <div class="mappa">
         <h2>Mappa</h2>
       </div>
       <div id="img-wrap">

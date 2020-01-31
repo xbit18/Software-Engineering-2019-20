@@ -56,6 +56,31 @@ class ClassroomReservationsController extends Controller
 
         return $classroomsreservationsCollection->response()->setStatusCode(200);
         }
+
+    public function indexOwn()
+    {
+        $user = auth()->user();
+
+        if ($user == null) {
+            return response()->json([
+                'data' => [],
+                'error' => "unauthorized"
+            ], 401);
+        } else if ($user->type != 'admin' and $user->type != 'teacher') {
+            $userResource = new UserResource([]);
+            $userResource->additional(['error' => "forbidden"]);            //L'utente non ha i permessi giusti
+            return $userResource->response()->setStatusCode(403);
+        }
+
+        $classroomsreservations = ClassroomReservation::where('user_id',$user->id)->get();
+
+        if ($classroomsreservations->isEmpty()) {
+            $classroomsreservationsCollection = new ClassroomReservationCollection([]);
+            $classroomsreservationsCollection->additional(['error' => 'No reservation were found!']);
+
+            return $classroomsreservationsCollection->response()->setStatusCode(200);
+        }
+    }
     /**
      * Store a newly created resource in storage.
      *

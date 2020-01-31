@@ -100,6 +100,8 @@ Route::get('/maps/{building}/{floor}','MapsController@showWithFloorAndBuilding')
 
 Route::get('/classroomreservations','ClassroomReservationsController@index');                         //Mostra tutte le classroomreservations
 
+Route::get('/classroomreservations/me','ClassroomReservationsController@indexOwn');
+
 Route::post('/classroomreservations','ClassroomReservationsController@store');         //Registra la nuova prenotazione
 
 Route::get('/classroomreservations/{classroomreservation}','ClassroomReservationsController@show');           //Mostra una classroomreservation

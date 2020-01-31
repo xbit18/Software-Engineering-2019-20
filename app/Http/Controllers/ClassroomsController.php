@@ -28,7 +28,7 @@ class ClassroomsController extends Controller
      */
     public function index()
     {
-        $classrooms = new ClassroomCollection(Classroom::paginate(10));
+        $classrooms = new ClassroomCollection(Classroom::orderBy('code','asc')->paginate(10));
 
         if($classrooms->isEmpty()){
             $classrooms->additional(['error' => 'No classroom was found!']);
@@ -265,6 +265,11 @@ class ClassroomsController extends Controller
             }
 
             $classroom->state = $request->state;
+            if($request->state == 'open'){
+                $classroom->availability = 'available';
+            } else if($request->state == 'closed'){
+                $classroom->availability = 'not available';
+            }
             $classroom->save();
 
             $classroomResource = new ClassroomResource($classroom);
