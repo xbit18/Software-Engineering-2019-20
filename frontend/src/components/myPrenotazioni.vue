@@ -31,7 +31,7 @@ export default {
         getPrenotazioni(){
             axios.get('http://127.0.0.1:8000/api/classroomreservations/me')
             .then(res =>{
-                console.log(res);
+                console.log(res)
                 this.listPrenotazioni = res.data.data
             })
         }

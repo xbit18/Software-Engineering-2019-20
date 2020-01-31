@@ -163,7 +163,8 @@ export default {
             this.image = res.data.data.floor_map;
             this.address = res.data.data.address;
             this.show = true;
-            bus.$emit("imgSend", { img: this.image, addres: this.address, show: this.show });
+            console.log(this.address)
+            bus.$emit("imgSend", { img: this.image, address: this.address, show: this.show });
           })
 
           .catch(() => {
