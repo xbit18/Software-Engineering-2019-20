@@ -22,7 +22,7 @@
           <td class="tg td">{{aula.type}}</td>
           <td class="tg td">{{aula.availability}}</td>
           <td class="tg td">
-            <button class="button" @click="showMap(aula.building_id,aula.floor)">Mappa</button>
+            <button class="button" @click="showMap(aula.building_id,aula.floor,aula.building_name)">Mappa</button>
           </td>
         </tr>
       </tbody>
@@ -154,16 +154,15 @@ export default {
   },
   props: ["listAule", "waiting", "gestisce","inizio"],
   methods: {
-    showMap(building, floor) {
+    showMap(building, floor,building_name) {
       if (!this.show) {
         axios
           .get(`http://127.0.0.1:8000/api/maps/${building}/${floor}`)
           .then(res => {
             console.log(res);
             this.image = res.data.data.floor_map;
-            this.address = res.data.data.address;
+            this.address = building_name + " piano " + floor + ", " + res.data.data.address;
             this.show = true;
-            console.log(this.address)
             bus.$emit("imgSend", { img: this.image, address: this.address, show: this.show });
           })
 
