@@ -105,15 +105,19 @@ class MapsController extends Controller
      */
      public function showWithFloorAndBuilding($building_id, $floor)
      {
-         $map= new MapResource(Map::where('building_id',$building_id)->where('floor',$floor)->first());
-        if($map->resource == null){
-            $map->additional(['error' => 'Map not found!']);
+         $map= Map::where('building_id',$building_id)->where('floor',$floor)->first();
+         $building = Building::find($building_id);
+         $map['address'] = $building->address;
 
-            return $map->response()->setStatusCode(200);
+         $mapResource = new MapResource($map);
+        if($mapResource->resource == null){
+            $mapResource->additional(['error' => 'Map not found!']);
+
+            return $mapResource->response()->setStatusCode(200);
         } else {
-            $map->additional(['error' => null]);
+            $mapResource->additional(['error' => null]);
         }
-         return $map->response()->setStatusCode(200);
+         return $mapResource->response()->setStatusCode(200);
      }
 
     public function show($id)
