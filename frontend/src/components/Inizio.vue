@@ -23,9 +23,9 @@
           title="mappa"
           alter="mappa"
           v-bind:src="'http://127.0.0.1:8000'+srcImg"
-        />      
+        />
         </div>
-        <p>{{address}}</p>
+        <p id="dati">{{address}}</p>
 
     </aside>
 
