@@ -23,8 +23,10 @@
           title="mappa"
           alter="mappa"
           v-bind:src="'http://127.0.0.1:8000'+srcImg"
-        />
-      </div>
+        />      
+        </div>
+        <p>{{address}}</p>
+
     </aside>
 
     <aside v-else></aside>
@@ -47,6 +49,7 @@ export default {
     return {
       listAule: "",
       srcImg: "null",
+      address: null,
       show: false
     };
   },
@@ -64,8 +67,8 @@ export default {
   created() {
     bus.$on("imgSend", data => {
       this.srcImg = data.img;
-      console.log(this.srcImg);
       this.show = data.show;
+      this.address = data.address;
     });
     bus.$on("toggle", data => {
       this.show = data;

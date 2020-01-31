@@ -149,6 +149,7 @@ export default {
     return {
       image: null,
       show: false,
+      address: null,
     };
   },
   props: ["listAule", "waiting", "gestisce","inizio"],
@@ -160,8 +161,9 @@ export default {
           .then(res => {
             console.log(res);
             this.image = res.data.data.floor_map;
+            this.address = res.data.data.address;
             this.show = true;
-            bus.$emit("imgSend", { img: this.image, show: this.show });
+            bus.$emit("imgSend", { img: this.image, addres: this.address, show: this.show });
           })
 
           .catch(() => {
