@@ -1,0 +1,251 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1580477917366,318,HTTP Request,201,Created,check-in 1-6,text,true,,552,583,121,121,http://127.0.0.1:8000/api/checkin,315,0,17
+1580477917358,521,HTTP Request,201,Created,check-in 1-38,text,true,,552,583,175,175,http://127.0.0.1:8000/api/checkin,519,0,25
+1580477917374,711,HTTP Request,201,Created,check-in 1-11,text,true,,552,583,225,225,http://127.0.0.1:8000/api/checkin,708,0,9
+1580477917361,902,HTTP Request,201,Created,check-in 1-5,text,true,,552,583,247,247,http://127.0.0.1:8000/api/checkin,900,0,22
+1580477917356,1083,HTTP Request,201,Created,check-in 1-32,text,true,,552,583,246,246,http://127.0.0.1:8000/api/checkin,1081,0,27
+1580477917376,1256,HTTP Request,201,Created,check-in 1-30,text,true,,552,583,245,245,http://127.0.0.1:8000/api/checkin,1254,0,7
+1580477917374,1443,HTTP Request,201,Created,check-in 1-12,text,true,,552,583,244,244,http://127.0.0.1:8000/api/checkin,1442,0,10
+1580477917366,1627,HTTP Request,201,Created,check-in 1-41,text,true,,552,583,243,243,http://127.0.0.1:8000/api/checkin,1623,0,19
+1580477917365,1821,HTTP Request,201,Created,check-in 1-22,text,true,,552,583,242,242,http://127.0.0.1:8000/api/checkin,1820,0,20
+1580477917370,2010,HTTP Request,201,Created,check-in 1-7,text,true,,552,583,241,241,http://127.0.0.1:8000/api/checkin,2008,0,16
+1580477917365,2218,HTTP Request,201,Created,check-in 1-21,text,true,,552,583,240,240,http://127.0.0.1:8000/api/checkin,2216,0,21
+1580477917373,2406,HTTP Request,201,Created,check-in 1-24,text,true,,552,583,239,239,http://127.0.0.1:8000/api/checkin,2405,0,13
+1580477917367,2600,HTTP Request,201,Created,check-in 1-33,text,true,,552,583,238,238,http://127.0.0.1:8000/api/checkin,2599,0,20
+1580477917989,2006,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,check-in 1-205,text,false,,2789,0,237,237,http://127.0.0.1:8000/api/checkin,0,0,2006
+1580477917374,2778,HTTP Request,201,Created,check-in 1-9,text,true,,552,583,236,236,http://127.0.0.1:8000/api/checkin,2777,0,13
+1580477918007,2187,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,check-in 1-210,text,false,,2789,0,235,235,http://127.0.0.1:8000/api/checkin,0,0,2187
+1580477917996,2198,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,check-in 1-207,text,false,,2789,0,234,234,http://127.0.0.1:8000/api/checkin,0,0,2198
+1580477918068,2222,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,check-in 1-226,text,false,,2789,0,233,233,http://127.0.0.1:8000/api/checkin,0,0,2222
+1580477918087,2203,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,check-in 1-228,text,false,,2789,0,233,233,http://127.0.0.1:8000/api/checkin,0,0,2203
+1580477917993,2312,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,check-in 1-206,text,false,,2789,0,232,232,http://127.0.0.1:8000/api/checkin,0,0,2312
+1580477918020,2285,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,check-in 1-213,text,false,,2789,0,232,232,http://127.0.0.1:8000/api/checkin,0,0,2285
+1580477918015,2291,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,check-in 1-212,text,false,,2789,0,231,231,http://127.0.0.1:8000/api/checkin,0,0,2291
+1580477918061,2244,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,check-in 1-224,text,false,,2789,0,232,232,http://127.0.0.1:8000/api/checkin,0,0,2244
+1580477918038,2253,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,check-in 1-218,text,false,,2789,0,230,230,http://127.0.0.1:8000/api/checkin,0,0,2253
+1580477918026,2281,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,check-in 1-215,text,false,,2789,0,229,229,http://127.0.0.1:8000/api/checkin,0,0,2281
+1580477918053,2237,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,check-in 1-222,text,false,,2789,0,232,232,http://127.0.0.1:8000/api/checkin,0,0,2237
+1580477918078,2222,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,check-in 1-227,text,false,,2789,0,225,225,http://127.0.0.1:8000/api/checkin,0,0,2222
+1580477918030,2275,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,check-in 1-216,text,false,,2789,0,225,225,http://127.0.0.1:8000/api/checkin,0,0,2275
+1580477918050,2250,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,check-in 1-221,text,false,,2789,0,222,222,http://127.0.0.1:8000/api/checkin,0,0,2250
+1580477917999,2306,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,check-in 1-208,text,false,,2789,0,222,222,http://127.0.0.1:8000/api/checkin,0,0,2306
+1580477918003,2305,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,check-in 1-209,text,false,,2789,0,222,222,http://127.0.0.1:8000/api/checkin,0,0,2305
+1580477918011,2294,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,check-in 1-211,text,false,,2789,0,219,219,http://127.0.0.1:8000/api/checkin,0,0,2294
+1580477918034,2271,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,check-in 1-217,text,false,,2789,0,219,219,http://127.0.0.1:8000/api/checkin,0,0,2271
+1580477918022,2283,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,check-in 1-214,text,false,,2789,0,218,218,http://127.0.0.1:8000/api/checkin,0,0,2283
+1580477918042,2249,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,check-in 1-219,text,false,,2789,0,219,219,http://127.0.0.1:8000/api/checkin,0,0,2249
+1580477918046,2259,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,check-in 1-220,text,false,,2789,0,215,215,http://127.0.0.1:8000/api/checkin,0,0,2259
+1580477918065,2235,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,check-in 1-225,text,false,,2789,0,215,215,http://127.0.0.1:8000/api/checkin,0,0,2235
+1580477918092,2208,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,check-in 1-230,text,false,,2789,0,214,214,http://127.0.0.1:8000/api/checkin,0,0,2208
+1580477918057,2248,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,check-in 1-223,text,false,,2789,0,215,215,http://127.0.0.1:8000/api/checkin,0,0,2248
+1580477918103,2197,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,check-in 1-233,text,false,,2789,0,211,211,http://127.0.0.1:8000/api/checkin,0,0,2197
+1580477918088,2227,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,check-in 1-229,text,false,,2789,0,211,211,http://127.0.0.1:8000/api/checkin,0,0,2212
+1580477918107,2193,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,check-in 1-234,text,false,,2789,0,210,210,http://127.0.0.1:8000/api/checkin,0,0,2193
+1580477918119,2181,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,check-in 1-237,text,false,,2789,0,208,208,http://127.0.0.1:8000/api/checkin,0,0,2181
+1580477918164,2135,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,check-in 1-249,text,false,,2789,0,208,208,http://127.0.0.1:8000/api/checkin,0,0,2135
+1580477918126,2174,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,check-in 1-239,text,false,,2789,0,208,208,http://127.0.0.1:8000/api/checkin,0,0,2174
+1580477918168,2131,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,check-in 1-250,text,false,,2789,0,205,205,http://127.0.0.1:8000/api/checkin,0,0,2131
+1580477918141,2158,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,check-in 1-243,text,false,,2789,0,205,205,http://127.0.0.1:8000/api/checkin,0,0,2158
+1580477918153,2147,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,check-in 1-246,text,false,,2789,0,205,205,http://127.0.0.1:8000/api/checkin,0,0,2147
+1580477918129,2171,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,check-in 1-240,text,false,,2789,0,202,202,http://127.0.0.1:8000/api/checkin,0,0,2171
+1580477918145,2154,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,check-in 1-244,text,false,,2789,0,202,202,http://127.0.0.1:8000/api/checkin,0,0,2154
+1580477917370,2985,HTTP Request,201,Created,check-in 1-31,text,true,,552,583,200,200,http://127.0.0.1:8000/api/checkin,2983,0,17
+1580477918122,2268,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,check-in 1-238,text,false,,2789,0,199,199,http://127.0.0.1:8000/api/checkin,0,0,2268
+1580477918149,2242,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,check-in 1-245,text,false,,2789,0,199,199,http://127.0.0.1:8000/api/checkin,0,0,2242
+1580477918115,2276,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,check-in 1-236,text,false,,2789,0,198,198,http://127.0.0.1:8000/api/checkin,0,0,2276
+1580477918156,2234,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,check-in 1-247,text,false,,2789,0,197,197,http://127.0.0.1:8000/api/checkin,0,0,2234
+1580477918096,2295,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,check-in 1-231,text,false,,2789,0,198,198,http://127.0.0.1:8000/api/checkin,0,0,2295
+1580477918111,2279,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,check-in 1-235,text,false,,2789,0,194,194,http://127.0.0.1:8000/api/checkin,0,0,2279
+1580477918137,2253,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,check-in 1-242,text,false,,2789,0,193,193,http://127.0.0.1:8000/api/checkin,0,0,2253
+1580477918099,2300,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,check-in 1-232,text,false,,2789,0,192,192,http://127.0.0.1:8000/api/checkin,0,0,2300
+1580477918133,2266,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,check-in 1-241,text,false,,2789,0,191,191,http://127.0.0.1:8000/api/checkin,0,0,2266
+1580477918160,2239,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,check-in 1-248,text,false,,2789,0,190,190,http://127.0.0.1:8000/api/checkin,0,0,2239
+1580477917374,3176,HTTP Request,201,Created,check-in 1-37,text,true,,552,583,189,189,http://127.0.0.1:8000/api/checkin,3174,0,13
+1580477917366,3361,HTTP Request,201,Created,check-in 1-28,text,true,,552,583,188,188,http://127.0.0.1:8000/api/checkin,3358,0,22
+1580477917374,3521,HTTP Request,201,Created,check-in 1-1,text,true,,552,583,187,187,http://127.0.0.1:8000/api/checkin,3518,0,14
+1580477917368,3693,HTTP Request,201,Created,check-in 1-16,text,true,,552,583,186,186,http://127.0.0.1:8000/api/checkin,3688,0,20
+1580477917370,3863,HTTP Request,201,Created,check-in 1-15,text,true,,552,583,185,185,http://127.0.0.1:8000/api/checkin,3860,0,19
+1580477917372,4034,HTTP Request,201,Created,check-in 1-43,text,true,,552,583,184,184,http://127.0.0.1:8000/api/checkin,4032,0,17
+1580477917376,4203,HTTP Request,201,Created,check-in 1-26,text,true,,552,583,183,183,http://127.0.0.1:8000/api/checkin,4201,0,13
+1580477917366,4383,HTTP Request,201,Created,check-in 1-8,text,true,,552,583,182,182,http://127.0.0.1:8000/api/checkin,4381,0,23
+1580477917361,4559,HTTP Request,201,Created,check-in 1-18,text,true,,552,583,181,181,http://127.0.0.1:8000/api/checkin,4557,0,29
+1580477917371,4723,HTTP Request,201,Created,check-in 1-42,text,true,,552,583,180,180,http://127.0.0.1:8000/api/checkin,4720,0,20
+1580477917376,4892,HTTP Request,201,Created,check-in 1-29,text,true,,552,583,179,179,http://127.0.0.1:8000/api/checkin,4889,0,15
+1580477917376,5090,HTTP Request,201,Created,check-in 1-14,text,true,,552,583,178,178,http://127.0.0.1:8000/api/checkin,5088,0,15
+1580477917367,5279,HTTP Request,201,Created,check-in 1-35,text,true,,552,583,177,177,http://127.0.0.1:8000/api/checkin,5277,0,24
+1580477917371,5454,HTTP Request,201,Created,check-in 1-34,text,true,,552,583,176,176,http://127.0.0.1:8000/api/checkin,5451,0,20
+1580477917375,5622,HTTP Request,201,Created,check-in 1-20,text,true,,552,583,175,175,http://127.0.0.1:8000/api/checkin,5620,0,17
+1580477917370,5802,HTTP Request,201,Created,check-in 1-13,text,true,,552,583,174,174,http://127.0.0.1:8000/api/checkin,5797,0,22
+1580477917375,5969,HTTP Request,201,Created,check-in 1-17,text,true,,552,583,173,173,http://127.0.0.1:8000/api/checkin,5966,0,17
+1580477917375,6140,HTTP Request,201,Created,check-in 1-36,text,true,,552,583,172,172,http://127.0.0.1:8000/api/checkin,6138,0,18
+1580477917364,6314,HTTP Request,201,Created,check-in 1-27,text,true,,552,583,171,171,http://127.0.0.1:8000/api/checkin,6311,0,29
+1580477917375,6476,HTTP Request,201,Created,check-in 1-25,text,true,,552,583,170,170,http://127.0.0.1:8000/api/checkin,6473,0,18
+1580477917358,6664,HTTP Request,201,Created,check-in 1-39,text,true,,552,583,169,169,http://127.0.0.1:8000/api/checkin,6661,0,35
+1580477917361,6827,HTTP Request,201,Created,check-in 1-40,text,true,,552,583,168,168,http://127.0.0.1:8000/api/checkin,6825,0,33
+1580477917356,7007,HTTP Request,201,Created,check-in 1-19,text,true,,552,583,167,167,http://127.0.0.1:8000/api/checkin,7005,0,38
+1580477917370,7156,HTTP Request,201,Created,check-in 1-10,text,true,,552,583,166,166,http://127.0.0.1:8000/api/checkin,7153,0,24
+1580477917369,7329,HTTP Request,201,Created,check-in 1-23,text,true,,552,583,165,165,http://127.0.0.1:8000/api/checkin,7326,0,25
+1580477917378,7492,HTTP Request,201,Created,check-in 1-44,text,true,,552,583,164,164,http://127.0.0.1:8000/api/checkin,7490,0,17
+1580477917375,7670,HTTP Request,201,Created,check-in 1-4,text,true,,552,583,163,163,http://127.0.0.1:8000/api/checkin,7666,0,20
+1580477917375,7833,HTTP Request,201,Created,check-in 1-2,text,true,,552,583,162,162,http://127.0.0.1:8000/api/checkin,7830,0,20
+1580477917368,8011,HTTP Request,201,Created,check-in 1-3,text,true,,552,583,161,161,http://127.0.0.1:8000/api/checkin,8009,0,27
+1580477917396,8156,HTTP Request,201,Created,check-in 1-45,text,true,,552,583,160,160,http://127.0.0.1:8000/api/checkin,8154,0,1
+1580477917398,8316,HTTP Request,201,Created,check-in 1-46,text,true,,552,583,159,159,http://127.0.0.1:8000/api/checkin,8314,0,1
+1580477917400,8490,HTTP Request,201,Created,check-in 1-48,text,true,,552,583,158,158,http://127.0.0.1:8000/api/checkin,8485,0,0
+1580477917400,8662,HTTP Request,201,Created,check-in 1-47,text,true,,552,583,157,157,http://127.0.0.1:8000/api/checkin,8660,0,1
+1580477917402,8832,HTTP Request,201,Created,check-in 1-49,text,true,,552,583,156,156,http://127.0.0.1:8000/api/checkin,8829,0,1
+1580477917403,9003,HTTP Request,201,Created,check-in 1-50,text,true,,552,583,155,155,http://127.0.0.1:8000/api/checkin,9001,0,1
+1580477917407,9182,HTTP Request,201,Created,check-in 1-51,text,true,,552,583,154,154,http://127.0.0.1:8000/api/checkin,9180,0,2
+1580477917413,9350,HTTP Request,201,Created,check-in 1-52,text,true,,552,583,153,153,http://127.0.0.1:8000/api/checkin,9347,0,1
+1580477917416,9522,HTTP Request,201,Created,check-in 1-53,text,true,,552,583,152,152,http://127.0.0.1:8000/api/checkin,9520,0,2
+1580477917420,9692,HTTP Request,201,Created,check-in 1-54,text,true,,552,583,151,151,http://127.0.0.1:8000/api/checkin,9689,0,1
+1580477917423,9865,HTTP Request,201,Created,check-in 1-55,text,true,,552,583,150,150,http://127.0.0.1:8000/api/checkin,9862,0,1
+1580477917427,10033,HTTP Request,201,Created,check-in 1-56,text,true,,552,583,149,149,http://127.0.0.1:8000/api/checkin,10031,0,1
+1580477917429,10193,HTTP Request,201,Created,check-in 1-57,text,true,,552,583,148,148,http://127.0.0.1:8000/api/checkin,10191,0,1
+1580477917432,10362,HTTP Request,201,Created,check-in 1-58,text,true,,552,583,147,147,http://127.0.0.1:8000/api/checkin,10359,0,1
+1580477917439,10517,HTTP Request,201,Created,check-in 1-59,text,true,,552,583,146,146,http://127.0.0.1:8000/api/checkin,10515,0,0
+1580477917445,10686,HTTP Request,201,Created,check-in 1-60,text,true,,552,583,145,145,http://127.0.0.1:8000/api/checkin,10683,0,0
+1580477917448,10857,HTTP Request,201,Created,check-in 1-61,text,true,,552,583,144,144,http://127.0.0.1:8000/api/checkin,10855,0,1
+1580477917452,11028,HTTP Request,201,Created,check-in 1-62,text,true,,552,583,143,143,http://127.0.0.1:8000/api/checkin,11023,0,1
+1580477917456,11196,HTTP Request,201,Created,check-in 1-63,text,true,,552,583,142,142,http://127.0.0.1:8000/api/checkin,11193,0,2
+1580477917461,11363,HTTP Request,201,Created,check-in 1-64,text,true,,552,583,141,141,http://127.0.0.1:8000/api/checkin,11360,0,1
+1580477917464,11531,HTTP Request,201,Created,check-in 1-65,text,true,,552,583,140,140,http://127.0.0.1:8000/api/checkin,11529,0,1
+1580477917468,11700,HTTP Request,201,Created,check-in 1-66,text,true,,552,583,139,139,http://127.0.0.1:8000/api/checkin,11697,0,1
+1580477917472,11861,HTTP Request,201,Created,check-in 1-67,text,true,,552,583,138,138,http://127.0.0.1:8000/api/checkin,11859,0,1
+1580477917476,12031,HTTP Request,201,Created,check-in 1-68,text,true,,552,583,137,137,http://127.0.0.1:8000/api/checkin,12028,0,1
+1580477917486,12198,HTTP Request,201,Created,check-in 1-69,text,true,,552,583,136,136,http://127.0.0.1:8000/api/checkin,12195,0,1
+1580477917489,12370,HTTP Request,201,Created,check-in 1-70,text,true,,552,583,135,135,http://127.0.0.1:8000/api/checkin,12367,0,1
+1580477917492,12531,HTTP Request,201,Created,check-in 1-71,text,true,,552,583,134,134,http://127.0.0.1:8000/api/checkin,12528,0,1
+1580477917494,12710,HTTP Request,201,Created,check-in 1-72,text,true,,552,583,133,133,http://127.0.0.1:8000/api/checkin,12709,0,1
+1580477917499,12876,HTTP Request,201,Created,check-in 1-73,text,true,,552,583,132,132,http://127.0.0.1:8000/api/checkin,12874,0,0
+1580477917501,13040,HTTP Request,201,Created,check-in 1-74,text,true,,552,583,131,131,http://127.0.0.1:8000/api/checkin,13039,0,1
+1580477917509,13212,HTTP Request,201,Created,check-in 1-75,text,true,,552,583,130,130,http://127.0.0.1:8000/api/checkin,13210,0,2
+1580477917514,13393,HTTP Request,201,Created,check-in 1-76,text,true,,552,583,129,129,http://127.0.0.1:8000/api/checkin,13391,0,1
+1580477917516,13577,HTTP Request,201,Created,check-in 1-77,text,true,,552,583,128,128,http://127.0.0.1:8000/api/checkin,13576,0,0
+1580477917518,13749,HTTP Request,201,Created,check-in 1-78,text,true,,552,583,127,127,http://127.0.0.1:8000/api/checkin,13747,0,1
+1580477917519,13925,HTTP Request,201,Created,check-in 1-79,text,true,,552,583,126,126,http://127.0.0.1:8000/api/checkin,13923,0,1
+1580477917523,14092,HTTP Request,201,Created,check-in 1-80,text,true,,552,583,125,125,http://127.0.0.1:8000/api/checkin,14090,0,1
+1580477917527,14252,HTTP Request,201,Created,check-in 1-81,text,true,,552,583,124,124,http://127.0.0.1:8000/api/checkin,14250,0,1
+1580477917530,14420,HTTP Request,201,Created,check-in 1-82,text,true,,552,583,123,123,http://127.0.0.1:8000/api/checkin,14418,0,1
+1580477917536,14581,HTTP Request,201,Created,check-in 1-83,text,true,,552,583,122,122,http://127.0.0.1:8000/api/checkin,14579,0,1
+1580477917544,14741,HTTP Request,201,Created,check-in 1-85,text,true,,552,583,121,121,http://127.0.0.1:8000/api/checkin,14739,0,1
+1580477917546,14923,HTTP Request,201,Created,check-in 1-84,text,true,,552,583,120,120,http://127.0.0.1:8000/api/checkin,14922,0,1
+1580477917548,15109,HTTP Request,201,Created,check-in 1-86,text,true,,552,583,119,119,http://127.0.0.1:8000/api/checkin,15108,0,1
+1580477917552,15275,HTTP Request,201,Created,check-in 1-87,text,true,,552,583,118,118,http://127.0.0.1:8000/api/checkin,15274,0,1
+1580477917556,15446,HTTP Request,201,Created,check-in 1-88,text,true,,552,583,117,117,http://127.0.0.1:8000/api/checkin,15444,0,1
+1580477917559,15634,HTTP Request,201,Created,check-in 1-89,text,true,,552,583,116,116,http://127.0.0.1:8000/api/checkin,15632,0,1
+1580477917563,15799,HTTP Request,201,Created,check-in 1-90,text,true,,552,583,115,115,http://127.0.0.1:8000/api/checkin,15797,0,1
+1580477917568,15973,HTTP Request,201,Created,check-in 1-91,text,true,,552,583,114,114,http://127.0.0.1:8000/api/checkin,15971,0,1
+1580477917576,16151,HTTP Request,201,Created,check-in 1-93,text,true,,552,583,113,113,http://127.0.0.1:8000/api/checkin,16149,0,1
+1580477917578,16319,HTTP Request,201,Created,check-in 1-92,text,true,,552,583,112,112,http://127.0.0.1:8000/api/checkin,16318,0,1
+1580477917580,16513,HTTP Request,201,Created,check-in 1-94,text,true,,552,583,111,111,http://127.0.0.1:8000/api/checkin,16511,0,0
+1580477917582,16693,HTTP Request,201,Created,check-in 1-95,text,true,,552,583,110,110,http://127.0.0.1:8000/api/checkin,16691,0,1
+1580477917591,16860,HTTP Request,201,Created,check-in 1-97,text,true,,552,583,109,109,http://127.0.0.1:8000/api/checkin,16859,0,1
+1580477917592,17027,HTTP Request,201,Created,check-in 1-96,text,true,,552,583,108,108,http://127.0.0.1:8000/api/checkin,17026,0,1
+1580477917595,17192,HTTP Request,201,Created,check-in 1-98,text,true,,552,583,107,107,http://127.0.0.1:8000/api/checkin,17191,0,1
+1580477917603,17358,HTTP Request,201,Created,check-in 1-99,text,true,,552,583,106,106,http://127.0.0.1:8000/api/checkin,17357,0,1
+1580477917605,17539,HTTP Request,201,Created,check-in 1-100,text,true,,552,583,105,105,http://127.0.0.1:8000/api/checkin,17537,0,1
+1580477917610,17715,HTTP Request,201,Created,check-in 1-101,text,true,,552,583,104,104,http://127.0.0.1:8000/api/checkin,17714,0,1
+1580477917611,17885,HTTP Request,201,Created,check-in 1-102,text,true,,552,583,103,103,http://127.0.0.1:8000/api/checkin,17884,0,1
+1580477917615,18060,HTTP Request,201,Created,check-in 1-103,text,true,,552,583,102,102,http://127.0.0.1:8000/api/checkin,18058,0,1
+1580477917619,18234,HTTP Request,201,Created,check-in 1-104,text,true,,552,583,101,101,http://127.0.0.1:8000/api/checkin,18232,0,1
+1580477917622,18405,HTTP Request,201,Created,check-in 1-105,text,true,,552,583,100,100,http://127.0.0.1:8000/api/checkin,18403,0,1
+1580477917627,18576,HTTP Request,201,Created,check-in 1-106,text,true,,552,583,99,99,http://127.0.0.1:8000/api/checkin,18571,0,1
+1580477917631,18747,HTTP Request,201,Created,check-in 1-107,text,true,,552,583,98,98,http://127.0.0.1:8000/api/checkin,18746,0,1
+1580477917635,18923,HTTP Request,201,Created,check-in 1-108,text,true,,552,583,97,97,http://127.0.0.1:8000/api/checkin,18921,0,1
+1580477917639,19093,HTTP Request,201,Created,check-in 1-109,text,true,,552,583,96,96,http://127.0.0.1:8000/api/checkin,19091,0,1
+1580477917642,19271,HTTP Request,201,Created,check-in 1-110,text,true,,552,583,95,95,http://127.0.0.1:8000/api/checkin,19269,0,1
+1580477917646,19442,HTTP Request,201,Created,check-in 1-111,text,true,,552,583,94,94,http://127.0.0.1:8000/api/checkin,19440,0,1
+1580477917646,19621,HTTP Request,201,Created,check-in 1-113,text,true,,552,583,93,93,http://127.0.0.1:8000/api/checkin,19619,0,1
+1580477917650,19787,HTTP Request,201,Created,check-in 1-112,text,true,,552,583,92,92,http://127.0.0.1:8000/api/checkin,19785,0,1
+1580477917658,19959,HTTP Request,201,Created,check-in 1-116,text,true,,552,583,91,91,http://127.0.0.1:8000/api/checkin,19957,0,0
+1580477917658,20147,HTTP Request,201,Created,check-in 1-114,text,true,,552,583,90,90,http://127.0.0.1:8000/api/checkin,20145,0,0
+1580477917661,20318,HTTP Request,201,Created,check-in 1-115,text,true,,552,583,89,89,http://127.0.0.1:8000/api/checkin,20317,0,1
+1580477917661,20500,HTTP Request,201,Created,check-in 1-117,text,true,,552,583,88,88,http://127.0.0.1:8000/api/checkin,20499,0,1
+1580477917665,20672,HTTP Request,201,Created,check-in 1-118,text,true,,552,583,87,87,http://127.0.0.1:8000/api/checkin,20670,0,1
+1580477917669,20838,HTTP Request,201,Created,check-in 1-119,text,true,,552,583,86,86,http://127.0.0.1:8000/api/checkin,20835,0,1
+1580477917674,21009,HTTP Request,201,Created,check-in 1-120,text,true,,552,583,85,85,http://127.0.0.1:8000/api/checkin,21007,0,1
+1580477917680,21180,HTTP Request,201,Created,check-in 1-121,text,true,,552,583,84,84,http://127.0.0.1:8000/api/checkin,21179,0,1
+1580477917689,21343,HTTP Request,201,Created,check-in 1-122,text,true,,552,583,83,83,http://127.0.0.1:8000/api/checkin,21342,0,3
+1580477917692,21516,HTTP Request,201,Created,check-in 1-123,text,true,,552,583,82,82,http://127.0.0.1:8000/api/checkin,21514,0,2
+1580477917697,21680,HTTP Request,201,Created,check-in 1-125,text,true,,552,583,81,81,http://127.0.0.1:8000/api/checkin,21679,0,0
+1580477917698,21847,HTTP Request,201,Created,check-in 1-126,text,true,,552,583,80,80,http://127.0.0.1:8000/api/checkin,21845,0,1
+1580477917698,22016,HTTP Request,201,Created,check-in 1-124,text,true,,552,583,79,79,http://127.0.0.1:8000/api/checkin,22014,0,2
+1580477917700,22193,HTTP Request,201,Created,check-in 1-127,text,true,,552,583,78,78,http://127.0.0.1:8000/api/checkin,22191,0,1
+1580477917703,22362,HTTP Request,201,Created,check-in 1-128,text,true,,552,583,77,77,http://127.0.0.1:8000/api/checkin,22357,0,1
+1580477917706,22532,HTTP Request,201,Created,check-in 1-129,text,true,,552,583,76,76,http://127.0.0.1:8000/api/checkin,22530,0,1
+1580477917709,22699,HTTP Request,201,Created,check-in 1-130,text,true,,552,583,75,75,http://127.0.0.1:8000/api/checkin,22696,0,1
+1580477917710,22864,HTTP Request,201,Created,check-in 1-131,text,true,,552,583,74,74,http://127.0.0.1:8000/api/checkin,22859,0,1
+1580477917714,23036,HTTP Request,201,Created,check-in 1-132,text,true,,552,583,73,73,http://127.0.0.1:8000/api/checkin,23033,0,1
+1580477917717,23205,HTTP Request,201,Created,check-in 1-133,text,true,,552,583,72,72,http://127.0.0.1:8000/api/checkin,23203,0,1
+1580477917721,23378,HTTP Request,201,Created,check-in 1-134,text,true,,552,583,71,71,http://127.0.0.1:8000/api/checkin,23373,0,1
+1580477917725,23546,HTTP Request,201,Created,check-in 1-135,text,true,,552,583,70,70,http://127.0.0.1:8000/api/checkin,23544,0,1
+1580477917728,23704,HTTP Request,201,Created,check-in 1-136,text,true,,552,583,69,69,http://127.0.0.1:8000/api/checkin,23702,0,1
+1580477917731,23873,HTTP Request,201,Created,check-in 1-137,text,true,,552,583,68,68,http://127.0.0.1:8000/api/checkin,23870,0,1
+1580477917734,24045,HTTP Request,201,Created,check-in 1-138,text,true,,552,583,67,67,http://127.0.0.1:8000/api/checkin,24043,0,1
+1580477917737,24216,HTTP Request,201,Created,check-in 1-139,text,true,,552,583,66,66,http://127.0.0.1:8000/api/checkin,24213,0,1
+1580477917739,24377,HTTP Request,201,Created,check-in 1-140,text,true,,552,583,65,65,http://127.0.0.1:8000/api/checkin,24375,0,1
+1580477917743,24546,HTTP Request,201,Created,check-in 1-141,text,true,,552,583,64,64,http://127.0.0.1:8000/api/checkin,24543,0,1
+1580477917747,24717,HTTP Request,201,Created,check-in 1-142,text,true,,552,583,63,63,http://127.0.0.1:8000/api/checkin,24715,0,1
+1580477917750,24885,HTTP Request,201,Created,check-in 1-143,text,true,,552,583,62,62,http://127.0.0.1:8000/api/checkin,24883,0,1
+1580477917754,25056,HTTP Request,201,Created,check-in 1-144,text,true,,552,583,61,61,http://127.0.0.1:8000/api/checkin,25053,0,1
+1580477917757,25225,HTTP Request,201,Created,check-in 1-145,text,true,,552,583,60,60,http://127.0.0.1:8000/api/checkin,25222,0,1
+1580477917761,25395,HTTP Request,201,Created,check-in 1-146,text,true,,552,583,59,59,http://127.0.0.1:8000/api/checkin,25392,0,1
+1580477917765,25567,HTTP Request,201,Created,check-in 1-147,text,true,,552,583,58,58,http://127.0.0.1:8000/api/checkin,25564,0,1
+1580477917769,25738,HTTP Request,201,Created,check-in 1-148,text,true,,552,583,57,57,http://127.0.0.1:8000/api/checkin,25732,0,1
+1580477917772,25907,HTTP Request,201,Created,check-in 1-149,text,true,,552,583,56,56,http://127.0.0.1:8000/api/checkin,25905,0,1
+1580477917776,26075,HTTP Request,201,Created,check-in 1-150,text,true,,552,583,55,55,http://127.0.0.1:8000/api/checkin,26073,0,1
+1580477917779,26243,HTTP Request,201,Created,check-in 1-151,text,true,,552,583,54,54,http://127.0.0.1:8000/api/checkin,26241,0,1
+1580477917783,26415,HTTP Request,201,Created,check-in 1-152,text,true,,552,583,53,53,http://127.0.0.1:8000/api/checkin,26409,0,1
+1580477917787,26584,HTTP Request,201,Created,check-in 1-153,text,true,,552,583,52,52,http://127.0.0.1:8000/api/checkin,26582,0,1
+1580477917789,26757,HTTP Request,201,Created,check-in 1-154,text,true,,552,583,51,51,http://127.0.0.1:8000/api/checkin,26755,0,1
+1580477917793,26919,HTTP Request,201,Created,check-in 1-155,text,true,,552,583,50,50,http://127.0.0.1:8000/api/checkin,26916,0,1
+1580477917796,27090,HTTP Request,201,Created,check-in 1-156,text,true,,552,583,49,49,http://127.0.0.1:8000/api/checkin,27085,0,1
+1580477917799,27248,HTTP Request,201,Created,check-in 1-157,text,true,,552,583,48,48,http://127.0.0.1:8000/api/checkin,27246,0,1
+1580477917803,27417,HTTP Request,201,Created,check-in 1-158,text,true,,552,583,47,47,http://127.0.0.1:8000/api/checkin,27414,0,1
+1580477917807,27585,HTTP Request,201,Created,check-in 1-159,text,true,,552,583,46,46,http://127.0.0.1:8000/api/checkin,27582,0,1
+1580477917809,27754,HTTP Request,201,Created,check-in 1-160,text,true,,552,583,45,45,http://127.0.0.1:8000/api/checkin,27752,0,1
+1580477917813,27926,HTTP Request,201,Created,check-in 1-161,text,true,,552,583,44,44,http://127.0.0.1:8000/api/checkin,27923,0,1
+1580477917817,28096,HTTP Request,201,Created,check-in 1-162,text,true,,552,583,43,43,http://127.0.0.1:8000/api/checkin,28093,0,1
+1580477917820,28269,HTTP Request,201,Created,check-in 1-163,text,true,,552,583,42,42,http://127.0.0.1:8000/api/checkin,28266,0,1
+1580477917824,28439,HTTP Request,201,Created,check-in 1-164,text,true,,552,583,41,41,http://127.0.0.1:8000/api/checkin,28437,0,2
+1580477917828,28606,HTTP Request,201,Created,check-in 1-165,text,true,,552,583,40,40,http://127.0.0.1:8000/api/checkin,28603,0,0
+1580477917850,28757,HTTP Request,201,Created,check-in 1-167,text,true,,552,583,39,39,http://127.0.0.1:8000/api/checkin,28754,0,1
+1580477917853,28920,HTTP Request,201,Created,check-in 1-166,text,true,,552,583,38,38,http://127.0.0.1:8000/api/checkin,28918,0,1
+1580477917854,29080,HTTP Request,201,Created,check-in 1-168,text,true,,552,583,37,37,http://127.0.0.1:8000/api/checkin,29078,0,0
+1580477917858,29249,HTTP Request,201,Created,check-in 1-169,text,true,,552,583,36,36,http://127.0.0.1:8000/api/checkin,29246,0,1
+1580477917862,29418,HTTP Request,201,Created,check-in 1-170,text,true,,552,583,35,35,http://127.0.0.1:8000/api/checkin,29415,0,1
+1580477917866,29588,HTTP Request,201,Created,check-in 1-171,text,true,,552,583,34,34,http://127.0.0.1:8000/api/checkin,29586,0,1
+1580477917870,29755,HTTP Request,201,Created,check-in 1-172,text,true,,552,583,33,33,http://127.0.0.1:8000/api/checkin,29753,0,1
+1580477917872,29925,HTTP Request,201,Created,check-in 1-176,text,true,,552,583,32,32,http://127.0.0.1:8000/api/checkin,29922,0,2
+1580477917874,30096,HTTP Request,201,Created,check-in 1-173,text,true,,552,583,31,31,http://127.0.0.1:8000/api/checkin,30093,0,0
+1580477917875,30267,HTTP Request,201,Created,check-in 1-177,text,true,,552,583,30,30,http://127.0.0.1:8000/api/checkin,30265,0,1
+1580477917876,30441,HTTP Request,201,Created,check-in 1-174,text,true,,552,583,29,29,http://127.0.0.1:8000/api/checkin,30438,0,1
+1580477917882,30611,HTTP Request,201,Created,check-in 1-175,text,true,,552,583,28,28,http://127.0.0.1:8000/api/checkin,30608,0,1
+1580477917884,30774,HTTP Request,201,Created,check-in 1-178,text,true,,552,583,27,27,http://127.0.0.1:8000/api/checkin,30771,0,1
+1580477917887,30934,HTTP Request,201,Created,check-in 1-179,text,true,,552,583,26,26,http://127.0.0.1:8000/api/checkin,30932,0,1
+1580477917888,31106,HTTP Request,201,Created,check-in 1-180,text,true,,552,583,25,25,http://127.0.0.1:8000/api/checkin,31103,0,1
+1580477917892,31266,HTTP Request,201,Created,check-in 1-181,text,true,,552,583,24,24,http://127.0.0.1:8000/api/checkin,31263,0,1
+1580477917896,31435,HTTP Request,201,Created,check-in 1-182,text,true,,552,583,23,23,http://127.0.0.1:8000/api/checkin,31432,0,1
+1580477917900,31593,HTTP Request,201,Created,check-in 1-183,text,true,,552,583,22,22,http://127.0.0.1:8000/api/checkin,31591,0,1
+1580477917904,31751,HTTP Request,201,Created,check-in 1-184,text,true,,552,583,21,21,http://127.0.0.1:8000/api/checkin,31749,0,1
+1580477917907,31920,HTTP Request,201,Created,check-in 1-185,text,true,,552,583,20,20,http://127.0.0.1:8000/api/checkin,31918,0,1
+1580477917910,32090,HTTP Request,201,Created,check-in 1-186,text,true,,552,583,19,19,http://127.0.0.1:8000/api/checkin,32087,0,1
+1580477917914,32260,HTTP Request,201,Created,check-in 1-187,text,true,,552,583,18,18,http://127.0.0.1:8000/api/checkin,32259,0,1
+1580477917918,32429,HTTP Request,201,Created,check-in 1-188,text,true,,552,583,17,17,http://127.0.0.1:8000/api/checkin,32426,0,1
+1580477917922,32590,HTTP Request,201,Created,check-in 1-189,text,true,,552,583,16,16,http://127.0.0.1:8000/api/checkin,32588,0,1
+1580477917925,32759,HTTP Request,201,Created,check-in 1-190,text,true,,552,583,15,15,http://127.0.0.1:8000/api/checkin,32757,0,0
+1580477917929,32919,HTTP Request,201,Created,check-in 1-191,text,true,,552,583,14,14,http://127.0.0.1:8000/api/checkin,32915,0,1
+1580477917933,33089,HTTP Request,201,Created,check-in 1-192,text,true,,552,583,13,13,http://127.0.0.1:8000/api/checkin,33087,0,1
+1580477917936,33260,HTTP Request,201,Created,check-in 1-193,text,true,,552,583,12,12,http://127.0.0.1:8000/api/checkin,33257,0,1
+1580477917939,33430,HTTP Request,201,Created,check-in 1-194,text,true,,552,583,11,11,http://127.0.0.1:8000/api/checkin,33428,0,1
+1580477917944,33589,HTTP Request,201,Created,check-in 1-195,text,true,,552,583,10,10,http://127.0.0.1:8000/api/checkin,33587,0,0
+1580477917947,33762,HTTP Request,201,Created,check-in 1-196,text,true,,552,583,9,9,http://127.0.0.1:8000/api/checkin,33758,0,1
+1580477917950,33932,HTTP Request,201,Created,check-in 1-197,text,true,,552,583,8,8,http://127.0.0.1:8000/api/checkin,33927,0,1
+1580477917954,34101,HTTP Request,201,Created,check-in 1-198,text,true,,552,583,7,7,http://127.0.0.1:8000/api/checkin,34099,0,0
+1580477917970,34256,HTTP Request,201,Created,check-in 1-200,text,true,,552,583,6,6,http://127.0.0.1:8000/api/checkin,34254,0,1
+1580477917974,34423,HTTP Request,201,Created,check-in 1-201,text,true,,552,583,5,5,http://127.0.0.1:8000/api/checkin,34421,0,1
+1580477917976,34590,HTTP Request,201,Created,check-in 1-199,text,true,,552,583,4,4,http://127.0.0.1:8000/api/checkin,34588,0,1
+1580477917977,34754,HTTP Request,201,Created,check-in 1-202,text,true,,552,583,3,3,http://127.0.0.1:8000/api/checkin,34752,0,9
+1580477917986,34918,HTTP Request,201,Created,check-in 1-203,text,true,,552,583,2,2,http://127.0.0.1:8000/api/checkin,34916,0,0
+1580477917986,35091,HTTP Request,201,Created,check-in 1-204,text,true,,552,583,1,1,http://127.0.0.1:8000/api/checkin,35086,0,0

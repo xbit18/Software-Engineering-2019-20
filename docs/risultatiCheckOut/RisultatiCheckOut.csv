@@ -1,0 +1,251 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1580478034963,239,HTTP Request,204,No Content,Thread Group 1-43,text,true,,339,559,104,104,http://127.0.0.1:8000/api/checkout,0,0,10
+1580478034947,450,HTTP Request,204,No Content,Thread Group 1-35,text,true,,339,559,156,156,http://127.0.0.1:8000/api/checkout,0,0,25
+1580478034946,638,HTTP Request,204,No Content,Thread Group 1-21,text,true,,339,559,198,198,http://127.0.0.1:8000/api/checkout,0,0,27
+1580478034946,824,HTTP Request,204,No Content,Thread Group 1-5,text,true,,339,559,247,247,http://127.0.0.1:8000/api/checkout,0,0,27
+1580478034948,1015,HTTP Request,204,No Content,Thread Group 1-18,text,true,,339,559,246,246,http://127.0.0.1:8000/api/checkout,0,0,25
+1580478034947,1201,HTTP Request,204,No Content,Thread Group 1-7,text,true,,339,559,245,245,http://127.0.0.1:8000/api/checkout,0,0,27
+1580478034952,1365,HTTP Request,204,No Content,Thread Group 1-40,text,true,,339,559,244,244,http://127.0.0.1:8000/api/checkout,0,0,23
+1580478034946,1554,HTTP Request,204,No Content,Thread Group 1-29,text,true,,339,559,243,243,http://127.0.0.1:8000/api/checkout,0,0,29
+1580478034949,1733,HTTP Request,204,No Content,Thread Group 1-34,text,true,,339,559,242,242,http://127.0.0.1:8000/api/checkout,0,0,26
+1580478034949,1911,HTTP Request,204,No Content,Thread Group 1-32,text,true,,339,559,241,241,http://127.0.0.1:8000/api/checkout,0,0,27
+1580478034945,2088,HTTP Request,204,No Content,Thread Group 1-30,text,true,,339,559,240,240,http://127.0.0.1:8000/api/checkout,0,0,31
+1580478034947,2276,HTTP Request,204,No Content,Thread Group 1-36,text,true,,339,559,239,239,http://127.0.0.1:8000/api/checkout,0,0,29
+1580478034947,2450,HTTP Request,204,No Content,Thread Group 1-8,text,true,,339,559,238,238,http://127.0.0.1:8000/api/checkout,0,0,30
+1580478034949,2621,HTTP Request,204,No Content,Thread Group 1-33,text,true,,339,559,237,237,http://127.0.0.1:8000/api/checkout,0,0,28
+1580478034948,2797,HTTP Request,204,No Content,Thread Group 1-11,text,true,,339,559,236,236,http://127.0.0.1:8000/api/checkout,0,0,29
+1580478035602,2255,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,Thread Group 1-206,text,false,,2789,0,235,235,http://127.0.0.1:8000/api/checkout,0,0,2255
+1580478035622,2235,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,Thread Group 1-211,text,false,,2789,0,235,235,http://127.0.0.1:8000/api/checkout,0,0,2235
+1580478035643,2215,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,Thread Group 1-217,text,false,,2789,0,235,235,http://127.0.0.1:8000/api/checkout,0,0,2214
+1580478035654,2203,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,Thread Group 1-220,text,false,,2789,0,232,232,http://127.0.0.1:8000/api/checkout,0,0,2203
+1580478035611,2246,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,Thread Group 1-208,text,false,,2789,0,232,232,http://127.0.0.1:8000/api/checkout,0,0,2246
+1580478035625,2232,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,Thread Group 1-212,text,false,,2789,0,232,232,http://127.0.0.1:8000/api/checkout,0,0,2232
+1580478035635,2222,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,Thread Group 1-215,text,false,,2789,0,231,231,http://127.0.0.1:8000/api/checkout,0,0,2222
+1580478035647,2210,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,Thread Group 1-218,text,false,,2789,0,228,228,http://127.0.0.1:8000/api/checkout,0,0,2210
+1580478035685,2230,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,Thread Group 1-228,text,false,,2789,0,227,227,http://127.0.0.1:8000/api/checkout,0,0,2230
+1580478035662,2253,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,Thread Group 1-222,text,false,,2789,0,227,227,http://127.0.0.1:8000/api/checkout,0,0,2253
+1580478035704,2211,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,Thread Group 1-233,text,false,,2789,0,226,226,http://127.0.0.1:8000/api/checkout,0,0,2211
+1580478035670,2245,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,Thread Group 1-224,text,false,,2789,0,224,224,http://127.0.0.1:8000/api/checkout,0,0,2245
+1580478035606,2309,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,Thread Group 1-207,text,false,,2789,0,224,224,http://127.0.0.1:8000/api/checkout,0,0,2309
+1580478035650,2265,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,Thread Group 1-219,text,false,,2789,0,227,227,http://127.0.0.1:8000/api/checkout,0,0,2265
+1580478035628,2287,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,Thread Group 1-213,text,false,,2789,0,221,221,http://127.0.0.1:8000/api/checkout,0,0,2287
+1580478035615,2300,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,Thread Group 1-209,text,false,,2789,0,221,221,http://127.0.0.1:8000/api/checkout,0,0,2300
+1580478035681,2236,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,Thread Group 1-227,text,false,,2789,0,219,219,http://127.0.0.1:8000/api/checkout,0,0,2236
+1580478035618,2297,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,Thread Group 1-210,text,false,,2789,0,218,218,http://127.0.0.1:8000/api/checkout,0,0,2297
+1580478035658,2265,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,Thread Group 1-221,text,false,,2789,0,218,218,http://127.0.0.1:8000/api/checkout,0,0,2265
+1580478035697,2226,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,Thread Group 1-231,text,false,,2789,0,218,218,http://127.0.0.1:8000/api/checkout,0,0,2226
+1580478035708,2207,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,Thread Group 1-234,text,false,,2789,0,217,217,http://127.0.0.1:8000/api/checkout,0,0,2207
+1580478035639,2277,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,Thread Group 1-216,text,false,,2789,0,215,215,http://127.0.0.1:8000/api/checkout,0,0,2277
+1580478035631,2284,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,Thread Group 1-214,text,false,,2789,0,213,213,http://127.0.0.1:8000/api/checkout,0,0,2284
+1580478034946,2994,HTTP Request,204,No Content,Thread Group 1-28,text,true,,339,559,212,212,http://127.0.0.1:8000/api/checkout,0,0,31
+1580478035727,2332,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,Thread Group 1-239,text,false,,2789,0,211,211,http://127.0.0.1:8000/api/checkout,0,0,2332
+1580478035677,2382,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,Thread Group 1-226,text,false,,2789,0,211,211,http://127.0.0.1:8000/api/checkout,0,0,2382
+1580478035766,2293,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,Thread Group 1-250,text,false,,2789,0,210,210,http://127.0.0.1:8000/api/checkout,0,0,2293
+1580478035689,2370,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,Thread Group 1-229,text,false,,2789,0,209,209,http://127.0.0.1:8000/api/checkout,0,0,2370
+1580478035694,2365,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,Thread Group 1-230,text,false,,2789,0,207,207,http://127.0.0.1:8000/api/checkout,0,0,2365
+1580478035701,2359,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,Thread Group 1-232,text,false,,2789,0,206,206,http://127.0.0.1:8000/api/checkout,0,0,2359
+1580478035713,2347,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,Thread Group 1-235,text,false,,2789,0,206,206,http://127.0.0.1:8000/api/checkout,0,0,2347
+1580478035715,2343,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,Thread Group 1-236,text,false,,2789,0,206,206,http://127.0.0.1:8000/api/checkout,0,0,2343
+1580478035750,2308,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,Thread Group 1-245,text,false,,2789,0,204,204,http://127.0.0.1:8000/api/checkout,0,0,2308
+1580478035666,2395,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,Thread Group 1-223,text,false,,2789,0,204,204,http://127.0.0.1:8000/api/checkout,0,0,2395
+1580478035739,2319,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,Thread Group 1-242,text,false,,2789,0,203,203,http://127.0.0.1:8000/api/checkout,0,0,2319
+1580478035757,2302,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,Thread Group 1-247,text,false,,2789,0,201,201,http://127.0.0.1:8000/api/checkout,0,0,2302
+1580478035734,2324,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,Thread Group 1-241,text,false,,2789,0,200,200,http://127.0.0.1:8000/api/checkout,0,0,2324
+1580478035674,2385,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,Thread Group 1-225,text,false,,2789,0,198,198,http://127.0.0.1:8000/api/checkout,0,0,2385
+1580478035720,2394,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,Thread Group 1-237,text,false,,2789,0,197,197,http://127.0.0.1:8000/api/checkout,0,0,2393
+1580478035730,2384,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,Thread Group 1-240,text,false,,2789,0,197,197,http://127.0.0.1:8000/api/checkout,0,0,2384
+1580478035742,2372,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,Thread Group 1-243,text,false,,2789,0,197,197,http://127.0.0.1:8000/api/checkout,0,0,2372
+1580478035723,2407,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,Thread Group 1-238,text,false,,2789,0,196,196,http://127.0.0.1:8000/api/checkout,0,0,2391
+1580478035762,2368,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,Thread Group 1-249,text,false,,2789,0,194,194,http://127.0.0.1:8000/api/checkout,0,0,2368
+1580478035746,2368,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,Thread Group 1-244,text,false,,2789,0,192,192,http://127.0.0.1:8000/api/checkout,0,0,2367
+1580478035760,2354,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,Thread Group 1-248,text,false,,2789,0,192,192,http://127.0.0.1:8000/api/checkout,0,0,2354
+1580478035754,2382,HTTP Request,Non HTTP response code: org.apache.http.conn.HttpHostConnectException,Non HTTP response message: Connect to 127.0.0.1:8000 [/127.0.0.1] failed: Connection refused: connect,Thread Group 1-246,text,false,,2789,0,192,192,http://127.0.0.1:8000/api/checkout,0,0,2382
+1580478034949,3212,HTTP Request,204,No Content,Thread Group 1-17,text,true,,339,559,189,189,http://127.0.0.1:8000/api/checkout,0,0,29
+1580478034965,3392,HTTP Request,204,No Content,Thread Group 1-44,text,true,,339,559,188,188,http://127.0.0.1:8000/api/checkout,0,0,13
+1580478034948,3590,HTTP Request,204,No Content,Thread Group 1-12,text,true,,339,559,187,187,http://127.0.0.1:8000/api/checkout,0,0,30
+1580478034947,3762,HTTP Request,204,No Content,Thread Group 1-39,text,true,,339,559,186,186,http://127.0.0.1:8000/api/checkout,0,0,32
+1580478034947,3935,HTTP Request,204,No Content,Thread Group 1-37,text,true,,339,559,185,185,http://127.0.0.1:8000/api/checkout,0,0,32
+1580478034955,4116,HTTP Request,204,No Content,Thread Group 1-41,text,true,,339,559,184,184,http://127.0.0.1:8000/api/checkout,0,0,24
+1580478034947,4304,HTTP Request,204,No Content,Thread Group 1-15,text,true,,339,559,183,183,http://127.0.0.1:8000/api/checkout,0,0,32
+1580478034949,4475,HTTP Request,204,No Content,Thread Group 1-3,text,true,,339,559,182,182,http://127.0.0.1:8000/api/checkout,0,0,31
+1580478034945,4657,HTTP Request,204,No Content,Thread Group 1-38,text,true,,339,559,181,181,http://127.0.0.1:8000/api/checkout,0,0,35
+1580478034949,4830,HTTP Request,204,No Content,Thread Group 1-4,text,true,,339,559,180,180,http://127.0.0.1:8000/api/checkout,0,0,31
+1580478034946,5003,HTTP Request,204,No Content,Thread Group 1-2,text,true,,339,559,179,179,http://127.0.0.1:8000/api/checkout,0,0,34
+1580478034947,5185,HTTP Request,204,No Content,Thread Group 1-10,text,true,,339,559,178,178,http://127.0.0.1:8000/api/checkout,0,0,33
+1580478034948,5358,HTTP Request,204,No Content,Thread Group 1-1,text,true,,339,559,177,177,http://127.0.0.1:8000/api/checkout,0,0,33
+1580478034948,5524,HTTP Request,204,No Content,Thread Group 1-6,text,true,,339,559,176,176,http://127.0.0.1:8000/api/checkout,0,0,33
+1580478034961,5682,HTTP Request,204,No Content,Thread Group 1-42,text,true,,339,559,175,175,http://127.0.0.1:8000/api/checkout,0,0,20
+1580478034945,5873,HTTP Request,204,No Content,Thread Group 1-16,text,true,,339,559,174,174,http://127.0.0.1:8000/api/checkout,0,0,37
+1580478034948,6043,HTTP Request,204,No Content,Thread Group 1-14,text,true,,339,559,173,173,http://127.0.0.1:8000/api/checkout,0,0,33
+1580478034946,6221,HTTP Request,204,No Content,Thread Group 1-24,text,true,,339,559,172,172,http://127.0.0.1:8000/api/checkout,0,0,35
+1580478034949,6392,HTTP Request,204,No Content,Thread Group 1-25,text,true,,339,559,171,171,http://127.0.0.1:8000/api/checkout,0,0,33
+1580478034944,6569,HTTP Request,204,No Content,Thread Group 1-13,text,true,,339,559,170,170,http://127.0.0.1:8000/api/checkout,0,0,38
+1580478034946,6742,HTTP Request,204,No Content,Thread Group 1-20,text,true,,339,559,169,169,http://127.0.0.1:8000/api/checkout,0,0,36
+1580478034947,6915,HTTP Request,204,No Content,Thread Group 1-27,text,true,,339,559,168,168,http://127.0.0.1:8000/api/checkout,0,0,35
+1580478034946,7094,HTTP Request,204,No Content,Thread Group 1-19,text,true,,339,559,167,167,http://127.0.0.1:8000/api/checkout,0,0,37
+1580478034946,7269,HTTP Request,204,No Content,Thread Group 1-31,text,true,,339,559,166,166,http://127.0.0.1:8000/api/checkout,0,0,37
+1580478034948,7438,HTTP Request,204,No Content,Thread Group 1-23,text,true,,339,559,165,165,http://127.0.0.1:8000/api/checkout,0,0,35
+1580478034946,7613,HTTP Request,204,No Content,Thread Group 1-26,text,true,,339,559,164,164,http://127.0.0.1:8000/api/checkout,0,0,37
+1580478034948,7784,HTTP Request,204,No Content,Thread Group 1-9,text,true,,339,559,163,163,http://127.0.0.1:8000/api/checkout,0,0,35
+1580478034948,7957,HTTP Request,204,No Content,Thread Group 1-22,text,true,,339,559,162,162,http://127.0.0.1:8000/api/checkout,0,0,35
+1580478034970,8100,HTTP Request,204,No Content,Thread Group 1-45,text,true,,339,559,161,161,http://127.0.0.1:8000/api/checkout,0,0,14
+1580478034984,8250,HTTP Request,204,No Content,Thread Group 1-46,text,true,,339,559,160,160,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478034986,8422,HTTP Request,204,No Content,Thread Group 1-48,text,true,,339,559,159,159,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478034986,8588,HTTP Request,204,No Content,Thread Group 1-47,text,true,,339,559,158,158,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478034987,8761,HTTP Request,204,No Content,Thread Group 1-49,text,true,,339,559,157,157,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478034988,8923,HTTP Request,204,No Content,Thread Group 1-50,text,true,,339,559,156,156,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478034991,9098,HTTP Request,204,No Content,Thread Group 1-51,text,true,,339,559,155,155,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478034994,9268,HTTP Request,204,No Content,Thread Group 1-53,text,true,,339,559,154,154,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478034996,9437,HTTP Request,204,No Content,Thread Group 1-54,text,true,,339,559,153,153,http://127.0.0.1:8000/api/checkout,0,0,3
+1580478034999,9597,HTTP Request,204,No Content,Thread Group 1-52,text,true,,339,559,152,152,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035000,9771,HTTP Request,204,No Content,Thread Group 1-55,text,true,,339,559,151,151,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035005,9939,HTTP Request,204,No Content,Thread Group 1-56,text,true,,339,559,150,150,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035007,10113,HTTP Request,204,No Content,Thread Group 1-57,text,true,,339,559,149,149,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035010,10284,HTTP Request,204,No Content,Thread Group 1-58,text,true,,339,559,148,148,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035014,10457,HTTP Request,204,No Content,Thread Group 1-59,text,true,,339,559,147,147,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035018,10619,HTTP Request,204,No Content,Thread Group 1-60,text,true,,339,559,146,146,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035022,10780,HTTP Request,204,No Content,Thread Group 1-61,text,true,,339,559,145,145,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035026,10951,HTTP Request,204,No Content,Thread Group 1-62,text,true,,339,559,144,144,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035028,11112,HTTP Request,204,No Content,Thread Group 1-63,text,true,,339,559,143,143,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035033,11282,HTTP Request,204,No Content,Thread Group 1-64,text,true,,339,559,142,142,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035037,11449,HTTP Request,204,No Content,Thread Group 1-65,text,true,,339,559,141,141,http://127.0.0.1:8000/api/checkout,0,0,2
+1580478035040,11621,HTTP Request,204,No Content,Thread Group 1-66,text,true,,339,559,140,140,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035043,11783,HTTP Request,204,No Content,Thread Group 1-67,text,true,,339,559,139,139,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035047,11955,HTTP Request,204,No Content,Thread Group 1-68,text,true,,339,559,138,138,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035051,12122,HTTP Request,204,No Content,Thread Group 1-69,text,true,,339,559,137,137,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035055,12293,HTTP Request,204,No Content,Thread Group 1-70,text,true,,339,559,136,136,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035059,12452,HTTP Request,204,No Content,Thread Group 1-71,text,true,,339,559,135,135,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035062,12613,HTTP Request,204,No Content,Thread Group 1-72,text,true,,339,559,134,134,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035066,12789,HTTP Request,204,No Content,Thread Group 1-73,text,true,,339,559,133,133,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035070,12960,HTTP Request,204,No Content,Thread Group 1-74,text,true,,339,559,132,132,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035074,13131,HTTP Request,204,No Content,Thread Group 1-75,text,true,,339,559,131,131,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035078,13292,HTTP Request,204,No Content,Thread Group 1-76,text,true,,339,559,130,130,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035082,13462,HTTP Request,204,No Content,Thread Group 1-77,text,true,,339,559,129,129,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035086,13632,HTTP Request,204,No Content,Thread Group 1-78,text,true,,339,559,128,128,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035089,13803,HTTP Request,204,No Content,Thread Group 1-79,text,true,,339,559,127,127,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035092,13975,HTTP Request,204,No Content,Thread Group 1-80,text,true,,339,559,126,126,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035096,14144,HTTP Request,204,No Content,Thread Group 1-81,text,true,,339,559,125,125,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035100,14312,HTTP Request,204,No Content,Thread Group 1-82,text,true,,339,559,124,124,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035103,14474,HTTP Request,204,No Content,Thread Group 1-83,text,true,,339,559,123,123,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035107,14645,HTTP Request,204,No Content,Thread Group 1-84,text,true,,339,559,122,122,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035110,14808,HTTP Request,204,No Content,Thread Group 1-85,text,true,,339,559,121,121,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035114,14977,HTTP Request,204,No Content,Thread Group 1-86,text,true,,339,559,120,120,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035119,15148,HTTP Request,204,No Content,Thread Group 1-87,text,true,,339,559,119,119,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035121,15319,HTTP Request,204,No Content,Thread Group 1-88,text,true,,339,559,118,118,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035125,15487,HTTP Request,204,No Content,Thread Group 1-89,text,true,,339,559,117,117,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035128,15660,HTTP Request,204,No Content,Thread Group 1-90,text,true,,339,559,116,116,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035132,15821,HTTP Request,204,No Content,Thread Group 1-91,text,true,,339,559,115,115,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035135,15982,HTTP Request,204,No Content,Thread Group 1-92,text,true,,339,559,114,114,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035139,16152,HTTP Request,204,No Content,Thread Group 1-93,text,true,,339,559,113,113,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035143,16310,HTTP Request,204,No Content,Thread Group 1-94,text,true,,339,559,112,112,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035147,16468,HTTP Request,204,No Content,Thread Group 1-95,text,true,,339,559,111,111,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035151,16638,HTTP Request,204,No Content,Thread Group 1-96,text,true,,339,559,110,110,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035156,16807,HTTP Request,204,No Content,Thread Group 1-97,text,true,,339,559,109,109,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035159,16979,HTTP Request,204,No Content,Thread Group 1-98,text,true,,339,559,108,108,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035162,17141,HTTP Request,204,No Content,Thread Group 1-99,text,true,,339,559,107,107,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035166,17302,HTTP Request,204,No Content,Thread Group 1-100,text,true,,339,559,106,106,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035170,17472,HTTP Request,204,No Content,Thread Group 1-101,text,true,,339,559,105,105,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035174,17642,HTTP Request,204,No Content,Thread Group 1-102,text,true,,339,559,104,104,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035178,17811,HTTP Request,204,No Content,Thread Group 1-103,text,true,,339,559,103,103,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035192,17974,HTTP Request,204,No Content,Thread Group 1-105,text,true,,339,559,102,102,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035213,18124,HTTP Request,204,No Content,Thread Group 1-104,text,true,,339,559,101,101,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035215,18293,HTTP Request,204,No Content,Thread Group 1-106,text,true,,339,559,100,100,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035219,18467,HTTP Request,204,No Content,Thread Group 1-107,text,true,,339,559,99,99,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035231,18628,HTTP Request,204,No Content,Thread Group 1-109,text,true,,339,559,98,98,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035233,18804,HTTP Request,204,No Content,Thread Group 1-108,text,true,,339,559,97,97,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035235,18977,HTTP Request,204,No Content,Thread Group 1-110,text,true,,339,559,96,96,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035243,19145,HTTP Request,204,No Content,Thread Group 1-111,text,true,,339,559,95,95,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035247,19314,HTTP Request,204,No Content,Thread Group 1-112,text,true,,339,559,94,94,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035254,19481,HTTP Request,204,No Content,Thread Group 1-113,text,true,,339,559,93,93,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035260,19652,HTTP Request,204,No Content,Thread Group 1-114,text,true,,339,559,92,92,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035266,19821,HTTP Request,204,No Content,Thread Group 1-115,text,true,,339,559,91,91,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035268,19995,HTTP Request,204,No Content,Thread Group 1-116,text,true,,339,559,90,90,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035273,20164,HTTP Request,204,No Content,Thread Group 1-117,text,true,,339,559,89,89,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035277,20323,HTTP Request,204,No Content,Thread Group 1-118,text,true,,339,559,88,88,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035281,20493,HTTP Request,204,No Content,Thread Group 1-119,text,true,,339,559,87,87,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035285,20665,HTTP Request,204,No Content,Thread Group 1-120,text,true,,339,559,86,86,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035289,20835,HTTP Request,204,No Content,Thread Group 1-121,text,true,,339,559,85,85,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035294,21004,HTTP Request,204,No Content,Thread Group 1-122,text,true,,339,559,84,84,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035296,21177,HTTP Request,204,No Content,Thread Group 1-123,text,true,,339,559,83,83,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035298,21348,HTTP Request,204,No Content,Thread Group 1-131,text,true,,339,559,82,82,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035301,21518,HTTP Request,204,No Content,Thread Group 1-124,text,true,,339,559,81,81,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035302,21692,HTTP Request,204,No Content,Thread Group 1-132,text,true,,339,559,80,80,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035305,21862,HTTP Request,204,No Content,Thread Group 1-125,text,true,,339,559,79,79,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035306,22035,HTTP Request,204,No Content,Thread Group 1-133,text,true,,339,559,78,78,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035309,22203,HTTP Request,204,No Content,Thread Group 1-126,text,true,,339,559,77,77,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035310,22377,HTTP Request,204,No Content,Thread Group 1-134,text,true,,339,559,76,76,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035314,22540,HTTP Request,204,No Content,Thread Group 1-135,text,true,,339,559,75,75,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035314,22713,HTTP Request,204,No Content,Thread Group 1-127,text,true,,339,559,74,74,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035317,22883,HTTP Request,204,No Content,Thread Group 1-136,text,true,,339,559,73,73,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035317,23057,HTTP Request,204,No Content,Thread Group 1-130,text,true,,339,559,72,72,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035317,23220,HTTP Request,204,No Content,Thread Group 1-128,text,true,,339,559,71,71,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035321,23390,HTTP Request,204,No Content,Thread Group 1-137,text,true,,339,559,70,70,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035321,23564,HTTP Request,204,No Content,Thread Group 1-129,text,true,,339,559,69,69,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035324,23737,HTTP Request,204,No Content,Thread Group 1-138,text,true,,339,559,68,68,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035328,23908,HTTP Request,204,No Content,Thread Group 1-139,text,true,,339,559,67,67,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035331,24078,HTTP Request,204,No Content,Thread Group 1-140,text,true,,339,559,66,66,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035335,24249,HTTP Request,204,No Content,Thread Group 1-141,text,true,,339,559,65,65,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035339,24420,HTTP Request,204,No Content,Thread Group 1-142,text,true,,339,559,64,64,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035343,24591,HTTP Request,204,No Content,Thread Group 1-143,text,true,,339,559,63,63,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035346,24764,HTTP Request,204,No Content,Thread Group 1-144,text,true,,339,559,62,62,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035350,24924,HTTP Request,204,No Content,Thread Group 1-145,text,true,,339,559,61,61,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035354,25092,HTTP Request,204,No Content,Thread Group 1-146,text,true,,339,559,60,60,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035358,25261,HTTP Request,204,No Content,Thread Group 1-147,text,true,,339,559,59,59,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035362,25433,HTTP Request,204,No Content,Thread Group 1-148,text,true,,339,559,58,58,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035366,25603,HTTP Request,204,No Content,Thread Group 1-149,text,true,,339,559,57,57,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035370,25772,HTTP Request,204,No Content,Thread Group 1-150,text,true,,339,559,56,56,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035373,25946,HTTP Request,204,No Content,Thread Group 1-151,text,true,,339,559,55,55,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035377,26115,HTTP Request,204,No Content,Thread Group 1-152,text,true,,339,559,54,54,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035381,26286,HTTP Request,204,No Content,Thread Group 1-153,text,true,,339,559,53,53,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035385,26456,HTTP Request,204,No Content,Thread Group 1-154,text,true,,339,559,52,52,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035388,26616,HTTP Request,204,No Content,Thread Group 1-155,text,true,,339,559,51,51,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035392,26784,HTTP Request,204,No Content,Thread Group 1-156,text,true,,339,559,50,50,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035397,26952,HTTP Request,204,No Content,Thread Group 1-157,text,true,,339,559,49,49,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035399,27123,HTTP Request,204,No Content,Thread Group 1-158,text,true,,339,559,48,48,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035404,27292,HTTP Request,204,No Content,Thread Group 1-159,text,true,,339,559,47,47,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035408,27460,HTTP Request,204,No Content,Thread Group 1-160,text,true,,339,559,46,46,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035410,27631,HTTP Request,204,No Content,Thread Group 1-161,text,true,,339,559,45,45,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035415,27803,HTTP Request,204,No Content,Thread Group 1-162,text,true,,339,559,44,44,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035419,27973,HTTP Request,204,No Content,Thread Group 1-163,text,true,,339,559,43,43,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035422,28143,HTTP Request,204,No Content,Thread Group 1-164,text,true,,339,559,42,42,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035427,28301,HTTP Request,204,No Content,Thread Group 1-165,text,true,,339,559,41,41,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035429,28472,HTTP Request,204,No Content,Thread Group 1-166,text,true,,339,559,40,40,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035433,28644,HTTP Request,204,No Content,Thread Group 1-167,text,true,,339,559,39,39,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035438,28812,HTTP Request,204,No Content,Thread Group 1-168,text,true,,339,559,38,38,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035441,28983,HTTP Request,204,No Content,Thread Group 1-169,text,true,,339,559,37,37,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035446,29156,HTTP Request,204,No Content,Thread Group 1-170,text,true,,339,559,36,36,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035449,29325,HTTP Request,204,No Content,Thread Group 1-171,text,true,,339,559,35,35,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035453,29495,HTTP Request,204,No Content,Thread Group 1-172,text,true,,339,559,34,34,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035456,29666,HTTP Request,204,No Content,Thread Group 1-173,text,true,,339,559,33,33,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035462,29834,HTTP Request,204,No Content,Thread Group 1-174,text,true,,339,559,32,32,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035477,29993,HTTP Request,204,No Content,Thread Group 1-177,text,true,,339,559,31,31,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035492,30150,HTTP Request,204,No Content,Thread Group 1-181,text,true,,339,559,30,30,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035496,30322,HTTP Request,204,No Content,Thread Group 1-175,text,true,,339,559,29,29,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035497,30496,HTTP Request,204,No Content,Thread Group 1-176,text,true,,339,559,28,28,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035500,30670,HTTP Request,204,No Content,Thread Group 1-183,text,true,,339,559,27,27,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035500,30844,HTTP Request,204,No Content,Thread Group 1-180,text,true,,339,559,26,26,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035502,31014,HTTP Request,204,No Content,Thread Group 1-182,text,true,,339,559,25,25,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035505,31183,HTTP Request,204,No Content,Thread Group 1-184,text,true,,339,559,24,24,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035507,31355,HTTP Request,204,No Content,Thread Group 1-178,text,true,,339,559,23,23,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035509,31514,HTTP Request,204,No Content,Thread Group 1-179,text,true,,339,559,22,22,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035515,31670,HTTP Request,204,No Content,Thread Group 1-187,text,true,,339,559,21,21,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035520,31829,HTTP Request,204,No Content,Thread Group 1-188,text,true,,339,559,20,20,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035520,32001,HTTP Request,204,No Content,Thread Group 1-186,text,true,,339,559,19,19,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035521,32173,HTTP Request,204,No Content,Thread Group 1-185,text,true,,339,559,18,18,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035523,32347,HTTP Request,204,No Content,Thread Group 1-189,text,true,,339,559,17,17,http://127.0.0.1:8000/api/checkout,0,0,2
+1580478035530,32513,HTTP Request,204,No Content,Thread Group 1-190,text,true,,339,559,16,16,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035534,32684,HTTP Request,204,No Content,Thread Group 1-191,text,true,,339,559,15,15,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035537,32854,HTTP Request,204,No Content,Thread Group 1-192,text,true,,339,559,14,14,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035541,33025,HTTP Request,204,No Content,Thread Group 1-193,text,true,,339,559,13,13,http://127.0.0.1:8000/api/checkout,0,0,5
+1580478035545,33185,HTTP Request,204,No Content,Thread Group 1-194,text,true,,339,559,12,12,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035549,33356,HTTP Request,204,No Content,Thread Group 1-195,text,true,,339,559,11,11,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035551,33527,HTTP Request,204,No Content,Thread Group 1-196,text,true,,339,559,10,10,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035555,33697,HTTP Request,204,No Content,Thread Group 1-197,text,true,,339,559,9,9,http://127.0.0.1:8000/api/checkout,0,0,0
+1580478035557,33867,HTTP Request,204,No Content,Thread Group 1-198,text,true,,339,559,8,8,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035561,34037,HTTP Request,204,No Content,Thread Group 1-199,text,true,,339,559,7,7,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035583,34188,HTTP Request,204,No Content,Thread Group 1-201,text,true,,339,559,6,6,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035586,34349,HTTP Request,204,No Content,Thread Group 1-200,text,true,,339,559,5,5,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035587,34524,HTTP Request,204,No Content,Thread Group 1-202,text,true,,339,559,4,4,http://127.0.0.1:8000/api/checkout,0,0,2
+1580478035595,34690,HTTP Request,204,No Content,Thread Group 1-203,text,true,,339,559,3,3,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035595,34862,HTTP Request,204,No Content,Thread Group 1-204,text,true,,339,559,2,2,http://127.0.0.1:8000/api/checkout,0,0,1
+1580478035598,35035,HTTP Request,204,No Content,Thread Group 1-205,text,true,,339,559,1,1,http://127.0.0.1:8000/api/checkout,0,0,1
