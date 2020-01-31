@@ -9,8 +9,8 @@
         <th class="tg th">Stato</th>
         <th class="tg th">Aula</th>
         <th class="tg th">Utente</th>
-        <th class="tg th">Accetta</th>
-        <th class="tg th">Rifiuta</th>
+        <th class="tg th" v-if="isAdmin">Accetta</th>
+        <th class="tg th" v-if="isAdmin">Rifiuta</th>
       </tr>
     </thead>
     <tbody>
