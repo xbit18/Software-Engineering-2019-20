@@ -22,11 +22,11 @@
         <td class="tg td">{{prenotazione.state}}</td>
         <td class="tg td">{{prenotazione.code}}</td>
         <td class="tg td">{{prenotazione.name}} {{prenotazione.surname}}</td>
-        <td class="tg td">
-          <button class="button button-accetta" @click="accetta_rifiuta(prenotazione.id,'accepted')" v-if="isAdmin">Accetta</button>
+        <td class="tg td" v-if="isAdmin">
+          <button class="button button-accetta" @click="accetta_rifiuta(prenotazione.id,'accepted')" >Accetta</button>
         </td>
-        <td class="tg td">
-          <button class="button button-elimina" @click="accetta_rifiuta(prenotazione.id,'refused')" v-if="isAdmin">Rifiuta</button>
+        <td class="tg td" v-if="isAdmin">
+          <button class="button button-elimina" @click="accetta_rifiuta(prenotazione.id,'refused')" >Rifiuta</button>
         </td>
       </tr>
     </tbody>
