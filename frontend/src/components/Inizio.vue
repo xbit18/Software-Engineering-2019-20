@@ -25,7 +25,8 @@
           v-bind:src="'http://127.0.0.1:8000'+srcImg"
         />      
         </div>
-        <p>{{address}}</p>
+        <div class="clearfix"></div>
+       <h4 id="address">{{address}}</h4> 
 
     </aside>
 

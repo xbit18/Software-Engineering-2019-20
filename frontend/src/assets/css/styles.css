@@ -331,6 +331,12 @@ h2{
     left: 65%;
 }
 
+#address{
+    display: block;
+    float: right;
+    margin-right: 50px;
+}
+
 #top{
     width: 88%;
     margin:0px;
