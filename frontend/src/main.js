@@ -28,6 +28,7 @@ import CheckIn from './components/CheckIn.vue'
 import CheckOut from './components/CheckOut.vue'
 import Prenotazione from './components/Prenotazione.vue'
 import listPrenotazioni from './components/listPrenotazioni.vue'
+import myPrenotazioni from './components/myPrenotazioni.vue'
 import PrenotaAula from './components/PrenotaAula.vue'
 import CreaMappa from './components/CreaMappa.vue'
 import editMappa from './components/editMappa.vue'
@@ -430,6 +431,10 @@ const routes = [
             }
             next();
         }
+    },
+    {
+        path:'/myprenotazioni',
+        component: myPrenotazioni
     }
 ]
 

@@ -35,7 +35,7 @@
         <span>Home</span>
       </router-link>
 
-      <router-link to="/selectAulaToCheck" v-if="authenticated">
+      <router-link to="/selectAulaToCheck" v-if="authenticated && !isDocente">
         <span>Check</span>
       </router-link>
 
@@ -43,8 +43,12 @@
         <span>Prenota Aula</span>
       </router-link>
 
+      <router-link to="/myprenotazioni" v-if="authenticated && (isAdmin || isDocente)">
+        <span>Visualizza prenotazioni</span>
+      </router-link>
+
        <router-link to="/listPrenotazioni" v-if="authenticated && isAdmin">
-        <span>Prenotazioni</span>
+        <span>Gestici Prenotazioni</span>
       </router-link>
 
       <router-link to="/gestisceAule" v-if="authenticated && isAdmin">
