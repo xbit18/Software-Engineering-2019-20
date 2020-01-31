@@ -79,8 +79,21 @@ class ClassroomReservationsController extends Controller
             $classroomsreservationsCollection->additional(['error' => 'No reservation were found!']);
 
             return $classroomsreservationsCollection->response()->setStatusCode(200);
-        }
+        }foreach($classroomsreservations as $classroomsreservation){
+        $classroom = Classroom::find($classroomsreservation->classroom_id);
+        $user = User::find($classroomsreservation->user_id);
+
+        $classroomsreservation['code'] = $classroom->code;
+        $classroomsreservation['name'] = $user->name;
+        $classroomsreservation['surname'] = $user->surname;
     }
+
+        $classroomsreservationsCollection = new ClassroomReservationCollection($classroomsreservations);
+        $classroomsreservationsCollection->additional(['error' => null]);
+
+        return $classroomsreservationsCollection->response()->setStatusCode(200);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
