@@ -85,6 +85,7 @@ class AttendancesController extends Controller
                 return $attendanceResource->response()->setStatusCode(400);
             }
 
+
             $currentDateTime = date('Y-m-d H:i:s');
 
             $attendance = new AttendanceResource(Attendance::create([
@@ -242,14 +243,15 @@ class AttendancesController extends Controller
 
         $currentDateTime = date('Y-m-d H:i:s');
 
-        $attendance = Attendance::where('user_id',$user->id)->where('classroom_id',$token->classroom_id)->first();
+        $attendance = Attendance::where('user_id',$user->id)->where('classroom_id',$token->classroom_id)->where('exit_date',null)->first();
 
         $attendance->exit_date = $currentDateTime;
         $attendance->confirmation = 1;
 
         $attendance->save();
 
-        return response()->setStatusCode(204);
+        $attendanceResource = new AttendanceResource([]);
+        return $attendanceResource->response()->setStatusCode(204);
     }
 
     /*
@@ -273,6 +275,5 @@ class AttendancesController extends Controller
             $attendance->save();
         }
 
-        //Da terminare
     }
 }
