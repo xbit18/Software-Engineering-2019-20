@@ -153,7 +153,7 @@ Route::patch('/checkout', 'AttendancesController@checkOut');
 
 
 /**
- * Rotte per le occupazioni
+ * Rotte per le prenotazioni dei posti
  */
 
 Route::get('/seatreservations','SeatReservationsController@index');

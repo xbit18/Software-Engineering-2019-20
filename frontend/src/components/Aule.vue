@@ -29,7 +29,7 @@
     </table>
 
     <!-- FINE INIZIO -->
-    
+
     <!-- GESTISCE AULA-->
 
     <table class="tg" v-else-if="gestisce">
@@ -161,7 +161,7 @@ export default {
           .then(res => {
             console.log(res);
             this.image = res.data.data.floor_map;
-            this.address = building_name + " piano " + floor + ", " + res.data.data.address;
+            this.address =res.data.data.address + ", " + building_name + ", " + floor + "° piano";
             this.show = true;
             bus.$emit("imgSend", { img: this.image, address: this.address, show: this.show });
           })
