@@ -9,5 +9,5 @@
  - **Link al video demo:**
    **https://youtu.be/-GvYNnwBaSo**
 
-Il PersonalJournal si trova nella cartella /docs nella root del progetto
+Il PersonalJournal insieme a un dump del database si trova nella cartella /docs nella root del progetto
 
